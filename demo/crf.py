@@ -11,7 +11,7 @@ from torchcrf import CRF
 # 预处理方法详情说明请参考对应目录的proceess.py文件或其目录下对应的说明文件
 class CommonDataset(Dataset):
     def __init__(self,data_path='../data/uni/China/mooc/',process_type=None,file_type='.txt'):
-        self.tokenizer = AutoTokenizer.from_pretrained("hfl/rbt3",cache_dir='../bert/trf')
+        self.tokenizer = AutoTokenizer.from_pretrained("../bert/trf/hfl/rbt3")#,cache_dir='../bert/trf')
 
         self.data_path = data_path
         if process_type=='train':
@@ -77,19 +77,21 @@ class Collate():
         return self._collate(batch_data)
 
     def _collate(self, batch_data):
+        #a=batch_data
+        #print(1)
         text_to_id = [torch.LongTensor(b[1]) for b in batch_data]
 
 
-        label = torch.LongTensor([b[3] for b in batch_data])
+        label = [torch.LongTensor(b[3]) for b in batch_data]
 
         data_length = [text.size(0) for text in text_to_id]
 
 
         max_length = max(data_length)
-        if max_length < self.min_length:
-            # 这一步防止在后续的计算过程中，因为文本长度和mask长度不一致而出错
-            text_to_id[0] = torch.cat((text_to_id[0], torch.LongTensor([0] * (self.min_length - text_to_id[0].size(0)))))
-            max_length = self.min_length
+        # if max_length < self.min_length:
+        #     # 这一步防止在后续的计算过程中，因为文本长度和mask长度不一致而出错
+        #     text_to_id[0] = torch.cat((text_to_id[0], torch.LongTensor([0] * (self.min_length - text_to_id[0].size(0)))))
+        #     max_length = self.min_length
 
         text_to_id = run_utils.pad_sequence(text_to_id, batch_first=True, padding_value=0)
         bert_attention_mask = []
@@ -107,6 +109,7 @@ class OPTION():
     def __init__(self):
         self.acc_batch_size=2
         self.cuda=True
+
 if __name__ == '__main__':
     opt = OPTION()
     dataset_t = CommonDataset(process_type='train')
