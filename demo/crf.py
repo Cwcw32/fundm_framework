@@ -1,6 +1,10 @@
+import copy
+
+import torch.nn as nn
+from torch.optim import Adam, AdamW, SGD
 from torch.utils.data import Dataset
 import torch.nn.utils.rnn as run_utils
-from transformers import AutoTokenizer, BertModel
+from transformers import AutoTokenizer, BertModel, BertForPreTraining, BertConfig
 from transformers import BertTokenizer, BertModel
 #tokenizer = BertTokenizer.from_pretrained("hfl/chinese-roberta-wwm-ext")
 import torch
@@ -9,6 +13,55 @@ from torchcrf import CRF
 # 这里我们使用中文RoBERT 进行embedding
 # 数据文件选择中文数据集的
 # 预处理方法详情说明请参考对应目录的proceess.py文件或其目录下对应的说明文件
+
+class BERT_CRF_Model(nn.Module):
+
+    def __init__(self):
+        pass
+
+    def forward(self):
+        pass
+
+
+
+
+class BertModel(nn.Module):
+    def __init__(self, opt):
+        super(BertModel, self).__init__()
+        abl_path = './bert/'
+
+        if opt.text_model == 'bert-base':
+            self.config = BertConfig.from_pretrained(abl_path + 'trf/hfl/rbt3/')
+            self.model = BertForPreTraining.from_pretrained(abl_path + 'trf/hfl/rbt3', config=self.config)
+            self.bert = self.model.bert
+
+        for param in self.model.parameters():
+            param.requires_grad = True
+
+        self.output_dim = self.model.encoder.layer[11].output.dense.out_features
+
+    def get_output_dim(self):
+        return self.output_dim
+
+    def get_config(self):
+        return self.config
+
+    def get_encoder(self):
+        model_encoder = copy.deepcopy(self.model.encoder)
+        return model_encoder
+
+    def forward(self, input, attention_mask,labels=None):
+        output = self.bert(input, attention_mask=attention_mask)
+        text_cls = output.pooler_output
+        text_encoder = output.last_hidden_state
+        if labels is not None:
+            loss_mask = labels.gt(-1)
+            # loss = self.crf(logits, labels, loss_mask) * (-1)
+            # outputs = (loss,) + outputs
+        return output
+
+
+
 class CommonDataset(Dataset):
     def __init__(self,data_path='../data/uni/China/mooc/',process_type=None,file_type='.txt'):
         self.tokenizer = AutoTokenizer.from_pretrained("../bert/trf/hfl/rbt3")#,cache_dir='../bert/trf')
@@ -109,6 +162,12 @@ class OPTION():
     def __init__(self):
         self.acc_batch_size=2
         self.cuda=True
+        self.text_model='bert-base'
+        #self.fuse_lr='bert-base'
+        self.optim='adamw'
+        self.fuse_lr=0.9
+        self.fuse_lr=0.999
+        self.fuse_lr='bert-base'
 
 if __name__ == '__main__':
     opt = OPTION()
@@ -119,6 +178,32 @@ if __name__ == '__main__':
     data_loader_t = DataLoader(dataset_t, batch_size=opt.acc_batch_size,
                              shuffle=True if data_type == 1 else False,
                              num_workers=1, collate_fn=Collate(opt), pin_memory=True if opt.cuda else False)
+
+    model=BertModel(opt)
+
+    pre_train_model_param = [name for name, param in model.named_parameters() if 'text_model' in name]
+    optimizer_grouped_parameters = [
+        {
+            "params": [p for n, p in model.named_parameters() if n in pre_train_model_param],
+            "lr": 0,
+        },
+        {
+            "params": [p for n, p in model.named_parameters() if n not in pre_train_model_param],
+            "lr": opt.fuse_lr,
+        },
+    ]
+
+    if opt.optim == 'adam':
+        optimizer = Adam(optimizer_grouped_parameters, betas=(opt.optim_b1, opt.optim_b2))
+    elif opt.optim == 'adamw':
+        optimizer = AdamW(optimizer_grouped_parameters, betas=(opt.optim_b1, opt.optim_b2))
+    elif opt.optim == 'sgd':
+        optimizer = SGD(optimizer_grouped_parameters, momentum=opt.momentum)
+
+
+
     for index, data in enumerate(data_loader_t):
         text_to_id, bert_attention_mask, label=data
+        output=model(text_to_id,bert_attention_mask,label)
+
         print(1)

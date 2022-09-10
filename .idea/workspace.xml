@@ -193,7 +193,8 @@
       <workItem from="1662532688019" duration="2947000" />
       <workItem from="1662598880573" duration="2798000" />
       <workItem from="1662638186128" duration="6680000" />
-      <workItem from="1662685717218" duration="10240000" />
+      <workItem from="1662685717218" duration="11277000" />
+      <workItem from="1662715198805" duration="4588000" />
     </task>
     <servers />
   </component>
@@ -256,8 +257,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/demo/crf.py</url>
-          <line>123</line>
-          <option name="timeStamp" value="6" />
+          <line>60</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -273,6 +274,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/fundm_framework$trf.coverage" NAME="trf 覆盖结果" MODIFIED="1660908038087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/fundm_framework$tessst.coverage" NAME="tessst 覆盖结果" MODIFIED="1662518591352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visual/v" />
-    <SUITE FILE_PATH="coverage/fundm_framework$crf.coverage" NAME="crf 覆盖结果" MODIFIED="1662711287871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/fundm_framework$crf.coverage" NAME="crf 覆盖结果" MODIFIED="1662711574439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
   </component>
 </project>
