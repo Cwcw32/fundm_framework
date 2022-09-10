@@ -121,4 +121,7 @@ if __name__ == '__main__':
                              num_workers=1, collate_fn=Collate(opt), pin_memory=True if opt.cuda else False)
     for index, data in enumerate(data_loader_t):
         text_to_id, bert_attention_mask, label=data
+
+
+
         print(1)
