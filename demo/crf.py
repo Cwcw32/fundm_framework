@@ -16,11 +16,22 @@ from torchcrf import CRF
 
 class BERT_CRF_Model(nn.Module):
 
-    def __init__(self):
+    def __init__(self,opt):
+        self.bert_layer=BertModel(opt)
         pass
 
-    def forward(self):
-        pass
+    def forward(self, input, attention_mask,labels=None):
+
+        output=bert_layer(input,attention_mask)
+        text_cls = output.pooler_output
+        text_encoder = output.last_hidden_stat
+        logits=self.classifer(text_encoder)
+
+
+        if labels is not None:
+            loss_mask = labels.gt(-1)
+            loss = self.crf(logits, labels, loss_mask) * (-1)
+            outputs = (loss,) + outputs
 
 
 
@@ -36,9 +47,10 @@ class BertModel(nn.Module):
             self.model = BertForPreTraining.from_pretrained(abl_path + 'trf/hfl/rbt3', config=self.config)
             self.bert = self.model.bert
 
+        self.crf=CRF(opt.num_labels,batch_first=True)
         for param in self.model.parameters():
             param.requires_grad = True
-
+        self.classifier=nn.Linear(opt.hidden_size,opt.num_labels)
         self.output_dim = self.model.encoder.layer[11].output.dense.out_features
 
     def get_output_dim(self):
@@ -53,12 +65,7 @@ class BertModel(nn.Module):
 
     def forward(self, input, attention_mask,labels=None):
         output = self.bert(input, attention_mask=attention_mask)
-        text_cls = output.pooler_output
-        text_encoder = output.last_hidden_state
-        if labels is not None:
-            loss_mask = labels.gt(-1)
-            # loss = self.crf(logits, labels, loss_mask) * (-1)
-            # outputs = (loss,) + outputs
+
         return output
 
 
@@ -169,7 +176,8 @@ class OPTION():
         self.fuse_lr=0.9
         self.fuse_lr=0.999
         self.fuse_lr='bert-base'
-
+        self.num_leabels=3
+        self.hidden_size=768
 if __name__ == '__main__':
     opt = OPTION()
     dataset_t = CommonDataset(process_type='train')
