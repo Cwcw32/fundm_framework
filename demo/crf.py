@@ -1,8 +1,9 @@
 import copy
+import os
 
 import torch.nn.functional as F
 import torch.nn as nn
-from torch.optim import Adam, AdamW, SGD
+from transformers.optimization import get_cosine_schedule_with_warmup, AdamW
 from torch.utils.data import Dataset
 import torch.nn.utils.rnn as run_utils
 from transformers import AutoTokenizer, BertModel, BertForPreTraining, BertConfig
@@ -252,7 +253,7 @@ if __name__ == '__main__':
                              shuffle=True if data_type == 1 else False,
                              num_workers=1, collate_fn=Collate(opt), pin_memory=True if opt.cuda else False)
 
-    model=BertModel(opt)
+    model=BertModel(opt).cuda()
 
     pre_train_model_param = [name for name, param in model.named_parameters() if 'text_model' in name]
 
@@ -273,27 +274,49 @@ if __name__ == '__main__':
     ]
 
     if opt.optim == 'adam':
-        optimizer = Adam(optimizer_grouped_parameters, betas=(opt.optim_b1, opt.optim_b2))
+        optimizer = Adam(optimizer_grouped_parameters, betas=(opt.optim_b1, opt.optim_b2),correct_bias=False)
     elif opt.optim == 'adamw':
-        optimizer = AdamW(optimizer_grouped_parameters, betas=(opt.optim_b1, opt.optim_b2))
+        optimizer = torch.optim.Adam(optimizer_grouped_parameters, lr=2e-5,weight_decay=1e-5)
     elif opt.optim == 'sgd':
         optimizer = SGD(optimizer_grouped_parameters, momentum=opt.momentum)
 
-    for i in range(0,5):
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(0)
+    for i in range(0,30):
         train_losses=0
         model.train()
         for index, data in enumerate(data_loader_t):
             text_to_id, bert_attention_mask, label, token_list,\
                    words_ids,\
                    bert_length=data
+            bert_attention_mask=bert_attention_mask.to('cuda')
+            text_to_id=text_to_id.to('cuda')
+            label=label.to('cuda')
+            #token_list=text_to_id.to('cuda')
+            words_ids=words_ids.to('cuda')
+            bert_length=bert_length.to('cuda')
+
+
             loss =model(text_to_id,bert_attention_mask,token_list,words_ids,bert_length,label)
             train_losses  = loss[0]
             # clear previous gradients, compute gradients of all variables wrt loss
             model.zero_grad()
             train_losses.backward()
             # gradient clipping
-            #nn.utils.clip_grad_norm_(parameters=model.parameters(), max_norm=config.clip_grad)
+            nn.utils.clip_grad_norm_(parameters=model.parameters(), max_norm=5)
             # performs updates using calculated gradients
             optimizer.step()
             #print(1)
             print(train_losses)
+            #
+            if index%5==0:
+                output = loss[1]
+                a=torch.ones_like(label)
+                pred_l=torch.argmax(output,-1)
+                mask=~(label + torch.ones_like(label)).bool()
+                totoal=pred_l.masked_fill_(mask, -1)
+
+                print('total:',(mask==True).sum())
+                print('right:',(totoal== label).sum().item()-(mask==False).sum())
+                pass
+                #mask_a=torch.ones_like(pred_l)*
+                #pred_l[:,]
