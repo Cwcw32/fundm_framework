@@ -96,68 +96,76 @@ class BertModel(nn.Module):
 
 
 class CommonDataset(Dataset):
-    def __init__(self,data_path='../data/uni/China/mooc/',process_type=None,file_type='.txt'):
+    def __init__(self,data_path='../data/uni/China/',process_type=None,file_type='.txt'):
         self.tokenizer = AutoTokenizer.from_pretrained("../bert/trf/hfl/rbt3")#,cache_dir='../bert/trf')
 
         self.data_path = data_path
-        if process_type=='train':
-            self.data_path=self.data_path+'train'+file_type
-        elif process_type =='dev':
-            self.data_path=self.data_path+'dev'+file_type
-        elif process_type =='test':
-            self.data_path=self.data_path+'test'+file_type
-        else:
-            assert('Wrong process_type,please make it as \'train\',\'dev\',or\'test\'')
+        self.process_type=process_type
+        # if process_type=='train':
+        #     self.data_path=self.data_path+'train'+file_type
+        # elif process_type =='dev':
+        #     self.data_path=self.data_path+'dev'+file_type
+        # elif process_type =='test':
+        #     self.data_path=self.data_path+'test'+file_type
+        # else:
+        #     assert('Wrong process_type,please make it as \'train\',\'dev\',or\'test\'')
         #self.content={}
-        if file_type=='.txt':
-            fin = open('../data/uni/China/mooc/train.txt', 'r', encoding='utf-8', newline='\n', errors='ignore')
-            lines = fin.readlines()
-            fin.close()
-            item_token=[]
-            item_label=[]
-            self.token_list_to_id=[]
-            self.list_attention=[]
-            self.text_list=[]
-            self.label_list=[]
-            self.token_list=[]      # 分词后的结果，因为用的是autotokenizer，所以是加上了[CLS]和[SEP]，这里详情请参考BERT中的内容，这里会有[CLS]和[SEP],下面处理的时候将他去掉了，如果需要请将对应内容注释
-            self.words_id=[]        # 对应的是bert后的序列到原分词结果(上面的token_list)的索引
-            self.bert_length=[]     # 对应的是bert后的长度（不包括CLS和其他内容）
+        self.token_list_to_id = []
+        self.list_attention = []
+        self.text_list = []
+        self.label_list = []
+        self.token_list = []  # 分词后的结果，因为用的是autotokenizer，所以是加上了[CLS]和[SEP]，这里详情请参考BERT中的内容，这里会有[CLS]和[SEP],下面处理的时候将他去掉了，如果需要请将对应内容注释
+        self.words_id = []  # 对应的是bert后的序列到原分词结果(上面的token_list)的索引
+        self.bert_length = []  # 对应的是bert后的长度（不包括CLS和其他内容）
+        # 考虑多个txt文件
+        txt_list=['mooc','camera','car','notebook','phone','shampoo']
 
-            dic={'B-ASP':0,'I-ASP':1,'O':2}
-            for n,item in enumerate(lines):
-                if item=='\n':
-                    max_len = 256 #bert截取的最大长度
-                    token_result=self.tokenizer(item_token, truncation=True, is_split_into_words=True, max_length=max_len)
-                    text_to_id=token_result['input_ids']
-                    offsets=token_result.encodings[0].offsets
-                    balala=max([int(b[1]) for b in offsets])
-                    word_ids=token_result.encodings[0].word_ids
-                    token_list=token_result.encodings[0].tokens
-                    text_att=token_result['attention_mask']
+        # 这里之后改成json模式吧
+        for file_name in txt_list:
+            if file_type=='.txt':
+                fin = open(data_path+file_name+'/'+self.process_type+file_type, 'r', encoding='utf-8', newline='\n', errors='ignore')
+                lines = fin.readlines()
+                fin.close()
+                item_token=[]
+                item_label=[]
+                dic={'B-ASP':0,'I-ASP':1,'O':2}
+                for n,item in enumerate(lines):
+                    if item=='\n':
+                        max_len = 256 #bert截取的最大长度,这里相关处理还没写完哦
+                        token_result=self.tokenizer(item_token, truncation=True, is_split_into_words=True, max_length=max_len)
+                        text_to_id=token_result['input_ids']
+                        offsets=token_result.encodings[0].offsets
+                        balala=max([int(b[1]) for b in offsets])  # 用于测试BERT多输出的情况
+                        word_ids=token_result.encodings[0].word_ids
+                        token_list=token_result.encodings[0].tokens
+                        text_att=token_result['attention_mask']
 
-                    word_ids=[b for b in word_ids if b is not None]
-                    bert_length=len(word_ids) # 实际上就是bert处理之后的的长度，不包括CLS
-                    token_list=token_list[1:-1] # 这里把CLS和SEP删掉，如果有[SEP]XXX[SEP]格式的话请另行处理
+                        word_ids=[b for b in word_ids if b is not None]
+                        bert_length=len(word_ids) # 实际上就是bert处理之后的的长度，不包括CLS
+                        token_list=token_list[1:-1] # 这里把CLS和SEP删掉，如果有[SEP]XXX[SEP]格式的话请另行处理
 
-                    # if len(item_label)!=len(word_ids):
-                    #     print(1)
+                        # if len(item_label)!=len(word_ids):
+                        #     print(1)
 
-                    self.text_list.append(item_token[:max_len])
-                    self.label_list.append(item_label[:max_len])
-                    self.token_list_to_id.append(text_to_id[:max_len])
-                    self.list_attention.append(text_att[:max_len])
-                    self.words_id.append(word_ids[:max_len])
-                    self.token_list.append(token_list[:max_len])
-                    self.bert_length.append(bert_length)
+                        self.text_list.append(item_token[:max_len])
+                        self.label_list.append(item_label[:max_len])
+                        self.token_list_to_id.append(text_to_id[:max_len])
+                        self.list_attention.append(text_att[:max_len])
+                        self.words_id.append(word_ids[:max_len])
+                        self.token_list.append(token_list[:max_len])
+                        self.bert_length.append(bert_length)
 
-                    item_token=[]
-                    item_label=[]
-                    continue
-                else:
-                    item=item.split()
-                    item_token.append(item[0])
-                    item_label.append(dic[item[1]])
+                        item_token=[]
+                        item_label=[]
+                        continue
+                    else:
+                        item=item.split()
+                        item_token.append(item[0])
+                        item_label.append(dic[item[1]])
 
+            elif file_type=='.json':
+                pass
+        print(1)
     def __len__(self):
         return len(self.text_list)
 
@@ -176,6 +184,9 @@ class CommonDataset(Dataset):
                token_list,\
                words_id,\
                bert_length
+
+def valid():
+    pass
 
 class Collate():
     def __init__(self, opt):
@@ -211,8 +222,8 @@ class Collate():
         #     max_length = self.min_length
 
         text_to_id = run_utils.pad_sequence(text_to_id, batch_first=True, padding_value=0)
-        words_ids = run_utils.pad_sequence(words_ids, batch_first=True, padding_value=0)
-        label = run_utils.pad_sequence(label, batch_first=True, padding_value=-1)
+        words_ids  = run_utils.pad_sequence(words_ids, batch_first=True, padding_value=0)
+        label      = run_utils.pad_sequence(label, batch_first=True, padding_value=-1)
 
         # if label.shape[1]!=words_ids.shape[1]:
         #     print(1)

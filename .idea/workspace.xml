@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c0a1bc0-a963-4d8d-ab5e-cc8156a5b9b8" name="变更" comment="1">
+    <list default="true" id="d4466182-0ff2-4f8a-9a42-ba64915df606" name="变更" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/常见音频处理操作.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/multimodal/audio/常见音频处理操作.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chinese/r.md" beforeDir="false" afterPath="$PROJECT_DIR$/tricks/chinese/r.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/crf.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo/crf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tricks/相关说明.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tricks/相关说明.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual/v/tessst.py" beforeDir="false" afterPath="$PROJECT_DIR$/multimodal/visual/v/tessst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual/常见图像处理操作.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/multimodal/visual/常见图像处理操作.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual/相关说明txt" beforeDir="false" afterPath="$PROJECT_DIR$/multimodal/visual/相关说明txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +57,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PRGC" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo/crf.py" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -60,6 +67,10 @@
       <recent name="F:\github\fundm_framework\data\mm\TV\MVSA_SINGLE" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\github\fundm_framework\tricks" />
+      <recent name="F:\github\fundm_framework\multimodal" />
+      <recent name="F:\github\fundm_framework\cross_field" />
+      <recent name="F:\github\fundm_framework" />
       <recent name="F:\github\fundm_framework\tricks\hook" />
     </key>
   </component>
@@ -93,9 +104,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="sftp://bufanxu@10.10.255.119:22/home/bufanxu/anaconda3/envs/CLMLF/bin/python" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -167,7 +178,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="1c0a1bc0-a963-4d8d-ab5e-cc8156a5b9b8" name="变更" comment="" />
+      <changelist id="d4466182-0ff2-4f8a-9a42-ba64915df606" name="变更" comment="1" />
       <created>1660894751523</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -204,7 +215,16 @@
       <workItem from="1662638186128" duration="6680000" />
       <workItem from="1662685717218" duration="11277000" />
       <workItem from="1662715198805" duration="4588000" />
+      <workItem from="1662876117123" duration="7102000" />
     </task>
+    <task id="LOCAL-00001" summary="1">
+      <created>1662812993075</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662812993075</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +282,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -274,6 +298,11 @@
           <url>notebook://F:/github/fundm_framework/data/common/mnist.ipynb</url>
           <line>33</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/crf.py</url>
+          <line>167</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -289,6 +318,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/fundm_framework$trf.coverage" NAME="trf 覆盖结果" MODIFIED="1660908038087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/fundm_framework$tessst.coverage" NAME="tessst 覆盖结果" MODIFIED="1662518591352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visual/v" />
-    <SUITE FILE_PATH="coverage/fundm_framework$crf.coverage" NAME="crf 覆盖结果" MODIFIED="1662706400900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/fundm_framework$crf.coverage" NAME="crf 覆盖结果" MODIFIED="1662885513040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
   </component>
 </project>

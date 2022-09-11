@@ -20,7 +20,7 @@ if not os.path.exists(savepath):
 def load_model():
     model = torchvision.models.resnet18(pretrained=False)
     model.fc = nn.Linear(model.fc.in_features, 2, bias=False)
-    save_path = "./models/"
+    save_path = "models/"
     checkpoint = torch.load(save_path, map_location=lambda storage, loc: storage)
     model.load_state_dict(checkpoint['model'])
     return model
