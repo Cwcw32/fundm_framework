@@ -17,7 +17,6 @@ class BMRC(nn.Module):
             self._bert = BertModel.from_pretrained(args.bert_model_type)
             self._tokenizer = BertTokenizer.from_pretrained(args.bert_model_type)
             print('Bertbase model loaded')
-
         else:
             raise KeyError('Config.args.bert_model_type should be bert-based-uncased. ')
 
@@ -40,9 +39,7 @@ class BMRC(nn.Module):
             return cls_hidden_scores
 """
   for batch_index, batch_dict in enumerate(batch_generator):
-
                 optimizer.zero_grad()
-
                 # q1_a
                 f_aspect_start_scores, f_aspect_end_scores = model(batch_dict['forward_asp_query'],
                                                                    batch_dict['forward_asp_query_mask'],
@@ -84,5 +81,4 @@ class BMRC(nn.Module):
 
                 # loss
                 loss_sum = f_asp_loss + f_opi_loss + b_opi_loss + b_asp_loss + args.beta*sentiment_loss
-
 """
