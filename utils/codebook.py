@@ -1,4 +1,5 @@
 import os
+
 import numpy as np
 import torch
 import torch.nn as nn
@@ -7,6 +8,8 @@ from torchvision import datasets, transforms
 from sklearn.manifold import TSNE
 import pandas as pd
 import matplotlib.pyplot as plt
+
+
 class VectorQuantizer(nn.Module):
     """
     VQ-VAE layer: Input any tensor to be quantized.

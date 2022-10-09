@@ -47,7 +47,7 @@ def get_text(lines):
     """
     # 样本示例：
     # It is always reliable , never bugged and responds well .####It=O is=O always=O reliable=O ,=O never=O bugged=O and=O responds=T-POS well=O .=O####It=O is=O always=O reliable=O ,=O never=O bugged=O and=O responds=O well=S .=O
-    # 即’####‘分割开了  text ####others=O aspect=T-POS(等) others=O #### others=O opinion=P others=O
+    # 即’####‘分割开了  text ####papers=O aspect=T-POS(等) papers=O #### papers=O opinion=P papers=O
     text_list = []
     aspect_list = []
     opinion_list = []
@@ -57,6 +57,15 @@ def get_text(lines):
         word_list = temp[0].split()
         aspect_label_list = [t.split("=")[-1] for t in temp[1].split()]
         opinion_label_list = [t.split("=")[-1] for t in temp[2].split()]
+        falg=False
+        for i in opinion_label_list:
+            if i!='O':
+                flag=True
+            print(1)
+
+        if flag is False:
+            print(1)
+
         assert len(word_list) == len(aspect_label_list) == len(opinion_label_list)
         text_list.append(word_list)
         aspect_list.append(aspect_label_list)
@@ -71,7 +80,7 @@ def valid_data(triplet, aspect, opinion):# 保证aspect和opinion处都不是O
         assert opinion[t] != ["O"]
 
 
-def fusion_dual_triplet(triplet):
+def fusion_dual_triplet(triplet):#
     triplet_aspect = []
     triplet_opinion = []
     triplet_sentiment = []
@@ -115,7 +124,7 @@ if __name__ == '__main__':
             # 获得text,aspect,opinion
             text_list, aspect_list, opinion_list = get_text(text_lines)
             sample_list = []
-            for k in range(len(text_list)):
+            for k in range(len(text_list)): # 不处理单aspect 单opinion的情况？
                 triplet = triple_data[k]
                 text = text_list[k]
                 valid_data(triplet, aspect_list[k], opinion_list[k]) # 验证一下aspect、opinion处是不是O
@@ -133,6 +142,7 @@ if __name__ == '__main__':
                     start[ta[0]] = 1
                     end[ta[-1]] = 1
                 forward_answer_list.append([start, end])
+
                 backward_query_list.append(["What", "opinions", "?"])
                 start = [0] * len(text)
                 end = [0] * len(text)

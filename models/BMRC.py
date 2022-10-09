@@ -1,6 +1,7 @@
 # coding: UTF-8
 # @Author: Shaowei Chen,     Contact: chenshaowei0507@163.com
 # @Date:   2021-5-4
+# https://github.com/NKU-IIPLab/BMRC
 
 from transformers import BertTokenizer, BertModel, BertConfig
 import torch.nn as nn
@@ -9,8 +10,6 @@ import torch.nn as nn
 class BMRC(nn.Module):
     """
 
-    Example::
-    >>> 暂时没想好，之后集成化再说吧，这样写似乎有些麻烦
     """
     def __init__(self,
                  args):

@@ -1,3 +1,11 @@
-本模块包含以下内容：
-    （1）augments： 图像数据增强操作
-    （2）codebook： 一种离散化建模的操作
+本模块内容简介如下：
+    （1）augments.py：                 图像数据增强操作
+            （1）
+
+    （2）codebook.py：                 一种离散化建模的操作（应该要移动到其他地方了）
+
+    （3）baidu_translation.py：        调用百度api进行翻译
+
+    （4）esinssum详解.ipynb：           爱因斯坦求和约定教程
+
+    （5）GPUtil.ipynb:                 使用python获得GPU卡的相关信息
