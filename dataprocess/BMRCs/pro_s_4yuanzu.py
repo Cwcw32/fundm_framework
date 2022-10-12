@@ -3,10 +3,11 @@
 # @Do: 针对4元组数据集的数据预处理
 
 import csv
+import operator
 import pickle
 import sys
 
-import torch
+#import torch
 
 """
 forward_aspect_query_template = ["[CLS]", "what", "aspects", "?", "[SEP]"]
@@ -59,6 +60,116 @@ class QSAAS(object):
         self.sentiment_querys=sentiment_querys
         self.sentiment_answers=sentiment_answers
 
+    def get_labels(self, domain_type):
+        """See base class."""
+        l = None
+        sentiment = None
+        if domain_type.startswith('rest'):
+            l = ['RESTAURANT#GENERAL', 'SERVICE#GENERAL', 'FOOD#GENERAL', 'FOOD#QUALITY', 'FOOD#STYLE_OPTIONS', 'DRINKS#STYLE_OPTIONS', 'DRINKS#PRICES',
+            'AMBIENCE#GENERAL', 'RESTAURANT#PRICES', 'FOOD#PRICES', 'RESTAURANT#MISCELLANEOUS', 'DRINKS#QUALITY', 'LOCATION#GENERAL']
+        elif domain_type == 'laptop':
+            l = ['MULTIMEDIA_DEVICES#PRICE', 'OS#QUALITY', 'SHIPPING#QUALITY', 'GRAPHICS#OPERATION_PERFORMANCE', 'CPU#OPERATION_PERFORMANCE',
+            'COMPANY#DESIGN_FEATURES', 'MEMORY#OPERATION_PERFORMANCE', 'SHIPPING#PRICE', 'POWER_SUPPLY#CONNECTIVITY', 'SOFTWARE#USABILITY',
+            'FANS&COOLING#GENERAL', 'GRAPHICS#DESIGN_FEATURES', 'BATTERY#GENERAL', 'HARD_DISC#USABILITY', 'FANS&COOLING#DESIGN_FEATURES',
+            'MEMORY#DESIGN_FEATURES', 'MOUSE#USABILITY', 'CPU#GENERAL', 'LAPTOP#QUALITY', 'POWER_SUPPLY#GENERAL', 'PORTS#QUALITY',
+            'KEYBOARD#PORTABILITY', 'SUPPORT#DESIGN_FEATURES', 'MULTIMEDIA_DEVICES#USABILITY', 'MOUSE#GENERAL', 'KEYBOARD#MISCELLANEOUS',
+            'MULTIMEDIA_DEVICES#DESIGN_FEATURES', 'OS#MISCELLANEOUS', 'LAPTOP#MISCELLANEOUS', 'SOFTWARE#PRICE', 'FANS&COOLING#OPERATION_PERFORMANCE',
+            'MEMORY#QUALITY', 'OPTICAL_DRIVES#OPERATION_PERFORMANCE', 'HARD_DISC#GENERAL', 'MEMORY#GENERAL', 'DISPLAY#OPERATION_PERFORMANCE',
+            'MULTIMEDIA_DEVICES#GENERAL', 'LAPTOP#GENERAL', 'MOTHERBOARD#QUALITY', 'LAPTOP#PORTABILITY', 'KEYBOARD#PRICE', 'SUPPORT#OPERATION_PERFORMANCE',
+            'GRAPHICS#GENERAL', 'MOTHERBOARD#OPERATION_PERFORMANCE', 'DISPLAY#GENERAL', 'BATTERY#QUALITY', 'LAPTOP#USABILITY', 'LAPTOP#DESIGN_FEATURES',
+            'PORTS#CONNECTIVITY', 'HARDWARE#QUALITY', 'SUPPORT#GENERAL', 'MOTHERBOARD#GENERAL', 'PORTS#USABILITY', 'KEYBOARD#QUALITY', 'GRAPHICS#USABILITY',
+            'HARD_DISC#PRICE', 'OPTICAL_DRIVES#USABILITY', 'MULTIMEDIA_DEVICES#CONNECTIVITY', 'HARDWARE#DESIGN_FEATURES', 'MEMORY#USABILITY',
+            'SHIPPING#GENERAL', 'CPU#PRICE', 'Out_Of_Scope#DESIGN_FEATURES', 'MULTIMEDIA_DEVICES#QUALITY', 'OS#PRICE', 'SUPPORT#QUALITY',
+            'OPTICAL_DRIVES#GENERAL', 'HARDWARE#USABILITY', 'DISPLAY#DESIGN_FEATURES', 'PORTS#GENERAL', 'COMPANY#OPERATION_PERFORMANCE',
+            'COMPANY#GENERAL', 'Out_Of_Scope#GENERAL', 'KEYBOARD#DESIGN_FEATURES', 'Out_Of_Scope#OPERATION_PERFORMANCE',
+            'OPTICAL_DRIVES#DESIGN_FEATURES', 'LAPTOP#OPERATION_PERFORMANCE', 'KEYBOARD#USABILITY', 'DISPLAY#USABILITY', 'POWER_SUPPLY#QUALITY',
+            'HARD_DISC#DESIGN_FEATURES', 'DISPLAY#QUALITY', 'MOUSE#DESIGN_FEATURES', 'COMPANY#QUALITY', 'HARDWARE#GENERAL', 'COMPANY#PRICE',
+            'MULTIMEDIA_DEVICES#OPERATION_PERFORMANCE', 'KEYBOARD#OPERATION_PERFORMANCE', 'SOFTWARE#PORTABILITY', 'HARD_DISC#OPERATION_PERFORMANCE',
+            'BATTERY#DESIGN_FEATURES', 'CPU#QUALITY', 'WARRANTY#GENERAL', 'OS#DESIGN_FEATURES', 'OS#OPERATION_PERFORMANCE', 'OS#USABILITY',
+            'SOFTWARE#GENERAL', 'SUPPORT#PRICE', 'SHIPPING#OPERATION_PERFORMANCE', 'DISPLAY#PRICE', 'LAPTOP#PRICE', 'OS#GENERAL', 'HARDWARE#PRICE',
+            'SOFTWARE#DESIGN_FEATURES', 'HARD_DISC#MISCELLANEOUS', 'PORTS#PORTABILITY', 'FANS&COOLING#QUALITY', 'BATTERY#OPERATION_PERFORMANCE',
+            'CPU#DESIGN_FEATURES', 'PORTS#OPERATION_PERFORMANCE', 'SOFTWARE#OPERATION_PERFORMANCE', 'KEYBOARD#GENERAL', 'SOFTWARE#QUALITY',
+            'LAPTOP#CONNECTIVITY', 'POWER_SUPPLY#DESIGN_FEATURES', 'HARDWARE#OPERATION_PERFORMANCE', 'WARRANTY#QUALITY', 'HARD_DISC#QUALITY',
+            'POWER_SUPPLY#OPERATION_PERFORMANCE', 'PORTS#DESIGN_FEATURES', 'Out_Of_Scope#USABILITY']
+        sentiment = ['0', '1', '2']
+        label_list = []
+        # label_list.append(l)
+        # label_list.append(sentiment)
+        cate_senti = []
+        for cate in l:
+            for senti in sentiment:
+                cate_senti.append(cate+'#'+senti)
+        label_list.append(cate_senti)
+        return label_list
+
+def get_query_and_answer(domain_type):
+    """
+    目的是模拟NER中的阅读理解任务第一版（BERT-MRF）
+    :param domain_type:
+        LAPTOP
+        RESTAURANT
+    :return:
+        forward_category_query_list：
+            包含本领域的category
+            list的长度是category的数量
+        forward_category_answer_list:
+            上面的query对应的答案
+    """
+    if domain_type=='LAPTOP':
+        l = ['MULTIMEDIA_DEVICES#PRICE', 'OS#QUALITY', 'SHIPPING#QUALITY', 'GRAPHICS#OPERATION_PERFORMANCE',
+         'CPU#OPERATION_PERFORMANCE',
+         'COMPANY#DESIGN_FEATURES', 'MEMORY#OPERATION_PERFORMANCE', 'SHIPPING#PRICE', 'POWER_SUPPLY#CONNECTIVITY',
+         'SOFTWARE#USABILITY',
+         'FANS&COOLING#GENERAL', 'GRAPHICS#DESIGN_FEATURES', 'BATTERY#GENERAL', 'HARD_DISC#USABILITY',
+         'FANS&COOLING#DESIGN_FEATURES',
+         'MEMORY#DESIGN_FEATURES', 'MOUSE#USABILITY', 'CPU#GENERAL', 'LAPTOP#QUALITY', 'POWER_SUPPLY#GENERAL',
+         'PORTS#QUALITY',
+         'KEYBOARD#PORTABILITY', 'SUPPORT#DESIGN_FEATURES', 'MULTIMEDIA_DEVICES#USABILITY', 'MOUSE#GENERAL',
+         'KEYBOARD#MISCELLANEOUS',
+         'MULTIMEDIA_DEVICES#DESIGN_FEATURES', 'OS#MISCELLANEOUS', 'LAPTOP#MISCELLANEOUS', 'SOFTWARE#PRICE',
+         'FANS&COOLING#OPERATION_PERFORMANCE',
+         'MEMORY#QUALITY', 'OPTICAL_DRIVES#OPERATION_PERFORMANCE', 'HARD_DISC#GENERAL', 'MEMORY#GENERAL',
+         'DISPLAY#OPERATION_PERFORMANCE',
+         'MULTIMEDIA_DEVICES#GENERAL', 'LAPTOP#GENERAL', 'MOTHERBOARD#QUALITY', 'LAPTOP#PORTABILITY', 'KEYBOARD#PRICE',
+         'SUPPORT#OPERATION_PERFORMANCE',
+         'GRAPHICS#GENERAL', 'MOTHERBOARD#OPERATION_PERFORMANCE', 'DISPLAY#GENERAL', 'BATTERY#QUALITY',
+         'LAPTOP#USABILITY', 'LAPTOP#DESIGN_FEATURES',
+         'PORTS#CONNECTIVITY', 'HARDWARE#QUALITY', 'SUPPORT#GENERAL', 'MOTHERBOARD#GENERAL', 'PORTS#USABILITY',
+         'KEYBOARD#QUALITY', 'GRAPHICS#USABILITY',
+         'HARD_DISC#PRICE', 'OPTICAL_DRIVES#USABILITY', 'MULTIMEDIA_DEVICES#CONNECTIVITY', 'HARDWARE#DESIGN_FEATURES',
+         'MEMORY#USABILITY',
+         'SHIPPING#GENERAL', 'CPU#PRICE', 'Out_Of_Scope#DESIGN_FEATURES', 'MULTIMEDIA_DEVICES#QUALITY', 'OS#PRICE',
+         'SUPPORT#QUALITY',
+         'OPTICAL_DRIVES#GENERAL', 'HARDWARE#USABILITY', 'DISPLAY#DESIGN_FEATURES', 'PORTS#GENERAL',
+         'COMPANY#OPERATION_PERFORMANCE',
+         'COMPANY#GENERAL', 'Out_Of_Scope#GENERAL', 'KEYBOARD#DESIGN_FEATURES', 'Out_Of_Scope#OPERATION_PERFORMANCE',
+         'OPTICAL_DRIVES#DESIGN_FEATURES', 'LAPTOP#OPERATION_PERFORMANCE', 'KEYBOARD#USABILITY', 'DISPLAY#USABILITY',
+         'POWER_SUPPLY#QUALITY',
+         'HARD_DISC#DESIGN_FEATURES', 'DISPLAY#QUALITY', 'MOUSE#DESIGN_FEATURES', 'COMPANY#QUALITY', 'HARDWARE#GENERAL',
+         'COMPANY#PRICE',
+         'MULTIMEDIA_DEVICES#OPERATION_PERFORMANCE', 'KEYBOARD#OPERATION_PERFORMANCE', 'SOFTWARE#PORTABILITY',
+         'HARD_DISC#OPERATION_PERFORMANCE',
+         'BATTERY#DESIGN_FEATURES', 'CPU#QUALITY', 'WARRANTY#GENERAL', 'OS#DESIGN_FEATURES', 'OS#OPERATION_PERFORMANCE',
+         'OS#USABILITY',
+         'SOFTWARE#GENERAL', 'SUPPORT#PRICE', 'SHIPPING#OPERATION_PERFORMANCE', 'DISPLAY#PRICE', 'LAPTOP#PRICE',
+         'OS#GENERAL', 'HARDWARE#PRICE',
+         'SOFTWARE#DESIGN_FEATURES', 'HARD_DISC#MISCELLANEOUS', 'PORTS#PORTABILITY', 'FANS&COOLING#QUALITY',
+         'BATTERY#OPERATION_PERFORMANCE',
+         'CPU#DESIGN_FEATURES', 'PORTS#OPERATION_PERFORMANCE', 'SOFTWARE#OPERATION_PERFORMANCE', 'KEYBOARD#GENERAL',
+         'SOFTWARE#QUALITY',
+         'LAPTOP#CONNECTIVITY', 'POWER_SUPPLY#DESIGN_FEATURES', 'HARDWARE#OPERATION_PERFORMANCE', 'WARRANTY#QUALITY',
+         'HARD_DISC#QUALITY',
+         'POWER_SUPPLY#OPERATION_PERFORMANCE', 'PORTS#DESIGN_FEATURES', 'Out_Of_Scope#USABILITY']
+    else:
+        l = ['RESTAURANT#GENERAL', 'SERVICE#GENERAL', 'FOOD#GENERAL', 'FOOD#QUALITY', 'FOOD#STYLE_OPTIONS', 'DRINKS#STYLE_OPTIONS', 'DRINKS#PRICES',
+            'AMBIENCE#GENERAL', 'RESTAURANT#PRICES', 'FOOD#PRICES', 'RESTAURANT#MISCELLANEOUS', 'DRINKS#QUALITY', 'LOCATION#GENERAL']
+    cat_to_id={}
+    id_to_cat={}
+    num=0
+    for item in l:
+        cat_to_id[item]=num
+        id_to_cat[id]=item
+    return cat_to_id,id_to_cat
 
 def get_text(lines):# 通过输入数据集的origin lines得到一种稍微标准化的输出
     """
@@ -123,10 +234,10 @@ def get_text(lines):# 通过输入数据集的origin lines得到一种稍微标�
             quad.append(quad_temp)
 
         # print(quad_temp['aspect'])
-        temp['quad'] = quad
+        #temp['quad'] = quad
         temp={
           'text':text,
-          'quad_':quad
+          'quad':quad
         }
         all_data.append(temp)
     #return all
@@ -166,8 +277,7 @@ def get_quad(quad_list):
         temp.append(item['category'])
         quad_return.append(temp)
     print(quad_return)
-
-def fusion_quad(quad):# 由于这个预处理本身也很快，数据量也不大，这里就不写哈希表加速了,也不考虑什么代码复用、模块化的内容了
+def fusion_quad(quad,text=None):# 由于这个预处理本身也很快，数据量也不大，这里就不写哈希表加速了,也不考虑什么代码复用、模块化的内容了
     """
     :param quad:
             [
@@ -191,11 +301,15 @@ def fusion_quad(quad):# 由于这个预处理本身也很快，数据量也不�
         格式为
             [
                 {
-                'aspect': [xxxx],
-                'as_op':[yyyy,cccc,...],
+
+                'aspect': [aspect words],
                 ‘aspect_index’=[i,j],     # 这个是key value
+
+                'as_op':[o1,cccc,...],
                 ‘op_index’=[[a,b],[c,d],...],
-                'category':zzzzzz
+
+                'category':[c1,c2,...,cn],
+                'polarity':[p1,p2,...,pn],
                 },
                 {...}
                 ...,
@@ -205,70 +319,133 @@ def fusion_quad(quad):# 由于这个预处理本身也很快，数据量也不�
             格式为：
             [
                 {
-                'opinion':[yyyy],
-                'op_as':[xxxx],
-                'as_index'=[i,j],
+                'opinion':[opinion],
                 'op_index'=[a,b],       # 这个是key value
+
+                'op_as':[a1,a2,a3,...,an],
+                'as_index'=[i,j],
+
+                'category':[c1,c2,c3,...,cn],
+                'polarity':[p1,p2,p3,...,pn],
                 }
                 ,...
             ]
     """
+    num=0
     as_guanlian=[]
     op_guanlian=[]
-    for item in quad:
-        aspect=item['aspect']
+    for n1,item in enumerate(quad):
         temp_as_guanlian={}
         temp_op_guanlian={}
+
+        aspect=item['aspect']
         as_index=item['aspect_index'].split(',')
-        temp_as_guanlian['aspect']=aspect
-        temp_as_guanlian['aspect_index']=as_index# key value
         opinion=item['opinion']
         op_index=item['opinion_index'].split(',')
-        temp_as_guanlian['as_op']=[opinion] # 初始化的化是要让他变成list的
-        temp_as_guanlian['op_index']=op_index
+        category=item['category']
+        polarity=item['polarity']
 
-        temp_op_guanlian['aspect']=[aspect]
-        temp_op_guanlian['aspect_index']=as_index
-        temp_op_guanlian['as_op']=opinion
-        temp_op_guanlian['op_index']=op_index  #key value
+        temp_as_guanlian['aspect']=aspect
+        temp_as_guanlian['aspect_index']=as_index# key value,加[]后续处理会很麻烦哦
+        temp_as_guanlian['as_op']=[opinion] # 初始化的化是要让他变成list的
+        temp_as_guanlian['op_index']=[op_index]
+        temp_as_guanlian['category']=[category]
+        temp_as_guanlian['polarity']=[polarity]
+
+        temp_op_guanlian['opinion']=opinion
+        temp_op_guanlian['opinion_index']=op_index  #key value
+        temp_op_guanlian['op_as']=[aspect]
+        temp_op_guanlian['as_index']=[as_index]
+        temp_op_guanlian['category']=[category]
+        temp_op_guanlian['polarity']=[polarity]
+
+        ##############
+        ## 待更改
+        ##############
+        if aspect=='' and opinion=='':#没有aspect的情况和opinion的情况，暂时放一放，等category研究完的
+            continue
 
         if len(as_guanlian)==0:
             as_guanlian.append(temp_as_guanlian)
         else:
             flag=True
-            for n,item_as in enumerate(as_guanlian):
-                if item_as['aspect_index']==as_index:
-                    as_guanlian[n]['op_as'].append(opinion)
-                    as_guanlian[n]['op_index'].append(op_index)
+            for n2,item_as in enumerate(as_guanlian):
+                if operator.eq(item_as['aspect_index'],as_index):#as_index是主键
+                    # 判断1 CATEGORY是否一样
+                    if as_guanlian[n2]['category'].count(category)!=0: # as一样，category也一样
+                        #continue # 先跳过这里吧
+                        index=as_guanlian[n2]['category'].index(category)# 对应的情感也一样？
+                        #assert op_guanlian[n2]['polarity'][index]!=polarity # 对应的情感、观点词一样就跳过
+                        if  as_guanlian[n2]['polarity'][index]!=polarity: # 对应的情感、观点词一样就跳过
+                            continue
+                        #assert op_guanlian[n2]['opinion'][index]!=opinion# 相当于重复句子
+                        if as_guanlian[n2]['as_op'][index]!=opinion:# 相当于重复句子
+                            continue
+                    as_guanlian[n2]['as_op'].append(opinion)
+                    as_guanlian[n2]['op_index'].append(op_index)
+                    as_guanlian[n2]['category'].append(category)
+                    as_guanlian[n2]['polarity'].append(polarity)
                     flag=False
-                    break
+                    num+=1
+                    if opinion==[]:
+                        print('ASASASAS: ',as_guanlian)
+                        print('TEXT:',text)
+                        print('QUAD:',quad)
+                        print('\n')
+                    #break
             if flag is True:
                 as_guanlian.append(temp_as_guanlian)
+
         if len(op_guanlian)==0:
             op_guanlian.append(temp_op_guanlian)
         else:
             flag=True
-            for n,item_op in enumerate(op_guanlian):
-                if item_as['aspect_index'] == as_index:
-                    op_guanlian[n]['op_as'].append([aspect]) # op-as 对
-                    op_guanlian[n]['op_index'].append(as_index)
+
+            for n3,item_op in enumerate(op_guanlian):
+                if operator.eq(item_op['opinion_index'],op_index):#op_index是主键
+                    if op_guanlian[n2]['category'].count(category)!=0: # as一样，category也一样
+                        #continue # 先跳过这里吧
+                        index=op_guanlian[n2]['category'].index(category)# 获得对应的索引
+                        ################
+                        ##感觉写的有点不对
+                        ################
+                        #assert op_guanlian[n2]['polarity'][index]!=polarity # 对应的情感、观点词一样就跳过
+                        if  op_guanlian[n2]['polarity'][index]!=polarity: # 情感一样，没问题
+                            pass
+                        #assert op_guanlian[n2]['opinion'][index]!=opinion# 相当于重复句子
+                        if op_guanlian[n2]['op_as'][index]!=opinion:# 相当于重复句子,就跳过吧
+                            continue
+
+                    op_guanlian[n3]['op_as'].append(aspect) # op-as 对
+                    op_guanlian[n3]['as_index'].append(as_index)
+                    op_guanlian[n3]['category'].append(category)
+                    op_guanlian[n3]['polarity'].append(polarity)
                     flag = False
-                    break
+                    num+=1
+                    # if aspect==[]:
+                    #     print('OPOPOP： ',op_guanlian)
+                    #     print('text:',text)
+                    #     print(quad)
+                    #     print('\n')
+                    #break
+
             if flag is True:
                 op_guanlian.append(temp_op_guanlian)
-    #print(quad_return)
-    return as_guanlian, op_guanlian
+    return as_guanlian, op_guanlian,num
 
 
 if __name__ == '__main__':
-    home_path = "../data/uni/semeval_4yuanzu_EN/"
+    home_path = "../../data/uni/semeval_4yuanzu_EN/"
     dataset_name_list = ['laptop','rest16']
-    dataset_type_list = ["train", "test", "dev"]
+    dataset_type_list = [ "dev","train", "test"]
     for dataset_name in dataset_name_list:
         for dataset_type in dataset_type_list:
-            output_path = "../data/uni/semeval_4yuanzu_EN/preprocess/" + dataset_name + "_" + dataset_type + "_QAS1.pt"
+
+            output_path = "../../data/uni/semeval_4yuanzu_EN/preprocess/" + dataset_name + "_" + dataset_type + "_QAS1.pt"
             # 读取原数据（CSV格式）
-            filenameTSV1 = '../data/uni/semeval_4yuanzu_EN/laptop/+laptop_quad_dev.tsv'
+            # filenameTSV1='../../data/uni/semeval_4yuanzu_EN/laptop/laptop_quad_dev.tsv'
+            filenameTSV1 = '../../data/uni/semeval_4yuanzu_EN/'+dataset_name+'/'+dataset_name+'_quad_'\
+                           +dataset_type+'.tsv'
             with open(filenameTSV1, "r", encoding="utf-8") as f:
                 reader = csv.reader(f, delimiter="\t")  # , quotechar=quotechar)
                 lines = []
@@ -284,64 +461,228 @@ if __name__ == '__main__':
             for k in range(len(text_list)):
                 text= text_list[k]['text']
                 quad=text_list[k]['quad']
+
+                as_guanlian, op_guanlian, num=fusion_quad(quad)
                 quad_l=get_quad(quad)
 
-                forward_aspect_query_list=[] # 从aspect开始的一系列问题
-                forward_aspect_answer_list=[]# 与上面这个对应的相应的答案，0为不是答案，1为是答案
-                forward_aspect_query_list.append(["What","aspects","?"]) # 第一个问题，aspect有哪些
-                start=[0]*len(text)
-                end=[0]*len(text)
-                for qu in quad_l:# 这样从直觉上来说似乎有些不妥？
-                    start[qu[0][0]]=1# start
-                    end[qu[0][1]]=1# end
-                forward_aspect_answer_list.append([start,end])
+                """
+                        as_guanlian:
+                        格式为
+                        [
+                            {
+            
+                            'aspect': [aspect words1],
+                            ‘aspect_index’=[i,j],     # 这个是key value
+            
+                            'as_op':[o1,cccc,...],
+                            ‘op_index’=[[a,b],[c,d],...],
+            
+                            'category':[c1,c2,...,cn],
+                            'polarity':[p1,p2,...,pn],
+                            },
+                            {...}
+                            ...,
+                            {...}
+                        ]
+                """
+                forward_aspect_query_list = []  # 从aspect开始的一系列问题
+                forward_aspect_answer_list = []  # 与上面这个对应的相应的答案，0为不是答案，1为是答案
+                forward_aspect_opinion_query_list = []
+                forward_aspect_opinion_answer_list = []
 
-                forward_opinion_query_list=[] # 从opinion 开始的一系列问题
-                forward_opinion_answer_list=[] # 对应的答案，分两行start=[0 0 0 0 1 0 0];end =[0 0 0 0 0 0 1]
-                forward_opinion_query_list.append(["What", "opinions", "?"])
-                start = [0] * len(text)
-                end = [0] * len(text)
-                for to in quad_l:
-                    start[qu[1][0]] = 1
-                    end[qu[1][1]] = 1
-                forward_opinion_answer_list.append([start, end])
+                forward_pol_query_list = []
+                forward_pol_answer_list = []
 
-                for qu in quad: # 这方法看起来好蠢，这得问多少轮啊
-                    asp_quad=qu['aspect']# 'xxxx'
-                    asp_index_quad=qu['aspect_index'].split(',')# '1,2'
-                    opi_quad=qu['opinion']#'xxxx'
-                    opi_index_quad=qu['opinion_index'].split(',')#
-                    pol_quad=qu['polarity']  #
-                    cat_quad=qu['category']  #
+                forward_opinion_query_list = []  # 从opinion开始的一系列问题
+                forward_opinion_answer_list = []  # 与上面这个对应的相应的答案，0为不是答案，1为是答案
+                forward_opinion_aspect_query_list = []
+                forward_opinion_aspect_answer_list = []
+
+                forward_category_query_list=[]  # 从category开始的一系列问题
+                forward_category_answer_list=[]
+
+                # 目的是为了训练从sentence到A的能力
+                start_as = [0] * len(text) # 这里放外面是因为aspect提取希望是一起提出来
+                end_as = [0] * len(text)
+                forward_aspect_query_list.append(["What", "aspects", "?"])  # 第一个问题，aspect有哪些
+                forward_aspect_answer_list.append([start_as,end_as])
+
+                # 目的是为了训练从sentence到O的能力
+                start_op = [0] * len(text) # 这里放外面是因为aspect提取希望是一起提出来
+                end_op = [0] * len(text)
+                forward_opinion_query_list.append(["What", "opinions", "?"])  # 第一个问题，aspect有哪些
+                forward_opinion_answer_list.append([start_op,end_op])
+
+                # 目的是为了训练从sentence到C的能力
+                forward_category_query_list.append(["What","categorys","?"]) # 改成一个二分类的问题，对应的答案是对应位置向量为1！
+                """
+                以rest为例，这里先写一个，对应的明天再写
+                ['RESTAURANT#GENERAL', 'SERVICE#GENERAL', 'FOOD#GENERAL', 'FOOD#QUALITY', 'FOOD#STYLE_OPTIONS', 'DRINKS#STYLE_OPTIONS', 'DRINKS#PRICES',
+                'AMBIENCE#GENERAL', 'RESTAURANT#PRICES', 'FOOD#PRICES', 'RESTAURANT#MISCELLANEOUS', 'DRINKS#QUALITY', 'LOCATION#GENERAL']
+                另外由于fusion_quad那还没改，所以a方向和o方向可以随便选一个作为c方向
+                """
+                forward_category_answer_list.append(1111111111111111111111111111111) # 改成一个二分类的问题，对应的答案是对应位置向量为1！
+
+
+                for as_item in as_guanlian:
+
+                    aspect=as_item['aspect']
+                    aspect_index=[int(i) for i in as_item['aspect_index']]
+                    as_op=as_item['as_op']
+                    op_index=[[int(i),int(j)] for i,j in as_item['op_index']]
+                    category=as_item['category']
+                    polarity=[int(i) for i in as_item['polarity']]
+
+                    start_as[aspect_index[0]]=1
+                    end_as[aspect_index[1]]=1
+                    forward_aspect_answer_list[0]=[start_as,end_as]
+
+                    # 目的是为了训练从A到C的能力
+                    ask_sen_as_ca = ["What", "category", "given", "the", "aspect"] + aspect + ["?"]
+                    forward_category_answer_list.append(1111111111111111111111111111111)
+
+                    ###############################
+                    # 目的是为了训练从（A,sentence,C）到（A,O,C）的能力
+                    ##############################
+
+                    for as_op_n,as_op_item in enumerate(as_op):
+                        start_as_op = [0] * len(text)
+                        end_as_op = [0] * len(text)
+
+                        if aspect!=[]:
+                            # 从A到O
+                            ask_sen_as_op=["What", "opinion", "given", "the", "aspect"] +aspect + ["?"]
+                        else:
+                            # 从(A,C)到O
+                            ask_sen_as_op=["What", "opinion", "describe","the","category"]+category+["?","with","no","aspect"]
+
+
+                        forward_aspect_opinion_query_list.append(ask_sen_as_op)
+                        start_as_op[op_index[as_op_n][0]]=1
+                        end_as_op[op_index[as_op_n][1]]=1
+                        forward_aspect_opinion_answer_list.append([start_as_op,end_as_op])
+
+                        # 从(A,O)到C  []情况暂时没考虑，很复杂的问题
+                        ask_sen_as_op_ca=["What", "category", "given", "the", "aspect"] +aspect + ["and","the","opinion"]+as_op_item+["?"]
+
+                        # 从(A,C)到O
+                        ask_sen_as_ca_op=["What","opinion","given","the","aspect"]+aspect+["and","the","category"]+category+["?"]
+
+
+
+
+                    ##############
+                    ## 待更改
+                    ##############
+                    # 这里单独拿出来是因为任务最终的目标实际上是为了提取四元组，而这个过程是训练的过程，所以在有gold truth的情况下可以这样做，注意的点是推理和训练的过程并不一样
+                    # 一个也许的考虑是后面加上 (for the category xxxxx)
+                    # 一个aspect就应该对应一个category
+                    ##############################
+                    # 目的是为了训练(A,O,C)得到S的能力
+                    ##############################
+                    if as_op !=[[]] and aspect!=[]:
+                        # 有aspect也有opinion，采用BMRC的标准方法
+                        pol_query = ["What", "sentiment", "given", "the", "aspect"] + aspect +["from"+"the"+"category"]+[category[0]]+ ["and", "the", "opinion"]+[sff for as_op_ii in as_op for sff in as_op_ii ]+["?"]
+                        forward_pol_query_list.append(pol_query)
+                        forward_pol_answer_list.append(polarity[0])
+                    elif as_op==[[]] and aspect!=[]:
+                        # 有aspect 却没有opinion
+                        pol_query = ["What", "sentiment", "given", "the", "aspect"] + aspect + ["without", "opinion","for","the","category"]+[category[0]]+["?"]
+                        forward_pol_query_list.append(pol_query)
+                        forward_pol_answer_list.append(polarity[0])
+                    elif aspect==[] and as_op!=[[]]:
+                        # 有opinion没有aspect的情况
+                        pol_query = ["What", "sentiment", "given", "the", "opinion"]+[sff for as_op_ii in as_op for sff in as_op_ii]+ ["for","the category"]+[category[0]]+["without","aspect","?"]
+
+                        forward_pol_query_list.append(pol_query)
+                        forward_pol_answer_list.append(polarity[0])
+                    else:
+                        # 既没有aspect也没有opinion的情况
+                        pol_query = ["What", "sentiment", "given","no","opinion"]+ ["for","the category"]+[category[0]]+["without","aspect","?"]
+                        forward_pol_query_list.append(pol_query)
+                        forward_pol_answer_list.append(polarity[0])
+
                     """
-                    'quad':
-                [
-                    {'aspect_index': '1,2',
-                   'category': 'XXXX#YYYYYY',
-                   'polarity': '0~2',
-                   'opinion_index': '3,4',
-                   'aspect': ['apple'],
-                   'opinion': ['delicious']
-                   },
-                  {'aspect_index': '1,2',
-                   'category': 'XXXX#YYYYYY',
-                   'polarity': '2',
-                   'opinion_index': '5,6',
-                   'aspect': ['apple'],
-                   'opinion': ['pretty']
-                   }
-               ]
-               """
-                    f_asp_q=["What", "opinion", "given", "the", "aspect"] +asp_quad + ["?"]
-                    forward_aspect_query_list.append(f_asp_q)
-                    start=[0]*len(f_asp_q)
-                    end=[0]*len(f_asp_q)
-                    # 不行还是得弄出来对应的那种字典
+                    op_guanlian:
+                    格式为：
+                    [
+                        {
+                            'opinion': [opinion],
+                            'op_index' = [a, b],  # 这个是key value
+                            'op_as':[a1, a2, a3, ..., an],
+                            'as_index' = [i, j],
+                            'category':[c1, c2, c3, ..., cn],
+                            'polarity': [p1, p2, p3, ..., pn],
+                    }
+                    , ...
+                    ]
+                    """
+
+
+
+                for op_item in op_guanlian:
+
+                    opinion=op_item['opinion']
+                    opinion_index=[int(i) for i in op_item['opinion_index']]
+
+                    # 目的是为了训练从O到C的能力
+                    ask_sen_op_ca = ["What", "category", "given", "the", "opinion"] + opinion + ["?"]
+                    forward_category_answer_list.append(1111111111111111111111111111111)
+
+                    op_as=op_item['op_as']
+                    op_index=[[int(i),int(j)] for i,j in op_item['as_index']]
+                    category=op_item['category']
+                    polarity=[int(i) for i in op_item['polarity']]
+
+
+                    start_op[opinion_index[0]]=1
+                    end_op[opinion_index[1]]=1
+                    forward_opinion_answer_list[0]=[start_op,end_op]
+
+                    for op_as_n,op_as_item in enumerate(op_as):
+                        start_op_as = [0] * len(text)
+                        end_op_as = [0] * len(text)
+
+                        # 目的是为了训练从O到A的能力
+                        if opinion!=[]:
+                            ask_sen_op_as= ["What", "aspect", "does", "the", "opinion"] + opinion+ ["describe", "?"]
+#                            ["What", "is", "the", "aspect"] +aspect + ["?"]
+                        else:
+                            ask_sen_op_as= ["Which", "aspect", "has" ,"no","opinions"+"?"]
+                        forward_opinion_aspect_query_list.append(ask_sen_op_as)
+                        start_op_as[op_index[op_as_n][0]]=1
+                        end_op_as[op_index[op_as_n][1]]=1
+                        forward_opinion_aspect_answer_list.append([start_op_as,end_op_as])
+
+                        # 从O到C的能力
+                        ask_sen_as_ca = ["What", "category", "does","the","opinion"] + opinion + ["describe","?"]
+                        forward_category_answer_list.append(1111111111111111111111111111111)
+
+
+                    # 从(O,A)到C  []情况暂时没考虑，很复杂的问题
+                    ask_sen_as_op_ca = ["What", "category", "given", "the", "aspect"] + op_as + ["and", "the","opinion"] + opinion + [ "?"]
+
+                    # 从(O,C)到A
+                    ask_sen_as_ca_op = ["What", "aspect", "given", "the", "aspect"] + op_as + ["and", "the","category"] + category+["?"]
 
 
 
 
-                temp_sample = dual_sample(text_lines[k], text, forward_query_list, forward_answer_list,
-                                          backward_query_list, backward_answer_list, sentiment_query_list,
-                                          sentiment_answer_list)
-                sample_list.append(temp_sample)
+                sample_list.append(
+                    {
+                    'text':text,
+                    'quad':quad,
+                    'forward_aspect_query_list':forward_aspect_query_list,
+                    'forward_aspect_answer_list':forward_aspect_answer_list,
+                    'forward_aspect_opinion_query_list':forward_aspect_opinion_query_list,
+                    'forward_aspect_opinion_answer_list':forward_aspect_opinion_answer_list,
+                    'forward_pol_query_list':forward_pol_query_list,
+                    'forward_pol_answer_list':forward_pol_answer_list,
+                    'forward_opinion_query_list':forward_opinion_query_list,
+                    'forward_opinion_answer_list':forward_opinion_answer_list,
+                    'forward_opinion_aspect_query_list':forward_opinion_aspect_query_list,
+                    'forward_opinion_aspect_answer_list':forward_opinion_aspect_answer_list
+                     }
+                    )
+                print(1)
+

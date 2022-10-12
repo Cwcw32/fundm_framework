@@ -1,3 +1,2 @@
-# coding: UTF-8
-# @Author: Bufan Xu,     Contact: 294594605@qq.com
-# @Date:   2021-10-09
+# 通过Spacy得到的词法分析结果和BERT的tokennizer后的东西进行一个对齐操作
+

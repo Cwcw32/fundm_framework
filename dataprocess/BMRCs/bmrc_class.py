@@ -1,39 +1,34 @@
 import os
+
+
+# 本class为通用版本
 class QueryAndAnswer:
-    def __init__(self, line, forward_asp_query, forward_opi_query,
-                 forward_asp_query_mask, forward_asp_query_seg,
-                 forward_opi_query_mask, forward_opi_query_seg,
-                 forward_asp_answer_start, forward_asp_answer_end,
-                 forward_opi_answer_start, forward_opi_answer_end,
-                 backward_asp_query, backward_opi_query,
-                 backward_asp_answer_start, backward_asp_answer_end,
-                 backward_asp_query_mask, backward_asp_query_seg,
-                 backward_opi_query_mask, backward_opi_query_seg,
-                 backward_opi_answer_start, backward_opi_answer_end,
-                 sentiment_query, sentiment_answer,
-                 sentiment_query_mask, sentiment_query_seg):
-        self.line = line
-        self.forward_asp_query = forward_asp_query
-        self.forward_opi_query = forward_opi_query
-        self.forward_asp_query_mask = forward_asp_query_mask
-        self.forward_asp_query_seg = forward_asp_query_seg
-        self.forward_opi_query_mask = forward_opi_query_mask
-        self.forward_opi_query_seg = forward_opi_query_seg
-        self.forward_asp_answer_start = forward_asp_answer_start
-        self.forward_asp_answer_end = forward_asp_answer_end
-        self.forward_opi_answer_start = forward_opi_answer_start
-        self.forward_opi_answer_end = forward_opi_answer_end
-        self.backward_asp_query = backward_asp_query
-        self.backward_opi_query = backward_opi_query
-        self.backward_asp_query_mask = backward_asp_query_mask
-        self.backward_asp_query_seg = backward_asp_query_seg
-        self.backward_opi_query_mask = backward_opi_query_mask
-        self.backward_opi_query_seg = backward_opi_query_seg
-        self.backward_asp_answer_start = backward_asp_answer_start
-        self.backward_asp_answer_end = backward_asp_answer_end
-        self.backward_opi_answer_start = backward_opi_answer_start
-        self.backward_opi_answer_end = backward_opi_answer_end
-        self.sentiment_query = sentiment_query
-        self.sentiment_answer = sentiment_answer
-        self.sentiment_query_mask = sentiment_query_mask
-        self.sentiment_query_seg = sentiment_query_seg
+    def __init__(self,
+
+                 text=None,
+
+                 forward_aspect_query_list=None,
+                 forward_aspect_answer_list=None,
+                 forward_aspect_opinion_query_list=None,
+                 forward_aspect_opinion_answer_list=None,
+
+                 forward_pol_query_list=None,
+                 forward_pol_answer_list=None,
+
+                 forward_opinion_query_list=None,
+                 forward_opinion_answer_list=None,
+                 forward_opinion_aspect_query_list=None,
+                 forward_opinion_aspect_answer_list=None
+
+                 ):
+        self.text=text
+        self.forward_aspect_query_list = []  # 从aspect开始的一系列问题
+        self.forward_aspect_answer_list = []  # 与上面这个对应的相应的答案，0为不是答案，1为是答案
+        self.forward_aspect_opinion_query_list = []
+        self.forward_aspect_opinion_answer_list = []
+        self.forward_pol_query_list = []
+        self.forward_pol_answer_list = []
+        self.forward_opinion_query_list = []  # 从opinion开始的一系列问题
+        self.forward_opinion_answer_list = []  # 与上面这个对应的相应的答案，0为不是答案，1为是答案
+        self.forward_opinion_aspect_query_list = []
+        self.forward_opinion_aspect_answer_list = []
