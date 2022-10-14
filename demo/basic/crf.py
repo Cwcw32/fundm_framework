@@ -43,7 +43,7 @@ def sequence_mask(lengths, max_len=None):
 class BertModel(nn.Module):
     def __init__(self, opt):
         super(BertModel, self).__init__()
-        abl_path = '../bert/'
+        abl_path = '../../bert/'
 
         if opt.text_model == 'bert-base':
             self.config = BertConfig.from_pretrained(abl_path + 'trf/hfl/rbt3/')

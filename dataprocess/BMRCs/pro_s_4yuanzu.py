@@ -6,6 +6,9 @@ import csv
 import operator
 import pickle
 import sys
+import json
+
+from tqdm import tqdm
 
 #import torch
 
@@ -276,7 +279,7 @@ def get_quad(quad_list):
         temp.append(item['polarity'])
         temp.append(item['category'])
         quad_return.append(temp)
-    print(quad_return)
+    #print(quad_return)
 def fusion_quad(quad,text=None):# 由于这个预处理本身也很快，数据量也不大，这里就不写哈希表加速了,也不考虑什么代码复用、模块化的内容了
     """
     :param quad:
@@ -370,29 +373,31 @@ def fusion_quad(quad,text=None):# 由于这个预处理本身也很快，数据�
         else:
             flag=True
             for n2,item_as in enumerate(as_guanlian):
-                if operator.eq(item_as['aspect_index'],as_index):#as_index是主键
-                    # 判断1 CATEGORY是否一样
-                    if as_guanlian[n2]['category'].count(category)!=0: # as一样，category也一样
+                if operator.eq(item_as['aspect_index'],as_index):#as_index是主键，假如新的四元组也针对这个aspect
+                    # 判断1 category是否是一样的
+                    if as_guanlian[n2]['category'].count(category)!=0: # as一样，category也一样，那只能是观点词不一样了
                         #continue # 先跳过这里吧
-                        index=as_guanlian[n2]['category'].index(category)# 对应的情感也一样？
+                        index=as_guanlian[n2]['category'].index(category)# 获得索引
                         #assert op_guanlian[n2]['polarity'][index]!=polarity # 对应的情感、观点词一样就跳过
-                        if  as_guanlian[n2]['polarity'][index]!=polarity: # 对应的情感、观点词一样就跳过
+                        if  as_guanlian[n2]['polarity'][index]==polarity and as_guanlian[n2]['as_op'][index]==opinion: # 对应的情感、观点词都一样就跳过
                             continue
                         #assert op_guanlian[n2]['opinion'][index]!=opinion# 相当于重复句子
-                        if as_guanlian[n2]['as_op'][index]!=opinion:# 相当于重复句子
-                            continue
+                        #if as_guanlian[n2]['as_op'][index]!=opinion:# 相当于重复句子,这里就先不管那啥了
+                            #continue
                     as_guanlian[n2]['as_op'].append(opinion)
                     as_guanlian[n2]['op_index'].append(op_index)
                     as_guanlian[n2]['category'].append(category)
                     as_guanlian[n2]['polarity'].append(polarity)
                     flag=False
                     num+=1
+                    """
                     if opinion==[]:
                         print('ASASASAS: ',as_guanlian)
                         print('TEXT:',text)
                         print('QUAD:',quad)
                         print('\n')
                     #break
+                    """
             if flag is True:
                 as_guanlian.append(temp_as_guanlian)
 
@@ -403,18 +408,18 @@ def fusion_quad(quad,text=None):# 由于这个预处理本身也很快，数据�
 
             for n3,item_op in enumerate(op_guanlian):
                 if operator.eq(item_op['opinion_index'],op_index):#op_index是主键
-                    if op_guanlian[n2]['category'].count(category)!=0: # as一样，category也一样
+                    if op_guanlian[n3]['category'].count(category)!=0: # as一样，category也一样
                         #continue # 先跳过这里吧
-                        index=op_guanlian[n2]['category'].index(category)# 获得对应的索引
+                        index=op_guanlian[n3]['category'].index(category)# 获得对应的索引
                         ################
                         ##感觉写的有点不对
                         ################
                         #assert op_guanlian[n2]['polarity'][index]!=polarity # 对应的情感、观点词一样就跳过
-                        if  op_guanlian[n2]['polarity'][index]!=polarity: # 情感一样，没问题
-                            pass
-                        #assert op_guanlian[n2]['opinion'][index]!=opinion# 相当于重复句子
-                        if op_guanlian[n2]['op_as'][index]!=opinion:# 相当于重复句子,就跳过吧
+                        if  op_guanlian[n3]['polarity'][index]==polarity and op_guanlian[n3]['op_as'][index]==opinion: # 情感和aspect都一样就跳过吧，说明是重复句子
                             continue
+                        #assert op_guanlian[n2]['opinion'][index]!=opinion# 相当于重复句子
+                        #if op_guanlian[n3]['op_as'][index]!=opinion:# 相当于重复句子,就跳过吧
+                        #    continue
 
                     op_guanlian[n3]['op_as'].append(aspect) # op-as 对
                     op_guanlian[n3]['as_index'].append(as_index)
@@ -436,11 +441,13 @@ def fusion_quad(quad,text=None):# 由于这个预处理本身也很快，数据�
 
 if __name__ == '__main__':
     home_path = "../../data/uni/semeval_4yuanzu_EN/"
-    dataset_name_list = ['laptop','rest16']
+    dataset_name_list = ['laptop']#,'rest16']
     dataset_type_list = [ "dev","train", "test"]
-    for dataset_name in dataset_name_list:
-        for dataset_type in dataset_type_list:
 
+    ID=0
+
+    for dataset_name in dataset_name_list:#: tqdm(train_loader, desc='Train Iteration:')
+        for dataset_type in tqdm(dataset_type_list,desc=dataset_name+'_'):
             output_path = "../../data/uni/semeval_4yuanzu_EN/preprocess/" + dataset_name + "_" + dataset_type + "_QAS1.pt"
             # 读取原数据（CSV格式）
             # filenameTSV1='../../data/uni/semeval_4yuanzu_EN/laptop/laptop_quad_dev.tsv'
@@ -455,10 +462,11 @@ if __name__ == '__main__':
                         line = list(unicode(cell,'UTF-8') for cell in line)
                     """
                     lines.append(line)
-                print(lines)
+                #print(lines)
             sample_list = []
             text_list=get_text(lines)
             for k in range(len(text_list)):
+                ID+=1
                 text= text_list[k]['text']
                 quad=text_list[k]['quad']
 
@@ -485,20 +493,36 @@ if __name__ == '__main__':
                             {...}
                         ]
                 """
-                forward_aspect_query_list = []  # 从aspect开始的一系列问题
-                forward_aspect_answer_list = []  # 与上面这个对应的相应的答案，0为不是答案，1为是答案
-                forward_aspect_opinion_query_list = []
+                forward_aspect_query_list = []  # S->A
+                forward_aspect_answer_list = []
+                forward_aspect_opinion_query_list = [] # A->O
                 forward_aspect_opinion_answer_list = []
+                forward_aspect_category_query_list=[]  # A->C
+                forward_aspect_category_answer_list=[]
+                forward_aspect_opinion_category_query_list=[]  #(A,O)->C
+                forward_aspect_opinion_category_answer_list=[]
+                forward_aspect_category_opinion_query_list=[] #(A,C)->O
+                forward_aspect_category_opinion_answer_list=[]
 
-                forward_pol_query_list = []
+
+
+
+                forward_pol_query_list = [] #(A,O,C)->P
                 forward_pol_answer_list = []
 
-                forward_opinion_query_list = []  # 从opinion开始的一系列问题
+                forward_opinion_query_list = []  # S->O
                 forward_opinion_answer_list = []  # 与上面这个对应的相应的答案，0为不是答案，1为是答案
-                forward_opinion_aspect_query_list = []
+                forward_opinion_aspect_query_list = [] # O->A
                 forward_opinion_aspect_answer_list = []
+                forward_opinion_category_query_list = [] # O->C
+                forward_opinion_category_answer_list = []
+                forward_opinion_aspect_category_query_list = [] # (O,A)->C
+                forward_opinion_aspect_category_answer_list = []
+                forward_opinion_category_aspect_query_list = []# (O,C)->A
+                forward_opinion_category_aspect_answer_list = []
 
-                forward_category_query_list=[]  # 从category开始的一系列问题
+
+                forward_category_query_list=[]  # 从category开始的一系列问题,由于之前已经覆盖了一些这里就不写全了
                 forward_category_answer_list=[]
 
                 # 目的是为了训练从sentence到A的能力
@@ -515,16 +539,18 @@ if __name__ == '__main__':
 
                 # 目的是为了训练从sentence到C的能力
                 forward_category_query_list.append(["What","categorys","?"]) # 改成一个二分类的问题，对应的答案是对应位置向量为1！
+                forward_category_answer_list.append(0) # 改成一个二分类的问题，对应的答案是对应位置向量为1！
+
+
                 """
                 以rest为例，这里先写一个，对应的明天再写
                 ['RESTAURANT#GENERAL', 'SERVICE#GENERAL', 'FOOD#GENERAL', 'FOOD#QUALITY', 'FOOD#STYLE_OPTIONS', 'DRINKS#STYLE_OPTIONS', 'DRINKS#PRICES',
                 'AMBIENCE#GENERAL', 'RESTAURANT#PRICES', 'FOOD#PRICES', 'RESTAURANT#MISCELLANEOUS', 'DRINKS#QUALITY', 'LOCATION#GENERAL']
                 另外由于fusion_quad那还没改，所以a方向和o方向可以随便选一个作为c方向
                 """
-                forward_category_answer_list.append(1111111111111111111111111111111) # 改成一个二分类的问题，对应的答案是对应位置向量为1！
 
 
-                for as_item in as_guanlian:
+                for as_index,as_item in enumerate(as_guanlian):
 
                     aspect=as_item['aspect']
                     aspect_index=[int(i) for i in as_item['aspect_index']]
@@ -534,42 +560,47 @@ if __name__ == '__main__':
                     polarity=[int(i) for i in as_item['polarity']]
 
                     start_as[aspect_index[0]]=1
-                    end_as[aspect_index[1]]=1
+                    end_as[aspect_index[1]-1]=1
                     forward_aspect_answer_list[0]=[start_as,end_as]
 
                     # 目的是为了训练从A到C的能力
                     ask_sen_as_ca = ["What", "category", "given", "the", "aspect"] + aspect + ["?"]
-                    forward_category_answer_list.append(1111111111111111111111111111111)
+                    forward_aspect_category_query_list.append(ask_sen_as_ca)
+                    forward_aspect_category_answer_list.append(1111111111111111111111111111111)
 
                     ###############################
                     # 目的是为了训练从（A,sentence,C）到（A,O,C）的能力
                     ##############################
 
+                    if aspect != []:
+                        # 从A到O
+                        ask_sen_as_op = ["What", "opinion", "given", "the", "aspect"] + aspect + ["?"]
+                    else:
+                        # 从(A,C)到O
+                        ask_sen_as_op = ["What", "opinion", "describe", "the", "category"] + category + [ "with","no", "aspect","?"]
+
+                    start_as_op = [0] * len(text)
+                    end_as_op = [0] * len(text)
+                    forward_aspect_opinion_query_list.append(ask_sen_as_op)
+
                     for as_op_n,as_op_item in enumerate(as_op):
-                        start_as_op = [0] * len(text)
-                        end_as_op = [0] * len(text)
 
-                        if aspect!=[]:
-                            # 从A到O
-                            ask_sen_as_op=["What", "opinion", "given", "the", "aspect"] +aspect + ["?"]
-                        else:
-                            # 从(A,C)到O
-                            ask_sen_as_op=["What", "opinion", "describe","the","category"]+category+["?","with","no","aspect"]
-
-
-                        forward_aspect_opinion_query_list.append(ask_sen_as_op)
                         start_as_op[op_index[as_op_n][0]]=1
-                        end_as_op[op_index[as_op_n][1]]=1
-                        forward_aspect_opinion_answer_list.append([start_as_op,end_as_op])
+                        end_as_op[op_index[as_op_n][1]-1]=1
+                        if len(forward_aspect_opinion_answer_list)<as_index: # 还没有初始化过
+                            forward_aspect_opinion_answer_list[aspect_index] = [start_as_op, end_as_op]# 把新的opinion加到答案里面
+                        else:
+                            forward_aspect_opinion_answer_list.append([start_as_op, end_as_op])
 
                         # 从(A,O)到C  []情况暂时没考虑，很复杂的问题
                         ask_sen_as_op_ca=["What", "category", "given", "the", "aspect"] +aspect + ["and","the","opinion"]+as_op_item+["?"]
+                        forward_aspect_opinion_category_query_list.append(ask_sen_as_op_ca)
+                        forward_aspect_opinion_category_answer_list.append([0])
 
                         # 从(A,C)到O
                         ask_sen_as_ca_op=["What","opinion","given","the","aspect"]+aspect+["and","the","category"]+category+["?"]
-
-
-
+                        forward_aspect_category_opinion_query_list.append(ask_sen_as_ca_op)
+                        forward_aspect_category_opinion_answer_list.append([0])
 
                     ##############
                     ## 待更改
@@ -582,7 +613,7 @@ if __name__ == '__main__':
                     ##############################
                     if as_op !=[[]] and aspect!=[]:
                         # 有aspect也有opinion，采用BMRC的标准方法
-                        pol_query = ["What", "sentiment", "given", "the", "aspect"] + aspect +["from"+"the"+"category"]+[category[0]]+ ["and", "the", "opinion"]+[sff for as_op_ii in as_op for sff in as_op_ii ]+["?"]
+                        pol_query = ["What", "sentiment", "given", "the", "aspect"] + aspect +["from","the","category"]+[category[0]]+ ["and", "the", "opinion"]+[sff for as_op_ii in as_op for sff in as_op_ii ]+["?"]
                         forward_pol_query_list.append(pol_query)
                         forward_pol_answer_list.append(polarity[0])
                     elif as_op==[[]] and aspect!=[]:
@@ -592,13 +623,13 @@ if __name__ == '__main__':
                         forward_pol_answer_list.append(polarity[0])
                     elif aspect==[] and as_op!=[[]]:
                         # 有opinion没有aspect的情况
-                        pol_query = ["What", "sentiment", "given", "the", "opinion"]+[sff for as_op_ii in as_op for sff in as_op_ii]+ ["for","the category"]+[category[0]]+["without","aspect","?"]
+                        pol_query = ["What", "sentiment", "given", "the", "opinion"]+[sff for as_op_ii in as_op for sff in as_op_ii]+ ["for","the","category"]+[category[0]]+["without","aspect","?"]
 
                         forward_pol_query_list.append(pol_query)
                         forward_pol_answer_list.append(polarity[0])
                     else:
                         # 既没有aspect也没有opinion的情况
-                        pol_query = ["What", "sentiment", "given","no","opinion"]+ ["for","the category"]+[category[0]]+["without","aspect","?"]
+                        pol_query = ["What", "sentiment", "given","no","opinion"]+ ["for","the","category"]+[category[0]]+["without","aspect","?"]
                         forward_pol_query_list.append(pol_query)
                         forward_pol_answer_list.append(polarity[0])
 
@@ -626,17 +657,18 @@ if __name__ == '__main__':
                     opinion_index=[int(i) for i in op_item['opinion_index']]
 
                     # 目的是为了训练从O到C的能力
-                    ask_sen_op_ca = ["What", "category", "given", "the", "opinion"] + opinion + ["?"]
-                    forward_category_answer_list.append(1111111111111111111111111111111)
+                    ask_sen_op_ca = ["What", "category", "does", "the", "opinion"] + opinion + ["describe", "?"]
+                    forward_opinion_category_query_list.append(ask_sen_op_ca)
+                    forward_opinion_category_answer_list.append([0])
 
                     op_as=op_item['op_as']
                     op_index=[[int(i),int(j)] for i,j in op_item['as_index']]
                     category=op_item['category']
                     polarity=[int(i) for i in op_item['polarity']]
 
-
+                    # 每次都要更新一下，因为我们希望第一次就把所有opinion提取完成
                     start_op[opinion_index[0]]=1
-                    end_op[opinion_index[1]]=1
+                    end_op[opinion_index[1]-1]=1
                     forward_opinion_answer_list[0]=[start_op,end_op]
 
                     for op_as_n,op_as_item in enumerate(op_as):
@@ -649,40 +681,62 @@ if __name__ == '__main__':
 #                            ["What", "is", "the", "aspect"] +aspect + ["?"]
                         else:
                             ask_sen_op_as= ["Which", "aspect", "has" ,"no","opinions"+"?"]
+
                         forward_opinion_aspect_query_list.append(ask_sen_op_as)
                         start_op_as[op_index[op_as_n][0]]=1
-                        end_op_as[op_index[op_as_n][1]]=1
+                        end_op_as[op_index[op_as_n][1]-1]=1
                         forward_opinion_aspect_answer_list.append([start_op_as,end_op_as])
 
                         # 从O到C的能力
-                        ask_sen_as_ca = ["What", "category", "does","the","opinion"] + opinion + ["describe","?"]
-                        forward_category_answer_list.append(1111111111111111111111111111111)
-
-
                     # 从(O,A)到C  []情况暂时没考虑，很复杂的问题
-                    ask_sen_as_op_ca = ["What", "category", "given", "the", "aspect"] + op_as + ["and", "the","opinion"] + opinion + [ "?"]
+                    ask_sen_op_as_ca = ["What", "category", "given", "the", "aspect"] + [sff for op_as_ii in op_as for sff in op_as_ii] + ["and", "the","opinion"] + opinion + [ "?"]
+                    forward_opinion_aspect_category_query_list.append(ask_sen_op_as_ca)
+                    forward_opinion_aspect_category_answer_list.append(0)
 
                     # 从(O,C)到A
-                    ask_sen_as_ca_op = ["What", "aspect", "given", "the", "aspect"] + op_as + ["and", "the","category"] + category+["?"]
+                    ask_sen_op_ca_as = ["What", "aspect", "given", "the", "opinion"] + opinion + ["and", "the","category"] + category+["?"]
+                    forward_opinion_category_aspect_query_list.append(ask_sen_op_ca_as)
+                    forward_opinion_category_aspect_answer_list.append(0)
 
 
-
-
-                sample_list.append(
-                    {
+                sample_dic={
+                    'ID':ID,
                     'text':text,
                     'quad':quad,
-                    'forward_aspect_query_list':forward_aspect_query_list,
-                    'forward_aspect_answer_list':forward_aspect_answer_list,
-                    'forward_aspect_opinion_query_list':forward_aspect_opinion_query_list,
-                    'forward_aspect_opinion_answer_list':forward_aspect_opinion_answer_list,
-                    'forward_pol_query_list':forward_pol_query_list,
-                    'forward_pol_answer_list':forward_pol_answer_list,
-                    'forward_opinion_query_list':forward_opinion_query_list,
-                    'forward_opinion_answer_list':forward_opinion_answer_list,
-                    'forward_opinion_aspect_query_list':forward_opinion_aspect_query_list,
-                    'forward_opinion_aspect_answer_list':forward_opinion_aspect_answer_list
+                     'QAs': {
+                    'S_A_QUERY':forward_aspect_query_list,
+                    'S_A_ANSWER':forward_aspect_answer_list,
+                    'A_O_QUERY':forward_aspect_opinion_query_list,
+                    'A_O_ANSWER':forward_aspect_opinion_answer_list,
+                    'AO_C_QUERY':forward_aspect_opinion_category_query_list,
+                    'AO_C_ANSWER':forward_aspect_opinion_category_answer_list,
+                    'A_C_QUERY':forward_aspect_category_query_list,
+                    'A_C_ANSWER':forward_aspect_category_answer_list,
+                    'AC_O_QUERY':forward_aspect_category_opinion_query_list,
+                    'AC_O_ANSWER':forward_aspect_category_opinion_answer_list,
+
+                    'AOC_S_QUERY':forward_pol_query_list,
+                    'AOC_S_ANSWER':forward_pol_answer_list,
+
+                    'S_O_QUERY':forward_opinion_query_list,
+                    'S_O_ANSWER':forward_opinion_answer_list,
+                    'O_A_QUERY':forward_opinion_aspect_query_list,
+                    'O_A_ANSWER':forward_opinion_aspect_answer_list,
+                    'OA_C_QUERY': forward_opinion_aspect_category_query_list,
+                    'OA_C_ANSWER': forward_opinion_aspect_category_answer_list,
+                    'O_C_QUERY':forward_opinion_category_query_list,
+                    'O_C_ANSWER':forward_opinion_category_answer_list,
+                    'OC_A_QUERY': forward_opinion_category_aspect_query_list,
+                    'OC_A_ANSWER': forward_opinion_category_aspect_answer_list,
+
+                    'S_C_QUERY':forward_category_query_list,
+                    'S_C_ANSWER':forward_category_answer_list,
+                        }
                      }
+                sample_list.append(
+                    sample_dic
                     )
-                print(1)
+            with open(dataset_name+dataset_type+'.json', 'w+') as file:
+                json.dump(sample_list, file, indent=2, separators=(',', ': '))
+#                print(1)
 
