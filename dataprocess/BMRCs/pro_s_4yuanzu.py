@@ -21,90 +21,6 @@ sentiment_query_template = ["[CLS]", "what", "sentiment", "given", "the", "aspec
 """
 
 
-
-class QSAAS(object):
-    """
-        QuestionS And AnswerS
-        保存对应的QA对
-    """
-    def __init__(self,
-                 original_sample,
-                 text,
-                 forward_querys,
-                 forward_answers,
-                 category_querys,
-                 backward_querys,
-                 backward_answers,
-                 sentiment_querys,
-                 sentiment_answers,
-                 ):
-        """
-        :param original_sample:
-        :param text:    原文本
-        :param forward_querys:  A->O的问题  固定有一个”What aspects?“  之后是"What", "opinion", "given", "the", "aspect" XXX ?
-                                由于第一步不一定得到多少个aspects，所以这个长度也不一定多长
-        :param forward_answers: 对应的答案，其中（1）len(answers)应该等于len(querys)（2）格式为[0 0 0 0 1 1 0 ...] 就是mask啦
-        :param category_querys: 实际上这个可以和aspect、sentiment、opinion进行结合
-                                比如 what is the aspect XXX 's category?
-                                比如  ["What", "sentiment", "given", "the", "aspect"（改成category或加上）] + aspect + ["and", "the", "opinion"] opinion?
-                                emmmm好像可以考虑的组合有点多，甚至有些不知所措（作为插件或单独训练一个分类器？）
-        :param backward_querys: O->A的问题  固定有一个”What opinions?“  然后是一堆 what aspect does the opinion good describe?
-        :param backward_answers: 对应的答案
-        :param sentiment_querys: 最后SA 的问题 ["What", "sentiment", "given", "the", "aspect"] + aspect + ["and", "the", "opinion"] opinion?
-        :param sentiment_answers: 对应的答案
-        """
-        self.original_sample = original_sample  #
-        self.text = text  #
-        self.forward_querys=forward_querys
-        self.forward_answers=forward_answers
-        self.category_querys=category_querys
-        self.backward_querys=backward_querys
-        self.backward_answers=backward_answers
-        self.sentiment_querys=sentiment_querys
-        self.sentiment_answers=sentiment_answers
-
-    def get_labels(self, domain_type):
-        """See base class."""
-        l = None
-        sentiment = None
-        if domain_type.startswith('rest'):
-            l = ['RESTAURANT#GENERAL', 'SERVICE#GENERAL', 'FOOD#GENERAL', 'FOOD#QUALITY', 'FOOD#STYLE_OPTIONS', 'DRINKS#STYLE_OPTIONS', 'DRINKS#PRICES',
-            'AMBIENCE#GENERAL', 'RESTAURANT#PRICES', 'FOOD#PRICES', 'RESTAURANT#MISCELLANEOUS', 'DRINKS#QUALITY', 'LOCATION#GENERAL']
-        elif domain_type == 'laptop':
-            l = ['MULTIMEDIA_DEVICES#PRICE', 'OS#QUALITY', 'SHIPPING#QUALITY', 'GRAPHICS#OPERATION_PERFORMANCE', 'CPU#OPERATION_PERFORMANCE',
-            'COMPANY#DESIGN_FEATURES', 'MEMORY#OPERATION_PERFORMANCE', 'SHIPPING#PRICE', 'POWER_SUPPLY#CONNECTIVITY', 'SOFTWARE#USABILITY',
-            'FANS&COOLING#GENERAL', 'GRAPHICS#DESIGN_FEATURES', 'BATTERY#GENERAL', 'HARD_DISC#USABILITY', 'FANS&COOLING#DESIGN_FEATURES',
-            'MEMORY#DESIGN_FEATURES', 'MOUSE#USABILITY', 'CPU#GENERAL', 'LAPTOP#QUALITY', 'POWER_SUPPLY#GENERAL', 'PORTS#QUALITY',
-            'KEYBOARD#PORTABILITY', 'SUPPORT#DESIGN_FEATURES', 'MULTIMEDIA_DEVICES#USABILITY', 'MOUSE#GENERAL', 'KEYBOARD#MISCELLANEOUS',
-            'MULTIMEDIA_DEVICES#DESIGN_FEATURES', 'OS#MISCELLANEOUS', 'LAPTOP#MISCELLANEOUS', 'SOFTWARE#PRICE', 'FANS&COOLING#OPERATION_PERFORMANCE',
-            'MEMORY#QUALITY', 'OPTICAL_DRIVES#OPERATION_PERFORMANCE', 'HARD_DISC#GENERAL', 'MEMORY#GENERAL', 'DISPLAY#OPERATION_PERFORMANCE',
-            'MULTIMEDIA_DEVICES#GENERAL', 'LAPTOP#GENERAL', 'MOTHERBOARD#QUALITY', 'LAPTOP#PORTABILITY', 'KEYBOARD#PRICE', 'SUPPORT#OPERATION_PERFORMANCE',
-            'GRAPHICS#GENERAL', 'MOTHERBOARD#OPERATION_PERFORMANCE', 'DISPLAY#GENERAL', 'BATTERY#QUALITY', 'LAPTOP#USABILITY', 'LAPTOP#DESIGN_FEATURES',
-            'PORTS#CONNECTIVITY', 'HARDWARE#QUALITY', 'SUPPORT#GENERAL', 'MOTHERBOARD#GENERAL', 'PORTS#USABILITY', 'KEYBOARD#QUALITY', 'GRAPHICS#USABILITY',
-            'HARD_DISC#PRICE', 'OPTICAL_DRIVES#USABILITY', 'MULTIMEDIA_DEVICES#CONNECTIVITY', 'HARDWARE#DESIGN_FEATURES', 'MEMORY#USABILITY',
-            'SHIPPING#GENERAL', 'CPU#PRICE', 'Out_Of_Scope#DESIGN_FEATURES', 'MULTIMEDIA_DEVICES#QUALITY', 'OS#PRICE', 'SUPPORT#QUALITY',
-            'OPTICAL_DRIVES#GENERAL', 'HARDWARE#USABILITY', 'DISPLAY#DESIGN_FEATURES', 'PORTS#GENERAL', 'COMPANY#OPERATION_PERFORMANCE',
-            'COMPANY#GENERAL', 'Out_Of_Scope#GENERAL', 'KEYBOARD#DESIGN_FEATURES', 'Out_Of_Scope#OPERATION_PERFORMANCE',
-            'OPTICAL_DRIVES#DESIGN_FEATURES', 'LAPTOP#OPERATION_PERFORMANCE', 'KEYBOARD#USABILITY', 'DISPLAY#USABILITY', 'POWER_SUPPLY#QUALITY',
-            'HARD_DISC#DESIGN_FEATURES', 'DISPLAY#QUALITY', 'MOUSE#DESIGN_FEATURES', 'COMPANY#QUALITY', 'HARDWARE#GENERAL', 'COMPANY#PRICE',
-            'MULTIMEDIA_DEVICES#OPERATION_PERFORMANCE', 'KEYBOARD#OPERATION_PERFORMANCE', 'SOFTWARE#PORTABILITY', 'HARD_DISC#OPERATION_PERFORMANCE',
-            'BATTERY#DESIGN_FEATURES', 'CPU#QUALITY', 'WARRANTY#GENERAL', 'OS#DESIGN_FEATURES', 'OS#OPERATION_PERFORMANCE', 'OS#USABILITY',
-            'SOFTWARE#GENERAL', 'SUPPORT#PRICE', 'SHIPPING#OPERATION_PERFORMANCE', 'DISPLAY#PRICE', 'LAPTOP#PRICE', 'OS#GENERAL', 'HARDWARE#PRICE',
-            'SOFTWARE#DESIGN_FEATURES', 'HARD_DISC#MISCELLANEOUS', 'PORTS#PORTABILITY', 'FANS&COOLING#QUALITY', 'BATTERY#OPERATION_PERFORMANCE',
-            'CPU#DESIGN_FEATURES', 'PORTS#OPERATION_PERFORMANCE', 'SOFTWARE#OPERATION_PERFORMANCE', 'KEYBOARD#GENERAL', 'SOFTWARE#QUALITY',
-            'LAPTOP#CONNECTIVITY', 'POWER_SUPPLY#DESIGN_FEATURES', 'HARDWARE#OPERATION_PERFORMANCE', 'WARRANTY#QUALITY', 'HARD_DISC#QUALITY',
-            'POWER_SUPPLY#OPERATION_PERFORMANCE', 'PORTS#DESIGN_FEATURES', 'Out_Of_Scope#USABILITY']
-        sentiment = ['0', '1', '2']
-        label_list = []
-        # label_list.append(l)
-        # label_list.append(sentiment)
-        cate_senti = []
-        for cate in l:
-            for senti in sentiment:
-                cate_senti.append(cate+'#'+senti)
-        label_list.append(cate_senti)
-        return label_list
-
 def get_query_and_answer(domain_type):
     """
     目的是模拟NER中的阅读理解任务第一版（BERT-MRF）
@@ -118,7 +34,7 @@ def get_query_and_answer(domain_type):
         forward_category_answer_list:
             上面的query对应的答案
     """
-    if domain_type=='LAPTOP':
+    if domain_type=='laptop':
         l = ['MULTIMEDIA_DEVICES#PRICE', 'OS#QUALITY', 'SHIPPING#QUALITY', 'GRAPHICS#OPERATION_PERFORMANCE',
          'CPU#OPERATION_PERFORMANCE',
          'COMPANY#DESIGN_FEATURES', 'MEMORY#OPERATION_PERFORMANCE', 'SHIPPING#PRICE', 'POWER_SUPPLY#CONNECTIVITY',
@@ -171,7 +87,8 @@ def get_query_and_answer(domain_type):
     num=0
     for item in l:
         cat_to_id[item]=num
-        id_to_cat[id]=item
+        id_to_cat[num]=item
+        num+=1
     return cat_to_id,id_to_cat
 
 def get_text(lines):# 通过输入数据集的origin lines得到一种稍微标准化的输出
@@ -280,6 +197,7 @@ def get_quad(quad_list):
         temp.append(item['category'])
         quad_return.append(temp)
     #print(quad_return)
+
 def fusion_quad(quad,text=None):# 由于这个预处理本身也很快，数据量也不大，这里就不写哈希表加速了,也不考虑什么代码复用、模块化的内容了
     """
     :param quad:
@@ -438,16 +356,106 @@ def fusion_quad(quad,text=None):# 由于这个预处理本身也很快，数据�
                 op_guanlian.append(temp_op_guanlian)
     return as_guanlian, op_guanlian,num
 
+def cat_quad(quad,text,cat_to_id):
+    """
+
+    :param quad:
+            [
+                    {'aspect_index': '1,2',
+                   'category': 'XXXX#YYYYYY',
+                   'polarity': '0~2',
+                   'opinion_index': '3,4',
+                   'aspect': ['apple'],
+                   'opinion': ['delicious']
+                   },
+                  {'aspect_index': '1,2',
+                   'category': 'XXXX#YYYYYY',
+                   'polarity': '2',
+                   'opinion_index': '5,6',
+                   'aspect': ['apple'],
+                   'opinion': ['pretty']
+                   }
+            ]
+    :return:
+        C_A_QUERY:
+        [
+        "Find xxxx in text, including..."
+        ,...
+        ],
+        C_A_ANSWER:
+        [
+        [0,1,0,0,1,0] start
+        [0,0,1,0,1,0] end
+        ],
+        C_O_QUERY:
+        [
+        "Find what describe xxxx in text, including..."
+        ,...
+        ],
+        ,
+        C_O_ANSWER:
+        [
+        [0,1,0,0,1,0] start
+        [0,0,1,0,1,0] end
+        ],
+    """
+    C_A_QUERY=[]
+    C_A_ANSWER=[]
+    C_O_QUERY=[]
+    C_O_ANSWER=[]
+
+
+
+    for c_item in cat_to_id:
+        start_as = [0] * len(text)# 这俩放前面会引起复制的deep问题
+        end_as = [0] * len(text)
+        pre, suf = c_item.split('#')
+        #suf=suf.split('_')
+        quest = ["Find", pre, '\'s', suf if suf != 'GENERAL' else 'words', "in", "the", "text"]
+        C_A_QUERY.append(quest)
+        C_A_ANSWER.append([start_as,end_as])
+
+    for q_item in quad:
+        aspect_index=q_item['aspect_index']
+        category=q_item['category']
+
+        aspect=[int(a) for a in aspect_index.split(',')]
+        if aspect[0]!=-1:
+            C_A_ANSWER[cat_to_id[category]][0][aspect[0]]=1
+            C_A_ANSWER[cat_to_id[category]][1][aspect[1]-1]=1
+
+    for c_item in cat_to_id:
+        start_as = [0] * len(text)
+        end_as = [0] * len(text)
+        pre, suf = c_item.split('#')
+        quest = ["Find", "what", "describe", pre, '\'s', suf if suf != 'GENERAL' else 'words', "in", "the", "text"]
+        C_O_QUERY.append(quest)
+        C_O_ANSWER.append([start_as,end_as])
+
+    for q_item in quad:
+        opinion_index = q_item['aspect_index']
+        category = q_item['category']
+
+        opinion = [int(a) for a in opinion_index.split(',')]
+        if aspect[0] != -1:
+            C_O_ANSWER[cat_to_id[category]][0][opinion[0]] = 1
+            C_O_ANSWER[cat_to_id[category]][0][opinion[1]-1] = 1
+
+    return C_A_QUERY,C_A_ANSWER,C_O_QUERY,C_O_ANSWER
+
 
 if __name__ == '__main__':
     home_path = "../../data/uni/semeval_4yuanzu_EN/"
-    dataset_name_list = ['laptop']#,'rest16']
+    #dataset_name_list = ['laptop','rest16']
+    dataset_name_list = ['rest16']
     dataset_type_list = [ "dev","train", "test"]
 
     ID=0
 
     for dataset_name in dataset_name_list:#: tqdm(train_loader, desc='Train Iteration:')
         for dataset_type in tqdm(dataset_type_list,desc=dataset_name+'_'):
+
+            cat_to_id,id_to_cat=get_query_and_answer(dataset_name)
             output_path = "../../data/uni/semeval_4yuanzu_EN/preprocess/" + dataset_name + "_" + dataset_type + "_QAS1.pt"
             # 读取原数据（CSV格式）
             # filenameTSV1='../../data/uni/semeval_4yuanzu_EN/laptop/laptop_quad_dev.tsv'
@@ -471,7 +479,10 @@ if __name__ == '__main__':
                 quad=text_list[k]['quad']
 
                 as_guanlian, op_guanlian, num=fusion_quad(quad)
-                quad_l=get_quad(quad)
+
+                c_a_q,c_a_a,c_o_q,c_o_a=cat_quad(quad,text,cat_to_id)
+                #print(1)
+                #quad_l=get_quad(quad)
 
                 """
                         as_guanlian:
@@ -504,9 +515,6 @@ if __name__ == '__main__':
                 forward_aspect_category_opinion_query_list=[] #(A,C)->O
                 forward_aspect_category_opinion_answer_list=[]
 
-
-
-
                 forward_pol_query_list = [] #(A,O,C)->P
                 forward_pol_answer_list = []
 
@@ -521,9 +529,19 @@ if __name__ == '__main__':
                 forward_opinion_category_aspect_query_list = []# (O,C)->A
                 forward_opinion_category_aspect_answer_list = []
 
-
+                # 从S到C是否是个好方法？之后再说？
                 forward_category_query_list=[]  # 从category开始的一系列问题,由于之前已经覆盖了一些这里就不写全了
                 forward_category_answer_list=[]
+                # 从C到A的能力
+                forward_category_aspect_query_list=[]
+                forward_category_aspect_answer_list=[]
+                # 从C到O的能力
+                forward_category_opinion_query_list=[]
+                forward_category_opinion_answer_list=[]
+
+                ###########
+                # 构建
+                ###########
 
                 # 目的是为了训练从sentence到A的能力
                 start_as = [0] * len(text) # 这里放外面是因为aspect提取希望是一起提出来
@@ -538,9 +556,12 @@ if __name__ == '__main__':
                 forward_opinion_answer_list.append([start_op,end_op])
 
                 # 目的是为了训练从sentence到C的能力
-                forward_category_query_list.append(["What","categorys","?"]) # 改成一个二分类的问题，对应的答案是对应位置向量为1！
-                forward_category_answer_list.append(0) # 改成一个二分类的问题，对应的答案是对应位置向量为1！
-
+                #forward_category_query_list.append(["What","categorys","?"])
+                #if dataset_name=='laptop':# laptop的category太多了，如果用BMRC的方法实在难顶，就不测试了
+                #    forward_category_answer_list.append('X') # 改成一个二分类的问题，对应的答案是对应位置向量为1！
+                #else:
+                #    pass
+                    #forward_category_answer_list.append([]) # 考虑有好多个category
 
                 """
                 以rest为例，这里先写一个，对应的明天再写
@@ -549,6 +570,19 @@ if __name__ == '__main__':
                 另外由于fusion_quad那还没改，所以a方向和o方向可以随便选一个作为c方向
                 """
 
+                # if len(as_guanlian) > 1:
+                #     print(1)  # for debug
+                    #####
+                    # 待处理aspect大于1，其中有NULL的情况
+                    #####
+
+                # 从C到A的能力
+                forward_category_aspect_query_list=c_a_q
+                forward_category_aspect_answer_list=c_a_a
+
+                # 从C到O的能力
+                forward_category_opinion_query_list=c_o_q
+                forward_category_opinion_answer_list=c_o_a
 
                 for as_index,as_item in enumerate(as_guanlian):
 
@@ -559,15 +593,41 @@ if __name__ == '__main__':
                     category=as_item['category']
                     polarity=[int(i) for i in as_item['polarity']]
 
-                    start_as[aspect_index[0]]=1
-                    end_as[aspect_index[1]-1]=1
-                    forward_aspect_answer_list[0]=[start_as,end_as]
+                    if aspect!=[]:
+                        start_as[aspect_index[0]]=1
+                        end_as[aspect_index[1]-1]=1
+                        forward_aspect_answer_list[0]=[start_as,end_as]
+                        if dataset_name != 'laptop' and forward_category_answer_list.count(category[0])==0:  # laptop的category太多了，如果用BMRC的方法实在难顶，就不测试了
+                            forward_category_answer_list.append(category[0])
+                    else:
+                        for c_item in category:
+                            if forward_category_answer_list.count(c_item)==0:
+                                forward_category_answer_list.append(c_item)
+                        # 等待 处理
+                    #######
+                    # 这里待处理一个opinion形容多个category的情况，哎
+                    #######
 
                     # 目的是为了训练从A到C的能力
-                    ask_sen_as_ca = ["What", "category", "given", "the", "aspect"] + aspect + ["?"]
-                    forward_aspect_category_query_list.append(ask_sen_as_ca)
-                    forward_aspect_category_answer_list.append(1111111111111111111111111111111)
+                    # 方法1：多分类
+                    # ask_sen_as_ca = ["What", "category", "given", "the", "aspect"] + aspect + ["?"]
+                    # if category.count(category[0])==len(category):  # aspect!=[]的情况
+                    #     forward_aspect_category_query_list.append(ask_sen_as_ca)
+                    #     forward_aspect_category_answer_list.append(category[0])
+                    # else:# aspect为空的话，主要是有可能有一堆category（因为之前的处理其实没考虑这个情况）
+                    #     forward_aspect_category_query_list.append(ask_sen_as_ca)
+                    #     forward_aspect_category_answer_list.append(category)
+                    # 方法2：MRC多个问题
+                    # Find food quality in the text, including
+                    # Find food style options in the text, including
+                    # Find service
+                    #
+                    #
+                    #
 
+
+
+                    #forward_aspect_category_answer_list.append(cat_to_id[])
                     ###############################
                     # 目的是为了训练从（A,sentence,C）到（A,O,C）的能力
                     ##############################
@@ -583,24 +643,40 @@ if __name__ == '__main__':
                     end_as_op = [0] * len(text)
                     forward_aspect_opinion_query_list.append(ask_sen_as_op)
 
-                    for as_op_n,as_op_item in enumerate(as_op):
 
-                        start_as_op[op_index[as_op_n][0]]=1
-                        end_as_op[op_index[as_op_n][1]-1]=1
+                    for as_op_n,as_op_item in enumerate(as_op):
+                        if as_op_item!=[]:
+                            start_as_op[op_index[as_op_n][0]]=1
+                            end_as_op[op_index[as_op_n][1]-1]=1
+                        else:
+                            pass
+
                         if len(forward_aspect_opinion_answer_list)<as_index: # 还没有初始化过
-                            forward_aspect_opinion_answer_list[aspect_index] = [start_as_op, end_as_op]# 把新的opinion加到答案里面
+                            forward_aspect_opinion_answer_list[as_index] = [start_as_op, end_as_op]# 把新的opinion加到答案里面
                         else:
                             forward_aspect_opinion_answer_list.append([start_as_op, end_as_op])
 
-                        # 从(A,O)到C  []情况暂时没考虑，很复杂的问题
+                    # 从(A,O)到C  []情况暂时没考虑，很复杂的问题
+                    if aspect!=[]:
                         ask_sen_as_op_ca=["What", "category", "given", "the", "aspect"] +aspect + ["and","the","opinion"]+as_op_item+["?"]
                         forward_aspect_opinion_category_query_list.append(ask_sen_as_op_ca)
-                        forward_aspect_opinion_category_answer_list.append([0])
+                        forward_aspect_opinion_category_answer_list.append(cat_to_id[category[0]])
+                    else:
+                        ask_sen_as_op_ca=["What", "category", "given", "the","opinion"]+as_op_item+["with","no","aspects","?"]
+                        forward_aspect_opinion_category_query_list.append(ask_sen_as_op_ca)
+                        forward_aspect_opinion_category_answer_list.append(cat_to_id[category[0]])
 
-                        # 从(A,C)到O
+
+
+                    # 从(A,C)到O
+                    if aspect!=[]:
                         ask_sen_as_ca_op=["What","opinion","given","the","aspect"]+aspect+["and","the","category"]+category+["?"]
                         forward_aspect_category_opinion_query_list.append(ask_sen_as_ca_op)
-                        forward_aspect_category_opinion_answer_list.append([0])
+                        forward_aspect_category_opinion_answer_list=forward_aspect_opinion_answer_list
+                    else:
+                        ask_sen_as_ca_op=["What","opinion","given","the","category"]+category+["with","no","aspects","?"]
+                        forward_aspect_category_opinion_query_list.append(ask_sen_as_ca_op)
+                        forward_aspect_category_opinion_answer_list=forward_aspect_opinion_answer_list
 
                     ##############
                     ## 待更改
@@ -648,29 +724,30 @@ if __name__ == '__main__':
                     , ...
                     ]
                     """
-
-
-
                 for op_item in op_guanlian:
-
                     opinion=op_item['opinion']
                     opinion_index=[int(i) for i in op_item['opinion_index']]
+                    category=op_item['category']
+                    polarity=[int(i) for i in op_item['polarity']]
 
                     # 目的是为了训练从O到C的能力
                     ask_sen_op_ca = ["What", "category", "does", "the", "opinion"] + opinion + ["describe", "?"]
                     forward_opinion_category_query_list.append(ask_sen_op_ca)
-                    forward_opinion_category_answer_list.append([0])
+                    if opinion!=[]:
+                        forward_opinion_category_answer_list.append(category)
+                    else:
+                        forward_opinion_category_answer_list.append(category) # 感觉处理不处理都可以啊
 
                     op_as=op_item['op_as']
                     op_index=[[int(i),int(j)] for i,j in op_item['as_index']]
-                    category=op_item['category']
-                    polarity=[int(i) for i in op_item['polarity']]
 
                     # 每次都要更新一下，因为我们希望第一次就把所有opinion提取完成
-                    start_op[opinion_index[0]]=1
-                    end_op[opinion_index[1]-1]=1
+                    if opinion!=[]:
+                        start_op[opinion_index[0]]=1
+                        end_op[opinion_index[1]-1]=1
                     forward_opinion_answer_list[0]=[start_op,end_op]
 
+                    # opinion和aspect的处理应该差不多，一个opinion其实也应该可以对应多个aspect吧
                     for op_as_n,op_as_item in enumerate(op_as):
                         start_op_as = [0] * len(text)
                         end_op_as = [0] * len(text)
@@ -683,21 +760,36 @@ if __name__ == '__main__':
                             ask_sen_op_as= ["Which", "aspect", "has" ,"no","opinions"+"?"]
 
                         forward_opinion_aspect_query_list.append(ask_sen_op_as)
-                        start_op_as[op_index[op_as_n][0]]=1
-                        end_op_as[op_index[op_as_n][1]-1]=1
+
+                        if op_as_item!=[]:
+                            start_op_as[op_index[op_as_n][0]]=1
+                            end_op_as[op_index[op_as_n][1]-1]=1
                         forward_opinion_aspect_answer_list.append([start_op_as,end_op_as])
 
+                        ############
                         # 从O到C的能力
-                    # 从(O,A)到C  []情况暂时没考虑，很复杂的问题
-                    ask_sen_op_as_ca = ["What", "category", "given", "the", "aspect"] + [sff for op_as_ii in op_as for sff in op_as_ii] + ["and", "the","opinion"] + opinion + [ "?"]
-                    forward_opinion_aspect_category_query_list.append(ask_sen_op_as_ca)
-                    forward_opinion_aspect_category_answer_list.append(0)
+                        ############
 
-                    # 从(O,C)到A
-                    ask_sen_op_ca_as = ["What", "aspect", "given", "the", "opinion"] + opinion + ["and", "the","category"] + category+["?"]
-                    forward_opinion_category_aspect_query_list.append(ask_sen_op_ca_as)
-                    forward_opinion_category_aspect_answer_list.append(0)
+                        # 从(O,A)到C  []情况暂时没考虑，很复杂的问题
+                        if opinion!=[]:
+                            ask_sen_op_as_ca = ["What", "category", "given", "the", "aspect"] + [sff for op_as_ii in op_as for sff in op_as_ii] + ["and", "the","opinion"] + opinion + [ "?"]
+                            forward_opinion_aspect_category_query_list.append(ask_sen_op_as_ca)
+                            forward_opinion_aspect_category_answer_list.append(category[op_as_n])
+                        else:
+                            ask_sen_op_as_ca = ["What", "category", "given", "the", "aspect"] + [sff for op_as_ii in op_as for sff in op_as_ii] + ["with","no","opinion","?"]
+                            forward_opinion_aspect_category_query_list.append(ask_sen_op_as_ca)
+                            forward_opinion_aspect_category_answer_list.append(category[op_as_n])
 
+
+                        # 从(O,C)到A
+                        if opinion!=[]:
+                            ask_sen_op_ca_as = ["What", "aspect", "given", "the", "opinion"] + opinion + ["and", "the","category"] + category+["?"]
+                            forward_opinion_category_aspect_query_list.append(ask_sen_op_ca_as)
+                            forward_opinion_category_aspect_answer_list.append([start_op_as,end_op_as])
+                        else:
+                            ask_sen_op_ca_as = ["What", "aspect","is","in " ,"the","category"] + category+["with","no","opinions","?"]
+                            forward_opinion_category_aspect_query_list.append(ask_sen_op_ca_as)
+                            forward_opinion_category_aspect_answer_list.append([start_op_as,end_op_as])
 
                 sample_dic={
                     'ID':ID,
@@ -706,6 +798,7 @@ if __name__ == '__main__':
                      'QAs': {
                     'S_A_QUERY':forward_aspect_query_list,
                     'S_A_ANSWER':forward_aspect_answer_list,
+
                     'A_O_QUERY':forward_aspect_opinion_query_list,
                     'A_O_ANSWER':forward_aspect_opinion_answer_list,
                     'AO_C_QUERY':forward_aspect_opinion_category_query_list,
@@ -715,8 +808,8 @@ if __name__ == '__main__':
                     'AC_O_QUERY':forward_aspect_category_opinion_query_list,
                     'AC_O_ANSWER':forward_aspect_category_opinion_answer_list,
 
-                    'AOC_S_QUERY':forward_pol_query_list,
-                    'AOC_S_ANSWER':forward_pol_answer_list,
+                    'AOC_P_QUERY':forward_pol_query_list,
+                    'AOC_P_ANSWER':forward_pol_answer_list,
 
                     'S_O_QUERY':forward_opinion_query_list,
                     'S_O_ANSWER':forward_opinion_answer_list,
@@ -731,12 +824,19 @@ if __name__ == '__main__':
 
                     'S_C_QUERY':forward_category_query_list,
                     'S_C_ANSWER':forward_category_answer_list,
+                     'C_A_QUERY': forward_category_aspect_query_list,
+                     'C_A_ANSWER': forward_category_aspect_answer_list,
+                     'C_O_QUERY': forward_category_opinion_query_list,
+                     'C_O_ANSWER': forward_category_opinion_answer_list,
                         }
                      }
+                ###############
+                # 这里麻烦统计一下各种问题的信息
+                #############
                 sample_list.append(
                     sample_dic
                     )
             with open(dataset_name+dataset_type+'.json', 'w+') as file:
-                json.dump(sample_list, file, indent=2, separators=(',', ': '))
+                json.dump(sample_list, file)#, indent=2, separators=(',', ': '))
 #                print(1)
 
