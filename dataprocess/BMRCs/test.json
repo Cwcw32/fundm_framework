@@ -1,0 +1,164 @@
+{
+	"text": [
+		"but",
+		"overall",
+		"i",
+		"give",
+		"it",
+		"a",
+		"10"
+	],
+	"quad": [
+		{
+			"aspect_index": "-1,-1",
+			"category": "RESTAURANT#GENERAL",
+			"polarity": "2",
+			"opinion_index": "-1,-1",
+			"aspect": [],
+			"opinion": []
+		}
+	],
+	"forward_aspect_query_list": [
+		[
+			"What",
+			"aspects",
+			"?"
+		]
+	],
+	"forward_aspect_answer_list": [
+		[
+			[
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				1
+			],
+			[
+				0,
+				0,
+				0,
+				0,
+				0,
+				1,
+				0
+			]
+		]
+	],
+	"forward_aspect_opinion_query_list": [
+		[
+			"What",
+			"opinion",
+			"describe",
+			"the",
+			"category",
+			"RESTAURANT#GENERAL",
+			"?",
+			"with",
+			"no",
+			"aspect"
+		]
+	],
+	"forward_aspect_opinion_answer_list": [
+		[
+			[
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				1
+			],
+			[
+				0,
+				0,
+				0,
+				0,
+				0,
+				1,
+				0
+			]
+		]
+	],
+	"forward_pol_query_list": [
+		[
+			"What",
+			"sentiment",
+			"given",
+			"no",
+			"opinion",
+			"for",
+			"the category",
+			"RESTAURANT#GENERAL",
+			"without",
+			"aspect",
+			"?"
+		]
+	],
+	"forward_pol_answer_list": [
+		2
+	],
+	"forward_opinion_query_list": [
+		[
+			"What",
+			"opinions",
+			"?"
+		]
+	],
+	"forward_opinion_answer_list": [
+		[
+			[
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				1
+			],
+			[
+				0,
+				0,
+				0,
+				0,
+				0,
+				1,
+				0
+			]
+		]
+	],
+	"forward_opinion_aspect_query_list": [
+		[
+			"Which",
+			"aspect",
+			"has",
+			"no",
+			"opinions?"
+		]
+	],
+	"forward_opinion_aspect_answer_list": [
+		[
+			[
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				1
+			],
+			[
+				0,
+				0,
+				0,
+				0,
+				0,
+				1,
+				0
+			]
+		]
+	]
+}
