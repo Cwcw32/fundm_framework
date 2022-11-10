@@ -17,9 +17,9 @@ class BMRC(nn.Module):
 
         super(BMRC, self).__init__()
 
-        if args.bert_model_type == 'bert-base-uncased':# 只是使用BERT模型
-            self._bert = BertModel.from_pretrained(args.bert_model_type)
-            self._tokenizer = BertTokenizer.from_pretrained(args.bert_model_type)
+        if args.bert_model_type.find('bert-base-uncased')!=-1:# 只是使用BERT模型
+            self._bert = BertModel.from_pretrained('../../bert/bert-base-uncased')
+            self._tokenizer = BertTokenizer.from_pretrained('../../bert/bert-base-uncased')
             print('Bertbase model loaded')
         else:
             raise KeyError('Config.args.bert_model_type should be bert-based-uncased. ')

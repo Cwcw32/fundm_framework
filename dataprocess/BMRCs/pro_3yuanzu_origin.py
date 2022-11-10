@@ -5,8 +5,7 @@
 # @Do:     增加注释
 import pickle
 import torch
-import json
-import
+
 
 class dual_sample(object):
     """
@@ -113,7 +112,7 @@ if __name__ == '__main__':
     dataset_type_list = ["train", "test", "dev"]
     for dataset_name in dataset_name_list:
         for dataset_type in dataset_type_list:
-            output_path = "../../data/uni/semeval1456_3yuanzu_EN/preprocess/" + dataset_name + "_" + dataset_type + ".pt"
+            output_path = "../../data/uni/semeval1456_3yuanzu_EN/preprocess/" + dataset_name + "_" + dataset_type + "_dual.pt"
             # 读三元组
             f = open(home_path + dataset_name + "/" + dataset_name + "_pair/" + dataset_type + "_pair.pkl", "rb")
             triple_data = pickle.load(f)#格式： [(aspect_index,opinion_index,sentiment)]
@@ -126,7 +125,6 @@ if __name__ == '__main__':
             text_list, aspect_list, opinion_list = get_text(text_lines)
             sample_list = []
             for k in range(len(text_list)): # 不处理单aspect 单opinion的情况？
-                ID=k
                 triplet = triple_data[k]
                 text = text_list[k]
                 valid_data(triplet, aspect_list[k], opinion_list[k]) # 验证一下aspect、opinion处是不是O
@@ -186,37 +184,6 @@ if __name__ == '__main__':
                         end[to[-1]] = 1
                     backward_answer_list.append([start, end])
 
-#################################################
-                # (
-                # text_lines[k], text, forward_query_list, forward_answer_list, backward_query_list, backward_answer_list,
-                # sentiment_query_list, sentiment_answer_list)
-                sample_dic = {
-                    'ID': ID,
-                    'text': text,
-                    'triplet': triplet,
-                    'QAs': {
-                        'S_A_QUERY': [forward_query_list[0]],
-                        'S_A_ANSWER': [forward_answer_list[0]],
-
-                        'A_O_QUERY': forward_query_list[1:],
-                        'A_O_ANSWER': forward_answer_list[1:],
-
-                        'S_O_QUERY': [backward_query_list[0]],
-                        'S_O_ANSWER': [backward_answer_list[0]],
-                        'O_A_QUERY': backward_query_list[1:],
-                        'O_A_ANSWER': backward_answer_list[1:],
-
-
-                        'AO_P_QUERY': sentiment_query_list,
-                        'AO_P_ANSWER': sentiment_answer_list,
-                    }
-                }
-                ###############
-                # 这里麻烦统计一下各种问题的信息
-                #############
-                sample_list.append(
-                    sample_dic
-                )
-            with open(dataset_name + dataset_type +'_3yuanzu'+'.json', 'w+') as file:
-                json.dump(sample_list, file)
-
+                temp_sample = dual_sample(text_lines[k], text, forward_query_list, forward_answer_list, backward_query_list, backward_answer_list, sentiment_query_list, sentiment_answer_list)
+                sample_list.append(temp_sample)
+            torch.save(sample_list, output_path)

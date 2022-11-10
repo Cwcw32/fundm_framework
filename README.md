@@ -1,4 +1,34 @@
 # fundm_framework
 这个作者很懒，还没有留下签名
-
-
+attack:
+    对抗学习专栏
+data_analysis:
+    数据分析专栏
+data_augment:
+    数据增强专栏
+data_process:
+    数据处理专栏
+demo:
+    不知道放哪就可以先放在这里
+explainability:
+    可解释性专栏
+labs:
+    各种库的教程
+models:
+    保存的各种模型
+multimodal:
+    多模态专栏
+papers:
+    收集的顶会论文
+pics:
+    主要是保存一些图片，实际上每个目录下面还会有对应的image目录
+prompt:
+    模板学习专栏
+rule_for_code:
+    如何规范化的写代码
+specific_field:
+    某些单独开的领域的相关内容，如阅读理解、视觉问答等等
+tricks:
+    一些小技巧
+utils:
+    一些小工具

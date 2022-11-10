@@ -836,7 +836,7 @@ if __name__ == '__main__':
                 sample_list.append(
                     sample_dic
                     )
-            with open(dataset_name+dataset_type+'.json', 'w+') as file:
+            with open(dataset_name+dataset_type+'4_yuanzu'+'.json', 'w+') as file:
                 json.dump(sample_list, file)#, indent=2, separators=(',', ': '))
 #                print(1)
 

@@ -15,7 +15,6 @@ import numpy as np
 from transformers import BertTokenizer
 from transformers import RobertaTokenizer
 
-
 def get_query_and_answer(domain_type):
     """
     目的是模拟NER中的阅读理解任务第一版（BERT-MRF）
@@ -109,6 +108,7 @@ class SYZDataset(Dataset):
         self.cat_to_id,self.id_to_cat=get_query_and_answer(data_type)
 
 
+        self.data=[]
         if True:#os.path.exists('xxx/xxx/filename') is False:  # 如果没处理过，那就处理
             file_read = open(data_path, 'r', encoding='utf-8')
             file_content = json.load(file_read)
@@ -117,12 +117,14 @@ class SYZDataset(Dataset):
             self.text_list = []    # 保存text，方便debug
             self.quad_list=[]      # 保存四元组
             self.QAs = []          # 保存QA对，实际上处理这个就行了
+            self.QAs_r=[]
             self.max_length=0
             for data in file_content:
                 self.data_id_list.append(data['ID'])
                 self.text_list.append(data['text'])
                 self.quad_list.append(data['quad'])
                 self.QAs.append(data['QAs'])
+
             for qa_index,qa in enumerate(self.QAs):
                 text=self.text_list[qa_index] # 原文
                 # 原数据
@@ -476,9 +478,14 @@ class SYZDataset(Dataset):
                     _forward_C_O_answer_start.append(_forward_C_O_answer_start_temp)
                     _forward_C_O_answer_end.append(_forward_C_O_answer_end_temp)
 
+                # 统计一下目前最长的？
+                # 也不知道当时我写这个干啥的哈哈哈
+                print(max([len(leng) for leng in _forward_S_A_answer_start]))
 
-                print(max(len(_forward_S_A_answer_start)))
 
+                ####################
+                # 这里要加个assert 判断一下各个问题和答案的格式是不是对应的
+                ####################
                 result = {
                 'ID':qa_index,
                 # （1）S->A
@@ -584,10 +591,10 @@ class SYZDataset(Dataset):
                 '_forward_C_O_answer_end':_forward_C_O_answer_end,
 
                 }
-                print(1)
+                self.QAs_r.append(result)
         else:
             pass
-
+        print(1)
 
     def get_data_id_list(self):
         return self.data_id_list
