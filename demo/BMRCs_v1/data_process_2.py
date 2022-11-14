@@ -14,9 +14,6 @@ from tqdm import tqdm
 import numpy as np
 from transformers import BertTokenizer
 from transformers import RobertaTokenizer
-import torch.nn.functional as F
-
-
 
 import DatasetCapsulation as Data1
 import Data as Data2
@@ -902,7 +899,7 @@ class SYZDataset(Dataset):
                 #  O,C->A
                 #
                 ###############
-                # (1) S->A
+
                 T_Q_S_A = self.tokenizer.convert_tokens_to_ids([word_.lower() for word in S_A_QUERY for word_ in word])
                 _forward_S_A_query=T_CLS + T_Q_S_A + T_SEP + T_text
                 _S_A_query_mask_temp = [1] * len(_forward_S_A_query)  # 因为就1个，直接取0就行
@@ -980,8 +977,7 @@ class SYZDataset(Dataset):
                 # (8)O->A
                 for oa_index, oa_item in enumerate(O_A_QUERY):
                     T_Q_O_A = self.tokenizer.convert_tokens_to_ids(
-                        [word_.lower() for word in [oa_item] for word_ in word])
-
+                        [word_.lower() for word in oa_item for word_ in word])
                     _forward_O_A_query.append(T_CLS + T_Q_O_A + T_SEP + T_text)
                     _O_A_query_mask_temp = [1] * len(_forward_O_A_query[oa_index])  # 因为就1个，直接取0就行
                     _O_A_query_seg_temp = [0] * (len(_forward_O_A_query[oa_index]) - len(T_text) ) + [1] * (
@@ -1016,8 +1012,8 @@ class SYZDataset(Dataset):
                 # (12)A,O->P
                 for AO_P_index, AO_P_item in enumerate(AO_P_QUERY):
                     T_Q_AO_P = self.tokenizer.convert_tokens_to_ids(
-                        [word_.lower() for word in [AO_P_item] for word_ in word])
-                    _forward_AO_P_query.append(T_CLS + T_Q_AO_P + T_SEP + T_text)
+                        [word_.lower() for word in AO_P_item for word_ in word])
+                    _forward_AO_P_query.append(T_CLS + T_Q_AO_P + T_SEP + T_text + T_SEP)
                     _AO_P_query_mask_temp = [1] * len(_forward_AO_P_query[AO_P_index])  # 因为就1个，直接取0就行
                     _AO_P_query_seg_temp = [0] * (len(_forward_AO_P_query[AO_P_index]) - len(T_text) ) + [1] * (
                                 len(T_text) )
@@ -1028,7 +1024,7 @@ class SYZDataset(Dataset):
 
                     _forward_AO_P_answer.append(_forward_AO_P_answer_temp)
 
-                    T_Q_AO_P = T_CLS + T_Q_AO_P + T_SEP + T_text
+                    T_Q_AO_P = T_CLS + T_Q_AO_P + T_SEP + T_text + T_SEP
                     assert len(T_Q_AO_P) == len(_AO_P_query_mask_temp)
                     assert len(T_Q_AO_P) == len(_AO_P_query_seg_temp)
                     # assert len(T_Q_AO_P)==len(_forward_AO_P_answer_temp)
@@ -1145,7 +1141,7 @@ if __name__ == '__main__':
     temp_opt=OPTION()
     data_path='./data'
     data_type='14lap'
-    dataset_type='train'
+    dataset_type='dev'
     task_type='ASTE'
 
     total_data = torch.load(data_path+'/14lap.pt')
@@ -1159,24 +1155,22 @@ if __name__ == '__main__':
     wawa=SYZDataset(opt=temp_opt,data_path=data_path,data_type=data_type,dataset_type=dataset_type,task_type=task_type)
 
 
-    batch_generator = Data1.generate_batches(dataset=wawa,shuffle=False, batch_size=2,gpu=False)
+    batch_generator = Data1.generate_batches(dataset=wawa, batch_size=1,gpu=False)
 
     train_dataset = Data2.ReviewDataset(train_data, dev_data, test_data, 'train')
     dev_dataset = Data2.ReviewDataset(train_data, dev_data, test_data, 'dev')
     test_dataset = Data2.ReviewDataset(train_data, dev_data, test_data, 'test')
-    batch_generator_2 = Data2.generate_fi_batches(dataset=train_dataset, batch_size=2,shuffle=False, ifgpu=False)
+    batch_generator_2 = Data2.generate_fi_batches(dataset=train_dataset, batch_size=1,
+                                               ifgpu=False)
 
 
-    for item1,item2 in tqdm(zip(batch_generator,batch_generator_2)):
-        #print(1)
-
-        # S_A_test
+    for item1,item2 in zip(batch_generator,batch_generator_2):
 
         S_A_query = item1['_forward_S_A_query']
         S_A_query_mask = item1['_forward_S_A_query_mask']
         S_A_query_seg = item1['_forward_S_A_query_seg']
-        S_A_answer_start = item1['_forward_S_A_answer_start']
-        S_A_answer_end = item1['_forward_S_A_answer_end']
+        S_A_answer_start_2 = item1['_forward_S_A_answer_start']
+        S_A_answer_end_2 = item1['_forward_S_A_answer_end']
 
 
         S_A_query_2 = item2['forward_asp_query']
@@ -1185,204 +1179,12 @@ if __name__ == '__main__':
         S_A_answer_start_2 = item2['forward_asp_answer_start']
         S_A_answer_end_2= item2['forward_asp_answer_end']
 
-        S_A_query=F.pad(S_A_query, pad=(0, len(S_A_query_2[0])-len(S_A_query[0])), mode='constant', value=0)
-        S_A_query_mask=F.pad(S_A_query_mask, pad=(0, len(S_A_query_mask_2[0])-len(S_A_query_mask[0])), mode='constant', value=0)
-        S_A_query_seg=F.pad(S_A_query_seg, pad=(0, len(S_A_query_seg_2[0])-len(S_A_query_seg[0])), mode='constant', value=1)
-        S_A_answer_start=F.pad(S_A_answer_start, pad=(0, len(S_A_answer_start_2[0])-len(S_A_answer_start[0])), mode='constant', value=-1)
-        S_A_answer_end=F.pad(S_A_answer_end, pad=(0, len(S_A_answer_end_2[0])-len(S_A_answer_end[0])), mode='constant', value=-1)
-
-        assert 0==((S_A_query!=S_A_query_2).sum())
-        assert 0==((S_A_query_mask!=S_A_query_mask_2).sum())
-        assert 0==((S_A_query_seg!=S_A_query_seg_2).sum())
-        assert 0==((S_A_answer_start!=S_A_answer_start_2).sum())
-        assert 0==((S_A_answer_end!=S_A_answer_end_2).sum())
-
-        # A_O_test
-
-        A_O_query = item1['_forward_A_O_query']
-        A_O_query_mask = item1['_forward_A_O_query_mask']
-        A_O_query_seg = item1['_forward_A_O_query_seg']
-        A_O_answer_start = item1['_forward_A_O_answer_start']
-        A_O_answer_end = item1['_forward_A_O_answer_end']
 
 
-        A_O_query_2 = item2['forward_opi_query']
-        A_O_query_mask_2 = item2['forward_opi_query_mask']
-        A_O_query_seg_2 = item2['forward_opi_query_seg']
-        A_O_answer_start_2 = item2['forward_opi_answer_start']
-        A_O_answer_end_2= item2['forward_opi_answer_end']
 
-        A_O_query=F.pad(A_O_query, pad=(0, len(A_O_query_2[0][0])-len(A_O_query[0][0]),0,len(A_O_query_2[0])-len(A_O_query[0])), mode='constant', value=0)
-        A_O_query_mask=F.pad(A_O_query_mask, pad=(0, len(A_O_query_mask_2[0][0])-len(A_O_query_mask[0][0]),0,len(A_O_query_mask_2[0])-len(A_O_query_mask[0])), mode='constant', value=0)
-        # A_O_query_seg=F.pad(A_O_query_seg, pad=(0, len(A_O_query_seg_2[0][0])-len(A_O_query_seg[0][0]),0,0),mode='constant',value=1)
-        A_O_query_seg_r=torch.zeros_like(A_O_query_seg_2)
-        for index_1,A_O_item in enumerate(A_O_query_seg):
-            for index_2,A_O_item_item in enumerate(A_O_item):
-                if (A_O_item_item!=0).sum()!=0:
-                    A_O_query_seg_r[index_1][index_2]=F.pad(A_O_item_item, pad=(0,len(A_O_query_seg_2[index_1][index_2]) - len(A_O_item_item)), mode='constant',
-                          value=1)
-                else:
-                    A_O_query_seg_r[index_1][index_2]=F.pad(A_O_item_item, pad=(0,len(A_O_query_seg_2[index_1][index_2]) - len(A_O_item_item)), mode='constant',value=0)
-
-        A_O_answer_start_r = torch.full(A_O_answer_start_2.size(),-1)
-        for index_1, A_O_item in enumerate(A_O_answer_start):
-            for index_2, A_O_item_item in enumerate(A_O_item):
-                if (A_O_item_item != 0).sum() != 0:
-                    A_O_answer_start_r[index_1][index_2] = F.pad(A_O_item_item, pad=(
-                        0, len(A_O_answer_start_2[index_1][index_2]) - len(A_O_item_item)), mode='constant',
-                                                                 value=-1)
-                else:
-                    A_O_answer_start_r[index_1][index_2] = F.pad(A_O_item_item, pad=(
-                        0, len(A_O_answer_start_2[index_1][index_2]) - len(A_O_item_item)), mode='constant', value=-1)
-
-        A_O_answer_end_r = torch.full(A_O_answer_end_2.size(),-1)
-        for index_1, A_O_item in enumerate(A_O_answer_end):
-            for index_2, A_O_item_item in enumerate(A_O_item):
-                if (A_O_item_item != 0).sum() != 0:
-                    A_O_answer_end_r[index_1][index_2] = F.pad(A_O_item_item, pad=(
-                        0, len(A_O_answer_end_2[index_1][index_2]) - len(A_O_item_item)), mode='constant',
-                                                               value=-1)
-                else:
-                    A_O_answer_end_r[index_1][index_2] = F.pad(A_O_item_item, pad=(
-                        0, len(A_O_answer_end_2[index_1][index_2]) - len(A_O_item_item)), mode='constant', value=-1)
-        # A_O_answer_start=F.pad(A_O_answer_start, pad=(0, len(A_O_answer_start_2[0][0])-len(A_O_answer_start[0][0]),0,len(A_O_answer_start_2[0])-len(A_O_answer_start[0])), mode='constant', value=-1)
-        # A_O_answer_end=F.pad(A_O_answer_end, pad=(0, len(A_O_answer_end_2[0][0])-len(A_O_answer_end[0][0]),0,len(A_O_answer_end_2[0])-len(A_O_answer_end[0])), mode='constant', value=-1)
-
-        A_O_query_seg=A_O_query_seg_r
-        A_O_answer_start=A_O_answer_start_r
-        A_O_answer_end=A_O_answer_end_r
-
-        assert 0==((A_O_query!=A_O_query_2).sum())
-        assert 0==((A_O_query_mask!=A_O_query_mask_2).sum())
-        assert 0==((A_O_query_seg!=A_O_query_seg_2).sum())
-        assert 0==((A_O_answer_start!=A_O_answer_start_2).sum())
-        assert 0==((A_O_answer_end!=A_O_answer_end_2).sum())
-
-        #
-
-        O_A_query = item1['_forward_O_A_query']
-        O_A_query_mask = item1['_forward_O_A_query_mask']
-        O_A_query_seg = item1['_forward_O_A_query_seg']
-        O_A_answer_start = item1['_forward_O_A_answer_start']
-        O_A_answer_end = item1['_forward_O_A_answer_end']
-
-
-        O_A_query_2 = item2['backward_asp_query']
-        O_A_query_mask_2 = item2['backward_asp_query_mask']
-        O_A_query_seg_2 = item2['backward_asp_query_seg']
-        O_A_answer_start_2 = item2['backward_asp_answer_start']
-        O_A_answer_end_2= item2['backward_asp_answer_end']
-
-
-        O_A_query=F.pad(O_A_query, pad=(0, len(O_A_query_2[0][0])-len(O_A_query[0][0]),0,len(O_A_query_2[0])-len(O_A_query[0])), mode='constant', value=0)
-        O_A_query_mask=F.pad(O_A_query_mask, pad=(0, len(O_A_query_mask_2[0][0])-len(O_A_query_mask[0][0]),0,len(O_A_query_mask_2[0])-len(O_A_query_mask[0])), mode='constant', value=0)
-
-        O_A_query_seg_r=torch.zeros_like(O_A_query_seg_2)
-        for index_1,O_A_item in enumerate(O_A_query_seg):
-            for index_2,O_A_item_item in enumerate(O_A_item):
-                if (O_A_item_item!=0).sum()!=0:
-                    O_A_query_seg_r[index_1][index_2]=F.pad(O_A_item_item, pad=(0,len(O_A_query_seg_2[index_1][index_2]) - len(O_A_item_item)), mode='constant',
-                          value=1)
-                else:
-                    O_A_query_seg_r[index_1][index_2]=F.pad(O_A_item_item, pad=(0,len(O_A_query_seg_2[index_1][index_2]) - len(O_A_item_item)), mode='constant',value=0)
-
-        O_A_answer_start_r = torch.full(O_A_answer_start_2.size(),-1)
-        for index_1, O_A_item in enumerate(O_A_answer_start):
-            for index_2, O_A_item_item in enumerate(O_A_item):
-                if (O_A_item_item != 0).sum() != 0:
-                    O_A_answer_start_r[index_1][index_2] = F.pad(O_A_item_item, pad=(
-                        0, len(O_A_answer_start_2[index_1][index_2]) - len(O_A_item_item)), mode='constant',
-                                                                 value=-1)
-                else:
-                    O_A_answer_start_r[index_1][index_2] = F.pad(O_A_item_item, pad=(
-                        0, len(O_A_answer_start_2[index_1][index_2]) - len(O_A_item_item)), mode='constant', value=-1)
-
-        O_A_answer_end_r = torch.full(O_A_answer_end_2.size(),-1)
-        for index_1, O_A_item in enumerate(O_A_answer_end):
-            for index_2, O_A_item_item in enumerate(O_A_item):
-                if (O_A_item_item != 0).sum() != 0:
-                    O_A_answer_end_r[index_1][index_2] = F.pad(O_A_item_item, pad=(
-                        0, len(O_A_answer_end_2[index_1][index_2]) - len(O_A_item_item)), mode='constant',
-                                                               value=-1)
-                else:
-                    O_A_answer_end_r[index_1][index_2] = F.pad(O_A_item_item, pad=(
-                        0, len(O_A_answer_end_2[index_1][index_2]) - len(O_A_item_item)), mode='constant', value=-1)
-        # O_A_answer_start=F.pad(O_A_answer_start, pad=(0, len(O_A_answer_start_2[0][0])-len(O_A_answer_start[0][0]),0,len(O_A_answer_start_2[0])-len(O_A_answer_start[0])), mode='constant', value=-1)
-        # O_A_answer_end=F.pad(O_A_answer_end, pad=(0, len(O_A_answer_end_2[0][0])-len(O_A_answer_end[0][0]),0,len(O_A_answer_end_2[0])-len(O_A_answer_end[0])), mode='constant', value=-1)
-
-        O_A_query_seg=O_A_query_seg_r
-        O_A_answer_start=O_A_answer_start_r
-        O_A_answer_end=O_A_answer_end_r
-
-        assert 0==((O_A_query!=O_A_query_2).sum())
-        assert 0==((O_A_query_mask!=O_A_query_mask_2).sum())
-        assert 0==((O_A_query_seg!=O_A_query_seg_2).sum())
-        assert 0==((O_A_answer_start!=O_A_answer_start_2).sum())
-        assert 0==((O_A_answer_end!=O_A_answer_end_2).sum())
-
-        # S_O test
-        S_O_query = item1['_forward_S_O_query']
-        S_O_query_mask = item1['_forward_S_O_query_mask']
-        S_O_query_seg = item1['_forward_S_O_query_seg']
-        S_O_answer_start = item1['_forward_S_O_answer_start']
-        S_O_answer_end = item1['_forward_S_O_answer_end']
-
-        # S_O test
-        S_O_query_2 = item2['backward_opi_query']
-        S_O_query_mask_2 = item2['backward_opi_query_mask']
-        S_O_query_seg_2 = item2['backward_opi_query_seg']
-        S_O_answer_start_2 = item2['backward_opi_answer_start']
-        S_O_answer_end_2= item2['backward_opi_answer_end']
-
-        S_O_query=F.pad(S_O_query, pad=(0, len(S_O_query_2[0])-len(S_O_query[0])), mode='constant', value=0)
-        S_O_query_mask=F.pad(S_O_query_mask, pad=(0, len(S_O_query_mask_2[0])-len(S_O_query_mask[0])), mode='constant', value=0)
-        S_O_query_seg=F.pad(S_O_query_seg, pad=(0, len(S_O_query_seg_2[0])-len(S_O_query_seg[0])), mode='constant', value=1)
-        S_O_answer_start=F.pad(S_O_answer_start, pad=(0, len(S_O_answer_start_2[0])-len(S_O_answer_start[0])), mode='constant', value=-1)
-        S_O_answer_end=F.pad(S_O_answer_end, pad=(0, len(S_O_answer_end_2[0])-len(S_O_answer_end[0])), mode='constant', value=-1)
-
-        assert 0==((S_O_query!=S_O_query_2).sum())
-        assert 0==((S_O_query_mask!=S_O_query_mask_2).sum())
-        assert 0==((S_O_query_seg!=S_O_query_seg_2).sum())
-        assert 0==((S_O_answer_start!=S_O_answer_start_2).sum())
-        assert 0==((S_O_answer_end!=S_O_answer_end_2).sum())
-
-        # P_TEST
-        AO_P_query = item1['_forward_AO_P_query']
-        AO_P_query_mask = item1['_forward_AO_P_query_mask']
-        AO_P_query_seg = item1['_forward_AO_P_query_seg']
-        AO_P_answer = item1['_forward_AO_P_answer']
-
-
-        # AO_P test
-        AO_P_query_2 = item2['sentiment_query']
-        AO_P_query_mask_2 = item2['sentiment_query_mask']
-        AO_P_query_seg_2 = item2['sentiment_query_seg']
-        AO_P_answer_2 = item2['sentiment_answer']
-
-        AO_P_query=F.pad(AO_P_query, pad=(0, len(AO_P_query_2[0][0])-len(AO_P_query[0][0]),0,len(AO_P_query_2[0])-len(AO_P_query[0])), mode='constant', value=0)
-        AO_P_query_mask=F.pad(AO_P_query_mask, pad=(0, len(AO_P_query_mask_2[0][0])-len(AO_P_query_mask[0][0]),0,len(AO_P_query_mask_2[0])-len(AO_P_query_mask[0])), mode='constant', value=0)
-
-        AO_P_query_seg_r=torch.zeros_like(AO_P_query_seg_2)
-        for index_1,AO_P_item in enumerate(AO_P_query_seg):
-            for index_2,AO_P_item_item in enumerate(AO_P_item):
-                if (AO_P_item_item!=0).sum()!=0:
-                    AO_P_query_seg_r[index_1][index_2]=F.pad(AO_P_item_item, pad=(0,len(AO_P_query_seg_2[index_1][index_2]) - len(AO_P_item_item)), mode='constant',
-                          value=1)
-                else:
-                    AO_P_query_seg_r[index_1][index_2]=F.pad(AO_P_item_item, pad=(0,len(AO_P_query_seg_2[index_1][index_2]) - len(AO_P_item_item)), mode='constant',value=0)
-
-
-        AO_P_query_seg=AO_P_query_seg_r
-        AO_P_answer=F.pad(AO_P_answer,pad=(0,len(AO_P_answer_2[0])-len(AO_P_answer[0])), mode='constant',value=-1)
-
-
-        assert 0==((AO_P_query!=AO_P_query_2).sum())
-        assert 0==((AO_P_query_mask!=AO_P_query_mask_2).sum())
-        assert 0==((AO_P_query_seg!=AO_P_query_seg_2).sum())
-        assert 0==((AO_P_answer!=AO_P_answer_2).sum())
-
-
+        print(item1)
+        print(item2)
         pass
-    print(1)
+
         #print(item)
         #print(torch.from_numpy(i))

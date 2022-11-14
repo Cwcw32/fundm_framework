@@ -543,13 +543,13 @@ if __name__ == '__main__':
                 # 构建
                 ###########
 
-                # 目的是为了训练从sentence到A的能力
+                # S->A
                 start_as = [0] * len(text) # 这里放外面是因为aspect提取希望是一起提出来
                 end_as = [0] * len(text)
                 forward_aspect_query_list.append(["What", "aspects", "?"])  # 第一个问题，aspect有哪些
                 forward_aspect_answer_list.append([start_as,end_as])
 
-                # 目的是为了训练从sentence到O的能力
+                # S->O
                 start_op = [0] * len(text) # 这里放外面是因为aspect提取希望是一起提出来
                 end_op = [0] * len(text)
                 forward_opinion_query_list.append(["What", "opinions", "?"])  # 第一个问题，aspect有哪些

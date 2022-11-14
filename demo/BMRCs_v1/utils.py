@@ -34,7 +34,7 @@ def calculate_sentiment_loss(pred_sentiment, gold_sentiment):
     return F.cross_entropy(pred_sentiment, gold_sentiment.long(), size_average=False, ignore_index=-1)
 
 
-def get_logger(filename, verbosity=1, name=None):
+def get_logger(filename, verbosity=1, name=None,time=''):
     level_dict = {0: logging.DEBUG, 1: logging.INFO, 2: logging.WARNING}
     formatter = logging.Formatter(
         "[%(asctime)s][%(filename)s][line:%(lineno)d][%(levelname)s] %(message)s"
@@ -42,7 +42,7 @@ def get_logger(filename, verbosity=1, name=None):
     logger = logging.getLogger(name)
     logger.setLevel(level_dict[verbosity])
 
-    fh = logging.FileHandler(filename+'/logger.txt', "w")
+    fh = logging.FileHandler(filename+'/logger_'+time+'.log', "w")
     fh.setFormatter(formatter)
     logger.addHandler(fh)
 

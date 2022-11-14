@@ -15,7 +15,7 @@ default_collate_err_msg_format = (
     "dicts or lists; found {}")
 
 
-class Collate(): #
+class Collate2(): #
     def __init__(self, opt=None):
 
         pass
@@ -39,9 +39,12 @@ class Collate(): #
                     # 为空的就先不考虑了
                     continue
                 elif key.find('answer')!=-1 and key.find('answer_start')==-1 and key.find('answer_end')==-1: # answer不是提取任务，是分类任务，即对应的list是[a,b,c]不是[[a,b,c],[a,b,c]]
+                    for ii in temp_item :
+                        if ii <0:
+                            print('1')
                     max_len_2=max(max_len_2,len(temp_item))
                     #print(max_len_2)
-                else:
+                elif key.find('_S_O_')==-1 and key.find('_S_A_')==-1:  # s_o和s_a第一个是那啥的
                     len_1=len(temp_item)
                     max_len_1=max(max_len_1,len_1)
                     len_2=max([len(j) for j in temp_item])
@@ -50,50 +53,63 @@ class Collate(): #
                     #print(max_len_2)
                     len_dic[0]=max_len_1
                     len_dic[1]=max_len_2
-                    pass
+                else:
+                    max_len_2=max(max_len_2,len(temp_item))
+                    # if key=='_forward_S_A_answer_start':
+                    #     print(1)
             for temp_n, temp_dic in enumerate(temp_data):
                 temp_item=temp_dic[key]
                 #print(1)
-                if isinstance(temp_item, int_classes):
+                if isinstance(temp_item, int_classes):                  # 是int，本题对应的是ID
                     f = copy.deepcopy(temp_data[temp_n][key])
                     _batch_data[temp_n][key] = f
-                    pass
                     #print('ID card:',temp_item)
-                elif len(temp_item)==0:
+                elif len(temp_item)==0:                                 # 跳过空内容
                     # 为空的就先不考虑了
                     continue
-                else:
-                    if key.find('query')!=-1 and key.find('mask')==-1 and key.find('seg')==-1:
+                elif key.find('_S_O_')!=-1 or key.find('_S_A_')!=-1:  # 这两个大小是[B,L]
+                    res=copy.deepcopy(temp_data[temp_n][key])
+                    if key.find('query')!=-1 and key.find('mask')==-1 and key.find('seg')==-1:  #是query而不是query_mask_seg
+                        res += [0] * (max_len_2 - len(temp_item))
+                    elif key.find('mask')!=-1:
+                        res += [0] * (max_len_2 - len(temp_item))
+                    elif key.find('seg')!=-1:
+                        res += [1] * (max_len_2 - len(temp_item))
+                    elif key.find('answer_start')!=-1 or key.find('answer_end')!=-1:
+                        res += [-1] * (max_len_2 - len(temp_item))
+                    else :
+                        raise TypeError('data_process过程有问题')
+                    f=copy.deepcopy(res)
+                    _batch_data[temp_n][key]=np.array(f)
+                else:       # [B,L1,L2]
+                    res = copy.deepcopy(temp_item)
+                    if key.find('query')!=-1 and key.find('mask')==-1 and key.find('seg')==-1:  #是query而不是query_mask_seg
                         # 最里面维度扩充
                         for item_n,item_item in enumerate(temp_item):
-                            temp_item[item_n] += [0] * (max_len_2 - len(item_item))
+                            res[item_n] += [0] * (max_len_2 - len(item_item))
                         # 最外面维度扩充
-                        temp_item=temp_item+[[0]*max_len_2]*(max_len_1-len(temp_item))
-                        temp_data[temp_n][key]=temp_item
+                        res=res+[[0]*max_len_2]*(max_len_1-len(temp_item))
                     elif key.find('mask')!=-1:
                         for item_n,item_item in enumerate(temp_item):
-                            temp_item[item_n] += [0] * (max_len_2 - len(item_item))
+                            res[item_n] += [0] * (max_len_2 - len(item_item))
                         # 最外面维度扩充
-                        temp_item=temp_item+[[0]*max_len_2]*(max_len_1-len(temp_item))
-                        temp_data[temp_n][key]=temp_item
+                        res=res+[[0]*max_len_2]*(max_len_1-len(res))
                     elif key.find('seg')!=-1:
                         for item_n,item_item in enumerate(temp_item):
-                            temp_item[item_n] += [1] * (max_len_2 - len(item_item))
+                            res[item_n] += [1] * (max_len_2 - len(item_item))
                         # 最外面维度扩充
-                        temp_item=temp_item+[[0]*max_len_2]*(max_len_1-len(temp_item))
-                        temp_data[temp_n][key]=temp_item
+                        res=res+[[0]*max_len_2]*(max_len_1-len(temp_item))
                     elif key.find('answer_start')!=-1 or key.find('answer_end')!=-1:
                         for item_n,item_item in enumerate(temp_item):
-                            temp_item[item_n] += [-1] * (max_len_2 - len(item_item))
+                            res[item_n] += [-1] * (max_len_2 - len(item_item))
                         # 最外面维度扩充
-                        temp_item=temp_item+[[-1]*max_len_2]*(max_len_1-len(temp_item))
-                        temp_data[temp_n][key]=temp_item
+                        res=res+[[-1]*max_len_2]*(max_len_1-len(temp_item))
                     elif key.find('answer')!=-1:
-                        temp_item += [-1] * (max_len_2 - len(temp_item))
+                        res += [-1] * (max_len_2 - len(temp_item))
                         # 没有外面的维度
                     else :
                         raise TypeError('data_process过程有问题')
-                    f=copy.deepcopy(temp_data[temp_n][key])
+                    f=copy.deepcopy(res)
                     _batch_data[temp_n][key]=np.array(f)
         return self.default_collate(_batch_data)
 
@@ -145,24 +161,16 @@ class Collate(): #
         raise TypeError(default_collate_err_msg_format.format(elem_type))
 
 
-
-
-
-
-
-    def get_batch_num(self, batch_size):
-        if len(self.dataset) % batch_size == 0:
-            return len(self.dataset) / batch_size
-        return int(len(self.dataset) / batch_size) + 1
-
-
-def generate_batches(dataset, batch_size, shuffle=True, drop_last=True, gpu=True,collate_fn=None):
+def generate_batches(dataset, batch_size, shuffle=False, drop_last=True, gpu=True,collate_fn=None):
     dataloader = DataLoader(dataset=dataset, batch_size=batch_size,
-                            shuffle=False, drop_last=drop_last,collate_fn=Collate())
+                            shuffle=shuffle, drop_last=drop_last,collate_fn=Collate2())
     for n,data_dict in enumerate(dataloader):
         #print(n)
         _dict = {}
         for name, tensor in data_dict.items():
-            _dict[name] = data_dict[name].long().cuda()
+            if gpu is True:
+                _dict[name] = data_dict[name].long().cuda()
+            else:
+                _dict[name] = data_dict[name]
         _dict['task_type']=dataset.task_type
         yield _dict

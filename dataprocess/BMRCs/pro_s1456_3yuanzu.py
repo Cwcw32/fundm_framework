@@ -6,8 +6,7 @@
 import pickle
 import torch
 import json
-import
-
+from tqdm import tqdm
 class dual_sample(object):
     """
         保存对应的QA对
@@ -62,10 +61,11 @@ def get_text(lines):
         for i in opinion_label_list:
             if i!='O':
                 flag=True
-            print(1)
+            #print(1)
 
         if flag is False:
-            print(1)
+            pass
+            #print(1)
 
         assert len(word_list) == len(aspect_label_list) == len(opinion_label_list)
         text_list.append(word_list)
@@ -125,7 +125,7 @@ if __name__ == '__main__':
             # 获得text,aspect,opinion
             text_list, aspect_list, opinion_list = get_text(text_lines)
             sample_list = []
-            for k in range(len(text_list)): # 不处理单aspect 单opinion的情况？
+            for k in tqdm(range(len(text_list))): # 不处理单aspect 单opinion的情况？
                 ID=k
                 triplet = triple_data[k]
                 text = text_list[k]
@@ -141,6 +141,7 @@ if __name__ == '__main__':
                 start = [0] * len(text)
                 end = [0] * len(text)
                 for ta in triplet_aspect:
+                    assert ta[0]<=ta[-1]
                     start[ta[0]] = 1
                     end[ta[-1]] = 1
                 forward_answer_list.append([start, end])
@@ -219,4 +220,5 @@ if __name__ == '__main__':
                 )
             with open(dataset_name + dataset_type +'_3yuanzu'+'.json', 'w+') as file:
                 json.dump(sample_list, file)
+
 
