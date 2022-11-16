@@ -1645,8 +1645,9 @@ def train(args):
     else:
         print('Wrong model_name')
         exit(1)
-    logger.info(opt.model_name)
-    batch_generator_dev = Data.generate_batches(dataset=dev_dataset, batch_size=1, shuffle=False, gpu=args.gpu)
+    logger.info('model_name:'+opt.model_name)
+    logger.info('anaylisis_type:'+opt.xiaorong)
+    #batch_generator_dev = Data.generate_batches(dataset=dev_dataset, batch_size=1, shuffle=False, gpu=args.gpu)
     # logger.info("dev")  #
     # if opt.model_name == 'BMRC':
     #     dev_f1 = test_bmrc(model, tokenizer_1, batch_generator_dev, dev_standard, 0.8,
