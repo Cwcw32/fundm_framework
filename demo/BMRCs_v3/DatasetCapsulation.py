@@ -263,5 +263,5 @@ def generate_batches(dataset, batch_size, shuffle=True, drop_last=True, gpu=True
                 _dict[name] = data_dict[name].long().cuda()
             else:
                 _dict[name] = data_dict[name]
-        _dict['task_type']=dataset.task_type
+        #_dict['task_type']=dataset.task_type
         yield _dict

@@ -1239,6 +1239,8 @@ class SYZDataset(Dataset):
                     S_A_tokenized=self.tokenizer(S_A_sentence,text_origin,return_offsets_mapping=True)
                     _forward_S_A_query,_forward_S_A_query_mask,_forward_S_A_query_seg,S_A_offsets=S_A_tokenized['input_ids'],S_A_tokenized['attention_mask'],S_A_tokenized['token_type_ids'],S_A_tokenized['offset_mapping']
                     _forward_S_A_answer_start,_forward_S_A_answer_end=duiqi_bert(S_A_sentence,text_origin,S_A_ANSWER[0][0],S_A_ANSWER[0][1],S_A_offsets)
+                    _forward_S_A_answer_start[-1]=-1
+                    _forward_S_A_answer_end[-1]=-1
                     max_len_S_A_in = max(max_len_S_A_in, len(_forward_S_A_query))
                     # 这个函数并没有仔细挑BUG哦，如果结果有问题优先看这里
                     #########
@@ -1267,6 +1269,8 @@ class SYZDataset(Dataset):
                     _forward_S_O_answer_start, _forward_S_O_answer_end = duiqi_bert(S_O_sentence, text_origin,
                                                                                     S_O_ANSWER[0][0], S_O_ANSWER[0][1],
                                                                                     S_O_offsets)
+                    _forward_S_O_answer_start[-1]=-1
+                    _forward_S_O_answer_end[-1]=-1
                     max_len_S_O_in = max(max_len_S_O_in, len(_forward_S_O_query))
                     """
                                 aspects:[[a,b],[c,d],[e,f]]
@@ -1325,6 +1329,9 @@ class SYZDataset(Dataset):
                         _forward_A_O_answer_start_temp, _forward_A_O_answer_end_temp = duiqi_bert(A_O_sentence, text_origin,
                                                                                         A_O_ANSWER[0][0], A_O_ANSWER[0][1],
                                                                                         A_O_offsets)
+                        _forward_A_O_answer_start_temp[-1]=-1
+                        _forward_A_O_answer_end_temp[-1]=-1
+
                         _forward_A_O_query.append(_forward_A_O_query_temp)
                         _forward_A_O_query_mask.append(_forward_A_O_query_mask_temp)
                         _forward_A_O_query_seg.append(_forward_A_O_query_seg_temp)
@@ -1364,6 +1371,9 @@ class SYZDataset(Dataset):
                         _forward_O_A_answer_start_temp, _forward_O_A_answer_end_temp = duiqi_bert(O_A_sentence, text_origin,
                                                                                         O_A_ANSWER[0][0], O_A_ANSWER[0][1],
                                                                                         O_A_offsets)
+                        _forward_O_A_answer_start_temp[-1]=-1
+                        _forward_O_A_answer_end_temp[-1]=-1
+
                         _forward_O_A_query.append(_forward_O_A_query_temp)
                         _forward_O_A_query_mask.append(_forward_O_A_query_mask_temp)
                         _forward_O_A_query_seg.append(_forward_O_A_query_seg_temp)
