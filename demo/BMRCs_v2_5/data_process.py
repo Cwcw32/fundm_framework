@@ -1258,7 +1258,7 @@ class SYZDataset(Dataset):
                     S_O_lower_ = [word_.lower() for word in S_O_QUERY for word_ in word]
                     S_O_sentence = list_to_str(S_O_lower_)
                     S_O_tokenized = self.tokenizer(S_O_sentence, text_origin, return_offsets_mapping=True)
-                    _forward_S_O_query, _forward_S_O_query_mask, _forward_S_O_query_seg, S_O_offsets = S_O_tokenized[
+                    _forward_S_O_query, _forward_S_O_query_seg , _forward_S_O_query_mask, S_O_offsets = S_O_tokenized[
                                                                                                            'input_ids'], \
                                                                                                        S_O_tokenized[
                                                                                                            'token_type_ids'], \
@@ -1314,6 +1314,25 @@ class SYZDataset(Dataset):
                     #print(1)
                     # (4)A->O
                     # 好像不需要考虑多组问题，A_O_QUERY?
+
+
+                    if len(A_O_QUERY)==1:
+                        for i in range(0,5):
+                            A_O_QUERY+=[A_O_QUERY[0]]
+                            A_O_ANSWER+=[A_O_ANSWER[0]]
+                        A_O_Q_tetem=A_O_QUERY
+                        A_O_Q_answer=A_O_ANSWER
+                    else:
+                        A_O_Q_tetem=copy.deepcopy(A_O_QUERY[0:-1])
+                        A_O_Q_answer=copy.deepcopy(A_O_ANSWER[0:-1])
+                        for i in range(0,6-len(A_O_QUERY)):
+                            A_O_Q_tetem.append(A_O_QUERY[0])
+                            A_O_Q_answer.append(A_O_ANSWER[0])
+                        A_O_Q_tetem.append(A_O_QUERY[-1])
+                        A_O_Q_answer.append(A_O_ANSWER[-1])
+                    A_O_QUERY=A_O_Q_tetem
+                    A_O_ANSWER=A_O_Q_answer
+                    #print(2)
                     for ao_index, ao_item in enumerate(A_O_QUERY):
                         A_O_lower_ = [word_.lower() for word in [ao_item] for word_ in word]
                         A_O_sentence = list_to_str(A_O_lower_)
@@ -1327,17 +1346,25 @@ class SYZDataset(Dataset):
                                                                                                            A_O_tokenized[
                                                                                                                'offset_mapping']
                         _forward_A_O_answer_start_temp, _forward_A_O_answer_end_temp = duiqi_bert(A_O_sentence, text_origin,
-                                                                                        A_O_ANSWER[0][0], A_O_ANSWER[0][1],
+                                                                                        A_O_ANSWER[ao_index][0], A_O_ANSWER[ao_index][1],
                                                                                         A_O_offsets)
+
+                        duiqiyixia=[0]*len(_forward_A_O_query_temp)
+
+
+
+
                         _forward_A_O_answer_start_temp[-1]=-1
                         _forward_A_O_answer_end_temp[-1]=-1
 
-                        _forward_A_O_query.append(_forward_A_O_query_temp)
-                        _forward_A_O_query_mask.append(_forward_A_O_query_mask_temp)
-                        _forward_A_O_query_seg.append(_forward_A_O_query_seg_temp)
-                        _forward_A_O_answer_start.append(_forward_A_O_answer_start_temp)
-                        _forward_A_O_answer_end.append(_forward_A_O_answer_end_temp)
+                        _forward_A_O_query.append(_forward_A_O_query_temp[:-1])
+                        _forward_A_O_query_mask.append(_forward_A_O_query_mask_temp[:-1])
+                        _forward_A_O_query_seg.append(_forward_A_O_query_seg_temp[:-1])
+                        _forward_A_O_answer_start.append(_forward_A_O_answer_start_temp[:-1])
+                        _forward_A_O_answer_end.append(_forward_A_O_answer_end_temp[:-1])
                         assert len(_forward_A_O_query) == len(_forward_A_O_answer_start)
+
+
 
                     # 自己的填充
                     A_O_max_len = max([len(l1) for l1 in _forward_A_O_query])
@@ -1355,6 +1382,24 @@ class SYZDataset(Dataset):
                     max_len_A_O_in = max(max_len_A_O_in, len(_forward_A_O_query[0]))
                     max_len_A_O_out = max(max_len_A_O_out, len(_forward_A_O_query))
 
+
+                    if len(O_A_QUERY)==1:
+                        for i in range(0,5):
+                            O_A_QUERY+=[O_A_QUERY[0]]
+                            O_A_ANSWER+=[O_A_ANSWER[0]]
+                        O_A_Q_tetem=O_A_QUERY
+                        O_A_Q_answer=O_A_ANSWER
+                    else:
+                        O_A_Q_tetem=copy.deepcopy(O_A_QUERY[0:-1])
+                        O_A_Q_answer=copy.deepcopy(O_A_ANSWER[0:-1])
+                        for i in range(0,6-len(O_A_QUERY)):
+                            O_A_Q_tetem.append(O_A_QUERY[0])
+                            O_A_Q_answer.append(O_A_ANSWER[0])
+                        O_A_Q_tetem.append(O_A_QUERY[-1])
+                        O_A_Q_answer.append(O_A_ANSWER[-1])
+                    O_A_QUERY=O_A_Q_tetem
+                    O_A_ANSWER=O_A_Q_answer
+
                 # (8)O->A
                     for oa_index, oa_item in enumerate(O_A_QUERY):
                         O_A_lower_ = [word_.lower() for word in [oa_item] for word_ in word]
@@ -1369,16 +1414,16 @@ class SYZDataset(Dataset):
                                                                                                            O_A_tokenized[
                                                                                                                'offset_mapping']
                         _forward_O_A_answer_start_temp, _forward_O_A_answer_end_temp = duiqi_bert(O_A_sentence, text_origin,
-                                                                                        O_A_ANSWER[0][0], O_A_ANSWER[0][1],
+                                                                                        O_A_ANSWER[oa_index][0], O_A_ANSWER[oa_index][1],
                                                                                         O_A_offsets)
                         _forward_O_A_answer_start_temp[-1]=-1
                         _forward_O_A_answer_end_temp[-1]=-1
 
-                        _forward_O_A_query.append(_forward_O_A_query_temp)
-                        _forward_O_A_query_mask.append(_forward_O_A_query_mask_temp)
-                        _forward_O_A_query_seg.append(_forward_O_A_query_seg_temp)
-                        _forward_O_A_answer_start.append(_forward_O_A_answer_start_temp)
-                        _forward_O_A_answer_end.append(_forward_O_A_answer_end_temp)
+                        _forward_O_A_query.append(_forward_O_A_query_temp[:-1])
+                        _forward_O_A_query_mask.append(_forward_O_A_query_mask_temp[:-1])
+                        _forward_O_A_query_seg.append(_forward_O_A_query_seg_temp[:-1])
+                        _forward_O_A_answer_start.append(_forward_O_A_answer_start_temp[:-1])
+                        _forward_O_A_answer_end.append(_forward_O_A_answer_end_temp[:-1])
 
                         assert len(_forward_O_A_query)==len(_forward_O_A_answer_start)
 
@@ -1397,7 +1442,22 @@ class SYZDataset(Dataset):
                     max_len_O_A_in = max(max_len_O_A_in, len(_forward_O_A_query[0]))
                     max_len_O_A_out = max(max_len_O_A_out, len(_forward_O_A_query))
 
-
+                    if len(AO_P_QUERY)==1:
+                        for i in range(0,5):
+                            AO_P_QUERY+=[AO_P_QUERY[0]]
+                            AO_P_ANSWER+=[AO_P_ANSWER[0]]
+                        AO_P_Q_tetem=AO_P_QUERY
+                        AO_P_Q_answer=AO_P_ANSWER
+                    else:
+                        AO_P_Q_tetem=copy.deepcopy(AO_P_QUERY[0:-1])
+                        AO_P_Q_answer=copy.deepcopy(AO_P_ANSWER[0:-1])
+                        for i in range(0,6-len(AO_P_QUERY)):
+                            AO_P_Q_tetem.append(AO_P_QUERY[0])
+                            AO_P_Q_answer.append(AO_P_ANSWER[0])
+                        AO_P_Q_tetem.append(AO_P_QUERY[-1])
+                        AO_P_Q_answer.append(AO_P_ANSWER[-1])
+                    AO_P_QUERY=AO_P_Q_tetem
+                    AO_P_ANSWER=AO_P_Q_answer
                     # (12)A,O->P
                     for AO_P_index, AO_P_item in enumerate(AO_P_QUERY):
                         AO_P_lower_ = [word_.lower() for word in [AO_P_item] for word_ in word]
@@ -1411,9 +1471,9 @@ class SYZDataset(Dataset):
                                                                                                                'token_type_ids'], \
                                                                                                            AO_P_tokenized[
                                                                                                                'offset_mapping']
-                        _forward_AO_P_query.append(_forward_AO_P_query_temp)
-                        _forward_AO_P_query_mask.append(_forward_AO_P_query_mask_temp)
-                        _forward_AO_P_query_seg.append(_forward_AO_P_query_seg_temp)
+                        _forward_AO_P_query.append(_forward_AO_P_query_temp[:-1])
+                        _forward_AO_P_query_mask.append(_forward_AO_P_query_mask_temp[:-1])
+                        _forward_AO_P_query_seg.append(_forward_AO_P_query_seg_temp[:-1])
                         _forward_AO_P_answer_temp = AO_P_ANSWER[AO_P_index]
                         _forward_AO_P_answer.append(_forward_AO_P_answer_temp)
 
@@ -1442,18 +1502,18 @@ class SYZDataset(Dataset):
                 result = {
                     'ID': qa_index,
                     # （1）S->A
-                    '_forward_S_A_query': _forward_S_A_query,
-                    '_forward_S_A_query_mask': _forward_S_A_query_mask,
-                    '_forward_S_A_query_seg': _forward_S_A_query_seg,
-                    '_forward_S_A_answer_start': _forward_S_A_answer_start,
-                    '_forward_S_A_answer_end': _forward_S_A_answer_end,
+                    '_forward_S_A_query': _forward_S_A_query[:-1],
+                    '_forward_S_A_query_mask': _forward_S_A_query_mask[:-1],
+                    '_forward_S_A_query_seg': _forward_S_A_query_seg[:-1],
+                    '_forward_S_A_answer_start': _forward_S_A_answer_start[:-1],
+                    '_forward_S_A_answer_end': _forward_S_A_answer_end[:-1],
 
                     # （2）S->O
-                    '_forward_S_O_query': _forward_S_O_query,
-                    '_forward_S_O_query_mask': _forward_S_O_query_mask,
-                    '_forward_S_O_query_seg': _forward_S_O_query_seg,
-                    '_forward_S_O_answer_start': _forward_S_O_answer_start,
-                    '_forward_S_O_answer_end': _forward_S_O_answer_end,
+                    '_forward_S_O_query': _forward_S_O_query[:-1],
+                    '_forward_S_O_query_mask': _forward_S_O_query_mask[:-1],
+                    '_forward_S_O_query_seg': _forward_S_O_query_seg[:-1],
+                    '_forward_S_O_answer_start': _forward_S_O_answer_start[:-1],
+                    '_forward_S_O_answer_end': _forward_S_O_answer_end[:-1],
 
                     # (4)A->O
                     '_forward_A_O_query': _forward_A_O_query,
@@ -1469,12 +1529,12 @@ class SYZDataset(Dataset):
                     '_forward_O_A_answer_start': _forward_O_A_answer_start,
                     '_forward_O_A_answer_end': _forward_O_A_answer_end,
 
-                    # (12)A,O->P
+                    # (12)A[:-1],O->P
                     '_forward_AO_P_query': _forward_AO_P_query,
                     '_forward_AO_P_query_mask': _forward_AO_P_query_mask,
                     '_forward_AO_P_query_seg': _forward_AO_P_query_seg,
                     '_forward_AO_P_answer': _forward_AO_P_answer,  # 分类问题，并不需要start和end
-             }
+                }
                 # result=list_to_numpy(result)
                 self.QAs_r.append(result)
             self.QAs_r_2=[]
@@ -1483,13 +1543,13 @@ class SYZDataset(Dataset):
             #debug
             ####
             #max_len_A_O_in=93
-            max_len_S_A_in=106
-            max_len_S_O_in=106
-            max_len_A_O_in=106
+            max_len_S_A_in=105
+            max_len_S_O_in=105
+            max_len_A_O_in=105
             max_len_A_O_out=6
-            max_len_O_A_in=106
+            max_len_O_A_in=105
             max_len_O_A_out=6
-            max_len_AO_P_in=106
+            max_len_AO_P_in=105
             max_len_AO_P_out=6
             max_len_AO_P_ans=6
 
@@ -1722,10 +1782,9 @@ if __name__ == '__main__':
     #dev_standard = standard_data['dev']
     #test_standard = standard_data['test']
 
-
-    wawa=SYZDataset(opt=temp_opt,data_path=data_path,data_type=data_type,dataset_type=dataset_type,task_type=task_type)
     wawa_2=SYZDataset(opt=temp_opt,data_path=data_path,data_type='14lap',dataset_type='train',task_type=task_type)
     wawa_3=SYZDataset(opt=temp_opt,data_path=data_path,data_type='14lap',dataset_type='dev',task_type=task_type)
+    wawa=SYZDataset(opt=temp_opt,data_path=data_path,data_type=data_type,dataset_type=dataset_type,task_type=task_type)
 
 
     batch_generator = Data1.generate_batches(dataset=wawa,shuffle=False, batch_size=2,gpu=False)
@@ -1755,9 +1814,11 @@ if __name__ == '__main__':
     dev_standard = test_total_data['dev']
     test_standard = test_total_data['test']
 
-    batch_generator_train_1= Data1.generate_batches(dataset=wawa,shuffle=False, batch_size=2,gpu=False)
+    batch_generator_train_1= Data1.generate_batches(dataset=wawa_2,shuffle=False, batch_size=1,gpu=False)
     test_dataset = Data2.ReviewDataset(test_data)
-    batch_generator_train_2= Data1.generate_batches(dataset=test_dataset,shuffle=False, batch_size=2,gpu=False)
+    train_dataset = Data2.ReviewDataset(train_data)
+    test_dataset = Data2.ReviewDataset(test_data)
+    batch_generator_train_2= Data1.generate_batches(dataset=train_dataset,shuffle=False, batch_size=1,gpu=False)
 
     triplet_test=test_standard
 
@@ -1788,7 +1849,113 @@ if __name__ == '__main__':
         assert triplets_target_1==triplets_target_2
         pass
     # ②检验train_data一致
+    num=0
     for item1,item2 in zip(batch_generator_train_1,batch_generator_train_2):
-        print(1)
+        #print(1)
+        print(num)
+        # S_A_test
+        num+=1
+
+
+        S_A_query = item1['_forward_S_A_query']
+        S_A_query_mask = item1['_forward_S_A_query_mask']
+        S_A_query_seg = item1['_forward_S_A_query_seg']
+        S_A_answer_start = item1['_forward_S_A_answer_start']
+        S_A_answer_end = item1['_forward_S_A_answer_end']
+
+
+        S_A_query_2 = item2['forward_asp_query']
+        S_A_query_mask_2 = item2['forward_asp_query_mask']
+        S_A_query_seg_2 = item2['forward_asp_query_seg']
+        S_A_answer_start_2 = item2['forward_asp_answer_start']
+        S_A_answer_end_2= item2['forward_asp_answer_end']
+
+
+        # A_O_test
+
+        A_O_query = item1['_forward_A_O_query']
+        A_O_query_mask = item1['_forward_A_O_query_mask']
+        A_O_query_seg = item1['_forward_A_O_query_seg']
+        A_O_answer_start = item1['_forward_A_O_answer_start']
+        A_O_answer_end = item1['_forward_A_O_answer_end']
+
+
+        A_O_query_2 = item2['forward_opi_query']
+        A_O_query_mask_2 = item2['forward_opi_query_mask']
+        A_O_query_seg_2 = item2['forward_opi_query_seg']
+        A_O_answer_start_2 = item2['forward_opi_answer_start']
+        A_O_answer_end_2= item2['forward_opi_answer_end']
+
+
+        O_A_query = item1['_forward_O_A_query']
+        O_A_query_mask = item1['_forward_O_A_query_mask']
+        O_A_query_seg = item1['_forward_O_A_query_seg']
+        O_A_answer_start = item1['_forward_O_A_answer_start']
+        O_A_answer_end = item1['_forward_O_A_answer_end']
+
+        O_A_query_2 = item2['backward_asp_query']
+        O_A_query_mask_2 = item2['backward_asp_query_mask']
+        O_A_query_seg_2 = item2['backward_asp_query_seg']
+        O_A_answer_start_2 = item2['backward_asp_answer_start']
+        O_A_answer_end_2= item2['backward_asp_answer_end']
+
+
+
+        # S_O test
+        S_O_query = item1['_forward_S_O_query']
+        S_O_query_mask = item1['_forward_S_O_query_mask']
+        S_O_query_seg = item1['_forward_S_O_query_seg']
+        S_O_answer_start = item1['_forward_S_O_answer_start']
+        S_O_answer_end = item1['_forward_S_O_answer_end']
+
+        # S_O test
+        S_O_query_2 = item2['backward_opi_query']
+        S_O_query_mask_2 = item2['backward_opi_query_mask']
+        S_O_query_seg_2 = item2['backward_opi_query_seg']
+        S_O_answer_start_2 = item2['backward_opi_answer_start']
+        S_O_answer_end_2= item2['backward_opi_answer_end']
+
+
+        # P_TEST
+        AO_P_query = item1['_forward_AO_P_query']
+        AO_P_query_mask = item1['_forward_AO_P_query_mask']
+        AO_P_query_seg = item1['_forward_AO_P_query_seg']
+        AO_P_answer = item1['_forward_AO_P_answer']
+
+
+        # AO_P test
+        AO_P_query_2 = item2['sentiment_query']
+        AO_P_query_mask_2 = item2['sentiment_query_mask']
+        AO_P_query_seg_2 = item2['sentiment_query_seg']
+        AO_P_answer_2 = item2['sentiment_answer']
+
+        assert 0 == ((S_A_query != S_A_query_2).sum())
+        assert 0 == ((S_A_query_mask != S_A_query_mask_2).sum())
+        assert 0 == ((S_A_query_seg != S_A_query_seg_2).sum())
+        assert 0 == ((S_A_answer_start != S_A_answer_start_2).sum())
+        assert 0 == ((S_A_answer_end != S_A_answer_end_2).sum())
+
+        assert 0 == ((A_O_query != A_O_query_2).sum())
+        assert 0 == ((A_O_query_mask != A_O_query_mask_2).sum())
+        assert 0 == ((A_O_query_seg != A_O_query_seg_2).sum())
+        assert 0 == ((A_O_answer_start != A_O_answer_start_2).sum())
+        assert 0 == ((A_O_answer_end != A_O_answer_end_2).sum())
+
+        assert 0 == ((O_A_query != O_A_query_2).sum())
+        assert 0 == ((O_A_query_mask != O_A_query_mask_2).sum())
+        assert 0 == ((O_A_query_seg != O_A_query_seg_2).sum())
+        assert 0 == ((O_A_answer_start != O_A_answer_start_2).sum())
+        assert 0 == ((O_A_answer_end != O_A_answer_end_2).sum())
+
+        assert 0 == ((S_O_query != S_O_query_2).sum())
+        assert 0 == ((S_O_query_mask != S_O_query_mask_2).sum())
+        assert 0 == ((S_O_query_seg != S_O_query_seg_2).sum())
+        assert 0 == ((S_O_answer_start != S_O_answer_start_2).sum())
+        assert 0 == ((S_O_answer_end != S_O_answer_end_2).sum())
+
+        assert 0==((AO_P_query!=AO_P_query_2).sum())
+        assert 0==((AO_P_query_mask!=AO_P_query_mask_2).sum())
+        assert 0==((AO_P_query_seg!=AO_P_query_seg_2).sum())
+        assert 0==((AO_P_answer!=AO_P_answer_2).sum())
         #print(item)
         #print(torch.from_numpy(i))

@@ -5,7 +5,7 @@
 
 from transformers import BertTokenizer, BertModel, BertConfig
 import torch.nn as nn
-
+import torch
 
 class BMRC(nn.Module):
     """
@@ -45,6 +45,25 @@ class BMRC(nn.Module):
         """
 
         hidden_states = self._bert(query_tensor, attention_mask=query_mask, token_type_ids=query_seg)[0]
+
+        bert_outputs = self.context_encoder(query_tensor, attention_mask=query_mask, token_type_ids=query_seg)
+
+        bert_out, bert_pooler_out = bert_outputs.last_hidden_state, bert_outputs.pooler_output
+
+        bert_out = self.layer_drop(bert_out)
+
+        # rm [CLS]
+        bert_seq_indi = ~sequence_mask(bert_lengths).unsqueeze(dim=-1)
+        bert_out = bert_out[:, 1:max(bert_lengths) + 1, :] * bert_seq_indi.float()
+        word_mapback_one_hot = (F.one_hot(word_mapback).float() * bert_seq_indi.float()).transpose(1, 2)
+        bert_out = torch.bmm(word_mapback_one_hot.float(), self.dense(bert_out))
+
+        # average
+        wnt = word_mapback_one_hot.sum(dim=-1)
+        wnt.masked_fill_(wnt == 0, 1)
+        bert_out = bert_out / wnt.unsqueeze(dim=-1)
+
+
         if step == 0:  # 预测实体（即aspect或opinion）
             out_scores_start = self.classifier_start(hidden_states)
             out_scores_end = self.classifier_end(hidden_states)

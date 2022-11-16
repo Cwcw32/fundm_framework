@@ -784,7 +784,392 @@ def test_ROBMRC_2(model, t, batch_generator, standard, beta, logger):
         'Aspect-Opinion - Precision: {}\tRecall: {}\tF1: {}'.format(precision_aspect_opinion, recall_aspect_opinion,
                                                                     f1_aspect_opinion))
     return f1
+def test_bmrc(opt,model, t, batch_generator, standard, beta, logger):
 
+    xiaorong=opt.xiaorong
+
+    model.eval()
+
+    triplet_target_num = 0
+    asp_target_num = 0
+    opi_target_num = 0
+    asp_opi_target_num = 0
+    asp_pol_target_num = 0
+
+    triplet_predict_num = 0
+    asp_predict_num = 0
+    opi_predict_num = 0
+    asp_opi_predict_num = 0
+    asp_pol_predict_num = 0
+
+    triplet_match_num = 0
+    asp_match_num = 0
+    opi_match_num = 0
+    asp_opi_match_num = 0
+    asp_pol_match_num = 0
+
+    for batch_index, batch_dict in enumerate(batch_generator):
+
+        triplets_target = standard[batch_index]['triplet']
+        asp_target = standard[batch_index]['asp_target']
+        opi_target = standard[batch_index]['opi_target']
+        asp_opi_target = standard[batch_index]['asp_opi_target']
+        asp_pol_target = standard[batch_index]['asp_pol_target']
+
+        # 预测三元组
+        triplets_predict = []
+        asp_predict = []
+        opi_predict = []
+        asp_opi_predict = []
+        asp_pol_predict = []
+
+        forward_pair_list = []
+        forward_pair_prob = []
+        forward_pair_ind_list = []
+
+        backward_pair_list = []
+        backward_pair_prob = []
+        backward_pair_ind_list = []
+
+        final_asp_list = []
+        final_opi_list = []
+        final_asp_ind_list = []
+        final_opi_ind_list = []
+        # forward q_1
+        batch_dict['forward_asp_answer_start']= batch_dict['_forward_S_A_answer_start']
+        batch_dict['forward_asp_query']= batch_dict['_forward_S_A_query']
+        batch_dict['forward_asp_query_mask']= batch_dict['_forward_S_A_query_mask']
+        batch_dict['forward_asp_query_seg']= batch_dict['_forward_S_A_query_seg']
+
+        passenge_index = batch_dict['forward_asp_answer_start'][0].gt(-1).float().nonzero(as_tuple=False)
+        passenge = batch_dict['forward_asp_query'][0][passenge_index].squeeze(1)
+
+        f_asp_start_scores, f_asp_end_scores = model(batch_dict['forward_asp_query'],
+                                                     batch_dict['forward_asp_query_mask'],
+                                                     batch_dict['forward_asp_query_seg'], 0)
+        f_asp_start_scores = F.softmax(f_asp_start_scores[0], dim=1)  # 为什么取[0]，因为test_loader的batch_size是1，呃呃
+        f_asp_end_scores = F.softmax(f_asp_end_scores[0], dim=1)
+        f_asp_start_prob, f_asp_start_ind = torch.max(f_asp_start_scores, dim=1) # 获得最大的概率（softmax之后的）和其位置（0，1）
+        f_asp_end_prob, f_asp_end_ind = torch.max(f_asp_end_scores, dim=1)       # 同理是span_end的概率和位置
+
+        f_asp_start_prob_temp = []
+        f_asp_end_prob_temp = []
+        f_asp_start_index_temp = []
+        f_asp_end_index_temp = []
+
+        # 下面的-1 在batch_dict那个列表里意味着不是原句子（CLS 到第一个SEP之间，这个是问题）
+        for i in range(f_asp_start_ind.size(0)):   # 句子的长度（这个76）
+            if batch_dict['forward_asp_answer_start'][0, i] != -1:
+                if f_asp_start_ind[i].item() == 1:            # 如果预测结果认为该位置是1
+                    f_asp_start_index_temp.append(i)          # 那么先把i添加到start_index里
+                    f_asp_start_prob_temp.append(f_asp_start_prob[i].item())        # 再把概率仍进去
+                if f_asp_end_ind[i].item() == 1:
+                    f_asp_end_index_temp.append(i)            # 同上
+                    f_asp_end_prob_temp.append(f_asp_end_prob[i].item()) # 同上
+
+
+        f_asp_start_index, f_asp_end_index, f_asp_prob = utils.filter_unpaired_robmrc(
+            f_asp_start_prob_temp, f_asp_end_prob_temp, f_asp_start_index_temp, f_asp_end_index_temp)
+        # 第一次过滤？
+
+
+        for i in range(len(f_asp_start_index)): # 对每一个可能是aspect的单词
+            opinion_query = t.convert_tokens_to_ids(
+                [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in
+                 '[CLS] What opinion given the aspect'.split(' ')])
+            for j in range(f_asp_start_index[i], f_asp_end_index[i] + 1): # 因为是span所以要循环
+                opinion_query.append(batch_dict['forward_asp_query'][0][j].item())
+            opinion_query.append(t.convert_tokens_to_ids('?'))
+            opinion_query.append(t.convert_tokens_to_ids('[SEP]'))
+            opinion_query_seg = [0] * len(opinion_query)
+            f_opi_length = len(opinion_query) # 这个长度是要算的
+
+            opinion_query = torch.tensor(opinion_query).long().cuda()
+            opinion_query = torch.cat([opinion_query, passenge], -1).unsqueeze(0)
+            opinion_query_seg += [1] * passenge.size(0)
+            opinion_query_mask = torch.ones(opinion_query.size(1)).float().cuda().unsqueeze(0)
+            opinion_query_seg = torch.tensor(opinion_query_seg).long().cuda().unsqueeze(0)
+
+            f_opi_start_scores, f_opi_end_scores = model(opinion_query, opinion_query_mask, opinion_query_seg, 0)
+
+            f_opi_start_scores = F.softmax(f_opi_start_scores[0], dim=1)
+            f_opi_end_scores = F.softmax(f_opi_end_scores[0], dim=1)
+            f_opi_start_prob, f_opi_start_ind = torch.max(f_opi_start_scores, dim=1)
+            f_opi_end_prob, f_opi_end_ind = torch.max(f_opi_end_scores, dim=1)
+
+            f_opi_start_prob_temp = []
+            f_opi_end_prob_temp = []
+            f_opi_start_index_temp = []
+            f_opi_end_index_temp = []
+            for k in range(f_opi_start_ind.size(0)):
+                if opinion_query_seg[0, k] == 1:
+                    if f_opi_start_ind[k].item() == 1:
+                        f_opi_start_index_temp.append(k)
+                        f_opi_start_prob_temp.append(f_opi_start_prob[k].item())
+                    if f_opi_end_ind[k].item() == 1:
+                        f_opi_end_index_temp.append(k)
+                        f_opi_end_prob_temp.append(f_opi_end_prob[k].item())
+
+            # 第二次过滤？
+            f_opi_start_index, f_opi_end_index, f_opi_prob = utils.filter_unpaired_robmrc(
+                f_opi_start_prob_temp, f_opi_end_prob_temp, f_opi_start_index_temp, f_opi_end_index_temp)
+
+
+            # pair的过滤
+            for idx in range(len(f_opi_start_index)):
+                asp = [batch_dict['forward_asp_query'][0][j].item() for j in range(f_asp_start_index[i], f_asp_end_index[i] + 1)]
+                opi = [opinion_query[0][j].item() for j in range(f_opi_start_index[idx], f_opi_end_index[idx] + 1)]
+                asp_ind = [f_asp_start_index[i]-5, f_asp_end_index[i]-5] # 因为提问的长度是5，也就是说 [CLS] What aspects ? [SEP] 对应的长度是5，故减掉就是在原句中的？（说对应是因为一个单词长度不一定是1）
+                opi_ind = [f_opi_start_index[idx]-f_opi_length, f_opi_end_index[idx]-f_opi_length] # 因为aspect的长度不同，所以这里是之前算的问题Q的长度，减去之后就是原位置
+                temp_prob = f_asp_prob[i] * f_opi_prob[idx]
+                if asp_ind + opi_ind not in forward_pair_list: # 加法也行吧，不用dic，节省一点内存
+                    forward_pair_list.append([asp] + [opi])
+                    forward_pair_prob.append(temp_prob)
+                    forward_pair_ind_list.append(asp_ind + opi_ind)
+                else:
+                    print('erro')
+                    exit(1)
+        batch_dict['backward_opi_answer_start']= batch_dict['_forward_S_O_answer_start']
+        batch_dict['backward_opi_query'] = batch_dict['_forward_S_O_query']
+        batch_dict['backward_opi_query_mask'] = batch_dict['_forward_S_O_query_mask']
+        batch_dict['backward_opi_query_seg'] = batch_dict['_forward_S_O_query_seg']
+
+        # backward q_1
+        b_opi_start_scores, b_opi_end_scores = model(batch_dict['backward_opi_query'],
+                                                     batch_dict['backward_opi_query_mask'],
+                                                     batch_dict['backward_opi_query_seg'], 0)
+        b_opi_start_scores = F.softmax(b_opi_start_scores[0], dim=1)
+        b_opi_end_scores = F.softmax(b_opi_end_scores[0], dim=1)
+        b_opi_start_prob, b_opi_start_ind = torch.max(b_opi_start_scores, dim=1)
+        b_opi_end_prob, b_opi_end_ind = torch.max(b_opi_end_scores, dim=1)
+
+
+        b_opi_start_prob_temp = []
+        b_opi_end_prob_temp = []
+        b_opi_start_index_temp = []
+        b_opi_end_index_temp = []
+        for i in range(b_opi_start_ind.size(0)):
+            if batch_dict['backward_opi_answer_start'][0, i] != -1:
+                if b_opi_start_ind[i].item() == 1:
+                    b_opi_start_index_temp.append(i)
+                    b_opi_start_prob_temp.append(b_opi_start_prob[i].item())
+                if b_opi_end_ind[i].item() == 1:
+                    b_opi_end_index_temp.append(i)
+                    b_opi_end_prob_temp.append(b_opi_end_prob[i].item())
+
+        b_opi_start_index, b_opi_end_index, b_opi_prob = utils.filter_unpaired_robmrc(
+            b_opi_start_prob_temp, b_opi_end_prob_temp, b_opi_start_index_temp, b_opi_end_index_temp)
+
+
+
+        # backward q_2
+        for i in range(len(b_opi_start_index)):
+            aspect_query = t.convert_tokens_to_ids(
+                [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in
+                 '[CLS] What aspect does the opinion'.split(' ')])
+            for j in range(b_opi_start_index[i], b_opi_end_index[i] + 1):
+                aspect_query.append(batch_dict['backward_opi_query'][0][j].item())
+            aspect_query.append(t.convert_tokens_to_ids('describe'))
+            aspect_query.append(t.convert_tokens_to_ids('?'))
+            aspect_query.append(t.convert_tokens_to_ids('[SEP]'))
+            aspect_query_seg = [0] * len(aspect_query)
+            b_asp_length = len(aspect_query)
+            aspect_query = torch.tensor(aspect_query).long().cuda()
+            aspect_query = torch.cat([aspect_query, passenge], -1).unsqueeze(0)
+            aspect_query_seg += [1] * passenge.size(0)
+            aspect_query_mask = torch.ones(aspect_query.size(1)).float().cuda().unsqueeze(0)
+            aspect_query_seg = torch.tensor(aspect_query_seg).long().cuda().unsqueeze(0)
+
+            b_asp_start_scores, b_asp_end_scores = model(aspect_query, aspect_query_mask, aspect_query_seg, 0)
+
+            b_asp_start_scores = F.softmax(b_asp_start_scores[0], dim=1)
+            b_asp_end_scores = F.softmax(b_asp_end_scores[0], dim=1)
+            b_asp_start_prob, b_asp_start_ind = torch.max(b_asp_start_scores, dim=1)
+            b_asp_end_prob, b_asp_end_ind = torch.max(b_asp_end_scores, dim=1)
+
+            b_asp_start_prob_temp = []
+            b_asp_end_prob_temp = []
+            b_asp_start_index_temp = []
+            b_asp_end_index_temp = []
+            for k in range(b_asp_start_ind.size(0)):
+                if aspect_query_seg[0, k] == 1:
+                    if b_asp_start_ind[k].item() == 1:
+                        b_asp_start_index_temp.append(k)
+                        b_asp_start_prob_temp.append(b_asp_start_prob[k].item())
+                    if b_asp_end_ind[k].item() == 1:
+                        b_asp_end_index_temp.append(k)
+                        b_asp_end_prob_temp.append(b_asp_end_prob[k].item())
+
+            b_asp_start_index, b_asp_end_index, b_asp_prob = utils.filter_unpaired_robmrc(
+                b_asp_start_prob_temp, b_asp_end_prob_temp, b_asp_start_index_temp, b_asp_end_index_temp)
+
+            for idx in range(len(b_asp_start_index)):
+                opi = [batch_dict['backward_opi_query'][0][j].item() for j in
+                       range(b_opi_start_index[i], b_opi_end_index[i] + 1)]
+                asp = [aspect_query[0][j].item() for j in range(b_asp_start_index[idx], b_asp_end_index[idx] + 1)]
+                asp_ind = [b_asp_start_index[idx]-b_asp_length, b_asp_end_index[idx]-b_asp_length]
+                opi_ind = [b_opi_start_index[i]-5, b_opi_end_index[i]-5]
+                temp_prob = b_asp_prob[idx] * b_opi_prob[i]
+                if asp_ind + opi_ind not in backward_pair_ind_list:
+                    backward_pair_list.append([asp] + [opi])
+                    backward_pair_prob.append(temp_prob)
+                    backward_pair_ind_list.append(asp_ind + opi_ind)
+                else:
+                    print('erro')
+                    exit(1)
+        # filter triplet
+        # forward
+        for idx in range(len(forward_pair_list)):
+            if forward_pair_list[idx] in backward_pair_list: # 都有就肯定是了
+                if forward_pair_list[idx][0] not in final_asp_list: # 对应的aspect（list） 不在里面就加进去就行
+                    final_asp_list.append(forward_pair_list[idx][0])
+                    final_opi_list.append([forward_pair_list[idx][1]])
+                    final_asp_ind_list.append(forward_pair_ind_list[idx][:2])
+                    final_opi_ind_list.append([forward_pair_ind_list[idx][2:]])
+                else: # 对应的aspect（list）在里面（这里是作者认为一个aspect可能不只是对应于一个opinion）
+                    asp_index = final_asp_list.index(forward_pair_list[idx][0]) #先获取aspect的位置
+                    if forward_pair_list[idx][1] not in final_opi_list[asp_index]: # 如果这个是aspect1-opinion2
+                        final_opi_list[asp_index].append(forward_pair_list[idx][1])  # 添加
+                        final_opi_ind_list[asp_index].append(forward_pair_ind_list[idx][2:]) # 添加
+            else:
+                if forward_pair_prob[idx] >= beta:  # 如果阈值大于这个就保存，这个为啥不进行一个训练呢？
+                    if forward_pair_list[idx][0] not in final_asp_list:
+                        final_asp_list.append(forward_pair_list[idx][0])
+                        final_opi_list.append([forward_pair_list[idx][1]])
+                        final_asp_ind_list.append(forward_pair_ind_list[idx][:2])
+                        final_opi_ind_list.append([forward_pair_ind_list[idx][2:]])
+                    else:
+                        asp_index = final_asp_list.index(forward_pair_list[idx][0])
+                        if forward_pair_list[idx][1] not in final_opi_list[asp_index]:
+                            final_opi_list[asp_index].append(forward_pair_list[idx][1])
+                            final_opi_ind_list[asp_index].append(forward_pair_ind_list[idx][2:])
+         # backward
+        for idx in range(len(backward_pair_list)):
+            if backward_pair_list[idx] not in forward_pair_list:
+                if backward_pair_prob[idx] >= beta:
+                    if backward_pair_list[idx][0] not in final_asp_list:
+                        final_asp_list.append(backward_pair_list[idx][0])
+                        final_opi_list.append([backward_pair_list[idx][1]])
+                        final_asp_ind_list.append(backward_pair_ind_list[idx][:2])
+                        final_opi_ind_list.append([backward_pair_ind_list[idx][2:]])
+                    else:
+                        asp_index = final_asp_list.index(backward_pair_list[idx][0])
+                        if backward_pair_list[idx][1] not in final_opi_list[asp_index]:
+                            final_opi_list[asp_index].append(backward_pair_list[idx][1])
+                            final_opi_ind_list[asp_index].append(backward_pair_ind_list[idx][2:])
+    # sentiment
+        for idx in range(len(final_asp_list)):
+            predict_opinion_num = len(final_opi_list[idx])
+            sentiment_query = t.convert_tokens_to_ids(
+                [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in
+                 '[CLS] What sentiment given the aspect'.split(' ')])
+            sentiment_query+=final_asp_list[idx]
+            sentiment_query += t.convert_tokens_to_ids([word.lower() for word in 'and the opinion'.split(' ')])
+            # # 拼接所有的opinion
+            for idy in range(predict_opinion_num):
+                sentiment_query+=final_opi_list[idx][idy]
+                if idy < predict_opinion_num - 1:
+                    sentiment_query.append(t.convert_tokens_to_ids('/'))
+            sentiment_query.append(t.convert_tokens_to_ids('?'))
+            sentiment_query.append(t.convert_tokens_to_ids('[SEP]'))
+
+            sentiment_query_seg = [0] * len(sentiment_query)
+            sentiment_query = torch.tensor(sentiment_query).long().cuda()
+            sentiment_query = torch.cat([sentiment_query, passenge], -1).unsqueeze(0)
+            sentiment_query_seg += [1] * passenge.size(0)
+            sentiment_query_mask = torch.ones(sentiment_query.size(1)).float().cuda().unsqueeze(0)
+            sentiment_query_seg = torch.tensor(sentiment_query_seg).long().cuda().unsqueeze(0)
+
+            sentiment_scores = model(sentiment_query, sentiment_query_mask, sentiment_query_seg, 1)
+            sentiment_predicted = torch.argmax(sentiment_scores[0], dim=0).item()
+
+            # 每个opinion对应一个三元组
+            for idy in range(predict_opinion_num):
+                asp_f = []
+                opi_f = []
+                asp_f.append(final_asp_ind_list[idx][0])
+                asp_f.append(final_asp_ind_list[idx][1])
+                opi_f.append(final_opi_ind_list[idx][idy][0])
+                opi_f.append(final_opi_ind_list[idx][idy][1])
+                triplet_predict = asp_f + opi_f + [sentiment_predicted]
+                triplets_predict.append(triplet_predict)
+                if opi_f not in opi_predict:
+                    opi_predict.append(opi_f)
+                if asp_f + opi_f not in asp_opi_predict:
+                    asp_opi_predict.append(asp_f + opi_f)
+                if asp_f + [sentiment_predicted] not in asp_pol_predict:
+                    asp_pol_predict.append(asp_f + [sentiment_predicted])
+                if asp_f not in asp_predict:
+                    asp_predict.append(asp_f)
+
+        triplet_target_num += len(triplets_target)
+        asp_target_num += len(asp_target)
+        opi_target_num += len(opi_target)
+        asp_opi_target_num += len(asp_opi_target)
+        asp_pol_target_num += len(asp_pol_target)
+
+        triplet_predict_num += len(triplets_predict)
+        asp_predict_num += len(asp_predict)
+        opi_predict_num += len(opi_predict)
+        asp_opi_predict_num += len(asp_opi_predict)
+        asp_pol_predict_num += len(asp_pol_predict)
+
+
+
+
+        for trip in triplets_target:
+            for trip_ in triplets_predict:
+                if trip_ == trip:
+                    triplet_match_num += 1
+        for trip in asp_target:
+            for trip_ in asp_predict:
+                if trip_ == trip:
+                    asp_match_num += 1
+        for trip in opi_target:
+            for trip_ in opi_predict:
+                if trip_ == trip:
+                    opi_match_num += 1
+        for trip in asp_opi_target:
+            for trip_ in asp_opi_predict:
+                if trip_ == trip:
+                    asp_opi_match_num += 1
+        for trip in asp_pol_target:
+            for trip_ in asp_pol_predict:
+                if trip_ == trip:
+                    asp_pol_match_num += 1
+
+    precision = float(triplet_match_num) / float(triplet_predict_num+1e-6)
+    recall = float(triplet_match_num) / float(triplet_target_num+1e-6)
+    f1 = 2 * precision * recall / (precision + recall+1e-6)
+    logger.info('Triplet - Precision: {}\tRecall: {}\tF1: {}'.format(precision, recall, f1))
+
+
+    precision_aspect = float(asp_match_num) / float(asp_predict_num+1e-6)
+    recall_aspect = float(asp_match_num) / float(asp_target_num+1e-6)
+    f1_aspect = 2 * precision_aspect * recall_aspect / (precision_aspect + recall_aspect+1e-6)
+    logger.info('Aspect - Precision: {}\tRecall: {}\tF1: {}'.format(precision_aspect, recall_aspect, f1_aspect))
+
+    precision_opinion = float(opi_match_num) / float(opi_predict_num+1e-6)
+    recall_opinion = float(opi_match_num) / float(opi_target_num+1e-6)
+    f1_opinion = 2 * precision_opinion * recall_opinion / (precision_opinion + recall_opinion+1e-6)
+    logger.info('Opinion - Precision: {}\tRecall: {}\tF1: {}'.format(precision_opinion, recall_opinion, f1_opinion))
+
+    precision_aspect_sentiment = float(asp_pol_match_num) / float(asp_pol_predict_num+1e-6)
+    recall_aspect_sentiment = float(asp_pol_match_num) / float(asp_pol_target_num+1e-6)
+    f1_aspect_sentiment = 2 * precision_aspect_sentiment * recall_aspect_sentiment / (
+            precision_aspect_sentiment + recall_aspect_sentiment+1e-6)
+    logger.info('Aspect-Sentiment - Precision: {}\tRecall: {}\tF1: {}'.format(precision_aspect_sentiment,
+                                                                              recall_aspect_sentiment,
+                                                                              f1_aspect_sentiment))
+
+    precision_aspect_opinion = float(asp_opi_match_num) / float(asp_opi_predict_num+1e-6)
+    recall_aspect_opinion = float(asp_opi_match_num) / float(asp_opi_target_num+1e-6)
+    f1_aspect_opinion = 2 * precision_aspect_opinion * recall_aspect_opinion / (
+            precision_aspect_opinion + recall_aspect_opinion+1e-6)
+    logger.info(
+        'Aspect-Opinion - Precision: {}\tRecall: {}\tF1: {}'.format(precision_aspect_opinion, recall_aspect_opinion,
+                                                                    f1_aspect_opinion))
+    return f1
 def test_bmrc(model, t, batch_generator, standard, beta, logger):
     model.eval()
 
@@ -1260,15 +1645,15 @@ def train(args):
     else:
         print('Wrong model_name')
         exit(1)
-
+    logger.info(opt.model_name)
     batch_generator_dev = Data.generate_batches(dataset=dev_dataset, batch_size=1, shuffle=False, gpu=args.gpu)
-    logger.info("dev")  #
-    if opt.model_name == 'BMRC':
-        dev_f1 = test_bmrc(model, tokenizer_1, batch_generator_dev, dev_standard, 0.8,
-                           logger)  # ,gpu='cuda', max_len=200,task_type=task_type)
-    elif opt.model_name == 'ROBMRC':
-        dev_f1 = test_ROBMRC(model, tokenizer_1, batch_generator_dev, dev_dataset.standard_2, 0.9, logger, gpu=True,
-                             max_len=200)  # task_type=task_type)
+    # logger.info("dev")  #
+    # if opt.model_name == 'BMRC':
+    #     dev_f1 = test_bmrc(model, tokenizer_1, batch_generator_dev, dev_standard, 0.8,
+    #                        logger)  # ,gpu='cuda', max_len=200,task_type=task_type)
+    # elif opt.model_name == 'ROBMRC':
+    #     dev_f1 = test_ROBMRC(model, tokenizer_1, batch_generator_dev, dev_dataset.standard_2, 0.9, logger, gpu=True,
+    #                          max_len=200)  # task_type=task_type)
 
     for epoch in range(start_epoch, args.epoch_num + 1):
         logger.info("train")
@@ -1284,57 +1669,72 @@ def train(args):
             # print(batch_index)
             optimizer.zero_grad()
             ###############
-            ##  不要有的加view有的不加，提前先写好数据处理（待写
+            ##  消融实验过程
             ##############
 
-            S_A_start_scores, S_A_end_scores = model(batch_dict['_forward_S_A_query'],
-                                                               batch_dict['_forward_S_A_query_mask'],
-                                                               batch_dict['_forward_S_A_query_seg'], step=used_step[0])
+            # only S_A
+            if opt.xiaorong.find('S_A')!=-1:
+                S_A_start_scores, S_A_end_scores = model(batch_dict['_forward_S_A_query'],
+                                                         batch_dict['_forward_S_A_query_mask'],
+                                                         batch_dict['_forward_S_A_query_seg'], step=used_step[0])
 
-            S_A_loss = utils.calculate_entity_loss(S_A_start_scores, S_A_end_scores,
-                                                     batch_dict['_forward_S_A_answer_start'],
-                                                     batch_dict['_forward_S_A_answer_end'])
-
-            # S_O
-            S_O_start_scores, S_O_end_scores = model(batch_dict['_forward_S_O_query'],
-                                                               batch_dict['_forward_S_O_query_mask'],
-                                                               batch_dict['_forward_S_O_query_seg'], step=used_step[1])
-
-            S_O_loss = utils.calculate_entity_loss(S_O_start_scores, S_O_end_scores,
-                                                     batch_dict['_forward_S_O_answer_start'], batch_dict['_forward_S_O_answer_end'])
-
-            # A_O
-            A_O_start_scores, A_O_end_scores = model(batch_dict['_forward_A_O_query'].view(-1, batch_dict['_forward_A_O_query'].size(-1)),
-                                                               batch_dict['_forward_A_O_query_mask'].view(-1, batch_dict['_forward_A_O_query_mask'].size(-1)),
-                                                               batch_dict['_forward_A_O_query_seg'].view(-1, batch_dict['_forward_A_O_query_seg'].size(-1)), step=used_step[2])
-
-            A_O_loss = utils.calculate_entity_loss(A_O_start_scores, A_O_end_scores,
-                                                     batch_dict['_forward_A_O_answer_start'].view(-1, batch_dict['_forward_A_O_answer_start'].size(-1)),
-                                                     batch_dict['_forward_A_O_answer_end'].view(-1, batch_dict['_forward_A_O_answer_end'].size(-1)))
-
-            # O_A
-
-            O_A_start_scores, O_A_end_scores = model(batch_dict['_forward_O_A_query'].view(-1, batch_dict['_forward_O_A_query'].size(-1)),
-                                                               batch_dict['_forward_O_A_query_mask'].view(-1, batch_dict['_forward_O_A_query_mask'].size(-1)),
-                                                               batch_dict['_forward_O_A_query_seg'].view(-1, batch_dict['_forward_O_A_query_seg'].size(-1)), step=used_step[3])
-
-            O_A_loss = utils.calculate_entity_loss(O_A_start_scores, O_A_end_scores,
-                                                     batch_dict['_forward_O_A_answer_start'].view(-1, batch_dict['_forward_O_A_answer_start'].size(-1)),
-                                                     batch_dict['_forward_O_A_answer_end'].view(-1, batch_dict['_forward_O_A_answer_end'].size(-1)))
-
-            # AO_P
+                S_A_loss = utils.calculate_entity_loss(S_A_start_scores, S_A_end_scores,
+                                                       batch_dict['_forward_S_A_answer_start'],
+                                                       batch_dict['_forward_S_A_answer_end'])
 
 
-            AO_P_scores = model(batch_dict['_forward_AO_P_query'].view(-1, batch_dict['_forward_AO_P_query'].size(-1)),
-                                                               batch_dict['_forward_AO_P_query_mask'].view(-1, batch_dict['_forward_AO_P_query_mask'].size(-1)),
-                                                               batch_dict['_forward_AO_P_query_seg'].view(-1, batch_dict['_forward_AO_P_query_seg'].size(-1)), step=used_step[4])
+                # loss
+                loss_sum = S_A_loss
+
+            # only S_O
+            elif opt.xiaorong.find('S_O')!=-1:
+                S_O_start_scores, S_O_end_scores = model(batch_dict['_forward_S_O_query'],
+                                                         batch_dict['_forward_S_O_query_mask'],
+                                                         batch_dict['_forward_S_O_query_seg'], step=used_step[1])
+
+                S_O_loss = utils.calculate_entity_loss(S_O_start_scores, S_O_end_scores,
+                                                       batch_dict['_forward_S_O_answer_start'],
+                                                       batch_dict['_forward_S_O_answer_end'])
+                loss_sum = S_O_loss
+
+            # only A_O
+            elif opt.xiaorong.find('A_O')!=-1:
+                # all
+                A_O_start_scores, A_O_end_scores = model(
+                    batch_dict['_forward_A_O_query'].view(-1, batch_dict['_forward_A_O_query'].size(-1)),
+                    batch_dict['_forward_A_O_query_mask'].view(-1, batch_dict['_forward_A_O_query_mask'].size(-1)),
+                    batch_dict['_forward_A_O_query_seg'].view(-1, batch_dict['_forward_A_O_query_seg'].size(-1)),
+                    step=used_step[2])
+
+                A_O_loss = utils.calculate_entity_loss(A_O_start_scores, A_O_end_scores,
+                                                       batch_dict['_forward_A_O_answer_start'].view(-1, batch_dict[
+                                                           '_forward_A_O_answer_start'].size(-1)),
+                                                       batch_dict['_forward_A_O_answer_end'].view(-1, batch_dict[
+                                                           '_forward_A_O_answer_end'].size(-1)))
+                loss_sum = A_O_loss
+
+            # only O_A
+            elif opt.xiaorong.find('O_A')!=-1:
+                O_A_start_scores, O_A_end_scores = model(batch_dict['_forward_O_A_query'].view(-1, batch_dict['_forward_O_A_query'].size(-1)),
+                                                                   batch_dict['_forward_O_A_query_mask'].view(-1, batch_dict['_forward_O_A_query_mask'].size(-1)),
+                                                                   batch_dict['_forward_O_A_query_seg'].view(-1, batch_dict['_forward_O_A_query_seg'].size(-1)), step=used_step[3])
+
+                O_A_loss = utils.calculate_entity_loss(O_A_start_scores, O_A_end_scores,
+                                                         batch_dict['_forward_O_A_answer_start'].view(-1, batch_dict['_forward_O_A_answer_start'].size(-1)),
+                                                         batch_dict['_forward_O_A_answer_end'].view(-1, batch_dict['_forward_O_A_answer_end'].size(-1)))
+
+            # only AO_P
+            elif opt.xiaorong.find('AO_P') != -1:
+                AO_P_scores = model(batch_dict['_forward_AO_P_query'].view(-1, batch_dict['_forward_AO_P_query'].size(-1)),
+                                                                   batch_dict['_forward_AO_P_query_mask'].view(-1, batch_dict['_forward_AO_P_query_mask'].size(-1)),
+                                                                   batch_dict['_forward_AO_P_query_seg'].view(-1, batch_dict['_forward_AO_P_query_seg'].size(-1)), step=used_step[4])
 
 
-            AO_P_loss = utils.calculate_sentiment_loss(
-                AO_P_scores, batch_dict['_forward_AO_P_answer'].view(-1))
+                AO_P_loss = utils.calculate_sentiment_loss(
+                    AO_P_scores, batch_dict['_forward_AO_P_answer'].view(-1))
             # loss
-            loss_sum = S_A_loss + S_O_loss + O_A_loss + A_O_loss +  args.beta * AO_P_loss
-            # 这里现在少了几个loss
+                loss_sum = AO_P_loss
+
             loss_sum.backward()
             optimizer.step()
             scheduler.step()
@@ -1349,7 +1749,7 @@ def train(args):
                                    round(A_O_loss.item(), 4), round(O_A_loss.item(), 4),
                                    round(AO_P_loss.item(), 4)))
 
-        if True:
+        if epoch>4:
             batch_generator_dev = Data.generate_batches(dataset=dev_dataset, batch_size=1, shuffle=False,gpu=args.gpu)
             logger.info("dev") #
             if opt.model_name=='BMRC':
@@ -1408,6 +1808,11 @@ if __name__ == '__main__':
 
     parser.add_argument('--mode', type=str, default="train", choices=["train", "test"])
     parser.add_argument('--checkpoint_path', type=str, default="./model/final_2.pth")
+
+    parser.add_argument('--xiaorong', type=str, default='S_A',choices=['S_A_1_1','S_O_1_2','A_O_1_4','O_A_1_4','AO_P_1_5'])
+
+
+
     # 暂时用不到的一些东西
     #parser.add_argument('--max_len', type=str, default="max_len", choices=["max_len"],help='我也不知道是啥')
     #parser.add_argument('--max_aspect_num', type=str, default="max_aspect_num", choices=["max_aspect_num"])
