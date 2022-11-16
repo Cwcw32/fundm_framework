@@ -1281,25 +1281,29 @@ class SYZDataset(Dataset):
                     st_as_po= self.standard[qa_index]['as_po']
                     st_as_op_po= self.standard[qa_index]['as_op_po']
                     #(2)
+
+                    #list=[0,1,2,2,3,4,5,5,6]
+
                     for item in st_aspects:
                         item[0]=yingshe_origin.index(item[0])
-                        item[1]=yingshe_origin.index(item[1])
+                        item[1]=len(yingshe_origin) - yingshe_origin[::-1].index(item[1]) - 1 # end 取最后一个元素
+                        #item[1]=yingshe_origin.index(item[1])
                     for item in st_opinions:
                         item[0]=yingshe_origin.index(item[0])
-                        item[1]=yingshe_origin.index(item[1])
+                        item[1]=len(yingshe_origin) - yingshe_origin[::-1].index(item[1]) - 1 # end 取最后一个元素
                     for item in st_as_op:
                         item[0]=yingshe_origin.index(item[0])
-                        item[1]=yingshe_origin.index(item[1])
+                        item[1]=len(yingshe_origin) - yingshe_origin[::-1].index(item[1]) - 1 # end 取最后一个元素
                         item[2]=yingshe_origin.index(item[2])
-                        item[3]=yingshe_origin.index(item[3])
+                        item[3]=len(yingshe_origin) - yingshe_origin[::-1].index(item[3]) - 1 # end 取最后一个元素
                     for item in st_as_po:
                         item[0]=yingshe_origin.index(item[0])
-                        item[1]=yingshe_origin.index(item[1])
+                        item[1]=len(yingshe_origin) - yingshe_origin[::-1].index(item[1]) - 1 # end 取最后一个元素
                     for item in st_as_op_po:
                         item[0]=yingshe_origin.index(item[0])
-                        item[1]=yingshe_origin.index(item[1])
+                        item[1]=len(yingshe_origin) - yingshe_origin[::-1].index(item[1]) - 1 # end 取最后一个元素
                         item[2]=yingshe_origin.index(item[2])
-                        item[3]=yingshe_origin.index(item[3])
+                        item[3]=len(yingshe_origin) - yingshe_origin[::-1].index(item[3]) - 1 # end 取最后一个元素
                     self.standard_2.append(
                         {'aspects': st_aspects, 'opinions': st_opinions, 'as_op': st_as_op,
                          'as_po': st_as_po, 'as_op_po': st_as_op_po})
@@ -1469,6 +1473,19 @@ class SYZDataset(Dataset):
             #debug
             ####
             #max_len_A_O_in=93
+            max_len_S_A_in=106
+            max_len_S_O_in=106
+            max_len_A_O_in=106
+            max_len_A_O_out=6
+            max_len_O_A_in=106
+            max_len_O_A_out=6
+            max_len_AO_P_in=106
+            max_len_AO_P_out=6
+            max_len_AO_P_ans=6
+
+            ################debug end
+
+
 
             for item1 in self.QAs_r: # 将所有数据处理成max长度
                 S_A_query = item1['_forward_S_A_query']
@@ -1718,12 +1735,50 @@ if __name__ == '__main__':
     # dev_standard = test_total_data[arguments.dev]
     # test_standard = test_total_data[arguments.test]
     print(1)
-    batch_generator_test = Data1.generate_batches(dataset=test_dataset, batch_size=1, shuffle=False,gpu=False)
+    train_data = train_total_data['train']
+    dev_data = train_total_data['dev']
+    test_data = train_total_data['test']
+    max_len = train_total_data['max_tokens_len']
+    max_aspect_num = train_total_data['max_aspect_num']
 
-    for item1,item2 in tqdm(zip(batch_generator,batch_generator_2)):
+    train_standard = test_total_data['train']
+    dev_standard = test_total_data['dev']
+    test_standard = test_total_data['test']
+
+    batch_generator_train_1= Data1.generate_batches(dataset=wawa,shuffle=False, batch_size=2,gpu=False)
+    test_dataset = Data2.ReviewDataset(test_data)
+    batch_generator_train_2= Data1.generate_batches(dataset=test_dataset,shuffle=False, batch_size=2,gpu=False)
+
+    triplet_test=test_standard
+
+    #batch_generator_test = Data1.generate_batches(dataset=wawa_3, batch_size=1, shuffle=False,gpu=False)
 
 
+
+    # ①检验triplet一致
+    for (index1,item1),(index2,item2) in zip(enumerate(wawa.standard_2),enumerate(triplet_test)):
+
+
+        asp_target_1=item1['aspects']
+        opi_target_1=item1['opinions']
+        asp_opi_target_1=item1['as_op']
+        asp_sent_target_1=item1['as_po']
+        triplets_target_1=item1['as_op_po']
+
+        triplets_target_2 = item2.triplet_list
+        asp_target_2 = item2.aspect_list
+        opi_target_2 = item2.opinion_list
+        asp_opi_target_2 = item2.asp_opi_list
+        asp_sent_target_2 = item2.asp_sent_list
+
+        assert asp_target_1==asp_target_2
+        assert opi_target_1==opi_target_2
+        assert asp_opi_target_1==asp_opi_target_2
+        assert asp_sent_target_1==asp_sent_target_2
+        assert triplets_target_1==triplets_target_2
         pass
-    print(1)
+    # ②检验train_data一致
+    for item1,item2 in zip(batch_generator_train_1,batch_generator_train_2):
+        print(1)
         #print(item)
         #print(torch.from_numpy(i))
