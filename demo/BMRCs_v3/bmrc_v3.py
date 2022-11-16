@@ -3,7 +3,6 @@ import math
 import os
 from datetime import datetime
 import copy
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 import numpy as np
@@ -1261,14 +1260,14 @@ def train(args):
         print('Wrong model_name')
         exit(1)
 
-    batch_generator_dev = Data.generate_batches(dataset=dev_dataset, batch_size=1, shuffle=False, gpu=args.gpu)
-    logger.info("dev")  #
-    if opt.model_name == 'BMRC':
-        dev_f1 = test_bmrc(model, tokenizer_1, batch_generator_dev, dev_standard, 0.8,
-                           logger)  # ,gpu='cuda', max_len=200,task_type=task_type)
-    elif opt.model_name == 'ROBMRC':
-        dev_f1 = test_ROBMRC(model, tokenizer_1, batch_generator_dev, dev_dataset.standard_2, 0.9, logger, gpu=True,
-                             max_len=200)  # task_type=task_type)
+    # batch_generator_dev = Data.generate_batches(dataset=dev_dataset, batch_size=1, shuffle=False, gpu=args.gpu)
+    # logger.info("dev")  #
+    # if opt.model_name == 'BMRC':
+    #     dev_f1 = test_bmrc(model, tokenizer_1, batch_generator_dev, dev_standard, 0.8,
+    #                        logger)  # ,gpu='cuda', max_len=200,task_type=task_type)
+    # elif opt.model_name == 'ROBMRC':
+    #     dev_f1 = test_ROBMRC(model, tokenizer_1, batch_generator_dev, dev_dataset.standard_2, 0.9, logger, gpu=True,
+    #                          max_len=200)  # task_type=task_type)
 
     for epoch in range(start_epoch, args.epoch_num + 1):
         logger.info("train")
@@ -1349,7 +1348,7 @@ def train(args):
                                    round(A_O_loss.item(), 4), round(O_A_loss.item(), 4),
                                    round(AO_P_loss.item(), 4)))
 
-        if True:
+        if epoch>5:
             batch_generator_dev = Data.generate_batches(dataset=dev_dataset, batch_size=1, shuffle=False,gpu=args.gpu)
             logger.info("dev") #
             if opt.model_name=='BMRC':
@@ -1421,14 +1420,14 @@ if __name__ == '__main__':
     # 训练过程的超参数
     parser.add_argument('--gpu', type=bool, default=True, help='是否使用GPU')
     parser.add_argument('--epoch_num', type=int, default=40, help='训练的次数')
-    parser.add_argument('--batch_size', type=int, default=2)
+    parser.add_argument('--batch_size', type=int, default=4)
     parser.add_argument('--learning_rate', type=float, default=1e-3)
     parser.add_argument('--tuning_bert_rate', type=float, default=1e-5)
     parser.add_argument('--warm_up', type=float, default=0.1)
     parser.add_argument('--beta', type=float, default=1)
     parser.add_argument('--add_note', type=str, default='')# 日志的名字是否要特殊一点
 
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(0)
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(2)
     opt = parser.parse_args()
 
 

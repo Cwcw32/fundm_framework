@@ -1833,7 +1833,7 @@ if __name__ == '__main__':
     parser.add_argument('--beta', type=float, default=1)
     parser.add_argument('--add_note', type=str, default='')# 日志的名字是否要特殊一点
 
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(1)
     opt = parser.parse_args()
 
 

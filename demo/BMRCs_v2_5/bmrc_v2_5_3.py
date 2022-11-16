@@ -1826,14 +1826,14 @@ if __name__ == '__main__':
     # 训练过程的超参数
     parser.add_argument('--gpu', type=bool, default=True, help='是否使用GPU')
     parser.add_argument('--epoch_num', type=int, default=40, help='训练的次数')
-    parser.add_argument('--batch_size', type=int, default=4)
+    parser.add_argument('--batch_size', type=int, default=2)
     parser.add_argument('--learning_rate', type=float, default=1e-3)
     parser.add_argument('--tuning_bert_rate', type=float, default=1e-5)
     parser.add_argument('--warm_up', type=float, default=0.1)
     parser.add_argument('--beta', type=float, default=1)
     parser.add_argument('--add_note', type=str, default='')# 日志的名字是否要特殊一点
 
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(2)
     opt = parser.parse_args()
 
 

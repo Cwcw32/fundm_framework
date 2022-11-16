@@ -2117,7 +2117,7 @@ def train(args):
 
     # load data
     logger.info(args)
-    for padding in [False, False]:
+    for padding in [False, True]:
         logger.info("####################################")
         logger.info("####################################")
 
@@ -2607,6 +2607,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--mode', type=str, default="train", choices=["train", "test"])
     parser.add_argument('--checkpoint_path', type=str, default="./model/final_2.pth")
+    parser.add_argument('--xiaorong', type=str, default='A-P',)
     # 暂时用不到的一些东西
     #parser.add_argument('--max_len', type=str, default="max_len", choices=["max_len"],help='我也不知道是啥')
     #parser.add_argument('--max_aspect_num', type=str, default="max_aspect_num", choices=["max_aspect_num"])
@@ -2619,15 +2620,15 @@ if __name__ == '__main__':
 
     # 训练过程的超参数
     parser.add_argument('--gpu', type=bool, default=True, help='是否使用GPU')
-    parser.add_argument('--epoch_num', type=int, default=30, help='训练的次数')
-    parser.add_argument('--batch_size', type=int, default=2)
+    parser.add_argument('--epoch_num', type=int, default=60, help='训练的次数')
+    parser.add_argument('--batch_size', type=int, default=4)
     parser.add_argument('--learning_rate', type=float, default=1e-3)
     parser.add_argument('--tuning_bert_rate', type=float, default=1e-5)
     parser.add_argument('--warm_up', type=float, default=0.1)
     parser.add_argument('--beta', type=float, default=1)
     parser.add_argument('--add_note', type=str, default='')# 日志的名字是否要特殊一点
 
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(0)
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(1)
     opt = parser.parse_args()
 
 

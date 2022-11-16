@@ -120,7 +120,7 @@ class RoBMRC(nn.Module):
                 # q1_b
                 b_opi_start_scores, b_opi_end_scores = model(batch_dict['backward_opi_query'],
                                                              batch_dict['backward_opi_query_mask'],
-                                                             batch_dict['backward_opi_query_seg'], 0)
+                                                             batch_dict[' backward_opi_query_seg'], 0)
                 b_opi_loss = utils.calculate_entity_loss(b_opi_start_scores, b_opi_end_scores,
                                                                     batch_dict['backward_opi_answer_start'],
                                                                     batch_dict['backward_opi_answer_end'])
