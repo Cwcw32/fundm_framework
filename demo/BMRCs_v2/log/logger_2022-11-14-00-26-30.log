@@ -1,0 +1,24 @@
+[2022-11-14 00:26:31,626][main.py][line:2119][INFO] Namespace(task_type='ASTE', dataset_type='ASTE', data_path='./data', log_path='./log', save_model_path='./checkpoint/2022-11-14-00-26-30-', model_name='BMRC', work_nums=1, mode='train', checkpoint_path='./model/final_2.pth', bert_model_type='../../bert/bert-base-uncased', hidden_size=768, inference_beta=0.8, gpu=True, epoch_num=1, batch_size=1, learning_rate=0.001, tuning_bert_rate=1e-05, warm_up=0.1, beta=1, add_note='')
+[2022-11-14 00:26:31,626][main.py][line:2121][INFO] loading data......
+[2022-11-14 00:26:32,396][main.py][line:2144][INFO] initial optimizer......
+[2022-11-14 00:26:32,407][main.py][line:2156][INFO] New model and optimizer from epoch 1
+[2022-11-14 00:26:35,746][main.py][line:2193][INFO] begin training......
+[2022-11-14 00:26:35,746][main.py][line:2233][INFO] ####################################
+[2022-11-14 00:26:35,746][main.py][line:2235][INFO] train
+[2022-11-14 00:30:10,312][main.py][line:2689][INFO] dev
+[2022-11-14 00:30:16,123][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:16,123][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:16,124][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:16,124][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:16,124][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:16,124][main.py][line:2703][INFO] test
+[2022-11-14 00:30:24,545][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:24,545][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:24,545][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:24,545][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:24,545][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:30:24,545][main.py][line:2233][INFO] ####################################
+[2022-11-14 00:30:24,545][main.py][line:2235][INFO] train
+[2022-11-14 00:30:38,200][main.py][line:2602][INFO] Epoch:[1/1]	 Batch:[100/920]	 Loss Sum:1023.9005	 forward Loss:228.9027;221.941	 backward Loss:214.8542;222.5674	 Sentiment Loss:135.6352	
+[2022-11-14 00:30:50,797][main.py][line:2602][INFO] Epoch:[1/1]	 Batch:[200/920]	 Loss Sum:1832.5684	 forward Loss:464.8017;446.9795	 backward Loss:461.7837;451.674	 Sentiment Loss:7.3296	
+[2022-11-14 00:31:03,382][main.py][line:2602][INFO] Epoch:[1/1]	 Batch:[300/920]	 Loss Sum:918.5327	 forward Loss:225.5167;234.8274	 backward Loss:221.2973;233.634	 Sentiment Loss:3.2573	

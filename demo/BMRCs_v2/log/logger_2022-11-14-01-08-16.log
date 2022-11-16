@@ -1,0 +1,13 @@
+[2022-11-14 01:08:17,733][main.py][line:2119][INFO] Namespace(task_type='ASTE', dataset_type='ASTE', data_path='./data', log_path='./log', save_model_path='./checkpoint/2022-11-14-01-08-16-', model_name='BMRC', work_nums=1, mode='train', checkpoint_path='./model/final_2.pth', bert_model_type='../../bert/bert-base-uncased', hidden_size=768, inference_beta=0.8, gpu=True, epoch_num=1, batch_size=2, learning_rate=0.001, tuning_bert_rate=1e-05, warm_up=0.1, beta=1, add_note='')
+[2022-11-14 01:08:17,734][main.py][line:2121][INFO] ####################################
+[2022-11-14 01:08:17,734][main.py][line:2122][INFO] ####################################
+[2022-11-14 01:08:17,734][main.py][line:2124][INFO] loading data......
+[2022-11-14 01:08:18,565][main.py][line:2147][INFO] initial optimizer......
+[2022-11-14 01:08:18,574][main.py][line:2159][INFO] New model and optimizer from epoch 1
+[2022-11-14 01:08:22,235][main.py][line:2196][INFO] begin training......
+[2022-11-14 01:08:22,235][main.py][line:2237][INFO] train
+[2022-11-14 01:08:40,761][main.py][line:2380][INFO] Epoch:[1/1]	 Batch:[100/460]	 Loss Sum:73.445	 forward Loss:14.3925;13.0179	 backward Loss:20.2427;21.8687	 Sentiment Loss:3.9231	
+[2022-11-14 01:08:55,500][main.py][line:2380][INFO] Epoch:[1/1]	 Batch:[200/460]	 Loss Sum:18.2116	 forward Loss:4.2979;4.7421	 backward Loss:2.6661;3.6006	 Sentiment Loss:2.905	
+[2022-11-14 01:09:13,177][main.py][line:2380][INFO] Epoch:[1/1]	 Batch:[300/460]	 Loss Sum:41.3619	 forward Loss:7.0429;6.1384	 backward Loss:14.3455;11.5346	 Sentiment Loss:2.3005	
+[2022-11-14 01:09:29,690][main.py][line:2380][INFO] Epoch:[1/1]	 Batch:[400/460]	 Loss Sum:59.8638	 forward Loss:5.5428;13.1169	 backward Loss:24.0936;15.4129	 Sentiment Loss:1.6976	
+[2022-11-14 01:09:39,402][main.py][line:2467][INFO] dev

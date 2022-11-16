@@ -1,0 +1,19 @@
+[2022-11-13 22:01:15,836][main.py][line:2119][INFO] Namespace(task_type='ASTE', dataset_type='ASTE', data_path='./data', log_path='./log', save_model_path='./checkpoint/2022-11-13-22-01-14-', model_name='BMRC', work_nums=1, mode='train', checkpoint_path='./model/final_2.pth', bert_model_type='../../bert/bert-base-uncased', hidden_size=768, inference_beta=0.8, gpu=True, epoch_num=20, batch_size=2, learning_rate=0.001, tuning_bert_rate=1e-05, warm_up=0.1, beta=1, add_note='')
+[2022-11-13 22:01:15,836][main.py][line:2121][INFO] loading data......
+[2022-11-13 22:01:16,855][main.py][line:2144][INFO] initial optimizer......
+[2022-11-13 22:01:16,864][main.py][line:2156][INFO] New model and optimizer from epoch 1
+[2022-11-13 22:01:20,796][main.py][line:2193][INFO] begin training......
+[2022-11-13 22:01:20,800][main.py][line:2234][INFO] train
+[2022-11-13 22:05:18,235][main.py][line:2584][INFO] dev
+[2022-11-13 22:06:00,386][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:06:00,386][main.py][line:1242][INFO] Aspect - Precision: 0.12499999826388891	Recall: 0.03225806440050873	F1: 0.05128172489066836
+[2022-11-13 22:06:00,386][main.py][line:1247][INFO] Opinion - Precision: 0.13636363429752069	Recall: 0.026706231374758957	F1: 0.04466473828588578
+[2022-11-13 22:06:00,387][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.027777777391975313	Recall: 0.007168458755668607	F1: 0.011395685239156945
+[2022-11-13 22:06:00,389][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.008016032048064064	Recall: 0.011869436166559536	F1: 0.00956889676706154
+[2022-11-13 22:06:00,396][main.py][line:2598][INFO] test
+[2022-11-13 22:06:33,521][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:06:33,526][main.py][line:1242][INFO] Aspect - Precision: 0.19444443904321004	Recall: 0.016746411443190404	F1: 0.03083685825526336
+[2022-11-13 22:06:33,526][main.py][line:1247][INFO] Opinion - Precision: 0.1904761859410432	Recall: 0.016326530578925448	F1: 0.030075042428197876
+[2022-11-13 22:06:33,526][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.027777777006172864	Recall: 0.0023923444918843434	F1: 0.0044051403141768105
+[2022-11-13 22:06:33,526][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.035714285459183676	Recall: 0.010204081611828404	F1: 0.015872670151139977
+[2022-11-13 22:06:33,530][main.py][line:2234][INFO] train

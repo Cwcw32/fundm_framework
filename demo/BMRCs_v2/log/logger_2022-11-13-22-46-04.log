@@ -1,0 +1,45 @@
+[2022-11-13 22:46:04,342][main.py][line:2119][INFO] Namespace(task_type='ASTE', dataset_type='ASTE', data_path='./data', log_path='./log', save_model_path='./checkpoint/2022-11-13-22-46-04-', model_name='BMRC', work_nums=1, mode='train', checkpoint_path='./model/final_2.pth', bert_model_type='../../bert/bert-base-uncased', hidden_size=768, inference_beta=0.8, gpu=True, epoch_num=20, batch_size=1, learning_rate=0.001, tuning_bert_rate=1e-05, warm_up=0.1, beta=1, add_note='')
+[2022-11-13 22:46:04,342][main.py][line:2121][INFO] loading data......
+[2022-11-13 22:46:05,184][main.py][line:2144][INFO] initial optimizer......
+[2022-11-13 22:46:05,197][main.py][line:2156][INFO] New model and optimizer from epoch 1
+[2022-11-13 22:46:08,659][main.py][line:2193][INFO] begin training......
+[2022-11-13 22:46:08,662][main.py][line:2234][INFO] train
+[2022-11-13 22:49:48,049][main.py][line:2605][INFO] dev
+[2022-11-13 22:49:54,761][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:49:54,762][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:49:54,762][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:49:54,762][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:49:54,762][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:49:54,763][main.py][line:2619][INFO] test
+[2022-11-13 22:50:04,709][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:50:04,709][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:50:04,709][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:50:04,709][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:50:04,709][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:50:04,709][main.py][line:2234][INFO] train
+[2022-11-13 22:53:44,475][main.py][line:2605][INFO] dev
+[2022-11-13 22:53:50,414][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:50,414][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:50,414][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:50,414][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:50,414][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:50,414][main.py][line:2619][INFO] test
+[2022-11-13 22:53:59,595][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:59,596][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:59,596][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:59,596][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:59,596][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:53:59,597][main.py][line:2234][INFO] train
+[2022-11-13 22:57:40,756][main.py][line:2605][INFO] dev
+[2022-11-13 22:57:46,308][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:46,308][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:46,308][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:46,308][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:46,308][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:46,308][main.py][line:2619][INFO] test
+[2022-11-13 22:57:55,194][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:55,194][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:55,194][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:55,194][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:55,194][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-13 22:57:55,210][main.py][line:2234][INFO] train

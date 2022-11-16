@@ -1,0 +1,14 @@
+[2022-11-15 21:59:19,848][bmrc_v3.py][line:1195][INFO] Namespace(add_note='', batch_size=2, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gpu=True, hidden_size=768, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='ROBMRC', save_model_path='./checkpoint/2022-11-15-21-59-18-', task_type='ASTE', tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1)
+[2022-11-15 21:59:19,848][bmrc_v3.py][line:1196][INFO] ####################################
+[2022-11-15 21:59:19,848][bmrc_v3.py][line:1197][INFO] ####################################
+[2022-11-15 21:59:19,848][bmrc_v3.py][line:1198][INFO] loading data......
+[2022-11-15 21:59:21,536][bmrc_v3.py][line:1216][INFO] initial optimizer......
+[2022-11-15 21:59:21,567][bmrc_v3.py][line:1226][INFO] New model and optimizer from epoch 1
+[2022-11-15 21:59:32,980][bmrc_v3.py][line:1242][INFO] begin training......
+[2022-11-15 21:59:32,987][bmrc_v3.py][line:1267][INFO] dev
+[2022-11-15 22:02:10,971][bmrc_v3.py][line:380][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-15 22:02:10,971][bmrc_v3.py][line:385][INFO] Aspect - Precision: 0.04930332256237586	Recall: 0.16487455138037796	F1: 0.07590723622168717
+[2022-11-15 22:02:10,971][bmrc_v3.py][line:390][INFO] Opinion - Precision: 0.0493506492865576	Recall: 0.1127596435823156	F1: 0.0686535962501916
+[2022-11-15 22:02:10,971][bmrc_v3.py][line:398][INFO] Aspect-Sentiment - Precision: 0.0025167785213785414	Recall: 0.01075268813350291	F1: 0.004078550550673727
+[2022-11-15 22:02:10,971][bmrc_v3.py][line:406][INFO] Aspect-Opinion - Precision: 0.0019221528106866522	Recall: 0.02373887233311907	F1: 0.0035562072690627448
+[2022-11-15 22:02:10,974][bmrc_v3.py][line:1276][INFO] train
