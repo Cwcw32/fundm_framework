@@ -1,0 +1,37 @@
+[2022-11-14 00:39:44,118][main.py][line:2119][INFO] Namespace(task_type='ASTE', dataset_type='ASTE', data_path='./data', log_path='./log', save_model_path='./checkpoint/2022-11-14-00-39-43-', model_name='BMRC', work_nums=1, mode='train', checkpoint_path='./model/final_2.pth', bert_model_type='../../bert/bert-base-uncased', hidden_size=768, inference_beta=0.8, gpu=True, epoch_num=1, batch_size=2, learning_rate=0.001, tuning_bert_rate=1e-05, warm_up=0.1, beta=1, add_note='')
+[2022-11-14 00:39:44,134][main.py][line:2121][INFO] loading data......
+[2022-11-14 00:39:44,894][main.py][line:2144][INFO] initial optimizer......
+[2022-11-14 00:39:44,894][main.py][line:2156][INFO] New model and optimizer from epoch 1
+[2022-11-14 00:39:48,391][main.py][line:2193][INFO] begin training......
+[2022-11-14 00:39:48,391][main.py][line:2233][INFO] ####################################
+[2022-11-14 00:39:48,391][main.py][line:2235][INFO] train
+[2022-11-14 00:42:45,700][main.py][line:2689][INFO] dev
+[2022-11-14 00:42:51,865][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:51,865][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:51,865][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:51,865][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:51,865][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:51,865][main.py][line:2703][INFO] test
+[2022-11-14 00:42:59,851][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:59,851][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:59,851][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:59,851][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:59,851][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:42:59,851][main.py][line:2233][INFO] ####################################
+[2022-11-14 00:42:59,851][main.py][line:2235][INFO] train
+[2022-11-14 00:43:14,311][main.py][line:2602][INFO] Epoch:[1/1]	 Batch:[100/460]	 Loss Sum:1295.7831	 forward Loss:296.7867;306.7314	 backward Loss:317.6177;330.2695	 Sentiment Loss:44.3778	
+[2022-11-14 00:43:29,081][main.py][line:2602][INFO] Epoch:[1/1]	 Batch:[200/460]	 Loss Sum:661.4139	 forward Loss:163.7019;151.1591	 backward Loss:167.9158;150.978	 Sentiment Loss:27.6591	
+[2022-11-14 00:43:44,556][main.py][line:2602][INFO] Epoch:[1/1]	 Batch:[300/460]	 Loss Sum:1244.9518	 forward Loss:290.3609;317.8166	 backward Loss:311.8503;296.0263	 Sentiment Loss:28.8977	
+[2022-11-14 00:44:00,553][main.py][line:2602][INFO] Epoch:[1/1]	 Batch:[400/460]	 Loss Sum:1495.0648	 forward Loss:314.4377;370.3469	 backward Loss:390.0929;379.9305	 Sentiment Loss:40.2568	
+[2022-11-14 00:44:11,117][main.py][line:2689][INFO] dev
+[2022-11-14 00:44:17,151][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:17,151][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:17,151][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:17,151][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:17,151][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:17,151][main.py][line:2703][INFO] test
+[2022-11-14 00:44:25,544][main.py][line:1236][INFO] Triplet - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:25,544][main.py][line:1242][INFO] Aspect - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:25,544][main.py][line:1247][INFO] Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:25,544][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.0	Recall: 0.0	F1: 0.0
+[2022-11-14 00:44:25,544][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0	Recall: 0.0	F1: 0.0

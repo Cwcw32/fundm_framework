@@ -1,0 +1,49 @@
+[2022-11-13 15:22:20,816][main.py][line:2119][INFO] Namespace(task_type='ASTE', dataset_type='ASTE', data_path='./data', log_path='./log', save_model_path='./checkpoint/2022-11-13-15-22-19-', model_name='BMRC', work_nums=1, mode='train', checkpoint_path='./model/final_2.pth', bert_model_type='../../bert/bert-base-uncased', hidden_size=768, inference_beta=0.8, gpu=True, epoch_num=40, batch_size=2, learning_rate=0.001, tuning_bert_rate=1e-05, warm_up=0.1, beta=1, add_note='')
+[2022-11-13 15:22:20,816][main.py][line:2121][INFO] loading data......
+[2022-11-13 15:22:21,733][main.py][line:2144][INFO] initial optimizer......
+[2022-11-13 15:22:21,745][main.py][line:2156][INFO] New model and optimizer from epoch 1
+[2022-11-13 15:22:26,539][main.py][line:2193][INFO] begin training......
+[2022-11-13 15:22:26,539][main.py][line:2234][INFO] train
+[2022-11-13 15:22:28,405][main.py][line:2364][INFO] Epoch:[1/40]	 Batch:[0/460]	 Loss Sum:100.8424	 forward Loss:21.2887;23.0238	 backward Loss:31.2596;23.1847	 Sentiment Loss:2.0856
+[2022-11-13 15:23:03,372][main.py][line:2364][INFO] Epoch:[1/40]	 Batch:[100/460]	 Loss Sum:149.4017	 forward Loss:27.483;45.1528	 backward Loss:41.9312;29.9731	 Sentiment Loss:4.8616
+[2022-11-13 15:23:38,419][main.py][line:2364][INFO] Epoch:[1/40]	 Batch:[200/460]	 Loss Sum:56.4931	 forward Loss:10.3554;14.5975	 backward Loss:14.6463;14.7678	 Sentiment Loss:2.1261
+[2022-11-13 15:24:13,328][main.py][line:2364][INFO] Epoch:[1/40]	 Batch:[300/460]	 Loss Sum:63.6029	 forward Loss:13.0842;17.0842	 backward Loss:16.5935;15.0558	 Sentiment Loss:1.7852
+[2022-11-13 15:24:48,733][main.py][line:2364][INFO] Epoch:[1/40]	 Batch:[400/460]	 Loss Sum:87.4283	 forward Loss:16.4044;25.0928	 backward Loss:15.7283;26.4677	 Sentiment Loss:3.7351
+[2022-11-13 15:25:10,803][main.py][line:2377][INFO] dev
+[2022-11-13 15:25:36,792][main.py][line:1236][INFO] Triplet - Precision: 0.24778760952306367	Recall: 0.16617210633183352	F1: 0.19893379936955327
+[2022-11-13 15:25:36,792][main.py][line:1242][INFO] Aspect - Precision: 0.545454541640178	Recall: 0.27956989147107564	F1: 0.36966779662460764
+[2022-11-13 15:25:36,792][main.py][line:1247][INFO] Opinion - Precision: 0.5172413763376933	Recall: 0.2670623137475896	F1: 0.35225003873357347
+[2022-11-13 15:25:36,792][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.4055944027580811	Recall: 0.20788530391438959	F1: 0.27488106721620126
+[2022-11-13 15:25:36,792][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.30088495442086305	Recall: 0.20178041483151213	F1: 0.24156257364064937
+[2022-11-13 15:25:36,795][main.py][line:2391][INFO] test
+[2022-11-13 15:26:03,457][main.py][line:1236][INFO] Triplet - Precision: 0.2982456131630245	Recall: 0.20816326488129946	F1: 0.2451918229253273
+[2022-11-13 15:26:03,457][main.py][line:1242][INFO] Aspect - Precision: 0.5683760659471109	Recall: 0.3181818174206177	F1: 0.4079749986926036
+[2022-11-13 15:26:03,457][main.py][line:1247][INFO] Opinion - Precision: 0.6043956021817011	Recall: 0.3367346931903374	F1: 0.4325028158494942
+[2022-11-13 15:26:03,457][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.4529914510555921	Recall: 0.25358851613974037	F1: 0.32515291305722066
+[2022-11-13 15:26:03,457][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.3538011685561369	Recall: 0.2469387750062474	F1: 0.290864899738463
+[2022-11-13 15:26:03,459][main.py][line:2403][INFO] Model saved after epoch 1
+[2022-11-13 15:26:05,048][main.py][line:2234][INFO] train
+[2022-11-13 15:26:05,444][main.py][line:2364][INFO] Epoch:[2/40]	 Batch:[0/460]	 Loss Sum:48.9363	 forward Loss:11.1049;14.3137	 backward Loss:9.9205;11.4254	 Sentiment Loss:2.1718
+[2022-11-13 15:26:40,688][main.py][line:2364][INFO] Epoch:[2/40]	 Batch:[100/460]	 Loss Sum:27.4986	 forward Loss:6.8969;4.645	 backward Loss:6.6032;7.6926	 Sentiment Loss:1.6609
+[2022-11-13 15:27:16,612][main.py][line:2364][INFO] Epoch:[2/40]	 Batch:[200/460]	 Loss Sum:27.5255	 forward Loss:4.2571;10.6	 backward Loss:5.7755;5.7648	 Sentiment Loss:1.1281
+[2022-11-13 15:27:51,891][main.py][line:2364][INFO] Epoch:[2/40]	 Batch:[300/460]	 Loss Sum:76.6831	 forward Loss:10.0054;33.3709	 backward Loss:9.7653;22.3295	 Sentiment Loss:1.212
+[2022-11-13 15:28:27,283][main.py][line:2364][INFO] Epoch:[2/40]	 Batch:[400/460]	 Loss Sum:98.2543	 forward Loss:12.8552;41.4647	 backward Loss:22.8452;17.6684	 Sentiment Loss:3.4207
+[2022-11-13 15:28:48,150][main.py][line:2377][INFO] dev
+[2022-11-13 15:29:04,828][main.py][line:1236][INFO] Triplet - Precision: 0.3994082828419873	Recall: 0.40059347062138434	F1: 0.3999994988165372
+[2022-11-13 15:29:04,829][main.py][line:1242][INFO] Aspect - Precision: 0.6833333304861111	Recall: 0.5878136179648258	F1: 0.6319840861301576
+[2022-11-13 15:29:04,829][main.py][line:1247][INFO] Opinion - Precision: 0.7354085574497722	Recall: 0.5608308588699381	F1: 0.6363631432907461
+[2022-11-13 15:29:04,829][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.5999999975	Recall: 0.5161290304081397	F1: 0.5549127954830877
+[2022-11-13 15:29:04,829][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.4467455608084451	Recall: 0.4480712152876225	F1: 0.447406906083412
+[2022-11-13 15:29:04,831][main.py][line:2391][INFO] test
+[2022-11-13 15:29:29,199][main.py][line:1236][INFO] Triplet - Precision: 0.3774319058804827	Recall: 0.39591836653894213	F1: 0.3864536827834592
+[2022-11-13 15:29:29,200][main.py][line:1242][INFO] Aspect - Precision: 0.6413612548655464	Recall: 0.5861244005116641	F1: 0.6124994994816566
+[2022-11-13 15:29:29,200][main.py][line:1247][INFO] Opinion - Precision: 0.7698019782925694	Recall: 0.6346938762557268	F1: 0.6957489437866686
+[2022-11-13 15:29:29,200][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.5235602080535073	Recall: 0.4784688983768687	F1: 0.4999994997629981
+[2022-11-13 15:29:29,200][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.44552529096201304	Recall: 0.46734693782174097	F1: 0.45617479818232226
+[2022-11-13 15:29:29,202][main.py][line:2403][INFO] Model saved after epoch 2
+[2022-11-13 15:29:30,893][main.py][line:2234][INFO] train
+[2022-11-13 15:29:31,400][main.py][line:2364][INFO] Epoch:[3/40]	 Batch:[0/460]	 Loss Sum:29.2789	 forward Loss:7.7127;7.3903	 backward Loss:9.3105;3.9108	 Sentiment Loss:0.9546
+[2022-11-13 15:30:06,390][main.py][line:2364][INFO] Epoch:[3/40]	 Batch:[100/460]	 Loss Sum:8.3491	 forward Loss:2.4573;0.4703	 backward Loss:2.1647;3.0092	 Sentiment Loss:0.2476
+[2022-11-13 15:30:41,418][main.py][line:2364][INFO] Epoch:[3/40]	 Batch:[200/460]	 Loss Sum:16.8924	 forward Loss:4.3264;3.4471	 backward Loss:6.1249;2.6033	 Sentiment Loss:0.3906
+[2022-11-13 15:31:17,549][main.py][line:2364][INFO] Epoch:[3/40]	 Batch:[300/460]	 Loss Sum:21.5444	 forward Loss:5.5778;4.4817	 backward Loss:6.9589;3.3325	 Sentiment Loss:1.1934
+[2022-11-13 15:31:54,159][main.py][line:2364][INFO] Epoch:[3/40]	 Batch:[400/460]	 Loss Sum:22.8006	 forward Loss:5.9389;3.64	 backward Loss:4.4734;8.6292	 Sentiment Loss:0.1191

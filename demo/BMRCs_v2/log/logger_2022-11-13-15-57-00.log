@@ -1,0 +1,34 @@
+[2022-11-13 15:57:00,951][debug.py][line:2101][INFO] Namespace(add_note='', batch_size=1, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gpu=True, hidden_size=768, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='BMRC', save_model_path='./checkpoint/2022-11-13-15-57-00-', task_type='ASTE', tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1)
+[2022-11-13 15:57:00,951][debug.py][line:2103][INFO] loading data......
+[2022-11-13 15:57:02,677][debug.py][line:2122][INFO] initial optimizer......
+[2022-11-13 15:57:02,692][debug.py][line:2133][INFO] New model and optimizer from epoch 1
+[2022-11-13 15:57:08,383][debug.py][line:2169][INFO] begin training......
+[2022-11-13 15:57:08,390][debug.py][line:2206][INFO] train
+[2022-11-13 15:57:17,522][debug.py][line:2421][INFO] dev
+[2022-11-13 15:58:48,294][debug.py][line:1217][INFO] Triplet - Precision: 0.0008844078888401514	Recall: 0.029673590416398842	F1: 0.0017175666029586765
+[2022-11-13 15:58:48,294][debug.py][line:1222][INFO] Aspect - Precision: 0.04778393348491417	Recall: 0.24731182707056693	F1: 0.08009258978328063
+[2022-11-13 15:58:48,294][debug.py][line:1227][INFO] Opinion - Precision: 0.08763586950568215	Recall: 0.38278931637154506	F1: 0.1426199288424005
+[2022-11-13 15:58:48,294][debug.py][line:1235][INFO] Aspect-Sentiment - Precision: 0.019390581704023142	Recall: 0.10035842257936049	F1: 0.03250117950905153
+[2022-11-13 15:58:48,294][debug.py][line:1243][INFO] Aspect-Opinion - Precision: 0.0021225789332163635	Recall: 0.07121661699935722	F1: 0.004122238535515991
+[2022-11-13 15:58:48,310][debug.py][line:2437][INFO] test
+[2022-11-13 16:00:41,846][debug.py][line:1217][INFO] Triplet - Precision: 0.0007303001533096984	Recall: 0.02040816322365681	F1: 0.001410072192016507
+[2022-11-13 16:00:41,847][debug.py][line:1222][INFO] Aspect - Precision: 0.05429162355000433	Recall: 0.25119617164785607	F1: 0.08928542193814114
+[2022-11-13 16:00:41,847][debug.py][line:1227][INFO] Opinion - Precision: 0.09001040578043162	Recall: 0.3530612237692628	F1: 0.14344909568936848
+[2022-11-13 16:00:41,847][debug.py][line:1235][INFO] Aspect-Sentiment - Precision: 0.013443640117143928	Recall: 0.06220095678899293	F1: 0.02210855124987196
+[2022-11-13 16:00:41,847][debug.py][line:1243][INFO] Aspect-Opinion - Precision: 0.0033593807052246126	Recall: 0.09387755082882132	F1: 0.006486572224084476
+[2022-11-13 16:00:41,849][debug.py][line:2451][INFO] Model saved after epoch 1
+[2022-11-13 16:00:44,123][debug.py][line:2206][INFO] train
+[2022-11-13 16:00:58,767][debug.py][line:2421][INFO] dev
+[2022-11-13 16:02:21,989][debug.py][line:1217][INFO] Triplet - Precision: 0.0007968833007971593	Recall: 0.026706231374758957	F1: 0.0015475320737143685
+[2022-11-13 16:02:21,990][debug.py][line:1222][INFO] Aspect - Precision: 0.04718945173685673	Recall: 0.24372759769273264	F1: 0.0790694955559635
+[2022-11-13 16:02:21,990][debug.py][line:1227][INFO] Opinion - Precision: 0.08775510198111897	Recall: 0.38278931637154506	F1: 0.14277778163506188
+[2022-11-13 16:02:21,990][debug.py][line:1235][INFO] Aspect-Sentiment - Precision: 0.018736988189634287	Recall: 0.09677419320152619	F1: 0.03139507700816637
+[2022-11-13 16:02:21,990][debug.py][line:1243][INFO] Aspect-Opinion - Precision: 0.0021250221354590913	Recall: 0.07121661699935722	F1: 0.0041268459744941335
+[2022-11-13 16:02:21,992][debug.py][line:2437][INFO] test
+[2022-11-13 16:04:17,698][debug.py][line:1217][INFO] Triplet - Precision: 0.0007316894709349755	Recall: 0.02040816322365681	F1: 0.0014126618606724471
+[2022-11-13 16:04:17,698][debug.py][line:1222][INFO] Aspect - Precision: 0.05431971026677718	Recall: 0.25119617164785607	F1: 0.08932339960086261
+[2022-11-13 16:04:17,698][debug.py][line:1227][INFO] Opinion - Precision: 0.09015112032821723	Recall: 0.3530612237692628	F1: 0.14362773725625927
+[2022-11-13 16:04:17,699][debug.py][line:1235][INFO] Aspect-Sentiment - Precision: 0.013450594923201968	Recall: 0.06220095678899293	F1: 0.022117955169236415
+[2022-11-13 16:04:17,699][debug.py][line:1243][INFO] Aspect-Opinion - Precision: 0.0033657715663008873	Recall: 0.09387755082882132	F1: 0.006498485125121552
+[2022-11-13 16:04:17,702][debug.py][line:2206][INFO] train
+[2022-11-13 16:04:32,235][debug.py][line:2421][INFO] dev

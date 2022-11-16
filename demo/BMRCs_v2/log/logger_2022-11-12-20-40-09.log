@@ -1,0 +1,12 @@
+[2022-11-12 20:40:10,114][main.py][line:2119][INFO] Namespace(task_type='ASTE', dataset_type='ASTE', data_path='./data', log_path='./log', save_model_path='./checkpoint/2022-11-12-20-40-09-', model_name='BMRC', work_nums=1, mode='train', bert_model_type='../../bert/bert-base-uncased', hidden_size=768, inference_beta=0.8, gpu=True, epoch_num=40, batch_size=2, learning_rate=0.001, tuning_bert_rate=1e-05, warm_up=0.1, beta=1, add_note='')
+[2022-11-12 20:40:10,114][main.py][line:2121][INFO] loading data......
+[2022-11-12 20:40:10,819][main.py][line:2143][INFO] initial optimizer......
+[2022-11-12 20:40:10,827][main.py][line:2155][INFO] New model and optimizer from epoch 1
+[2022-11-12 20:40:14,753][main.py][line:2189][INFO] begin training......
+[2022-11-12 20:40:14,931][main.py][line:2200][INFO] dev
+[2022-11-12 20:41:25,135][main.py][line:1236][INFO] Triplet - Precision: 0.0008841732978882252	Recall: 0.029673590416398842	F1: 0.0017171241967740638
+[2022-11-12 20:41:25,136][main.py][line:1242][INFO] Aspect - Precision: 0.04781704778391056	Recall: 0.24731182707056693	F1: 0.08013910118987816
+[2022-11-12 20:41:25,136][main.py][line:1247][INFO] Opinion - Precision: 0.08775510198111897	Recall: 0.38278931637154506	F1: 0.14277778163506188
+[2022-11-12 20:41:25,136][main.py][line:1253][INFO] Aspect-Sentiment - Precision: 0.019404019390572402	Recall: 0.10035842257936049	F1: 0.03252005362748445
+[2022-11-12 20:41:25,136][main.py][line:1261][INFO] Aspect-Opinion - Precision: 0.0021220159149317403	Recall: 0.07121661699935722	F1: 0.004121176741008494
+[2022-11-12 20:41:25,139][main.py][line:2207][INFO] dev_debug
