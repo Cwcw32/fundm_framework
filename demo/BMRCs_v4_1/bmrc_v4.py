@@ -796,6 +796,7 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
 
     triplet_predict_num = 0
     triplet_predict_num_2 = 0
+    triplet_predict_num_3 = 0
     asp_predict_num = 0
     opi_predict_num = 0
     asp_opi_predict_num = 0
@@ -803,6 +804,7 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
 
     triplet_match_num = 0
     triplet_match_num_2 = 0
+    triplet_match_num_3 = 0
     asp_match_num = 0
     opi_match_num = 0
     asp_opi_match_num = 0
@@ -818,7 +820,8 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
 
         # 预测三元组
         triplets_predict = []
-        triplets_predict_2 = []
+        triplets_predict_2 = [] # 再筛选
+        triplets_predict_3 = [] # 再添加
         asp_predict = []
         opi_predict = []
         asp_opi_predict = []
@@ -1106,22 +1109,7 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
         dic={0:'neural',1:'positive',2:'negative'}
         # PA_O
         # ["What", "aspect", "does", "the", "positive", "opinion", "soft", "describe", "?"]
-        F_A_O_P_aspect=[]
-        F_A_O_P_opinion=[]
-        F_A_O_P_aspect_opinion=[]
-        F_A_O_P_trip=[]
-
-        F_O_A_P_aspect =[]
-        F_O_A_P_opinion =[]
-        F_O_A_P_aspect_opinion =[]
-        F_O_A_P_trip =[]
-
-        ttt=[]
-        tttt=[]
-        ttttt=[]
-
-        trp_final=[]
-
+        triplets_predict_3=copy.deepcopy(triplets_predict)
         for idx in range(len(triplets_predict)):
             predict_opinion_num = len(triplets_predict[idx])
             text1='[CLS] What aspect does the '+dic[triplets_predict[idx][4]]+' opinion'
@@ -1182,11 +1170,15 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
                         temp_prob = math.sqrt(f_asp_prob[i] * PO_A_prob[idy])
                 if temp_prob>0.8:
                     triplet_predict_2 = asp_ind + opi_ind + [triplets_predict[idx][4]]
-                    triplets_predict_2.append(triplet_predict_2)
+                    if triplet_predict_2 not in triplets_predict_2:
+                        triplets_predict_2.append(triplet_predict_2)
+                    if triplet_predict_2 not in triplets_predict_3:
+                        triplets_predict_3.append(triplet_predict_2)
                 if asp_ind + opi_ind not in forward_pair_list:  # 加法也行吧，不用dic，节省一点内存
-                    ttt.append([asp] + [opi])
-                    tttt.append(temp_prob)
-                    ttttt.append(asp_ind + opi_ind+[triplets_predict[idx][4]])
+                    # ttt.append([asp] + [opi])
+                    # tttt.append(temp_prob)
+                    # ttttt.append(asp_ind + opi_ind+[triplets_predict[idx][4]])
+                    pass
                 else:
                     print('erro')
                     exit(1)
@@ -1195,7 +1187,83 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
         # PO_A
         # ["What", "opinion", "given", "the", "aspect", "rubber", "enclosure", "with", "the", "positive", "sentiment", "?"]
         # 这里和上面差不多，之后最好进行并集、交集、概率计算等方法
+        for idx in range(len(triplets_predict)):
+            predict_opinion_num = len(triplets_predict[idx])
+            text1='[CLS] What opinion given the aspect '
+            text2='with the '+dic[triplets_predict[idx][4]]+' sentiment'
+            PA_O_query = t.convert_tokens_to_ids(
+                [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in text1.split()])
+            asp=[]
+            if triplets_predict[idx][0]==triplets_predict[idx][1]:
+                asp=[passenge[triplets_predict[idx][0]].item()]
+                PA_O_query+=[passenge[triplets_predict[idx][1]].item()]
+            else:
+                for j in range(triplets_predict[idx][0], triplets_predict[idx][1]+1):  # 因为是span所以要循环
+                    PA_O_query.append(passenge[j].item())
+                    asp.append(passenge[j].item())
+            PA_O_query = t.convert_tokens_to_ids(
+                [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in text2.split()])
 
+            PA_O_query.append(t.convert_tokens_to_ids('?'))
+            PA_O_query.append(t.convert_tokens_to_ids('[SEP]'))
+            PA_O_query_seg = [0] * len(PA_O_query)
+            PA_O_length = len(PA_O_query) # 这个长度是要算的
+
+            PA_O_query = torch.tensor(PA_O_query).long().cuda()
+            PA_O_query = torch.cat([PA_O_query, passenge], -1).unsqueeze(0)
+            PA_O_query_seg += [1] * passenge.size(0)
+            PA_O_query_mask = torch.ones(PA_O_query.size(1)).float().cuda().unsqueeze(0)
+            PA_O_query_seg = torch.tensor(PA_O_query_seg).long().cuda().unsqueeze(0)
+
+            PA_O_start_scores, PA_O_end_scores = model(PA_O_query, PA_O_query_mask, PA_O_query_seg, 0)
+
+            PA_O_start_scores = F.softmax(PA_O_start_scores[0], dim=1)
+            PA_O_end_scores = F.softmax(PA_O_end_scores[0], dim=1)
+            PA_O_start_prob, PA_O_start_ind = torch.max(PA_O_start_scores, dim=1)
+            PA_O_end_prob, PA_O_end_ind = torch.max(PA_O_end_scores, dim=1)
+
+            PA_O_start_prob_temp = []
+            PA_O_end_prob_temp = []
+            PA_O_start_index_temp = []
+            PA_O_end_index_temp = []
+
+            for k in range(PA_O_start_ind.size(0)):
+                if PA_O_query_seg[0, k] == 1:
+                    if PA_O_start_ind[k].item() == 1:
+                        PA_O_start_index_temp.append(k)
+                        PA_O_start_prob_temp.append(PA_O_start_prob[k].item())
+                    if PA_O_end_ind[k].item() == 1:
+                        PA_O_end_index_temp.append(k)
+                        PA_O_end_prob_temp.append(PA_O_end_prob[k].item())
+            #print(1)
+            # # 第二次过滤？
+            PA_O_start_index, PA_O_end_index, PA_O_prob = utils.filter_unpaired_robmrc(
+                PA_O_start_prob_temp, PA_O_end_prob_temp, PA_O_start_index_temp, PA_O_end_index_temp, max_len=200)
+
+            # # pair的过滤
+            for idy in range(len(PA_O_start_index)):
+                opi = [PA_O_query[0][j].item() for j in range(PA_O_start_index[idy], PA_O_end_index[idy] + 1)]
+                asp_ind = [triplets_predict[idx][0], triplets_predict[idx][1]]  # 因为提问的长度是5，也就是说 [CLS] What aspects ? [SEP] 对应的长度是5，故减掉就是在原句中的？（说对应是因为一个单词长度不一定是1）
+                opi_ind = [PA_O_start_index[idy] - PA_O_length,PA_O_end_index[idy] - PA_O_length]  # 因为aspect的长度不同，所以这里是之前算的问题Q的长度，减去之后就是原位置
+                temp_prob = PA_O_prob[idy]
+                if opt is not None:
+                    if opt.model_name=='ROBMRC':
+                        temp_prob = math.sqrt(f_asp_prob[i] * PA_O_prob[idy])
+                if temp_prob>0.8:
+
+                    triplet_predict_2 = asp_ind + opi_ind + [triplets_predict[idx][4]]
+                    if triplet_predict_2 not in triplets_predict_2:
+                        triplets_predict_2.append(triplet_predict_2)
+                    if triplet_predict_2 not in triplets_predict_3:
+                        triplets_predict_3.append(triplet_predict_2)
+                if asp_ind + opi_ind not in forward_pair_list:  # 加法也行吧，不用dic，节省一点内存
+                    # ttt.append([asp] + [opi])
+                    # tttt.append(temp_prob)
+                    # ttttt.append(asp_ind + opi_ind+[triplets_predict[idx][4]])
+                    pass
+                else:
+                    print('erro')
+                    exit(1)
 
 
         ################
@@ -1210,6 +1278,7 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
 
         triplet_predict_num += len(triplets_predict)
         triplet_predict_num_2 += len(triplets_predict_2)
+        triplet_predict_num_3 += len(triplets_predict_3)
         asp_predict_num += len(asp_predict)
         opi_predict_num += len(opi_predict)
         asp_opi_predict_num += len(asp_opi_predict)
@@ -1219,10 +1288,17 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
             for trip_ in triplets_predict:
                 if trip_ == trip:
                     triplet_match_num += 1
+
         for trip in triplets_target:
             for trip_ in triplets_predict_2:
                 if trip_ == trip:
                     triplet_match_num_2 += 1
+
+        for trip in triplets_target:
+            for trip_ in triplets_predict_3:
+                if trip_ == trip:
+                    triplet_match_num_3 += 1
+
         for trip in asp_target:
             for trip_ in asp_predict:
                 if trip_ == trip:
@@ -1248,7 +1324,12 @@ def test_bmrc(model, t, batch_generator, standard, beta, logger,opt=None):
     precision_2 = float(triplet_match_num_2) / float(triplet_predict_num_2+1e-6)
     recall_2 = float(triplet_match_num_2) / float(triplet_target_num+1e-6)
     f1_2 = 2 * precision_2 * recall_2 / (precision_2 + recall_2+1e-6)
-    logger.info('Triplet - Precision: {}\tRecall: {}\tF1: {}'.format(precision_2, recall_2, f1_2))
+    logger.info('Triplet - Precision_2: {}\tRecall: {}\tF1: {}'.format(precision_2, recall_2, f1_2))
+
+    precision_3 = float(triplet_match_num_3) / float(triplet_predict_num_3+1e-6)
+    recall_3 = float(triplet_match_num_3) / float(triplet_target_num+1e-6)
+    f1_3 = 2 * precision_3 * recall_3 / (precision_3 + recall_3+1e-6)
+    logger.info('Triplet - Precision_3: {}\tRecall: {}\tF1: {}'.format(precision_3, recall_3, f1_3))
 
     precision_aspect = float(asp_match_num) / float(asp_predict_num+1e-6)
     recall_aspect = float(asp_match_num) / float(asp_target_num+1e-6)
