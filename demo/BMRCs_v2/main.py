@@ -3,7 +3,6 @@ import math
 import os
 from datetime import datetime
 import copy
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 import numpy as np
@@ -1152,7 +1151,8 @@ def test2(model, t, batch_generator, standard, beta, logger):
                         if backward_pair_list[idx][1] not in final_opi_list[asp_index]:
                             final_opi_list[asp_index].append(backward_pair_list[idx][1])
                             final_opi_ind_list[asp_index].append(backward_pair_ind_list[idx][2:])
-    # sentiment
+        # sentiment
+
         for idx in range(len(final_asp_list)):
             predict_opinion_num = len(final_opi_list[idx])
             sentiment_query = t.convert_tokens_to_ids(
@@ -2220,12 +2220,12 @@ def train(args):
         #
         #
         # # test
-        # batch_generator_test = Data.generate_batches(dataset=test_dataset, batch_size=1, shuffle=False,
-        #                                              gpu=args.gpu)
-        # logger.info("test")
-        # test_f1 = test2(model, tokenizer_1, batch_generator_test, test_standard, 0.8,
-        #                 logger)  # logger,gpu='cuda', max_len=200,task_type=task_type)
-        #
+        batch_generator_test = Data.generate_batches(dataset=test_dataset, batch_size=1, shuffle=False,
+                                                     gpu=args.gpu)
+        logger.info("test")
+        test_f1 = test2(model, tokenizer_1, batch_generator_test, test_standard, 0.8,
+                        logger)  # logger,gpu='cuda', max_len=200,task_type=task_type)
+
         # #######debug
         # batch_generator_test_2 = Data2.generate_fi_batches_2(dataset=test_dataset_2, batch_size=1, shuffle=False)
         # logger.info("test_debug")
@@ -2722,14 +2722,14 @@ if __name__ == '__main__':
     # 训练过程的超参数
     parser.add_argument('--gpu', type=bool, default=True, help='是否使用GPU')
     parser.add_argument('--epoch_num', type=int, default=50, help='训练的次数')
-    parser.add_argument('--batch_size', type=int, default=4)
+    parser.add_argument('--batch_size', type=int, default=1)
     parser.add_argument('--learning_rate', type=float, default=1e-3)
     parser.add_argument('--tuning_bert_rate', type=float, default=1e-5)
     parser.add_argument('--warm_up', type=float, default=0.1)
     parser.add_argument('--beta', type=float, default=1)
     parser.add_argument('--add_note', type=str, default='')# 日志的名字是否要特殊一点
 
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(1)
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(0)
     opt = parser.parse_args()
 
 

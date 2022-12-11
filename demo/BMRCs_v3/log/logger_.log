@@ -1,6 +1,13 @@
-[2022-11-16 15:21:22,986][bmrc_v3.py][line:1193][INFO] Namespace(add_note='', batch_size=2, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gpu=True, hidden_size=768, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='BMRC', save_model_path='./checkpoint/2022-11-16-15-21-22-', task_type='ASTE', tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1)
-[2022-11-16 15:21:22,987][bmrc_v3.py][line:1194][INFO] ####################################
-[2022-11-16 15:21:22,987][bmrc_v3.py][line:1195][INFO] ####################################
-[2022-11-16 15:21:22,987][bmrc_v3.py][line:1196][INFO] loading data......
-[2022-11-16 15:21:25,732][bmrc_v3.py][line:1214][INFO] initial optimizer......
-[2022-11-16 15:21:25,747][bmrc_v3.py][line:1224][INFO] New model and optimizer from epoch 1
+[2022-11-18 12:14:05,524][bmrc_v3.py][line:1563][INFO] Namespace(add_note='', batch_size=2, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gpu=True, hidden_size=768, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='ROBMRC', save_model_path='./checkpoint/2022-11-18-12-14-05-', task_type='ASTE', tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1)
+[2022-11-18 12:14:05,525][bmrc_v3.py][line:1564][INFO] ####################################
+[2022-11-18 12:14:05,525][bmrc_v3.py][line:1565][INFO] ####################################
+[2022-11-18 12:14:05,525][bmrc_v3.py][line:1566][INFO] loading data......
+[2022-11-18 12:14:07,426][bmrc_v3.py][line:1584][INFO] initial optimizer......
+[2022-11-18 12:14:07,435][bmrc_v3.py][line:1594][INFO] New model and optimizer from epoch 1
+[2022-11-18 12:14:14,436][bmrc_v3.py][line:1610][INFO] begin training......
+[2022-11-18 12:14:15,136][bmrc_v3.py][line:1675][INFO] train
+[2022-11-18 12:14:49,278][bmrc_v3.py][line:1807][INFO] Epoch:[1/40]	 Batch:[100/460]	 Loss Sum:274.8851	 forward Loss:21.4486;27.0647	 backward Loss:104.3382;97.1415	 Sentiment Loss:24.8921	
+[2022-11-18 12:15:22,242][bmrc_v3.py][line:1807][INFO] Epoch:[1/40]	 Batch:[200/460]	 Loss Sum:167.3672	 forward Loss:13.4648;15.6458	 backward Loss:51.3545;68.5897	 Sentiment Loss:18.3123	
+[2022-11-18 12:15:55,455][bmrc_v3.py][line:1807][INFO] Epoch:[1/40]	 Batch:[300/460]	 Loss Sum:132.0607	 forward Loss:10.7087;12.0034	 backward Loss:41.3256;60.8112	 Sentiment Loss:7.2117	
+[2022-11-18 12:16:28,124][bmrc_v3.py][line:1807][INFO] Epoch:[1/40]	 Batch:[400/460]	 Loss Sum:86.2429	 forward Loss:2.7871;13.1569	 backward Loss:50.6534;13.7492	 Sentiment Loss:5.8963	
+[2022-11-18 12:16:47,866][bmrc_v3.py][line:1811][INFO] dev

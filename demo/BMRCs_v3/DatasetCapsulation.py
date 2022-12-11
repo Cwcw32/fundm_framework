@@ -259,7 +259,7 @@ def generate_batches(dataset, batch_size, shuffle=True, drop_last=True, gpu=True
         #print(n)
         _dict = {}
         for name, tensor in data_dict.items():
-            if gpu is True:
+            if gpu is True and 'line' not in name:
                 _dict[name] = data_dict[name].long().cuda()
             else:
                 _dict[name] = data_dict[name]

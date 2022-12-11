@@ -504,22 +504,36 @@ if __name__ == '__main__':
                             {...}
                         ]
                 """
+
+                # S->A
                 forward_aspect_query_list = []  # S->A
                 forward_aspect_answer_list = []
+
+                # A->O
                 forward_aspect_opinion_query_list = [] # A->O
                 forward_aspect_opinion_answer_list = []
+
+                # A->C
                 forward_aspect_category_query_list=[]  # A->C
                 forward_aspect_category_answer_list=[]
+
+                # AO->C
                 forward_aspect_opinion_category_query_list=[]  #(A,O)->C
                 forward_aspect_opinion_category_answer_list=[]
+
+                # AC->O
                 forward_aspect_category_opinion_query_list=[] #(A,C)->O
                 forward_aspect_category_opinion_answer_list=[]
 
+                # AOC->P
                 forward_pol_query_list = [] #(A,O,C)->P
                 forward_pol_answer_list = []
 
+                # S->O
                 forward_opinion_query_list = []  # S->O
                 forward_opinion_answer_list = []  # 与上面这个对应的相应的答案，0为不是答案，1为是答案
+
+
                 forward_opinion_aspect_query_list = [] # O->A
                 forward_opinion_aspect_answer_list = []
                 forward_opinion_category_query_list = [] # O->C
@@ -576,11 +590,11 @@ if __name__ == '__main__':
                     # 待处理aspect大于1，其中有NULL的情况
                     #####
 
-                # 从C到A的能力
+                # C_A?
                 forward_category_aspect_query_list=c_a_q
                 forward_category_aspect_answer_list=c_a_a
 
-                # 从C到O的能力
+                # c_o
                 forward_category_opinion_query_list=c_o_q
                 forward_category_opinion_answer_list=c_o_a
 

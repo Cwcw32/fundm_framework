@@ -18,6 +18,7 @@ from BMRCs import BMRC, ROBMRC
 from data_process import SYZDataset
 import DatasetCapsulation as Data
 import utils
+import Data as Data2
 
 def test_ROBMRC(model, tokenize, batch_generator, test_data, beta, logger, gpu, max_len):
     model.eval()
@@ -784,6 +785,374 @@ def test_ROBMRC_2(model, t, batch_generator, standard, beta, logger):
                                                                     f1_aspect_opinion))
     return f1
 
+
+def test(model, tokenize, batch_generator, test_data, beta, logger, gpu, max_len):
+    model.eval()
+
+    triplet_target_num = 0
+    asp_target_num = 0
+    opi_target_num = 0
+    asp_opi_target_num = 0
+    asp_sent_target_num = 0
+
+    triplet_predict_num = 0
+    asp_predict_num = 0
+    opi_predict_num = 0
+    asp_opi_predict_num = 0
+    asp_sent_predict_num = 0
+
+    triplet_match_num = 0
+    asp_match_num = 0
+    opi_match_num = 0
+    asp_opi_match_num = 0
+    asp_sent_match_num = 0
+
+    for batch_index, batch_dict in enumerate(batch_generator):
+
+        triplets_target = test_data[batch_index].triplet_list
+        asp_target = test_data[batch_index].aspect_list
+        opi_target = test_data[batch_index].opinion_list
+        asp_opi_target = test_data[batch_index].asp_opi_list
+        asp_sent_target = test_data[batch_index].asp_sent_list
+
+        # 预测三元组
+        triplets_predict = []
+        asp_predict = []
+        opi_predict = []
+        asp_opi_predict = []
+        asp_sent_predict = []
+
+        forward_pair_list = []
+        forward_pair_prob = []
+        forward_pair_ind_list = []
+
+        backward_pair_list = []
+        backward_pair_prob = []
+        backward_pair_ind_list = []
+
+        final_asp_list = []
+        final_opi_list = []
+        final_asp_ind_list = []
+        final_opi_ind_list = []
+
+        ok_start_index = batch_dict['forward_asp_answer_start'][0].gt(-1).float().nonzero()
+
+        ok_start_tokens = batch_dict['forward_asp_query'][0][ok_start_index].squeeze(1)
+
+        f_asp_start_scores, f_asp_end_scores = model(batch_dict['forward_asp_query'],
+                                                     batch_dict['forward_asp_query_mask'],
+                                                     batch_dict['forward_asp_query_seg'], 'S_A')
+
+        f_asp_start_scores = F.softmax(f_asp_start_scores[0], dim=1)
+        f_asp_end_scores = F.softmax(f_asp_end_scores[0], dim=1)
+
+        f_asp_start_prob, f_asp_start_ind = torch.max(f_asp_start_scores, dim=1)
+        f_asp_end_prob, f_asp_end_ind = torch.max(f_asp_end_scores, dim=1)
+
+        f_asp_start_prob_temp = []
+        f_asp_end_prob_temp = []
+        f_asp_start_index_temp = []
+        f_asp_end_index_temp = []
+        for start_index in range(f_asp_start_ind.size(0)):
+            if batch_dict['forward_asp_answer_start'][0, start_index] != -1:
+                if f_asp_start_ind[start_index].item() == 1:
+                    f_asp_start_index_temp.append(start_index)
+                    f_asp_start_prob_temp.append(f_asp_start_prob[start_index].item())
+                if f_asp_end_ind[start_index].item() == 1:
+                    f_asp_end_index_temp.append(start_index)
+                    f_asp_end_prob_temp.append(f_asp_end_prob[start_index].item())
+
+        f_asp_start_index, f_asp_end_index, f_asp_prob = utils.filter_unpaired(
+            f_asp_start_prob_temp, f_asp_end_prob_temp, f_asp_start_index_temp, f_asp_end_index_temp, max_len)
+
+        # 根据预测到的切面，生成查询
+        for start_index in range(len(f_asp_start_index)):
+            opinion_query = tokenize.convert_tokens_to_ids(
+                [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in
+                 '[CLS] What opinion given the aspect'.split(' ')])
+            for j in range(f_asp_start_index[start_index], f_asp_end_index[start_index] + 1):
+                opinion_query.append(batch_dict['forward_asp_query'][0][j].item())
+            opinion_query.append(tokenize.convert_tokens_to_ids('?'))
+            opinion_query.append(tokenize.convert_tokens_to_ids('[SEP]'))
+            opinion_query_seg = [0] * len(opinion_query)
+            f_opi_length = len(opinion_query)
+
+            opinion_query = torch.tensor(opinion_query).long()
+            if gpu:
+                opinion_query = opinion_query.cuda()
+            opinion_query = torch.cat([opinion_query, ok_start_tokens], -1).unsqueeze(0)
+            opinion_query_seg += [1] * ok_start_tokens.size(0)
+            opinion_query_mask = torch.ones(opinion_query.size(1)).float().unsqueeze(0)
+            if gpu:
+                opinion_query_mask = opinion_query_mask.cuda()
+            opinion_query_seg = torch.tensor(opinion_query_seg).long().unsqueeze(0)
+            if gpu:
+                opinion_query_seg = opinion_query_seg.cuda()
+
+            f_opi_start_scores, f_opi_end_scores = model(opinion_query, opinion_query_mask, opinion_query_seg, 'A_O')
+
+            f_opi_start_scores = F.softmax(f_opi_start_scores[0], dim=1)
+            f_opi_end_scores = F.softmax(f_opi_end_scores[0], dim=1)
+            f_opi_start_prob, f_opi_start_ind = torch.max(f_opi_start_scores, dim=1)
+            f_opi_end_prob, f_opi_end_ind = torch.max(f_opi_end_scores, dim=1)
+
+            f_opi_start_prob_temp = []
+            f_opi_end_prob_temp = []
+            f_opi_start_index_temp = []
+            f_opi_end_index_temp = []
+            for k in range(f_opi_start_ind.size(0)):
+                if opinion_query_seg[0, k] == 1:
+                    if f_opi_start_ind[k].item() == 1:
+                        f_opi_start_index_temp.append(k)
+                        f_opi_start_prob_temp.append(f_opi_start_prob[k].item())
+                    if f_opi_end_ind[k].item() == 1:
+                        f_opi_end_index_temp.append(k)
+                        f_opi_end_prob_temp.append(f_opi_end_prob[k].item())
+
+            f_opi_start_index, f_opi_end_index, f_opi_prob = utils.filter_unpaired(
+                f_opi_start_prob_temp, f_opi_end_prob_temp, f_opi_start_index_temp, f_opi_end_index_temp, max_len)
+
+            for idx in range(len(f_opi_start_index)):
+                asp = [batch_dict['forward_asp_query'][0][j].item() for j in
+                       range(f_asp_start_index[start_index], f_asp_end_index[start_index] + 1)]
+                opi = [opinion_query[0][j].item() for j in range(f_opi_start_index[idx], f_opi_end_index[idx] + 1)]
+                asp_ind = [f_asp_start_index[start_index] - 5, f_asp_end_index[start_index] - 5]
+                opi_ind = [f_opi_start_index[idx] - f_opi_length, f_opi_end_index[idx] - f_opi_length]
+                temp_prob = math.sqrt(f_asp_prob[start_index] * f_opi_prob[idx])
+                if asp_ind + opi_ind not in forward_pair_list:
+                    forward_pair_list.append([asp] + [opi])
+                    forward_pair_prob.append(temp_prob)
+                    forward_pair_ind_list.append(asp_ind + opi_ind)
+                else:
+                    print('error')
+                    exit(1)
+
+        b_opi_start_scores, b_opi_end_scores = model(batch_dict['backward_opi_query'],
+                                                     batch_dict['backward_opi_query_mask'],
+                                                     batch_dict['backward_opi_query_seg'], 'S_O')
+        b_opi_start_scores = F.softmax(b_opi_start_scores[0], dim=1)
+        b_opi_end_scores = F.softmax(b_opi_end_scores[0], dim=1)
+        b_opi_start_prob, b_opi_start_ind = torch.max(b_opi_start_scores, dim=1)
+        b_opi_end_prob, b_opi_end_ind = torch.max(b_opi_end_scores, dim=1)
+
+        b_opi_start_prob_temp = []
+        b_opi_end_prob_temp = []
+        b_opi_start_index_temp = []
+        b_opi_end_index_temp = []
+        for start_index in range(b_opi_start_ind.size(0)):
+            if batch_dict['backward_opi_answer_start'][0, start_index] != -1:
+                if b_opi_start_ind[start_index].item() == 1:
+                    b_opi_start_index_temp.append(start_index)
+                    b_opi_start_prob_temp.append(b_opi_start_prob[start_index].item())
+                if b_opi_end_ind[start_index].item() == 1:
+                    b_opi_end_index_temp.append(start_index)
+                    b_opi_end_prob_temp.append(b_opi_end_prob[start_index].item())
+
+        b_opi_start_index, b_opi_end_index, b_opi_prob = utils.filter_unpaired(
+            b_opi_start_prob_temp, b_opi_end_prob_temp, b_opi_start_index_temp, b_opi_end_index_temp, max_len)
+
+        for start_index in range(len(b_opi_start_index)):
+            aspect_query = tokenize.convert_tokens_to_ids(
+                [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in
+                 '[CLS] What aspect does the opinion'.split(' ')])
+            for j in range(b_opi_start_index[start_index], b_opi_end_index[start_index] + 1):
+                aspect_query.append(batch_dict['backward_opi_query'][0][j].item())
+            aspect_query.append(tokenize.convert_tokens_to_ids('describe'))
+            aspect_query.append(tokenize.convert_tokens_to_ids('?'))
+            aspect_query.append(tokenize.convert_tokens_to_ids('[SEP]'))
+            aspect_query_seg = [0] * len(aspect_query)
+            b_asp_length = len(aspect_query)
+            aspect_query = torch.tensor(aspect_query).long()
+            if gpu:
+                aspect_query = aspect_query.cuda()
+            aspect_query = torch.cat([aspect_query, ok_start_tokens], -1).unsqueeze(0)
+            aspect_query_seg += [1] * ok_start_tokens.size(0)
+            aspect_query_mask = torch.ones(aspect_query.size(1)).float().unsqueeze(0)
+            if gpu:
+                aspect_query_mask = aspect_query_mask.cuda()
+            aspect_query_seg = torch.tensor(aspect_query_seg).long().unsqueeze(0)
+            if gpu:
+                aspect_query_seg = aspect_query_seg.cuda()
+
+            b_asp_start_scores, b_asp_end_scores = model(aspect_query, aspect_query_mask, aspect_query_seg, 'O_A')
+
+            b_asp_start_scores = F.softmax(b_asp_start_scores[0], dim=1)
+            b_asp_end_scores = F.softmax(b_asp_end_scores[0], dim=1)
+            b_asp_start_prob, b_asp_start_ind = torch.max(b_asp_start_scores, dim=1)
+            b_asp_end_prob, b_asp_end_ind = torch.max(b_asp_end_scores, dim=1)
+
+            b_asp_start_prob_temp = []
+            b_asp_end_prob_temp = []
+            b_asp_start_index_temp = []
+            b_asp_end_index_temp = []
+            for k in range(b_asp_start_ind.size(0)):
+                if aspect_query_seg[0, k] == 1:
+                    if b_asp_start_ind[k].item() == 1:
+                        b_asp_start_index_temp.append(k)
+                        b_asp_start_prob_temp.append(b_asp_start_prob[k].item())
+                    if b_asp_end_ind[k].item() == 1:
+                        b_asp_end_index_temp.append(k)
+                        b_asp_end_prob_temp.append(b_asp_end_prob[k].item())
+
+            b_asp_start_index, b_asp_end_index, b_asp_prob = utils.filter_unpaired(
+                b_asp_start_prob_temp, b_asp_end_prob_temp, b_asp_start_index_temp, b_asp_end_index_temp, max_len)
+
+            for idx in range(len(b_asp_start_index)):
+                opi = [batch_dict['backward_opi_query'][0][j].item() for j in
+                       range(b_opi_start_index[start_index], b_opi_end_index[start_index] + 1)]
+                asp = [aspect_query[0][j].item() for j in range(b_asp_start_index[idx], b_asp_end_index[idx] + 1)]
+                asp_ind = [b_asp_start_index[idx] - b_asp_length, b_asp_end_index[idx] - b_asp_length]
+                opi_ind = [b_opi_start_index[start_index] - 5, b_opi_end_index[start_index] - 5]
+                temp_prob = math.sqrt(b_asp_prob[idx] * b_opi_prob[start_index])
+                if asp_ind + opi_ind not in backward_pair_ind_list:
+                    backward_pair_list.append([asp] + [opi])
+                    backward_pair_prob.append(temp_prob)
+                    backward_pair_ind_list.append(asp_ind + opi_ind)
+                else:
+                    print('error')
+                    exit(1)
+
+        for idx in range(len(forward_pair_list)):
+            if forward_pair_list[idx] in backward_pair_list or forward_pair_prob[idx] >= beta:
+                if forward_pair_list[idx][0] not in final_asp_list:
+                    final_asp_list.append(forward_pair_list[idx][0])
+                    final_opi_list.append([forward_pair_list[idx][1]])
+                    final_asp_ind_list.append(forward_pair_ind_list[idx][:2])
+                    final_opi_ind_list.append([forward_pair_ind_list[idx][2:]])
+                else:
+                    asp_index = final_asp_list.index(forward_pair_list[idx][0])
+                    if forward_pair_list[idx][1] not in final_opi_list[asp_index]:
+                        final_opi_list[asp_index].append(forward_pair_list[idx][1])
+                        final_opi_ind_list[asp_index].append(forward_pair_ind_list[idx][2:])
+        # backward
+        for idx in range(len(backward_pair_list)):
+            if backward_pair_list[idx] not in forward_pair_list:
+                if backward_pair_prob[idx] >= beta:
+                    if backward_pair_list[idx][0] not in final_asp_list:
+                        final_asp_list.append(backward_pair_list[idx][0])
+                        final_opi_list.append([backward_pair_list[idx][1]])
+                        final_asp_ind_list.append(backward_pair_ind_list[idx][:2])
+                        final_opi_ind_list.append([backward_pair_ind_list[idx][2:]])
+                    else:
+                        asp_index = final_asp_list.index(backward_pair_list[idx][0])
+                        if backward_pair_list[idx][1] not in final_opi_list[asp_index]:
+                            final_opi_list[asp_index].append(backward_pair_list[idx][1])
+                            final_opi_ind_list[asp_index].append(backward_pair_ind_list[idx][2:])
+
+        # sentiment
+        for idx in range(len(final_asp_list)):
+            predict_opinion_num = len(final_opi_list[idx])
+            for idy in range(predict_opinion_num):
+                sentiment_query = tokenize.convert_tokens_to_ids(
+                    [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in
+                     '[CLS] What sentiment given the aspect'.split(' ')])
+                sentiment_query += final_asp_list[idx]
+                sentiment_query += tokenize.convert_tokens_to_ids(
+                    [word.lower() for word in 'and the opinion'.split(' ')])
+                sentiment_query += final_opi_list[idx][idy]
+                sentiment_query.append(tokenize.convert_tokens_to_ids('?'))
+                sentiment_query.append(tokenize.convert_tokens_to_ids('[SEP]'))
+
+                sentiment_query_seg = [0] * len(sentiment_query)
+                sentiment_query = torch.tensor(sentiment_query).long()
+                if gpu:
+                    sentiment_query = sentiment_query.cuda()
+                sentiment_query = torch.cat([sentiment_query, ok_start_tokens], -1).unsqueeze(0)
+                sentiment_query_seg += [1] * ok_start_tokens.size(0)
+                sentiment_query_mask = torch.ones(sentiment_query.size(1)).float().unsqueeze(0)
+                if gpu:
+                    sentiment_query_mask = sentiment_query_mask.cuda()
+                sentiment_query_seg = torch.tensor(sentiment_query_seg).long().unsqueeze(0)
+                if gpu:
+                    sentiment_query_seg = sentiment_query_seg.cuda()
+
+                sentiment_scores = model(sentiment_query, sentiment_query_mask, sentiment_query_seg, 'AO_P')
+                sentiment_predicted = torch.argmax(sentiment_scores[0], dim=0).item()
+
+                asp_f = []
+                opi_f = []
+                asp_f.append(final_asp_ind_list[idx][0])
+                asp_f.append(final_asp_ind_list[idx][1])
+                opi_f.append(final_opi_ind_list[idx][idy][0])
+                opi_f.append(final_opi_ind_list[idx][idy][1])
+                triplet_predict = asp_f + opi_f + [sentiment_predicted]
+                if opi_f not in opi_predict:
+                    opi_predict.append(opi_f)
+                if asp_f + opi_f not in asp_opi_predict:
+                    asp_opi_predict.append(asp_f + opi_f)
+                if asp_f + [sentiment_predicted] not in asp_sent_predict:
+                    asp_sent_predict.append(asp_f + [sentiment_predicted])
+                if asp_f not in asp_predict:
+                    asp_predict.append(asp_f)
+                if triplet_predict not in triplets_predict:
+                    triplets_predict.append(triplet_predict)
+
+        triplet_target_num += len(triplets_target)
+        asp_target_num += len(asp_target)
+        opi_target_num += len(opi_target)
+        asp_opi_target_num += len(asp_opi_target)
+        asp_sent_target_num += len(asp_sent_target)
+
+        triplet_predict_num += len(triplets_predict)
+        asp_predict_num += len(asp_predict)
+        opi_predict_num += len(opi_predict)
+        asp_opi_predict_num += len(asp_opi_predict)
+        asp_sent_predict_num += len(asp_sent_predict)
+
+        for trip in triplets_predict:
+            for trip_ in triplets_target:
+                if trip_ == trip:
+                    triplet_match_num += 1
+        for trip in asp_predict:
+            for trip_ in asp_target:
+                if trip_ == trip:
+                    asp_match_num += 1
+        for trip in opi_predict:
+            for trip_ in opi_target:
+                if trip_ == trip:
+                    opi_match_num += 1
+        for trip in asp_opi_predict:
+            for trip_ in asp_opi_target:
+                if trip_ == trip:
+                    asp_opi_match_num += 1
+        for trip in asp_sent_predict:
+            for trip_ in asp_sent_target:
+                if trip_ == trip:
+                    asp_sent_match_num += 1
+
+    precision = float(triplet_match_num) / float(triplet_predict_num + 1e-6)
+    recall = float(triplet_match_num) / float(triplet_target_num + 1e-6)
+    f1 = 2 * precision * recall / (precision + recall + 1e-6)
+    logger.info('Triplet - Precision: {}\tRecall: {}\tF1: {}'.format(precision, recall, f1))
+
+    precision_aspect = float(asp_match_num) / float(asp_predict_num + 1e-6)
+    recall_aspect = float(asp_match_num) / float(asp_target_num + 1e-6)
+    f1_aspect = 2 * precision_aspect * recall_aspect / (precision_aspect + recall_aspect + 1e-6)
+    logger.info('Aspect - Precision: {}\tRecall: {}\tF1: {}'.format(precision_aspect, recall_aspect, f1_aspect))
+
+    precision_opinion = float(opi_match_num) / float(opi_predict_num + 1e-6)
+    recall_opinion = float(opi_match_num) / float(opi_target_num + 1e-6)
+    f1_opinion = 2 * precision_opinion * recall_opinion / (precision_opinion + recall_opinion + 1e-6)
+    logger.info('Opinion - Precision: {}\tRecall: {}\tF1: {}'.format(precision_opinion, recall_opinion, f1_opinion))
+
+    precision_aspect_sentiment = float(asp_sent_match_num) / float(asp_sent_predict_num + 1e-6)
+    recall_aspect_sentiment = float(asp_sent_match_num) / float(asp_sent_target_num + 1e-6)
+    f1_aspect_sentiment = 2 * precision_aspect_sentiment * recall_aspect_sentiment / (
+            precision_aspect_sentiment + recall_aspect_sentiment + 1e-6)
+    logger.info('Aspect-Sentiment - Precision: {}\tRecall: {}\tF1: {}'.format(precision_aspect_sentiment,
+                                                                              recall_aspect_sentiment,
+                                                                              f1_aspect_sentiment))
+
+    precision_aspect_opinion = float(asp_opi_match_num) / float(asp_opi_predict_num + 1e-6)
+    recall_aspect_opinion = float(asp_opi_match_num) / float(asp_opi_target_num + 1e-6)
+    f1_aspect_opinion = 2 * precision_aspect_opinion * recall_aspect_opinion / (
+            precision_aspect_opinion + recall_aspect_opinion + 1e-6)
+    logger.info(
+        'Aspect-Opinion - Precision: {}\tRecall: {}\tF1: {}'.format(precision_aspect_opinion, recall_aspect_opinion,
+                                                                    f1_aspect_opinion))
+    return f1
+
+
 def test_bmrc(model, t, batch_generator, standard, beta, logger):
     model.eval()
 
@@ -1240,11 +1609,42 @@ def train(args):
     best_f1 = 0.
 
 
-
+    ####################
     ########debug
+    ####################
     standard_data = torch.load('./data/14lap_standard.pt')
     dev_standard = standard_data['dev']
     test_standard = standard_data['test']
+
+    if opt.model_name=='ROBMRC':
+        train_data_path = './data/robmrc/14lap.pt'
+        test_data_path = './data/robmrc/14lap_test.pt'
+        train_total_data = torch.load(train_data_path)
+        test_total_data = torch.load(test_data_path)
+
+        # train_data = train_total_data[arguments.train]
+        # dev_data = train_total_data[arguments.dev]
+        # test_data = train_total_data[arguments.test]
+        # max_len = train_total_data[arguments.max_len]
+        # max_aspect_num = train_total_data[arguments.max_aspect_num]
+        #
+        # train_standard = test_total_data[arguments.train]
+        # dev_standard = test_total_data[arguments.dev]
+        # test_standard = test_total_data[arguments.test]
+        print(1)
+        train_data = train_total_data['train']
+        dev_data = train_total_data['dev']
+        test_data = train_total_data['test']
+        max_len = train_total_data['max_tokens_len']
+        max_aspect_num = train_total_data['max_aspect_num']
+
+        train_standard = test_total_data['train']
+        dev_standard = test_total_data['dev']
+        test_standard = test_total_data['test']
+        train_dataset = Data2.ReviewDataset(train_data)
+        dev_dataset = Data2.ReviewDataset(dev_data)
+        test_dataset = Data2.ReviewDataset(test_data)
+    #################debug end
 
     _dic2={}
 
@@ -1285,52 +1685,108 @@ def train(args):
             ###############
             ##  不要有的加view有的不加，提前先写好数据处理（待写
             ##############
+            #
+            # S_A_start_scores, S_A_end_scores = model(batch_dict['_forward_S_A_query'],
+            #                                                    batch_dict['_forward_S_A_query_mask'],
+            #                                                    batch_dict['_forward_S_A_query_seg'], step=used_step[0])
+            #
+            # S_A_loss = utils.calculate_entity_loss(S_A_start_scores, S_A_end_scores,
+            #                                          batch_dict['_forward_S_A_answer_start'],
+            #                                          batch_dict['_forward_S_A_answer_end'])
+            #
+            # # S_O
+            # S_O_start_scores, S_O_end_scores = model(batch_dict['_forward_S_O_query'],
+            #                                                    batch_dict['_forward_S_O_query_mask'],
+            #                                                    batch_dict['_forward_S_O_query_seg'], step=used_step[1])
+            #
+            # S_O_loss = utils.calculate_entity_loss(S_O_start_scores, S_O_end_scores,
+            #                                          batch_dict['_forward_S_O_answer_start'], batch_dict['_forward_S_O_answer_end'])
+            #
+            # # A_O
+            # A_O_start_scores, A_O_end_scores = model(batch_dict['_forward_A_O_query'].view(-1, batch_dict['_forward_A_O_query'].size(-1)),
+            #                                                    batch_dict['_forward_A_O_query_mask'].view(-1, batch_dict['_forward_A_O_query_mask'].size(-1)),
+            #                                                    batch_dict['_forward_A_O_query_seg'].view(-1, batch_dict['_forward_A_O_query_seg'].size(-1)), step=used_step[2])
+            #
+            # A_O_loss = utils.calculate_entity_loss(A_O_start_scores, A_O_end_scores,
+            #                                          batch_dict['_forward_A_O_answer_start'].view(-1, batch_dict['_forward_A_O_answer_start'].size(-1)),
+            #                                          batch_dict['_forward_A_O_answer_end'].view(-1, batch_dict['_forward_A_O_answer_end'].size(-1)))
+            #
+            # # O_A
+            #
+            # O_A_start_scores, O_A_end_scores = model(batch_dict['_forward_O_A_query'].view(-1, batch_dict['_forward_O_A_query'].size(-1)),
+            #                                                    batch_dict['_forward_O_A_query_mask'].view(-1, batch_dict['_forward_O_A_query_mask'].size(-1)),
+            #                                                    batch_dict['_forward_O_A_query_seg'].view(-1, batch_dict['_forward_O_A_query_seg'].size(-1)), step=used_step[3])
+            #
+            # O_A_loss = utils.calculate_entity_loss(O_A_start_scores, O_A_end_scores,
+            #                                          batch_dict['_forward_O_A_answer_start'].view(-1, batch_dict['_forward_O_A_answer_start'].size(-1)),
+            #                                          batch_dict['_forward_O_A_answer_end'].view(-1, batch_dict['_forward_O_A_answer_end'].size(-1)))
+            #
+            # # AO_P
+            #
+            #
+            # AO_P_scores = model(batch_dict['_forward_AO_P_query'].view(-1, batch_dict['_forward_AO_P_query'].size(-1)),
+            #                                                    batch_dict['_forward_AO_P_query_mask'].view(-1, batch_dict['_forward_AO_P_query_mask'].size(-1)),
+            #                                                    batch_dict['_forward_AO_P_query_seg'].view(-1, batch_dict['_forward_AO_P_query_seg'].size(-1)), step=used_step[4])
+            #
+            #
+            # AO_P_loss = utils.calculate_sentiment_loss(
+            #     AO_P_scores, batch_dict['_forward_AO_P_answer'].view(-1))
 
-            S_A_start_scores, S_A_end_scores = model(batch_dict['_forward_S_A_query'],
-                                                               batch_dict['_forward_S_A_query_mask'],
-                                                               batch_dict['_forward_S_A_query_seg'], step=used_step[0])
+            ############
+            # debug
+            ############
+
+
+            S_A_start_scores, S_A_end_scores = model(batch_dict['forward_asp_query'],
+                                                               batch_dict['forward_asp_query_mask'],
+                                                               batch_dict['forward_asp_query_seg'], step=used_step[0])
 
             S_A_loss = utils.calculate_entity_loss(S_A_start_scores, S_A_end_scores,
-                                                     batch_dict['_forward_S_A_answer_start'],
-                                                     batch_dict['_forward_S_A_answer_end'])
+                                                     batch_dict['forward_asp_answer_start'],
+                                                     batch_dict['forward_asp_answer_end'])
 
             # S_O
-            S_O_start_scores, S_O_end_scores = model(batch_dict['_forward_S_O_query'],
-                                                               batch_dict['_forward_S_O_query_mask'],
-                                                               batch_dict['_forward_S_O_query_seg'], step=used_step[1])
+            S_O_start_scores, S_O_end_scores = model(batch_dict['backward_opi_query'],
+                                                               batch_dict['backward_opi_query_mask'],
+                                                               batch_dict['backward_opi_query_seg'], step=used_step[1])
 
             S_O_loss = utils.calculate_entity_loss(S_O_start_scores, S_O_end_scores,
-                                                     batch_dict['_forward_S_O_answer_start'], batch_dict['_forward_S_O_answer_end'])
+                                                     batch_dict['backward_opi_answer_start'], batch_dict['backward_opi_answer_end'])
 
             # A_O
-            A_O_start_scores, A_O_end_scores = model(batch_dict['_forward_A_O_query'].view(-1, batch_dict['_forward_A_O_query'].size(-1)),
-                                                               batch_dict['_forward_A_O_query_mask'].view(-1, batch_dict['_forward_A_O_query_mask'].size(-1)),
-                                                               batch_dict['_forward_A_O_query_seg'].view(-1, batch_dict['_forward_A_O_query_seg'].size(-1)), step=used_step[2])
+            A_O_start_scores, A_O_end_scores = model(batch_dict['forward_opi_query'].view(-1, batch_dict['forward_opi_query'].size(-1)),
+                                                               batch_dict['forward_opi_query_mask'].view(-1, batch_dict['forward_opi_query_mask'].size(-1)),
+                                                               batch_dict['forward_opi_query_seg'].view(-1, batch_dict['forward_opi_query_seg'].size(-1)), step=used_step[2])
 
             A_O_loss = utils.calculate_entity_loss(A_O_start_scores, A_O_end_scores,
-                                                     batch_dict['_forward_A_O_answer_start'].view(-1, batch_dict['_forward_A_O_answer_start'].size(-1)),
-                                                     batch_dict['_forward_A_O_answer_end'].view(-1, batch_dict['_forward_A_O_answer_end'].size(-1)))
+                                                     batch_dict['forward_opi_answer_start'].view(-1, batch_dict['forward_opi_answer_start'].size(-1)),
+                                                     batch_dict['forward_opi_answer_end'].view(-1, batch_dict['forward_opi_answer_end'].size(-1)))
 
             # O_A
 
-            O_A_start_scores, O_A_end_scores = model(batch_dict['_forward_O_A_query'].view(-1, batch_dict['_forward_O_A_query'].size(-1)),
-                                                               batch_dict['_forward_O_A_query_mask'].view(-1, batch_dict['_forward_O_A_query_mask'].size(-1)),
-                                                               batch_dict['_forward_O_A_query_seg'].view(-1, batch_dict['_forward_O_A_query_seg'].size(-1)), step=used_step[3])
+            O_A_start_scores, O_A_end_scores = model(batch_dict['backward_asp_query'].view(-1, batch_dict['backward_asp_query'].size(-1)),
+                                                               batch_dict['backward_asp_query_mask'].view(-1, batch_dict['backward_asp_query_mask'].size(-1)),
+                                                               batch_dict['backward_asp_query_seg'].view(-1, batch_dict['backward_asp_query_seg'].size(-1)), step=used_step[3])
 
             O_A_loss = utils.calculate_entity_loss(O_A_start_scores, O_A_end_scores,
-                                                     batch_dict['_forward_O_A_answer_start'].view(-1, batch_dict['_forward_O_A_answer_start'].size(-1)),
-                                                     batch_dict['_forward_O_A_answer_end'].view(-1, batch_dict['_forward_O_A_answer_end'].size(-1)))
+                                                     batch_dict['backward_asp_answer_start'].view(-1, batch_dict['backward_asp_answer_start'].size(-1)),
+                                                     batch_dict['backward_asp_answer_end'].view(-1, batch_dict['backward_asp_answer_end'].size(-1)))
 
             # AO_P
 
 
-            AO_P_scores = model(batch_dict['_forward_AO_P_query'].view(-1, batch_dict['_forward_AO_P_query'].size(-1)),
-                                                               batch_dict['_forward_AO_P_query_mask'].view(-1, batch_dict['_forward_AO_P_query_mask'].size(-1)),
-                                                               batch_dict['_forward_AO_P_query_seg'].view(-1, batch_dict['_forward_AO_P_query_seg'].size(-1)), step=used_step[4])
+            AO_P_scores = model(batch_dict['sentiment_query'].view(-1, batch_dict['sentiment_query'].size(-1)),
+                                                               batch_dict['sentiment_query_mask'].view(-1, batch_dict['sentiment_query_mask'].size(-1)),
+                                                               batch_dict['sentiment_query_seg'].view(-1, batch_dict['sentiment_query_seg'].size(-1)), step=used_step[4])
 
 
             AO_P_loss = utils.calculate_sentiment_loss(
-                AO_P_scores, batch_dict['_forward_AO_P_answer'].view(-1))
+                AO_P_scores, batch_dict['sentiment_answer'].view(-1))
+
+            ##########debug end
+
+
+
             # loss
             loss_sum = S_A_loss + S_O_loss + O_A_loss + A_O_loss +  args.beta * AO_P_loss
             # 这里现在少了几个loss
@@ -1348,13 +1804,13 @@ def train(args):
                                    round(A_O_loss.item(), 4), round(O_A_loss.item(), 4),
                                    round(AO_P_loss.item(), 4)))
 
-        if epoch>5:
+        if True:
             batch_generator_dev = Data.generate_batches(dataset=dev_dataset, batch_size=1, shuffle=False,gpu=args.gpu)
             logger.info("dev") #
             if opt.model_name=='BMRC':
                 dev_f1 = test_bmrc(model, tokenizer_1, batch_generator_dev,dev_standard, 0.8, logger)#,gpu='cuda', max_len=200,task_type=task_type)
             elif opt.model_name=='ROBMRC':
-                dev_f1 = test_ROBMRC(model, tokenizer_1, batch_generator_dev,dev_dataset.standard_2, 0.9, logger,gpu=True, max_len=200)#task_type=task_type)
+                dev_f1 = test(model, tokenizer_1, batch_generator_dev,dev_standard, 0.9, logger,gpu=True, max_len=200)#task_type=task_type)
 
 
             # test
@@ -1365,7 +1821,7 @@ def train(args):
                 test_f1 = test_bmrc(model, tokenizer_1, batch_generator_test, test_standard, 0.8,
                                     logger)  # logger,gpu='cuda', max_len=200,task_type=task_type)
             elif opt.model_name=='ROBMRC':
-                test_f1 = test_ROBMRC(model, tokenizer_1, batch_generator_test, test_dataset.standard, 0.9,
+                test_f1 = test(model, tokenizer_1, batch_generator_test, test_standard, 0.9,
                                     logger,gpu=True, max_len=200)#,task_type=task_type)
 
             # save model and optimizer
@@ -1420,14 +1876,14 @@ if __name__ == '__main__':
     # 训练过程的超参数
     parser.add_argument('--gpu', type=bool, default=True, help='是否使用GPU')
     parser.add_argument('--epoch_num', type=int, default=40, help='训练的次数')
-    parser.add_argument('--batch_size', type=int, default=4)
+    parser.add_argument('--batch_size', type=int, default=2)
     parser.add_argument('--learning_rate', type=float, default=1e-3)
     parser.add_argument('--tuning_bert_rate', type=float, default=1e-5)
     parser.add_argument('--warm_up', type=float, default=0.1)
     parser.add_argument('--beta', type=float, default=1)
     parser.add_argument('--add_note', type=str, default='')# 日志的名字是否要特殊一点
 
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(2)
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(0)
     opt = parser.parse_args()
 
 

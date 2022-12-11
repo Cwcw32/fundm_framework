@@ -1,6 +1,15 @@
-[2022-11-15 16:24:12,187][main.py][line:2119][INFO] Namespace(add_note='', batch_size=2, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gpu=True, hidden_size=768, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='BMRC', save_model_path='./checkpoint/2022-11-15-16-24-11-', task_type='ASTE', tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1)
-[2022-11-15 16:24:12,188][main.py][line:2121][INFO] ####################################
-[2022-11-15 16:24:12,188][main.py][line:2122][INFO] ####################################
-[2022-11-15 16:24:12,189][main.py][line:2124][INFO] loading data......
-[2022-11-15 16:24:14,322][main.py][line:2147][INFO] initial optimizer......
-[2022-11-15 16:24:14,339][main.py][line:2159][INFO] New model and optimizer from epoch 1
+[2022-11-17 20:43:12,441][main.py][line:2119][INFO] Namespace(add_note='', batch_size=1, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=50, gpu=True, hidden_size=768, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='BMRC', save_model_path='./checkpoint/2022-11-17-20-43-12-', task_type='ASTE', tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1)
+[2022-11-17 20:43:12,441][main.py][line:2121][INFO] ####################################
+[2022-11-17 20:43:12,441][main.py][line:2122][INFO] ####################################
+[2022-11-17 20:43:12,441][main.py][line:2124][INFO] loading data......
+[2022-11-17 20:43:14,751][main.py][line:2147][INFO] initial optimizer......
+[2022-11-17 20:43:14,762][main.py][line:2159][INFO] New model and optimizer from epoch 1
+[2022-11-17 20:43:16,842][main.py][line:2196][INFO] begin training......
+[2022-11-17 20:43:16,847][main.py][line:2225][INFO] test
+[2022-11-17 20:45:05,537][main.py][line:1236][INFO] Triplet - Precision: 0.0007300335814914562	Recall: 0.02040816322365681	F1: 0.0014095752669467524
+[2022-11-17 20:45:05,537][main.py][line:1242][INFO] Aspect - Precision: 0.05431971026677718	Recall: 0.25119617164785607	F1: 0.08932339960086261
+[2022-11-17 20:45:05,537][main.py][line:1247][INFO] Opinion - Precision: 0.08991683987010558	Recall: 0.3530612237692628	F1: 0.14333024798593655
+[2022-11-17 20:45:05,537][main.py][line:1255][INFO] Aspect-Sentiment - Precision: 0.013450594923201968	Recall: 0.06220095678899293	F1: 0.022117955169236415
+[2022-11-17 20:45:05,537][main.py][line:1263][INFO] Aspect-Opinion - Precision: 0.0033581544748606984	Recall: 0.09387755082882132	F1: 0.006484286287162619
+[2022-11-17 20:45:05,539][main.py][line:2347][INFO] train
+[2022-11-17 20:45:05,545][main.py][line:2503][INFO] ×Ô¼ºµÄ

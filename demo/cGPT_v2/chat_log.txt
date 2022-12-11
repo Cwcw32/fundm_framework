@@ -1,0 +1,24 @@
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID ec9110255d31db055367ad9a9088b405 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID ec9110255d31db055367ad9a9088b405 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID ec9110255d31db055367ad9a9088b405 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"Incorrect API key provided: Bearer. You can find your API key at https://beta.openai.com.","type":"invalid_request_error","param":null,"code":"invalid_api_key"}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"Incorrect API key provided: Bearer. You can find your API key at https://beta.openai.com.","type":"invalid_request_error","param":null,"code":"invalid_api_key"}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID eaac31fb8ec167a43212fc1f480c7f09 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID eaac31fb8ec167a43212fc1f480c7f09 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID eaac31fb8ec167a43212fc1f480c7f09 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID eaac31fb8ec167a43212fc1f480c7f09 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID eaac31fb8ec167a43212fc1f480c7f09 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID eaac31fb8ec167a43212fc1f480c7f09 in your email.)","type":"server_error","param":null,"code":null}}
+You: How are you?
+Chat GPT: [Status Code] 401 | [Response Text] {"detail":{"message":"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID eaac31fb8ec167a43212fc1f480c7f09 in your email.)","type":"server_error","param":null,"code":null}}

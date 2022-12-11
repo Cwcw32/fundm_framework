@@ -1013,10 +1013,11 @@ class SYZDataset(Dataset):
                 text_lower_ = [word.lower() for word in text]
                 T_text = self.tokenizer.convert_tokens_to_ids(text_lower_)
                 # for robmrc
-                text_origin = list_to_str(text_lower_)
+                if opt.model_name=='ROBMRC':
+                    text_origin = list_to_str(text_lower_)
 
-                offsss=self.tokenizer(text_origin, return_offsets_mapping=True)['offset_mapping']
-                old_listsss,yingshe_origin=duiqi_bert_origin(text, offsss)
+                    offsss=self.tokenizer(text_origin, return_offsets_mapping=True)['offset_mapping']
+                    old_listsss,yingshe_origin=duiqi_bert_origin(text, offsss)
 
                 ###############
                 # 一些初始化

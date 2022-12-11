@@ -3,10 +3,17 @@
 # @Author: Bufan Xu,     Contact: 294594605@qq.com
 # @Date:   2022-10-05
 # @Do:     增加注释
+import copy
 import pickle
 import torch
 import json
 from tqdm import tqdm
+
+
+
+
+
+
 class dual_sample(object):
     """
         保存对应的QA对
@@ -87,6 +94,39 @@ def fusion_dual_triplet(triplet):#
     triplet_sentiment = []
     dual_opinion = []
     dual_aspect = []
+
+    P={}
+    P_0 = {}
+    P_1 = {}
+    P_2 = {}
+
+    P_0['triplet_aspect']=[]
+    P_0['triplet_opinion'] = []
+    P_0['triplet_sentiment'] = []
+    P_0['dual_opinion'] = []
+    P_0['dual_aspect'] = []
+
+    P_1['triplet_aspect']=[]
+    P_1['triplet_opinion'] = []
+    P_1['triplet_sentiment'] = []
+    P_1['dual_opinion'] = []
+    P_1['dual_aspect'] = []
+
+    P_2['triplet_aspect']=[]
+    P_2['triplet_opinion'] = []
+    P_2['triplet_sentiment'] = []
+    P_2['dual_opinion'] = []
+    P_2['dual_aspect'] = []
+
+    """"
+    {
+        '0':   
+            
+    }
+    
+    
+    """
+
     for t in triplet:
         if t[0] not in triplet_aspect: # 这个aspect之前没有
             triplet_aspect.append(t[0]) # aspect放进去
@@ -103,8 +143,60 @@ def fusion_dual_triplet(triplet):#
             idx = dual_opinion.index(t[1])
             dual_aspect[idx].append(t[0])
 
-    # triplet_aspect:
-    return triplet_aspect, triplet_opinion, triplet_sentiment, dual_opinion, dual_aspect
+        if t[2]==0:
+            if t[0] not in P_0['triplet_aspect']:  # 这个aspect之前没有
+                P_0['triplet_aspect'].append(t[0])  # aspect放进去
+                P_0['triplet_opinion'].append([t[1]])  # opinion放进去
+                P_0['triplet_sentiment'].append(t[2])  # sent放进去
+            else:  # 这个aspect之前有
+                idx = P_0['triplet_aspect'].index(t[0])  # 获得对应的索引
+                P_0['triplet_opinion'][idx].append(t[1])  # 对应的里面加 比如[[1],[3,4]]代表P_0['triplet_aspect']（2个aspect） 那么[[9],[2]]是之前对应的opinion，现在新的triplet是([3,4],[7,8],[1]),那么就变成[[9],[[2],[7,8]]]
+                assert P_0['triplet_sentiment'][idx] == t[2]  # 同一个aspect就应该只有一个情感
+            if t[1] not in P_0['dual_opinion']:  # 如果opinion之前没有
+                P_0['dual_opinion'].append(t[1])
+                P_0['dual_aspect'].append([t[0]])
+            else:  # 有
+                idx = P_0['dual_opinion'].index(t[1])
+                P_0['dual_aspect'][idx].append(t[0])
+        elif t[2]==1:
+            if t[0] not in P_1['triplet_aspect']:  # 这个aspect之前没有
+                P_1['triplet_aspect'].append(t[0])  # aspect放进去
+                P_1['triplet_opinion'].append([t[1]])  # opinion放进去
+                P_1['triplet_sentiment'].append(t[2])  # sent放进去
+            else:  # 这个aspect之前有
+                idx = P_1['triplet_aspect'].index(t[0])  # 获得对应的索引
+                P_1['triplet_opinion'][idx].append(t[
+                                                       1])  # 对应的里面加 比如[[1],[3,4]]代表P_1['triplet_aspect']（2个aspect） 那么[[9],[2]]是之前对应的opinion，现在新的triplet是([3,4],[7,8],[1]),那么就变成[[9],[[2],[7,8]]]
+                assert P_1['triplet_sentiment'][idx] == t[2]  # 同一个aspect就应该只有一个情感
+            if t[1] not in P_1['dual_opinion']:  # 如果opinion之前没有
+                P_1['dual_opinion'].append(t[1])
+                P_1['dual_aspect'].append([t[0]])
+            else:  # 有
+                idx = P_1['dual_opinion'].index(t[1])
+                P_1['dual_aspect'][idx].append(t[0])
+        elif t[2]==2:
+            if t[0] not in P_2['triplet_aspect']:  # 这个aspect之前没有
+                P_2['triplet_aspect'].append(t[0])  # aspect放进去
+                P_2['triplet_opinion'].append([t[1]])  # opinion放进去
+                P_2['triplet_sentiment'].append(t[2])  # sent放进去
+            else:  # 这个aspect之前有
+                idx = P_2['triplet_aspect'].index(t[0])  # 获得对应的索引
+                P_2['triplet_opinion'][idx].append(t[
+                                                       1])  # 对应的里面加 比如[[1],[3,4]]代表P_2['triplet_aspect']（2个aspect） 那么[[9],[2]]是之前对应的opinion，现在新的triplet是([3,4],[7,8],[1]),那么就变成[[9],[[2],[7,8]]]
+                assert P_2['triplet_sentiment'][idx] == t[2]  # 同一个aspect就应该只有一个情感
+            if t[1] not in P_2['dual_opinion']:  # 如果opinion之前没有
+                P_2['dual_opinion'].append(t[1])
+                P_2['dual_aspect'].append([t[0]])
+            else:  # 有
+                idx = P_2['dual_opinion'].index(t[1])
+                P_2['dual_aspect'][idx].append(t[0])
+
+    P['0']=P_0
+    P['1']=P_1
+    P['2']=P_2
+    return triplet_aspect,triplet_opinion,triplet_sentiment,dual_opinion,dual_aspect,P
+
+sent_dic={0:'neural',1:'positive',2:'negative'}
 
 
 if __name__ == '__main__':
@@ -130,22 +222,55 @@ if __name__ == '__main__':
                 triplet = triple_data[k]
                 text = text_list[k]
                 valid_data(triplet, aspect_list[k], opinion_list[k]) # 验证一下aspect、opinion处是不是O
-                triplet_aspect, triplet_opinion, triplet_sentiment, dual_opinion, dual_aspect = fusion_dual_triplet(triplet)
+                triplet_aspect, triplet_opinion, triplet_sentiment, dual_opinion, dual_aspect,P = fusion_dual_triplet(triplet)
+                #P = fusion_dual_triplet(triplet)
                 forward_query_list = []
                 backward_query_list = []
                 sentiment_query_list = []
                 forward_answer_list = []
                 backward_answer_list = []
                 sentiment_answer_list = []
+
+                P_A_query_list=[]
+                P_A_answer_list=[]
+                P_O_query_list=[]
+                P_O_answer_list=[]
+                P_AO_query_list=[]
+                P_AO_answer_list=[]
+                PA_O_query_list=[]
+                PA_O_answer_list=[]
+                PO_A_query_list=[]
+                PO_A_answer_list=[]
+
+                #S_A
                 forward_query_list.append(["What", "aspects", "?"])
                 start = [0] * len(text)
                 end = [0] * len(text)
                 for ta in triplet_aspect:
-                    assert ta[0]<=ta[-1]
+                    assert ta[0] <= ta[-1]
                     start[ta[0]] = 1
                     end[ta[-1]] = 1
                 forward_answer_list.append([start, end])
 
+                # P_A
+                for sent,item in P.items():
+                    start = [0] * len(text)
+                    end = [0] * len(text)
+                    sentiment_words = sent_dic[int(sent)]
+                    if len(item['triplet_aspect'])!=0:
+                        triplet_aspect_P=item['triplet_aspect']
+                        query = ["What", "aspect", "have"]+[sentiment_words] +["sentiment"]  + ["?"]
+                        P_A_query_list.append(query)
+                        for ta in triplet_aspect_P:
+                            assert ta[0] <= ta[-1]
+                            start[ta[0]] = 1
+                            end[ta[-1]] = 1
+                        start_temp=copy.deepcopy(start)
+                        end_temp=copy.deepcopy(end)
+                        P_A_answer_list.append([start_temp, end_temp])
+
+
+                # S_O
                 backward_query_list.append(["What", "opinions", "?"])
                 start = [0] * len(text)
                 end = [0] * len(text)
@@ -154,20 +279,41 @@ if __name__ == '__main__':
                     end[to[-1]] = 1
                 backward_answer_list.append([start, end])
 
+                # P_O
+                for sent,item in P.items():
+                    start = [0] * len(text)
+                    end = [0] * len(text)
+                    sentiment_words = sent_dic[int(sent)]
+                    if len(item['triplet_aspect']) != 0:
+                        dual_opinion_P=item['dual_opinion']
+                        for to in dual_opinion_P:
+                            start[to[0]] = 1
+                            end[to[-1]] = 1
+                        query = ["What", "opinion", "have"]+[sentiment_words] +["sentiment"]  + ["?"]
+                        P_O_query_list.append(query)
+                        start_temp=copy.deepcopy(start)
+                        end_temp=copy.deepcopy(end)
+                        P_O_answer_list.append([start_temp, end_temp])
+
+
+
                 for idx in range(len(triplet_aspect)):
+
+                    # A_O
                     ta = triplet_aspect[idx]
                     # opinion query
                     query = ["What", "opinion", "given", "the", "aspect"] + text[ta[0]:ta[-1] + 1] + ["?"]
                     forward_query_list.append(query)
+
                     start = [0] * len(text)
                     end = [0] * len(text)
                     for to in triplet_opinion[idx]:
                         start[to[0]] = 1
                         end[to[-1]] = 1
                     forward_answer_list.append([start, end])
-                    # sentiment query
-                    query = ["What", "sentiment", "given", "the", "aspect"] + text[ta[0]:ta[-1] + 1] + ["and", "the",
-                                                                                                        "opinion"]
+
+                    # AO_P
+                    query = ["What", "sentiment", "given", "the", "aspect"] + text[ta[0]:ta[-1] + 1] + ["and", "the", "opinion"]
                     for idy in range(len(triplet_opinion[idx]) - 1):
                         to = triplet_opinion[idx][idy]
                         query += text[to[0]:to[-1] + 1] + ["/"]
@@ -175,6 +321,8 @@ if __name__ == '__main__':
                     query += text[to[0]:to[-1] + 1] + ["?"]
                     sentiment_query_list.append(query)
                     sentiment_answer_list.append(triplet_sentiment[idx])
+
+                # O_A
                 for idx in range(len(dual_opinion)):
                     ta = dual_opinion[idx]
                     # opinion query
@@ -187,10 +335,45 @@ if __name__ == '__main__':
                         end[to[-1]] = 1
                     backward_answer_list.append([start, end])
 
-#################################################
-                # (
-                # text_lines[k], text, forward_query_list, forward_answer_list, backward_query_list, backward_answer_list,
-                # sentiment_query_list, sentiment_answer_list)
+
+                for sent,item in P.items():
+                    sentiment_words = sent_dic[int(sent)]
+                    triplet_aspect_p = item['triplet_aspect']  # 考虑到ABSA不存在实体、关系的大部分重叠问题
+                    triplet_opinion_p = item['triplet_opinion']
+                    dual_aspect_p = item['dual_aspect']
+                    dual_opinion_p = item['dual_opinion']
+
+                    if len(triplet_aspect_p) != 0:
+                        for idx in range(len(triplet_aspect_p)):
+                            ta = triplet_aspect_p[idx]
+                            # opinion query
+                            query_PA_O = ["What", "opinion", "given", "the", "aspect"] + text[ta[0]:ta[-1] + 1] + ["with", "the"]+[sentiment_words] +["sentiment"] + ["?"]
+                            PA_O_query_list.append(query_PA_O)
+
+                            start = [0] * len(text)
+                            end = [0] * len(text)
+                            for to in triplet_opinion_p[idx]:
+                                start[to[0]] = 1
+                                end[to[-1]] = 1
+                            PA_O_answer_list.append([start, end])
+
+                            ###############
+                            #### P_AO 之后再添加
+                            ###############
+
+                        for idx in range(len(dual_opinion_p)):
+                            ta = dual_opinion_p[idx]
+                            # opinion query
+                            query_PO_A = ["What", "aspect", "does", "the"]+[sentiment_words]+["opinion"] + text[ta[0]:ta[-1] + 1] + ["describe",
+                                                                                                             "?"]
+                            PO_A_query_list.append(query_PO_A)
+                            start = [0] * len(text)
+                            end = [0] * len(text)
+                            for to in dual_aspect_p[idx]:
+                                start[to[0]] = 1
+                                end[to[-1]] = 1
+                            PO_A_answer_list.append([start, end])
+                #################################################
                 sample_dic = {
                     'ID': ID,
                     'text': text,
@@ -210,6 +393,15 @@ if __name__ == '__main__':
 
                         'AO_P_QUERY': sentiment_query_list,
                         'AO_P_ANSWER': sentiment_answer_list,
+
+                        'P_A_QUERY': P_A_query_list,
+                        'P_A_ANSWER': P_A_answer_list,
+                        'P_O_QUERY': P_O_query_list,
+                        'P_O_ANSWER': P_O_answer_list,
+                         'PA_O_QUERY': PA_O_query_list,
+                        'PA_O_ANSWER': PA_O_answer_list,
+                         'PO_A_QUERY': PO_A_query_list,
+                        'PO_A_ANSWER': PO_A_answer_list,
                     }
                 }
                 ###############
