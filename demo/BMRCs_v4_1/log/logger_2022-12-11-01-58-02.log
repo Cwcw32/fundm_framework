@@ -1,0 +1,38 @@
+[2022-12-11 01:58:03,642][bmrc_v4.py][line:1266][INFO] Namespace(add_note='', batch_size=2, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gat=False, gpu=True, hidden_size=768, infer_rt=False, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='BMRC', nizhuan=False, save_model_path='./checkpoint/2022-12-11-01-58-02-', task_type='ASTE', train_rt=True, tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1, zhongzi=[5, 77, 89, 32, 66])
+[2022-12-11 01:58:03,643][bmrc_v4.py][line:1267][INFO] ####################################
+[2022-12-11 01:58:03,643][bmrc_v4.py][line:1268][INFO] ####################################
+[2022-12-11 01:58:03,643][bmrc_v4.py][line:1269][INFO] loading data......
+[2022-12-11 01:58:05,337][bmrc_v4.py][line:1287][INFO] initial optimizer......
+[2022-12-11 01:58:05,346][bmrc_v4.py][line:1297][INFO] New model and optimizer from epoch 1
+[2022-12-11 01:58:07,364][bmrc_v4.py][line:1313][INFO] begin training......
+[2022-12-11 01:58:07,370][bmrc_v4.py][line:1347][INFO] train
+[2022-12-11 01:58:13,865][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[10/114]	 Loss Sum:60.7507	 S_A Loss:7.8118;S_O Loss:7.5292	 A_O Loss:10.7619;O_A Loss:11.6752	 AO_P Loss:0.742	;	 PA_O Loss:10.5938	;	 PO_A Loss:11.6368	;
+[2022-12-11 01:58:18,821][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[20/114]	 Loss Sum:35.3745	 S_A Loss:5.8693;S_O Loss:5.929	 A_O Loss:5.7968;O_A Loss:6.1062	 AO_P Loss:0.3877	;	 PA_O Loss:5.5596	;	 PO_A Loss:5.726	;
+[2022-12-11 01:58:23,827][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[30/114]	 Loss Sum:16.4484	 S_A Loss:2.8989;S_O Loss:2.5844	 A_O Loss:2.4954;O_A Loss:2.9335	 AO_P Loss:0.2305	;	 PA_O Loss:2.3964	;	 PO_A Loss:2.9092	;
+[2022-12-11 01:58:29,058][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[40/114]	 Loss Sum:24.0326	 S_A Loss:2.3075;S_O Loss:3.7402	 A_O Loss:4.1607;O_A Loss:4.6516	 AO_P Loss:0.6135	;	 PA_O Loss:4.1069	;	 PO_A Loss:4.4521	;
+[2022-12-11 01:58:34,359][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[50/114]	 Loss Sum:18.1438	 S_A Loss:2.1921;S_O Loss:3.3231	 A_O Loss:3.0939;O_A Loss:3.0911	 AO_P Loss:0.2669	;	 PA_O Loss:3.1356	;	 PO_A Loss:3.041	;
+[2022-12-11 01:58:39,673][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[60/114]	 Loss Sum:26.78	 S_A Loss:3.0579;S_O Loss:4.015	 A_O Loss:5.4558;O_A Loss:4.1748	 AO_P Loss:0.4184	;	 PA_O Loss:5.4061	;	 PO_A Loss:4.2519	;
+[2022-12-11 01:58:44,770][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[70/114]	 Loss Sum:20.4453	 S_A Loss:2.1901;S_O Loss:3.6138	 A_O Loss:3.4628;O_A Loss:3.8071	 AO_P Loss:0.1363	;	 PA_O Loss:3.6	;	 PO_A Loss:3.6351	;
+[2022-12-11 01:58:50,019][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[80/114]	 Loss Sum:15.622	 S_A Loss:3.0152;S_O Loss:2.4673	 A_O Loss:2.662;O_A Loss:2.543	 AO_P Loss:0.0949	;	 PA_O Loss:2.2807	;	 PO_A Loss:2.5588	;
+[2022-12-11 01:58:55,327][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[90/114]	 Loss Sum:14.9168	 S_A Loss:1.7623;S_O Loss:3.0794	 A_O Loss:2.6761;O_A Loss:2.1802	 AO_P Loss:0.2206	;	 PA_O Loss:2.8124	;	 PO_A Loss:2.1857	;
+[2022-12-11 01:59:00,658][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[100/114]	 Loss Sum:20.3199	 S_A Loss:2.0996;S_O Loss:2.9375	 A_O Loss:3.7477;O_A Loss:3.7108	 AO_P Loss:0.4816	;	 PA_O Loss:3.4707	;	 PO_A Loss:3.8719	;
+[2022-12-11 01:59:05,885][bmrc_v4.py][line:1462][INFO] Epoch:[1/40]	 Batch:[110/114]	 Loss Sum:15.9702	 S_A Loss:1.79;S_O Loss:2.5527	 A_O Loss:2.5287;O_A Loss:3.5303	 AO_P Loss:0.3447	;	 PA_O Loss:2.1356	;	 PO_A Loss:3.0882	;
+[2022-12-11 01:59:08,026][bmrc_v4.py][line:1483][INFO] dev
+[2022-12-11 01:59:39,855][bmrc_v4.py][line:1212][INFO] Triplet - Precision: 0.11999999963076924	Recall: 0.11572700262395548	F1: 0.11782427322434365
+[2022-12-11 01:59:39,855][bmrc_v4.py][line:1218][INFO] Aspect - Precision: 0.28571428401360544	Recall: 0.17204301013604656	F1: 0.21476463054319245
+[2022-12-11 01:59:39,855][bmrc_v4.py][line:1223][INFO] Opinion - Precision: 0.5170454516076963	Recall: 0.27002967278922946	F1: 0.35477537632529144
+[2022-12-11 01:59:39,855][bmrc_v4.py][line:1231][INFO] Aspect-Sentiment - Precision: 0.23809523667800456	Recall: 0.14336917511337213	F1: 0.17897044725836023
+[2022-12-11 01:59:39,855][bmrc_v4.py][line:1239][INFO] Aspect-Opinion - Precision: 0.1415384611029586	Recall: 0.13649851591543466	F1: 0.13897230941390606
+[2022-12-11 01:59:39,858][bmrc_v4.py][line:1493][INFO] test
+[2022-12-11 02:00:10,664][bmrc_v4.py][line:1212][INFO] Triplet - Precision: 0.11799409994692006	Recall: 0.08163265289462723	F1: 0.09650132576732783
+[2022-12-11 02:00:10,664][bmrc_v4.py][line:1218][INFO] Aspect - Precision: 0.28571428439763	Recall: 0.1483253584968293	F1: 0.19527514003451632
+[2022-12-11 02:00:10,664][bmrc_v4.py][line:1223][INFO] Opinion - Precision: 0.4909909887793199	Recall: 0.22244897913785922	F1: 0.30617934526161616
+[2022-12-11 02:00:10,664][bmrc_v4.py][line:1231][INFO] Aspect-Sentiment - Precision: 0.24884792512051648	Recall: 0.12918660256175454	F1: 0.17007828972032923
+[2022-12-11 02:00:10,664][bmrc_v4.py][line:1239][INFO] Aspect-Opinion - Precision: 0.13274336244028506	Recall: 0.09183673450645564	F1: 0.1085640519140727
+[2022-12-11 02:00:10,667][bmrc_v4.py][line:1504][INFO] Model saved after epoch 1
+[2022-12-11 02:00:12,688][bmrc_v4.py][line:1347][INFO] train
+[2022-12-11 02:00:17,830][bmrc_v4.py][line:1462][INFO] Epoch:[2/40]	 Batch:[10/114]	 Loss Sum:25.9126	 S_A Loss:3.2212;S_O Loss:3.2997	 A_O Loss:4.6852;O_A Loss:5.0696	 AO_P Loss:0.4807	;	 PA_O Loss:4.3861	;	 PO_A Loss:4.7702	;
+[2022-12-11 02:00:22,788][bmrc_v4.py][line:1462][INFO] Epoch:[2/40]	 Batch:[20/114]	 Loss Sum:10.98	 S_A Loss:1.5224;S_O Loss:2.6164	 A_O Loss:2.1188;O_A Loss:1.0346	 AO_P Loss:0.6774	;	 PA_O Loss:2.0628	;	 PO_A Loss:0.9476	;
+[2022-12-11 02:00:27,774][bmrc_v4.py][line:1462][INFO] Epoch:[2/40]	 Batch:[30/114]	 Loss Sum:8.3026	 S_A Loss:1.6189;S_O Loss:1.3438	 A_O Loss:0.9097;O_A Loss:1.4249	 AO_P Loss:0.3526	;	 PA_O Loss:0.8973	;	 PO_A Loss:1.7553	;
+[2022-12-11 02:00:32,763][bmrc_v4.py][line:1462][INFO] Epoch:[2/40]	 Batch:[40/114]	 Loss Sum:15.6374	 S_A Loss:1.8491;S_O Loss:2.5646	 A_O Loss:3.3677;O_A Loss:2.3488	 AO_P Loss:0.5141	;	 PA_O Loss:2.7596	;	 PO_A Loss:2.2336	;
+[2022-12-11 02:00:37,773][bmrc_v4.py][line:1462][INFO] Epoch:[2/40]	 Batch:[50/114]	 Loss Sum:20.5255	 S_A Loss:2.3867;S_O Loss:3.205	 A_O Loss:3.6125;O_A Loss:3.5082	 AO_P Loss:0.5585	;	 PA_O Loss:3.5764	;	 PO_A Loss:3.6782	;

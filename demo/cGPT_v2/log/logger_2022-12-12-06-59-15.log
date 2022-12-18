@@ -1,0 +1,51 @@
+[2022-12-12 06:59:15,517][main.py][line:25][INFO] start testing......
+[2022-12-12 06:59:15,517][main.py][line:27][INFO] loading checkpoint......
+[2022-12-12 06:59:35,222][main.py][line:71][INFO] 0.Boot time is super fast , around anywhere from 35 seconds to 1 minute . 
+[2022-12-12 06:59:35,223][main.py][line:72][INFO] 1. Aspect: boot time; Opinion: super fast; Polarity: positive
+2. Aspect: null; Opinion: around anywhere from 35 seconds to 1 minute; Polarity: neutral
+[2022-12-12 06:59:55,534][main.py][line:71][INFO] 1.tech support would not fix the problem unless I bought your plan for $ 150 plus . 
+[2022-12-12 06:59:55,534][main.py][line:72][INFO] 1. Aspect: tech support; Opinion: would not fix the problem unless I bought your plan for $150 plus; Polarity: negative
+[2022-12-12 07:00:13,685][main.py][line:71][INFO] 2.Set up was easy . 
+[2022-12-12 07:00:13,685][main.py][line:72][INFO] 1. Aspect: set up; Opinion: easy; Polarity: positive
+[2022-12-12 07:00:32,021][main.py][line:71][INFO] 3.Did not enjoy the new Windows 8 and touchscreen functions . 
+[2022-12-12 07:00:32,021][main.py][line:72][INFO] 1. Aspect: Windows 8 and touchscreen functions; Opinion: did not enjoy; Polarity: negative
+[2022-12-12 07:00:57,335][main.py][line:71][INFO] 4.Other than not being a fan of click pads ( industry standard these days ) and the lousy internal speakers , it 's hard for me to find things about this notebook I do n't like , especially considering the $ 350 price tag . 
+[2022-12-12 07:00:57,335][main.py][line:72][INFO] 1. Aspect: click pads; Opinion: not being a fan of; Polarity: negative
+2. Aspect: internal speakers; Opinion: lousy; Polarity: negative
+3. Aspect: notebook; Opinion: hard for me to find things about this notebook I do n't like; Polarity: positive
+4. Aspect: price tag; Opinion: considering the $350 price tag; Polarity: positive
+[2022-12-12 07:01:15,744][main.py][line:71][INFO] 5.It 's fast , light , and simple to use . 
+[2022-12-12 07:01:15,744][main.py][line:72][INFO] 1. Aspect: null; Opinion: it's fast, light, and simple to use; Polarity: positive
+[2022-12-12 07:01:34,554][main.py][line:71][INFO] 6.Works well , and I am extremely happy to be back to an apple OS . 
+[2022-12-12 07:01:34,554][main.py][line:72][INFO] 1. Aspect: null; Opinion: works well, and I am extremely happy to be back to an apple OS; Polarity: positive
+[2022-12-12 07:01:54,736][main.py][line:71][INFO] 7.Sure it 's not light and slim but the features make up for it 100 % . 
+[2022-12-12 07:01:54,736][main.py][line:72][INFO] 1. Aspect: light and slim; Opinion: not; Polarity: negative
+2. Aspect: features; Opinion: make up for it 100%; Polarity: positive
+[2022-12-12 07:02:18,437][main.py][line:71][INFO] 8.I am pleased with the fast log on , speedy WiFi connection and the long battery life ( > 6 hrs ) . 
+[2022-12-12 07:02:18,437][main.py][line:72][INFO] 1. Aspect: log on; Opinion: fast; Polarity: positive
+2. Aspect: WiFi connection; Opinion: speedy; Polarity: positive
+3. Aspect: battery life; Opinion: long; Polarity: positive
+4. Aspect: null; Opinion: > 6 hrs; Polarity: neutral
+[2022-12-12 07:02:37,458][main.py][line:71][INFO] 9.The Apple engineers have not yet discovered the delete key . 
+[2022-12-12 07:02:37,458][main.py][line:72][INFO] 1. Aspect: Apple engineers; Opinion: have not yet discovered the delete key; Polarity: negative
+[2022-12-12 07:02:57,275][main.py][line:71][INFO] 10.Made interneting ( part of my business ) very difficult to maintain . 
+[2022-12-12 07:02:57,275][main.py][line:72][INFO] 1. Aspect: interneting; Opinion: very difficult to maintain; Polarity: negative
+2. Aspect: null; Opinion: part of my business; Polarity: neutral
+[2022-12-12 07:03:19,515][main.py][line:71][INFO] 11.Luckily , for all of us contemplating the decision , the Mac Mini is priced just right . 
+[2022-12-12 07:03:19,516][main.py][line:72][INFO] 1. Aspect: Mac Mini; Opinion: priced just right; Polarity: positive
+2. Aspect: null; Opinion: for all of us contemplating the decision; Polarity: neutral
+[2022-12-12 07:03:42,478][main.py][line:71][INFO] 12.Only problem that I had was that the track pad was not very good for me , I only had a problem once or twice with it , But probably my computer was a bit defective . 
+[2022-12-12 07:03:42,478][main.py][line:72][INFO] 1. Aspect: track pad; Opinion: not very good for me, I only had a problem once or twice with it; Polarity: negative
+2. Aspect: null; Opinion: probably my computer was a bit defective; Polarity: neutral
+[2022-12-12 07:04:00,197][main.py][line:71][INFO] 13.It is super fast and has outstanding graphics . 
+[2022-12-12 07:04:00,197][main.py][line:72][INFO] 1. Aspect: null; Opinion: it is super fast and has outstanding graphics; Polarity: positive
+[2022-12-12 07:04:19,078][main.py][line:71][INFO] 14.But the mountain lion is just too slow . 
+[2022-12-12 07:04:19,078][main.py][line:72][INFO] 1. Aspect: mountain lion; Opinion: just too slow; Polarity: negative
+[2022-12-12 07:05:05,016][main.py][line:71][INFO] 15.Strong build though which really adds to its durability . 
+[2022-12-12 07:05:05,016][main.py][line:72][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 07:05:25,939][main.py][line:71][INFO] 16.The battery life is excellent -- 6-7 hours without charging . 
+[2022-12-12 07:05:25,939][main.py][line:72][INFO] 1. Aspect: battery life; Opinion: excellent; Polarity: positive
+2. Aspect: null; Opinion: 6-7 hours without charging; Polarity: neutral
+[2022-12-12 07:05:46,005][main.py][line:71][INFO] 17.I 've had my computer for 2 weeks already and it works perfectly . 
+[2022-12-12 07:05:46,005][main.py][line:72][INFO] 1. Aspect: computer; Opinion: works perfectly; Polarity: positive
+2. Aspect: null; Opinion: I've had my computer for 2 weeks already; Polarity: neutral

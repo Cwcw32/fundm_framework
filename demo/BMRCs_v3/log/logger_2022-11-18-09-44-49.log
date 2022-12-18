@@ -1,0 +1,44 @@
+[2022-11-18 09:44:49,380][bmrc_v3.py][line:1193][INFO] Namespace(add_note='', batch_size=2, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gpu=True, hidden_size=768, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='ROBMRC', save_model_path='./checkpoint/2022-11-18-09-44-49-', task_type='ASTE', tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1)
+[2022-11-18 09:44:49,380][bmrc_v3.py][line:1194][INFO] ####################################
+[2022-11-18 09:44:49,380][bmrc_v3.py][line:1195][INFO] ####################################
+[2022-11-18 09:44:49,380][bmrc_v3.py][line:1196][INFO] loading data......
+[2022-11-18 09:44:51,099][bmrc_v3.py][line:1214][INFO] initial optimizer......
+[2022-11-18 09:44:51,110][bmrc_v3.py][line:1224][INFO] New model and optimizer from epoch 1
+[2022-11-18 09:44:59,281][bmrc_v3.py][line:1240][INFO] begin training......
+[2022-11-18 09:45:00,303][bmrc_v3.py][line:1304][INFO] train
+[2022-11-18 09:45:38,548][bmrc_v3.py][line:1436][INFO] Epoch:[1/40]	 Batch:[100/460]	 Loss Sum:274.8851	 forward Loss:21.4486;27.0647	 backward Loss:104.3382;97.1415	 Sentiment Loss:24.8921	
+[2022-11-18 09:46:14,933][bmrc_v3.py][line:1436][INFO] Epoch:[1/40]	 Batch:[200/460]	 Loss Sum:167.3672	 forward Loss:13.4648;15.6458	 backward Loss:51.3545;68.5897	 Sentiment Loss:18.3123	
+[2022-11-18 09:46:51,922][bmrc_v3.py][line:1436][INFO] Epoch:[1/40]	 Batch:[300/460]	 Loss Sum:132.0607	 forward Loss:10.7087;12.0034	 backward Loss:41.3256;60.8112	 Sentiment Loss:7.2117	
+[2022-11-18 09:47:30,350][bmrc_v3.py][line:1436][INFO] Epoch:[1/40]	 Batch:[400/460]	 Loss Sum:86.2429	 forward Loss:2.7871;13.1569	 backward Loss:50.6534;13.7492	 Sentiment Loss:5.8963	
+[2022-11-18 09:47:53,930][bmrc_v3.py][line:1304][INFO] train
+[2022-11-18 09:48:32,618][bmrc_v3.py][line:1436][INFO] Epoch:[2/40]	 Batch:[100/460]	 Loss Sum:96.5794	 forward Loss:5.2447;12.1275	 backward Loss:63.3655;10.422	 Sentiment Loss:5.4197	
+[2022-11-18 09:49:11,604][bmrc_v3.py][line:1436][INFO] Epoch:[2/40]	 Batch:[200/460]	 Loss Sum:52.572	 forward Loss:2.0939;5.8686	 backward Loss:26.3731;7.4566	 Sentiment Loss:10.7796	
+[2022-11-18 09:49:50,570][bmrc_v3.py][line:1436][INFO] Epoch:[2/40]	 Batch:[300/460]	 Loss Sum:50.4422	 forward Loss:7.6558;2.6507	 backward Loss:14.1292;23.1713	 Sentiment Loss:2.8352	
+[2022-11-18 09:50:29,891][bmrc_v3.py][line:1436][INFO] Epoch:[2/40]	 Batch:[400/460]	 Loss Sum:105.2914	 forward Loss:10.9012;15.5485	 backward Loss:32.9196;39.2758	 Sentiment Loss:6.6462	
+[2022-11-18 09:50:54,146][bmrc_v3.py][line:1304][INFO] train
+[2022-11-18 09:51:32,572][bmrc_v3.py][line:1436][INFO] Epoch:[3/40]	 Batch:[100/460]	 Loss Sum:44.7969	 forward Loss:3.5775;2.721	 backward Loss:2.3615;7.6386	 Sentiment Loss:28.4984	
+[2022-11-18 09:52:10,939][bmrc_v3.py][line:1436][INFO] Epoch:[3/40]	 Batch:[200/460]	 Loss Sum:130.8623	 forward Loss:9.7538;10.2798	 backward Loss:54.1108;25.7397	 Sentiment Loss:30.9782	
+[2022-11-18 09:52:49,109][bmrc_v3.py][line:1436][INFO] Epoch:[3/40]	 Batch:[300/460]	 Loss Sum:65.9862	 forward Loss:5.2523;3.8701	 backward Loss:20.8162;28.8973	 Sentiment Loss:7.1503	
+[2022-11-18 09:53:29,947][bmrc_v3.py][line:1436][INFO] Epoch:[3/40]	 Batch:[400/460]	 Loss Sum:50.4546	 forward Loss:6.9767;6.653	 backward Loss:21.8798;13.1843	 Sentiment Loss:1.7608	
+[2022-11-18 09:53:52,908][bmrc_v3.py][line:1304][INFO] train
+[2022-11-18 09:54:31,047][bmrc_v3.py][line:1436][INFO] Epoch:[4/40]	 Batch:[100/460]	 Loss Sum:97.5945	 forward Loss:2.1672;14.0198	 backward Loss:42.0778;13.5382	 Sentiment Loss:25.7916	
+[2022-11-18 09:55:09,501][bmrc_v3.py][line:1436][INFO] Epoch:[4/40]	 Batch:[200/460]	 Loss Sum:19.8255	 forward Loss:1.0268;1.7883	 backward Loss:1.8577;7.7465	 Sentiment Loss:7.4062	
+[2022-11-18 09:55:47,718][bmrc_v3.py][line:1436][INFO] Epoch:[4/40]	 Batch:[300/460]	 Loss Sum:38.9899	 forward Loss:1.0831;6.5005	 backward Loss:16.5712;6.2471	 Sentiment Loss:8.588	
+[2022-11-18 09:56:29,632][bmrc_v3.py][line:1436][INFO] Epoch:[4/40]	 Batch:[400/460]	 Loss Sum:33.6411	 forward Loss:4.5677;8.9683	 backward Loss:9.2385;6.141	 Sentiment Loss:4.7256	
+[2022-11-18 09:56:51,905][bmrc_v3.py][line:1304][INFO] train
+[2022-11-18 09:57:27,783][bmrc_v3.py][line:1436][INFO] Epoch:[5/40]	 Batch:[100/460]	 Loss Sum:39.1626	 forward Loss:5.2756;3.8384	 backward Loss:8.7855;6.9494	 Sentiment Loss:14.3136	
+[2022-11-18 09:58:05,398][bmrc_v3.py][line:1436][INFO] Epoch:[5/40]	 Batch:[200/460]	 Loss Sum:25.8315	 forward Loss:2.5058;4.4109	 backward Loss:7.8614;5.9288	 Sentiment Loss:5.1246	
+[2022-11-18 09:58:40,845][bmrc_v3.py][line:1436][INFO] Epoch:[5/40]	 Batch:[300/460]	 Loss Sum:3.284	 forward Loss:0.6175;1.0107	 backward Loss:0.5895;0.4475	 Sentiment Loss:0.6188	
+[2022-11-18 09:59:16,650][bmrc_v3.py][line:1436][INFO] Epoch:[5/40]	 Batch:[400/460]	 Loss Sum:8.9305	 forward Loss:0.946;2.8165	 backward Loss:3.5844;0.7706	 Sentiment Loss:0.813	
+[2022-11-18 09:59:37,332][bmrc_v3.py][line:1304][INFO] train
+[2022-11-18 10:00:11,951][bmrc_v3.py][line:1436][INFO] Epoch:[6/40]	 Batch:[100/460]	 Loss Sum:3.0438	 forward Loss:0.5567;0.7412	 backward Loss:0.2937;1.4037	 Sentiment Loss:0.0485	
+[2022-11-18 10:00:47,490][bmrc_v3.py][line:1436][INFO] Epoch:[6/40]	 Batch:[200/460]	 Loss Sum:3.03	 forward Loss:0.6827;0.2628	 backward Loss:0.8799;1.1693	 Sentiment Loss:0.0353	
+[2022-11-18 10:01:26,301][bmrc_v3.py][line:1436][INFO] Epoch:[6/40]	 Batch:[300/460]	 Loss Sum:5.2043	 forward Loss:0.044;0.1172	 backward Loss:3.1295;0.0717	 Sentiment Loss:1.8419	
+[2022-11-18 10:02:04,917][bmrc_v3.py][line:1436][INFO] Epoch:[6/40]	 Batch:[400/460]	 Loss Sum:22.9133	 forward Loss:3.4449;0.9048	 backward Loss:9.6946;7.1462	 Sentiment Loss:1.7229	
+[2022-11-18 10:02:27,697][bmrc_v3.py][line:1440][INFO] dev
+[2022-11-18 10:02:55,581][bmrc_v3.py][line:378][INFO] Triplet - Precision: 0.47933884165471397	Recall: 0.5163204732453398	F1: 0.4971423564127464
+[2022-11-18 10:02:55,581][bmrc_v3.py][line:383][INFO] Aspect - Precision: 0.8045976980666755	Recall: 0.7526881693452037	F1: 0.7777772754529957
+[2022-11-18 10:02:55,581][bmrc_v3.py][line:388][INFO] Opinion - Precision: 0.7627118618213158	Recall: 0.667655784368974	F1: 0.7120248164109795
+[2022-11-18 10:02:55,581][bmrc_v3.py][line:396][INFO] Aspect-Sentiment - Precision: 0.6779026191838853	Recall: 0.6487455173880089	F1: 0.6630031608169715
+[2022-11-18 10:02:55,582][bmrc_v3.py][line:404][INFO] Aspect-Opinion - Precision: 0.5619834695262164	Recall: 0.6053412444945364	F1: 0.5828566418820604
+[2022-11-18 10:02:55,584][bmrc_v3.py][line:1450][INFO] test

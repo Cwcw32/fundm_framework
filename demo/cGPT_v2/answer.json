@@ -1,0 +1,38 @@
+[
+      {
+            "response": "In this sentence, the aspect term is \"boot time\" and the opinion term is \"super fast\". The sentiment polarity is positive, as indicated by the use of the word \"super\" to describe the speed of the boot time.\n\n",
+            "text": "0.Boot time is super fast , around anywhere from 35 seconds to 1 minute . ",
+            "id": 0,
+            "aspect": [
+                  [
+                        "Boot time ",
+                        "fast",
+                        1
+                  ]
+            ]
+      },
+      {
+            "response": "In this sentence, the aspect term is \"tech support\" and the opinion term is \"would not fix the problem\". The sentiment polarity is negative, as indicated by the use of the phrase \"would not fix\" to describe the tech support's actions.\n\n",
+            "text": "1.tech support would not fix the problem unless I bought your plan for $ 150 plus . ",
+            "id": 1,
+            "aspect": [
+                  [
+                        "tech support ",
+                        "not fix ",
+                        2
+                  ]
+            ]
+      },
+      {
+            "response": "In this sentence, the aspect term is \"set up\" and the opinion term is \"easy\". The sentiment polarity is positive, as indicated by the use of the word \"easy\" to describe the set up process.",
+            "text": "2.Set up was easy . ",
+            "id": 2,
+            "aspect": [
+                  [
+                        "Set up ",
+                        "easy",
+                        1
+                  ]
+            ]
+      }
+]

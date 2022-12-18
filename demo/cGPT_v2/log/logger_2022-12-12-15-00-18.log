@@ -1,0 +1,392 @@
+[2022-12-12 15:00:18,868][main.py][line:95][INFO] start testing......
+[2022-12-12 15:00:29,140][main.py][line:125][INFO] 1. yum ! 
+[2022-12-12 15:00:29,140][main.py][line:126][INFO] 1. Aspect: null; aspect category: null; opinion: yum; polarity: positive.
+
+It's difficult to provide specific aspect and category information for this sentence because it is a very short and general statement that doesn't mention any specific entities or targets. The sentiment expressed in the sentence is positive, but without more context it's impossible to say what the speaker is expressing their opinion about.
+[2022-12-12 15:00:41,393][main.py][line:125][INFO] 2. serves really good sushi . 
+[2022-12-12 15:00:41,393][main.py][line:126][INFO] 2. Aspect: sushi; aspect category: FOOD#GENERAL; opinion: good; polarity: positive.
+
+This sentence mentions the specific aspect of "sushi" and expresses a positive opinion about it. The aspect category could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarity is positive because the speaker uses the word "really" to emphasize their positive opinion.
+[2022-12-12 15:00:53,133][main.py][line:125][INFO] 3. not the biggest portions but adequate . 
+[2022-12-12 15:00:53,133][main.py][line:126][INFO] 3. Aspect: portions; aspect category: FOOD#QUANTITY; opinion: not the biggest; polarity: negative.
+
+This sentence mentions the specific aspect of "portions" and expresses a negative opinion about their size. The aspect category could be FOOD#QUANTITY, since it is related to the amount of food served. The sentiment polarity is negative because the speaker uses the word "not" to indicate that they are dissatisfied with the size of the portions.
+[2022-12-12 15:01:05,401][main.py][line:125][INFO] 4. green tea creme brulee is a must ! 
+[2022-12-12 15:01:05,402][main.py][line:126][INFO] 4. Aspect: green tea creme brulee; aspect category: FOOD#STYLE_OPTIONS; opinion: must; polarity: positive.
+
+This sentence mentions the specific aspect of "green tea creme brulee" and expresses a positive opinion about it. The aspect category could be FOOD#STYLE_OPTIONS, since it is related to the variety of food options available. The sentiment polarity is positive because the speaker uses the exclamation point to indicate that they strongly recommend trying this dish.
+[2022-12-12 15:01:22,846][main.py][line:125][INFO] 5. it has great sushi and even better service . 
+[2022-12-12 15:01:22,846][main.py][line:126][INFO] 5. Aspect: sushi; aspect category: FOOD#GENERAL; opinion: great; polarity: positive.
+Aspect: service; aspect category: SERVICE#GENERAL; opinion: better; polarity: positive.
+
+This sentence mentions two specific aspects, "sushi" and "service", and expresses positive opinions about both. The aspect category for "sushi" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The aspect category for "service" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for both aspects are positive because the speaker uses the word "great" and "better" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:01:35,113][main.py][line:125][INFO] 6. the entire staff was extremely accomodating and tended to my every need . 
+[2022-12-12 15:01:35,113][main.py][line:126][INFO] 6. Aspect: staff; aspect category: SERVICE#GENERAL; opinion: extremely accommodating; polarity: positive.
+
+This sentence mentions the specific aspect of "staff" and expresses a positive opinion about their behavior. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is positive because the speaker uses the word "extremely" to emphasize their positive opinion.
+[2022-12-12 15:01:48,515][main.py][line:125][INFO] 7. i ' ve been to this restaurant over a dozen times with no complaints to date . 
+[2022-12-12 15:01:48,515][main.py][line:126][INFO] 7. Aspect: restaurant; aspect category: RESTAURANT#GENERAL; opinion: no complaints; polarity: positive.
+
+This sentence mentions the specific aspect of "restaurant" and expresses a positive opinion about the overall experience. The aspect category could be RESTAURANT#GENERAL, since it is a broad category that covers general aspects of the restaurant. The sentiment polarity is positive because the speaker indicates that they have visited the restaurant multiple times and have never had any complaints.
+[2022-12-12 15:02:03,390][main.py][line:125][INFO] 8. the owner is belligerent to guests that have a complaint . 
+[2022-12-12 15:02:03,391][main.py][line:126][INFO] 8. Aspect: owner; aspect category: RESTAURANT#MISCELLANEOUS; opinion: belligerent to guests that have a complaint; polarity: negative.
+
+This sentence mentions the specific aspect of "owner" and expresses a negative opinion about their behavior towards guests with complaints. The aspect category could be RESTAURANT#MISCELLANEOUS, since it is a broad category that covers miscellaneous aspects of the restaurant. The sentiment polarity is negative because the speaker uses the word "belligerent" to indicate that the owner is unpleasantly confrontational towards guests with complaints.
+[2022-12-12 15:02:15,239][main.py][line:125][INFO] 9. good food ! 
+[2022-12-12 15:02:15,240][main.py][line:126][INFO] 9. Aspect: food; aspect category: FOOD#GENERAL; opinion: good; polarity: positive.
+
+This sentence mentions the specific aspect of "food" and expresses a positive opinion about it. The aspect category could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarity is positive because the speaker uses the exclamation point to indicate their satisfaction with the food.
+[2022-12-12 15:02:33,656][main.py][line:125][INFO] 10. this is a great place to get a delicious meal . 
+[2022-12-12 15:02:33,656][main.py][line:126][INFO] 10. Aspect: place; aspect category: LOCATION#GENERAL; opinion: great; polarity: positive.
+Aspect: meal; aspect category: FOOD#GENERAL; opinion: delicious; polarity: positive.
+
+This sentence mentions two specific aspects, "place" and "meal", and expresses positive opinions about both. The aspect category for "place" could be LOCATION#GENERAL, since it is a broad category that covers general aspects of the restaurant's location. The aspect category for "meal" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarities for both aspects are positive because the speaker uses the words "great" and "delicious" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:02:45,789][main.py][line:125][INFO] 11. the staff is pretty friendly . 
+[2022-12-12 15:02:45,789][main.py][line:126][INFO] 11. Aspect: staff; aspect category: SERVICE#GENERAL; opinion: friendly; polarity: positive.
+
+This sentence mentions the specific aspect of "staff" and expresses a positive opinion about their friendliness. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is positive because the speaker uses the word "pretty" to indicate that they are satisfied with the friendliness of the staff.
+[2022-12-12 15:03:14,465][main.py][line:125][INFO] 12. the onion rings are great ! 
+[2022-12-12 15:03:14,465][main.py][line:126][INFO] 12. Aspect: onion rings; aspect category: FOOD#STYLE_OPTIONS; opinion: great; polarity: positive.
+
+This sentence mentions the specific aspect of "onion rings" and expresses a positive opinion about them. The aspect category could be FOOD#STYLE_OPTIONS, since it is related to the variety of food options available. The sentiment polarity is positive because the speaker uses the exclamation point to indicate their strong recommendation for trying the onion rings.
+[2022-12-12 15:03:48,334][main.py][line:125][INFO] 13. the lemon chicken tasted like sticky sweet donuts and the honey walnut prawns , the few they actually give you . . . . . were not good . 
+[2022-12-12 15:03:48,334][main.py][line:126][INFO] 13. Aspect: lemon chicken; aspect category: FOOD#GENERAL; opinion: tasted like sticky sweet donuts; polarity: negative.
+Aspect: honey walnut prawns; aspect category: FOOD#GENERAL; opinion: not good; polarity: negative.
+
+This sentence mentions two specific aspects, "lemon chicken" and "honey walnut prawns", and expresses negative opinions about both. The aspect category for both aspects could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarities for both aspects are negative because the speaker uses words and phrases like "tasted like sticky sweet donuts" and "not good" to indicate their dissatisfaction with the quality of these dishes.
+[2022-12-12 15:04:25,284][main.py][line:125][INFO] 14. nice ambience , but highly overrated place . 
+[2022-12-12 15:04:25,284][main.py][line:126][INFO] 14. Aspect: ambience; aspect category: AMBIENCE#GENERAL; opinion: nice; polarity: positive.
+Aspect: place; aspect category: RESTAURANT#GENERAL; opinion: highly overrated; polarity: negative.
+
+This sentence mentions two specific aspects, "ambience" and "place", and expresses a positive opinion about the former and a negative opinion about the latter. The aspect category for "ambience" could be AMBIENCE#GENERAL, since it is a broad category that covers general aspects of the atmosphere or environment of the restaurant. The aspect category for "place" could be RESTAURANT#GENERAL, since it is a broad category that covers general aspects of the restaurant. The sentiment polarities for both aspects are as follows: the ambience is described as "nice", so the polarity is positive, while the place is described as "highly overrated", so the polarity is negative.
+[2022-12-12 15:04:51,465][main.py][line:125][INFO] 15. worst service i ever had 
+[2022-12-12 15:04:51,465][main.py][line:126][INFO] 15. Aspect: service; aspect category: SERVICE#GENERAL; opinion: worst; polarity: negative.
+
+This sentence mentions the specific aspect of "service" and expresses a negative opinion about it. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is negative because the speaker uses the phrase "worst service" to indicate their dissatisfaction with the quality of the service.
+[2022-12-12 15:05:19,081][main.py][line:125][INFO] 16. everyone that sat in the back outside agreed that it was the worst service we had ever received . 
+[2022-12-12 15:05:19,081][main.py][line:126][INFO] 16. Aspect: service; aspect category: SERVICE#GENERAL; opinion: worst we had ever received; polarity: negative.
+
+This sentence mentions the specific aspect of "service" and expresses a negative opinion about it. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is negative because the speaker uses the phrase "worst service we had ever received" to indicate their extreme dissatisfaction with the quality of the service.
+[2022-12-12 15:06:08,080][main.py][line:125][INFO] 17. our waiter was non - existent and after our food finally arrived over an hour after we ordered , we were not given any water or utensils . 
+[2022-12-12 15:06:08,080][main.py][line:126][INFO] 17. Aspect: waiter; aspect category: SERVICE#GENERAL; opinion: non-existent; polarity: negative.
+Aspect: food; aspect category: FOOD#GENERAL; opinion: took over an hour to arrive; polarity: negative.
+Aspect: water; aspect category: DRINKS#QUANTITY; opinion: not given; polarity: negative.
+Aspect: utensils; aspect category: RESTAURANT#MISCELLANEOUS; opinion: not given; polarity: negative.
+
+This sentence mentions four specific aspects - "waiter", "food", "water", and "utensils" - and expresses negative opinions about each of them. The aspect category for "waiter" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The aspect category for "food" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The aspect category for "water" could be DRINKS#QUANTITY, since it is related to the amount of drinks available. The aspect category for "utensils" could be RESTAURANT#MISCELLANEOUS, since it is a broad category that covers miscellaneous aspects of the restaurant. The sentiment polarities for each aspect are as follows: the waiter is described as "non-existent", so the polarity is negative; the food took over an hour to arrive, so the polarity is negative; the water was not given, so the polarity is negative; and the utensils were not given, so the polarity is negative.
+[2022-12-12 15:06:36,543][main.py][line:125][INFO] 18. i complained to the manager , but he was not even apologetic . 
+[2022-12-12 15:06:36,544][main.py][line:126][INFO] 18. Aspect: manager; aspect category: RESTAURANT#MISCELLANEOUS; opinion: not apologetic; polarity: negative.
+
+This sentence mentions the specific aspect of "manager" and expresses a negative opinion about their behavior. The aspect category could be RESTAURANT#MISCELLANEOUS, since it is a broad category that covers miscellaneous aspects of the restaurant. The sentiment polarity is negative because the speaker indicates that they complained to the manager and were dissatisfied with the manager's lack of apology.
+[2022-12-12 15:07:04,551][main.py][line:125][INFO] 19. fabulous italian food ! 
+[2022-12-12 15:07:04,551][main.py][line:126][INFO] 19. Aspect: Italian food; aspect category: FOOD#STYLE_OPTIONS; opinion: fabulous; polarity: positive.
+
+This sentence mentions the specific aspect of "Italian food" and expresses a positive opinion about it. The aspect category could be FOOD#STYLE_OPTIONS, since it is related to the variety of food options available. The sentiment polarity is positive because the speaker uses the word "fabulous" to indicate their strong recommendation for trying the Italian food.
+[2022-12-12 15:07:33,144][main.py][line:125][INFO] 20. 每 i highly recommend mioposto . 
+[2022-12-12 15:07:33,145][main.py][line:126][INFO] 20. Aspect: Mioposto; aspect category: RESTAURANT#GENERAL; opinion: highly recommend; polarity: positive.
+
+This sentence mentions the specific aspect of "Mioposto" and expresses a positive opinion about it. The aspect category could be RESTAURANT#GENERAL, since it is a broad category that covers general aspects of the restaurant. The sentiment polarity is positive because the speaker uses the phrase "highly recommend" to indicate their strong recommendation for visiting Mioposto.
+[2022-12-12 15:08:01,597][main.py][line:125][INFO] 21. i am so happy to have a wonderful italian restaurant in my neighborhood . 
+[2022-12-12 15:08:01,597][main.py][line:126][INFO] 21. Aspect: Italian restaurant; aspect category: RESTAURANT#STYLE_OPTIONS; opinion: wonderful; polarity: positive.
+
+This sentence mentions the specific aspect of "Italian restaurant" and expresses a positive opinion about it. The aspect category could be RESTAURANT#STYLE_OPTIONS, since it is related to the variety of restaurant styles available. The sentiment polarity is positive because the speaker uses the word "wonderful" to indicate their satisfaction with having an Italian restaurant in their neighborhood.
+[2022-12-12 15:08:37,754][main.py][line:125][INFO] 22. the wine list is wonderful and the food reminds me of my recent trip to italy . 
+[2022-12-12 15:08:37,754][main.py][line:126][INFO] 22. Aspect: wine list; aspect category: DRINKS#STYLE_OPTIONS; opinion: wonderful; polarity: positive.
+Aspect: food; aspect category: FOOD#GENERAL; opinion: reminds me of my recent trip to Italy; polarity: positive.
+
+This sentence mentions two specific aspects, "wine list" and "food", and expresses positive opinions about both. The aspect category for "wine list" could be DRINKS#STYLE_OPTIONS, since it is related to the variety of drinks available. The aspect category for "food" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarities for both aspects are positive because the speaker uses the words "wonderful" and "reminds me of my recent trip to Italy" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:09:05,802][main.py][line:125][INFO] 23. i love this restaurant 
+[2022-12-12 15:09:05,802][main.py][line:126][INFO] 23. Aspect: restaurant; aspect category: RESTAURANT#GENERAL; opinion: love; polarity: positive.
+
+This sentence mentions the specific aspect of "restaurant" and expresses a positive opinion about it. The aspect category could be RESTAURANT#GENERAL, since it is a broad category that covers general aspects of the restaurant. The sentiment polarity is positive because the speaker uses the word "love" to indicate their strong positive feeling towards the restaurant.
+[2022-12-12 15:09:45,183][main.py][line:125][INFO] 24. 每 i will never forget the amazing meal , service , and ambiance i experience at this restaurant . 
+[2022-12-12 15:09:45,183][main.py][line:126][INFO] 24. Aspect: meal; aspect category: FOOD#GENERAL; opinion: amazing; polarity: positive.
+Aspect: service; aspect category: SERVICE#GENERAL; opinion: amazing; polarity: positive.
+Aspect: ambiance; aspect category: AMBIENCE#GENERAL; opinion: amazing; polarity: positive.
+
+This sentence mentions three specific aspects, "meal", "service", and "ambiance", and expresses positive opinions about all of them. The aspect category for "meal" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The aspect category for "service" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The aspect category for "ambiance" could be AMBIENCE#GENERAL, since it is a broad category that covers general aspects of the atmosphere or environment of the restaurant. The sentiment polarities for all three aspects are positive because the speaker uses the word "amazing" to indicate their strong satisfaction with these aspects of the restaurant.
+[2022-12-12 15:10:29,199][main.py][line:125][INFO] 25. the wine list is incredible and extensive and diverse , the food is all incredible and the staff was all very nice , good at their jobs and cultured . 
+[2022-12-12 15:10:29,200][main.py][line:126][INFO] 25. Aspect: wine list; aspect category: DRINKS#STYLE_OPTIONS; opinion: incredible and extensive and diverse; polarity: positive.
+Aspect: food; aspect category: FOOD#GENERAL; opinion: all incredible; polarity: positive.
+Aspect: staff; aspect category: SERVICE#GENERAL; opinion: very nice, good at their jobs, and cultured; polarity: positive.
+
+This sentence mentions three specific aspects, "wine list", "food", and "staff", and expresses positive opinions about all of them. The aspect category for "wine list" could be DRINKS#STYLE_OPTIONS, since it is related to the variety of drinks available. The aspect category for "food" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The aspect category for "staff" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for all three aspects are positive because the speaker uses words and phrases like "incredible and extensive and diverse", "all incredible", "very nice", "good at their jobs", and "cultured" to indicate their strong satisfaction with these aspects of the restaurant.
+[2022-12-12 15:10:57,314][main.py][line:125][INFO] 26. i have not a bad thing to say about this place . 
+[2022-12-12 15:10:57,314][main.py][line:126][INFO] 26. Aspect: place; aspect category: LOCATION#GENERAL; opinion: not a bad thing to say; polarity: positive.
+
+This sentence mentions the specific aspect of "place" and expresses a positive opinion about it. The aspect category could be LOCATION#GENERAL, since it is a broad category that covers general aspects of the restaurant's location. The sentiment polarity is positive because the speaker uses the phrase "not a bad thing to say" to indicate that they have no complaints about the place.
+[2022-12-12 15:11:24,760][main.py][line:125][INFO] 27. the food was great ! 
+[2022-12-12 15:11:24,760][main.py][line:126][INFO] 27. Aspect: food; aspect category: FOOD#GENERAL; opinion: great; polarity: positive.
+
+This sentence mentions the specific aspect of "food" and expresses a positive opinion about it. The aspect category could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarity is positive because the speaker uses the exclamation point to indicate their strong recommendation for trying the food.
+[2022-12-12 15:11:59,659][main.py][line:125][INFO] 28. it ' s * very * reasonably priced , esp for the quality of the food . 
+[2022-12-12 15:11:59,659][main.py][line:126][INFO] 28. Aspect: price; aspect category: RESTAURANT#PRICES; opinion: very reasonably priced; polarity: positive.
+Aspect: quality of food; aspect category: FOOD#QUALITY; opinion: high; polarity: positive.
+
+This sentence mentions two specific aspects, "price" and "quality of food", and expresses positive opinions about both. The aspect category for "price" could be RESTAURANT#PRICES, since it is related to the prices of the restaurant's dishes. The aspect category for "quality of food" could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarities for both aspects are positive because the speaker uses words and phrases like "very reasonably priced" and "esp for the quality of the food" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:12:28,360][main.py][line:125][INFO] 29. i had the kafta plate and it was perfect . 
+[2022-12-12 15:12:28,360][main.py][line:126][INFO] 29. Aspect: kafta plate; aspect category: FOOD#GENERAL; opinion: perfect; polarity: positive.
+
+This sentence mentions the specific aspect of "kafta plate" and expresses a positive opinion about it. The aspect category could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarity is positive because the speaker uses the word "perfect" to indicate their strong satisfaction with the kafta plate.
+[2022-12-12 15:13:12,081][main.py][line:125][INFO] 30. 每 in a age of incremental cost cutting in restaurants , its nice to see a place that bucks that trend , and just plain delivers high quality food and good service , period . 
+[2022-12-12 15:13:12,081][main.py][line:126][INFO] 30. Aspect: cost cutting in restaurants; aspect category: RESTAURANT#PRICES; opinion: bucks that trend; polarity: positive.
+Aspect: quality of food; aspect category: FOOD#QUALITY; opinion: high; polarity: positive.
+Aspect: service; aspect category: SERVICE#GENERAL; opinion: good; polarity: positive.
+
+This sentence mentions three specific aspects, "cost cutting in restaurants", "quality of food", and "service", and expresses positive opinions about all of them. The aspect category for "cost cutting in restaurants" could be RESTAURANT#PRICES, since it is related to the prices of the restaurant's dishes. The aspect category for "quality of food" could be FOOD#QUALITY, since it is related to the quality of the food. The aspect category for "service" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for all three aspects are positive because the speaker uses words and phrases like "bucks that trend", "high quality food", and "good service" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:13:41,332][main.py][line:125][INFO] 31. this is the place to relax and enjoy the finest quality food the industry can offer . 
+[2022-12-12 15:13:41,332][main.py][line:126][INFO] 31. Aspect: quality of food; aspect category: FOOD#QUALITY; opinion: finest the industry can offer; polarity: positive.
+
+This sentence mentions the specific aspect of "quality of food" and expresses a positive opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is positive because the speaker uses the phrase "finest the industry can offer" to indicate their strong satisfaction with the quality of the food.
+[2022-12-12 15:14:08,941][main.py][line:125][INFO] 32. caution - its real food for people who love the best . 
+[2022-12-12 15:14:08,941][main.py][line:126][INFO] 32. Aspect: food; aspect category: FOOD#QUALITY; opinion: best; polarity: positive.
+
+This sentence mentions the specific aspect of "food" and expresses a positive opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is positive because the speaker uses the phrase "real food for people who love the best" to indicate their strong satisfaction with the quality of the food.
+[2022-12-12 15:14:47,034][main.py][line:125][INFO] 33. i liked the atmosphere very much but the food was not worth the price . 
+[2022-12-12 15:14:47,035][main.py][line:126][INFO] 33. Aspect: atmosphere; aspect category: AMBIENCE#GENERAL; opinion: liked very much; polarity: positive.
+Aspect: food; aspect category: FOOD#GENERAL; opinion: not worth the price; polarity: negative.
+
+This sentence mentions two specific aspects, "atmosphere" and "food", and expresses a positive opinion about the first and a negative opinion about the second. The aspect category for "atmosphere" could be AMBIENCE#GENERAL, since it is a broad category that covers general aspects of the atmosphere or environment of the restaurant. The aspect category for "food" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarities for these two aspects are positive and negative, respectively, because the speaker uses words and phrases like "liked very much" and "not worth the price" to indicate their satisfaction and dissatisfaction with these aspects of the restaurant.
+[2022-12-12 15:15:14,211][main.py][line:125][INFO] 34. i may not be a sushi guru but i can tell you that the food here is just okay and that there is not much else to it . 
+[2022-12-12 15:15:14,211][main.py][line:126][INFO] 34. Aspect: food; aspect category: FOOD#GENERAL; opinion: just okay; polarity: negative.
+
+This sentence mentions the specific aspect of "food" and expresses a negative opinion about it. The aspect category could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarity is negative because the speaker uses the phrase "just okay" to indicate their dissatisfaction with the food.
+[2022-12-12 15:15:48,721][main.py][line:125][INFO] 35. rice is too dry , tuna was n ' t so fresh either . 
+[2022-12-12 15:15:48,721][main.py][line:126][INFO] 35. Aspect: rice; aspect category: FOOD#GENERAL; opinion: too dry; polarity: negative.
+Aspect: tuna; aspect category: FOOD#QUALITY; opinion: not so fresh; polarity: negative.
+
+This sentence mentions two specific aspects, "rice" and "tuna", and expresses negative opinions about both. The aspect category for "rice" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The aspect category for "tuna" could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarities for both aspects are negative because the speaker uses words and phrases like "too dry" and "not so fresh" to indicate their dissatisfaction with these aspects of the food.
+[2022-12-12 15:16:23,992][main.py][line:125][INFO] 36. i have eaten here three times and have found the quality and variety of the fish to be excellent . 
+[2022-12-12 15:16:23,993][main.py][line:126][INFO] 36. Aspect: quality of fish; aspect category: FOOD#QUALITY; opinion: excellent; polarity: positive.
+Aspect: variety of fish; aspect category: FOOD#STYLE_OPTIONS; opinion: excellent; polarity: positive.
+
+This sentence mentions two specific aspects, "quality of fish" and "variety of fish", and expresses positive opinions about both. The aspect category for "quality of fish" could be FOOD#QUALITY, since it is related to the quality of the food. The aspect category for "variety of fish" could be FOOD#STYLE_OPTIONS, since it is related to the variety of dishes available. The sentiment polarities for both aspects are positive because the speaker uses the word "excellent" to indicate their strong satisfaction with these aspects of the restaurant's food.
+[2022-12-12 15:16:57,953][main.py][line:125][INFO] 37. however , the value and service are both severely lacking . 
+[2022-12-12 15:16:57,953][main.py][line:126][INFO] 37. Aspect: value; aspect category: RESTAURANT#PRICES; opinion: severely lacking; polarity: negative.
+Aspect: service; aspect category: SERVICE#GENERAL; opinion: severely lacking; polarity: negative.
+
+This sentence mentions two specific aspects, "value" and "service", and expresses negative opinions about both. The aspect category for "value" could be RESTAURANT#PRICES, since it is related to the prices of the restaurant's dishes. The aspect category for "service" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for both aspects are negative because the speaker uses the phrase "severely lacking" to indicate their dissatisfaction with these aspects of the restaurant.
+[2022-12-12 15:17:35,140][main.py][line:125][INFO] 38. furthermore , while the fish is unquestionably fresh , rolls tend to be inexplicably bland . 
+[2022-12-12 15:17:35,141][main.py][line:126][INFO] 38. Aspect: freshness of fish; aspect category: FOOD#QUALITY; opinion: unquestionably fresh; polarity: positive.
+Aspect: flavor of rolls; aspect category: FOOD#QUALITY; opinion: inexplicably bland; polarity: negative.
+
+This sentence mentions two specific aspects, "freshness of fish" and "flavor of rolls", and expresses a positive opinion about the first and a negative opinion about the second. The aspect category for "freshness of fish" could be FOOD#QUALITY, since it is related to the quality of the food. The aspect category for "flavor of rolls" could also be FOOD#QUALITY, since it is related to the taste of the food. The sentiment polarities for these two aspects are positive and negative, respectively, because the speaker uses words and phrases like "unquestionably fresh" and "inexplicably bland" to indicate their satisfaction and dissatisfaction with these aspects of the restaurant's food.
+[2022-12-12 15:18:03,018][main.py][line:125][INFO] 39. the service ranges from mediocre to offensive . 
+[2022-12-12 15:18:03,018][main.py][line:126][INFO] 39. Aspect: service; aspect category: SERVICE#GENERAL; opinion: ranges from mediocre to offensive; polarity: negative.
+
+This sentence mentions the specific aspect of "service" and expresses a negative opinion about it. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is negative because the speaker uses the phrase "ranges from mediocre to offensive" to indicate their dissatisfaction with the quality of the service.
+[2022-12-12 15:18:37,234][main.py][line:125][INFO] 40. on a recent trip , our waiter was extremely dismissive , while no less than three staff members waited hand - and - foot on a pair of japanese girls seated nearby . 
+[2022-12-12 15:18:37,234][main.py][line:126][INFO] 40. Aspect: waiter; aspect category: SERVICE#GENERAL; opinion: extremely dismissive; polarity: negative.
+Aspect: staff members; aspect category: SERVICE#GENERAL; opinion: waited hand-and-foot; polarity: positive.
+
+This sentence mentions two specific aspects, "waiter" and "staff members", and expresses a negative opinion about the first and a positive opinion about the second. The aspect category for both aspects could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for these two aspects are negative and positive, respectively, because the speaker uses words and phrases like "extremely dismissive" and "waited hand-and-foot" to indicate their dissatisfaction and satisfaction with these aspects of the restaurant's service.
+[2022-12-12 15:19:05,134][main.py][line:125][INFO] 41. freshest sushi 每 i love this restaurant . 
+[2022-12-12 15:19:05,134][main.py][line:126][INFO] 41. Aspect: sushi; aspect category: FOOD#QUALITY; opinion: freshest; polarity: positive.
+
+This sentence mentions the specific aspect of "sushi" and expresses a positive opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is positive because the speaker uses the phrase "freshest sushi" to indicate their strong satisfaction with the quality of the sushi.
+[2022-12-12 15:19:34,851][main.py][line:125][INFO] 42. they pay such detail to everything from miso soup to complex rolls . 
+[2022-12-12 15:19:34,851][main.py][line:126][INFO] 42. Aspect: attention to detail; aspect category: SERVICE#GENERAL; opinion: pay such detail; polarity: positive.
+
+This sentence mentions the specific aspect of "attention to detail" and expresses a positive opinion about it. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is positive because the speaker uses the phrase "pay such detail" to indicate their strong satisfaction with the level of attention to detail provided by the restaurant's staff.
+[2022-12-12 15:20:03,665][main.py][line:125][INFO] 43. the sashimi was the freshest and most tender i have ever tasted . 
+[2022-12-12 15:20:03,665][main.py][line:126][INFO] 43. Aspect: sashimi; aspect category: FOOD#QUALITY; opinion: freshest and most tender; polarity: positive.
+
+This sentence mentions the specific aspect of "sashimi" and expresses a positive opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is positive because the speaker uses the phrase "freshest and most tender" to indicate their strong satisfaction with the quality of the sashimi.
+[2022-12-12 15:20:31,769][main.py][line:125][INFO] 44. their apps are all delicious . 
+[2022-12-12 15:20:31,769][main.py][line:126][INFO] 44. Aspect: apps; aspect category: FOOD#GENERAL; opinion: delicious; polarity: positive.
+
+This sentence mentions the specific aspect of "apps" (i.e., appetizers) and expresses a positive opinion about them. The aspect category could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarity is positive because the speaker uses the word "delicious" to indicate their satisfaction with the quality of the apps.
+[2022-12-12 15:21:08,106][main.py][line:125][INFO] 45. the only drawback is that this place is really expensive and the portions are on the small side . 
+[2022-12-12 15:21:08,107][main.py][line:126][INFO] 45. Aspect: prices; aspect category: RESTAURANT#PRICES; opinion: expensive; polarity: negative.
+Aspect: portions; aspect category: FOOD#PRICES; opinion: small; polarity: negative.
+
+This sentence mentions two specific aspects, "prices" and "portions", and expresses negative opinions about both. The aspect category for "prices" could be RESTAURANT#PRICES, since it is related to the prices of the restaurant's dishes. The aspect category for "portions" could be FOOD#PRICES, since it is related to the size of the portions of food served at the restaurant. The sentiment polarities for both aspects are negative because the speaker uses words and phrases like "really expensive" and "small" to indicate their dissatisfaction with these aspects of the restaurant.
+[2022-12-12 15:21:43,412][main.py][line:125][INFO] 46. but the space is small and lovely , and the service is helpful . 
+[2022-12-12 15:21:43,412][main.py][line:126][INFO] 46. Aspect: space; aspect category: LOCATION#GENERAL; opinion: small and lovely; polarity: positive.
+Aspect: service; aspect category: SERVICE#GENERAL; opinion: helpful; polarity: positive.
+
+This sentence mentions two specific aspects, "space" and "service", and expresses positive opinions about both. The aspect category for "space" could be LOCATION#GENERAL, since it is related to the physical location and layout of the restaurant. The aspect category for "service" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for both aspects are positive because the speaker uses words and phrases like "small and lovely" and "helpful" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:22:17,834][main.py][line:125][INFO] 47. 每 the food was not great & the waiters were rude . 
+[2022-12-12 15:22:17,835][main.py][line:126][INFO] 47. Aspect: food; aspect category: FOOD#GENERAL; opinion: not great; polarity: negative.
+Aspect: waiters; aspect category: SERVICE#GENERAL; opinion: rude; polarity: negative.
+
+This sentence mentions two specific aspects, "food" and "waiters", and expresses negative opinions about both. The aspect category for "food" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The aspect category for "waiters" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for both aspects are negative because the speaker uses words and phrases like "not great" and "rude" to indicate their dissatisfaction with these aspects of the restaurant.
+[2022-12-12 15:22:45,165][main.py][line:125][INFO] 48. great service 
+[2022-12-12 15:22:45,165][main.py][line:126][INFO] 48. Aspect: service; aspect category: SERVICE#GENERAL; opinion: great; polarity: positive.
+
+This sentence mentions the specific aspect of "service" and expresses a positive opinion about it. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is positive because the speaker uses the word "great" to indicate their strong satisfaction with the quality of the service.
+[2022-12-12 15:23:12,764][main.py][line:125][INFO] 49. my service was stellar ! 
+[2022-12-12 15:23:12,764][main.py][line:126][INFO] 49. Aspect: service; aspect category: SERVICE#GENERAL; opinion: stellar; polarity: positive.
+
+This sentence mentions the specific aspect of "service" and expresses a positive opinion about it. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is positive because the speaker uses the word "stellar" to indicate their strong satisfaction with the quality of the service.
+[2022-12-12 15:23:41,368][main.py][line:125][INFO] 50. the bus boy even spotted that my table was shaking a stabilized it for me . 
+[2022-12-12 15:23:41,368][main.py][line:126][INFO] 50. Aspect: bus boy; aspect category: SERVICE#GENERAL; opinion: spotted and stabilized; polarity: positive.
+
+This sentence mentions the specific aspect of "bus boy" and expresses a positive opinion about their actions. The aspect category could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarity is positive because the speaker uses words and phrases like "spotted" and "stabilized" to indicate their satisfaction with the bus boy's actions and their attention to detail.
+[2022-12-12 15:24:11,439][main.py][line:125][INFO] 51. food was fine , with a some little - tastier - than - normal salsa . 
+[2022-12-12 15:24:11,439][main.py][line:126][INFO] 51. Aspect: food; aspect category: FOOD#GENERAL; opinion: fine, with some little-taster-than-normal salsa; polarity: positive.
+
+This sentence mentions the specific aspect of "food" and expresses a positive opinion about it. The aspect category could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The sentiment polarity is positive because the speaker uses words and phrases like "fine" and "little-taster-than-normal salsa" to indicate their overall satisfaction with the quality of the food.
+[2022-12-12 15:24:57,223][main.py][line:125][INFO] 52. the food was great , the margaritas too but the waitress was too busy being nice to her other larger party than to take better care of my friend and me . 
+[2022-12-12 15:24:57,223][main.py][line:126][INFO] 52. Aspect: food; aspect category: FOOD#GENERAL; opinion: great; polarity: positive.
+Aspect: margaritas; aspect category: DRINKS#QUALITY; opinion: great; polarity: positive.
+Aspect: waitress; aspect category: SERVICE#GENERAL; opinion: too busy being nice to other party; polarity: negative.
+
+This sentence mentions three specific aspects, "food", "margaritas", and "waitress", and expresses positive opinions about the first two and a negative opinion about the last. The aspect category for "food" could be FOOD#GENERAL, since it is a broad category that covers general aspects of food. The aspect category for "margaritas" could be DRINKS#QUALITY, since it is related to the quality of the drinks served at the restaurant. The aspect category for "waitress" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for these three aspects are positive, positive, and negative, respectively, because the speaker uses words and phrases like "great", "great", and "too busy being nice to other party" to indicate their satisfaction or dissatisfaction with these aspects of the restaurant.
+[2022-12-12 15:25:27,084][main.py][line:125][INFO] 53. mama mia 每 i live in the neighborhood and feel lucky to live by such a great pizza place . 
+[2022-12-12 15:25:27,085][main.py][line:126][INFO] 53. Aspect: pizza place; aspect category: FOOD#STYLE_OPTIONS; opinion: great; polarity: positive.
+
+This sentence mentions the specific aspect of "pizza place" and expresses a positive opinion about it. The aspect category could be FOOD#STYLE_OPTIONS, since it is related to the types of food (in this case, pizza) offered by the restaurant. The sentiment polarity is positive because the speaker uses the word "great" to indicate their strong satisfaction with the quality of the pizza at this restaurant.
+[2022-12-12 15:25:55,619][main.py][line:125][INFO] 54. the only problem is you really have to warm up the pizza before it ' s edible , even when you order ahead . 
+[2022-12-12 15:25:55,619][main.py][line:126][INFO] 54. Aspect: pizza; aspect category: FOOD#QUALITY; opinion: need to warm up before edible; polarity: negative.
+
+This sentence mentions the specific aspect of "pizza" and expresses a negative opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is negative because the speaker uses the phrase "need to warm up before edible" to indicate their dissatisfaction with the quality of the pizza.
+[2022-12-12 15:26:10,105][main.py][line:125][INFO] 55. but once done , it ' s not too much dough , not too much cheese , not too much sauce . 
+[2022-12-12 15:26:10,106][main.py][line:126][INFO] 55. Aspect: pizza; aspect category: FOOD#QUALITY; opinion: not too much dough, cheese, or sauce; polarity: positive.
+
+This sentence mentions the specific aspect of "pizza" and expresses a positive opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is positive because the speaker uses words and phrases like "not too much" to indicate their satisfaction with the proportions of the pizza's ingredients.
+[2022-12-12 15:26:23,884][main.py][line:125][INFO] 56. best sushi in town . 
+[2022-12-12 15:26:23,884][main.py][line:126][INFO] 56. Aspect: sushi; aspect category: FOOD#QUALITY; opinion: best in town; polarity: positive.
+
+This sentence mentions the specific aspect of "sushi" and expresses a positive opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is positive because the speaker uses the phrase "best in town" to indicate their strong satisfaction with the quality of the sushi at this restaurant.
+[2022-12-12 15:26:36,915][main.py][line:125][INFO] 57. the best calamari in seattle ! 
+[2022-12-12 15:26:36,916][main.py][line:126][INFO] 57. Aspect: calamari; aspect category: FOOD#QUALITY; opinion: best in Seattle; polarity: positive.
+
+This sentence mentions the specific aspect of "calamari" and expresses a positive opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is positive because the speaker uses the phrase "best in Seattle" to indicate their strong satisfaction with the quality of the calamari at this restaurant.
+[2022-12-12 15:26:50,898][main.py][line:125][INFO] 58. 每 . . . and the best summertime deck experience - - they will even bring you a blanket if you get cold in the seattle evening weather . 
+[2022-12-12 15:26:50,898][main.py][line:126][INFO] 58. Aspect: summertime deck experience; aspect category: AMBIENCE#GENERAL; opinion: best; polarity: positive.
+
+This sentence mentions the specific aspect of "summertime deck experience" and expresses a positive opinion about it. The aspect category could be AMBIENCE#GENERAL, since it is related to the overall atmosphere and ambiance of the restaurant. The sentiment polarity is positive because the speaker uses the word "best" to indicate their strong satisfaction with the summertime deck experience at this restaurant.
+[2022-12-12 15:27:04,170][main.py][line:125][INFO] 59. a perfect place to take out of town guests any time of the year . 
+[2022-12-12 15:27:04,170][main.py][line:126][INFO] 59. Aspect: place; aspect category: LOCATION#GENERAL; opinion: perfect; polarity: positive.
+
+This sentence mentions the specific aspect of "place" and expresses a positive opinion about it. The aspect category could be LOCATION#GENERAL, since it is related to the location of the restaurant. The sentiment polarity is positive because the speaker uses the word "perfect" to indicate their strong satisfaction with the restaurant as a location to take out-of-town guests.
+[2022-12-12 15:27:32,492][main.py][line:125][INFO] 60. endless fun , awesome music , great staff ! ! ! 
+[2022-12-12 15:27:32,492][main.py][line:126][INFO] 60. Aspect: fun; aspect category: RESTAURANT#MISCELLANEOUS; opinion: endless; polarity: positive.
+Aspect: music; aspect category: RESTAURANT#MISCELLANEOUS; opinion: awesome; polarity: positive.
+Aspect: staff; aspect category: SERVICE#GENERAL; opinion: great; polarity: positive.
+
+This sentence mentions three specific aspects, "fun", "music", and "staff", and expresses positive opinions about all three. The aspect category for "fun" could be RESTAURANT#MISCELLANEOUS, since it is a broad category that covers miscellaneous aspects of the restaurant that do not fit into other categories. The aspect category for "music" could also be RESTAURANT#MISCELLANEOUS, since it is another miscellaneous aspect of the restaurant. The aspect category for "staff" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for these three aspects are positive, positive, and positive, respectively, because the speaker uses words and phrases like "endless", "awesome", and "great" to indicate their strong satisfaction with these aspects of the restaurant.
+[2022-12-12 15:27:47,992][main.py][line:125][INFO] 61. 每 by far the best bar in the east village . . . 
+[2022-12-12 15:27:47,992][main.py][line:126][INFO] 61. Aspect: bar; aspect category: DRINKS#STYLE_OPTIONS; opinion: best in east village; polarity: positive.
+
+This sentence mentions the specific aspect of "bar" and expresses a positive opinion about it. The aspect category could be DRINKS#STYLE_OPTIONS, since it is related to the types of drinks (in this case, alcoholic drinks) offered by the restaurant. The sentiment polarity is positive because the speaker uses the phrase "best in east village" to indicate their strong satisfaction with the quality of the bar at this restaurant.
+[2022-12-12 15:28:11,639][main.py][line:125][INFO] 62. great draft and bottle selection and the pizza rocks . 
+[2022-12-12 15:28:11,640][main.py][line:126][INFO] 62. Aspect: draft and bottle selection; aspect category: DRINKS#STYLE_OPTIONS; opinion: great; polarity: positive.
+Aspect: pizza; aspect category: FOOD#QUALITY; opinion: rocks; polarity: positive.
+
+This sentence mentions two specific aspects, "draft and bottle selection" and "pizza", and expresses positive opinions about both. The aspect category for "draft and bottle selection" could be DRINKS#STYLE_OPTIONS, since it is related to the types of drinks (in this case, draft and bottled drinks) offered by the restaurant. The aspect category for "pizza" could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarities for these two aspects are positive, positive, respectively, because the speaker uses words and phrases like "great" and "rocks" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:28:26,269][main.py][line:125][INFO] 63. definitely has one of the best jukebox ' s i ' ve seen in a long long time . 
+[2022-12-12 15:28:26,269][main.py][line:126][INFO] 63. Aspect: jukebox; aspect category: RESTAURANT#MISCELLANEOUS; opinion: best; polarity: positive.
+
+This sentence mentions the specific aspect of "jukebox" and expresses a positive opinion about it. The aspect category could be RESTAURANT#MISCELLANEOUS, since it is a miscellaneous aspect of the restaurant that does not fit into other categories. The sentiment polarity is positive because the speaker uses the phrase "best" to indicate their strong satisfaction with the jukebox at this restaurant.
+[2022-12-12 15:28:47,874][main.py][line:125][INFO] 64. the food is great , the bartenders go that extra mile . 
+[2022-12-12 15:28:47,875][main.py][line:126][INFO] 64. Aspect: food; aspect category: FOOD#QUALITY; opinion: great; polarity: positive.
+Aspect: bartenders; aspect category: SERVICE#GENERAL; opinion: go the extra mile; polarity: positive.
+
+This sentence mentions two specific aspects, "food" and "bartenders", and expresses positive opinions about both. The aspect category for "food" could be FOOD#QUALITY, since it is related to the quality of the food. The aspect category for "bartenders" could be SERVICE#GENERAL, since it is a broad category that covers general aspects of service. The sentiment polarities for these two aspects are positive, positive, respectively, because the speaker uses words and phrases like "great" and "go the extra mile" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:29:14,510][main.py][line:125][INFO] 65. the owners are great fun and the beer selection is worth staying for . 
+[2022-12-12 15:29:14,510][main.py][line:126][INFO] 65. Aspect: owners; aspect category: RESTAURANT#MISCELLANEOUS; opinion: great fun; polarity: positive.
+Aspect: beer selection; aspect category: DRINKS#STYLE_OPTIONS; opinion: worth staying for; polarity: positive.
+
+This sentence mentions two specific aspects, "owners" and "beer selection", and expresses positive opinions about both. The aspect category for "owners" could be RESTAURANT#MISCELLANEOUS, since it is a miscellaneous aspect of the restaurant that does not fit into other categories. The aspect category for "beer selection" could be DRINKS#STYLE_OPTIONS, since it is related to the types of drinks (in this case, beer) offered by the restaurant. The sentiment polarities for these two aspects are positive, positive, respectively, because the speaker uses words and phrases like "great fun" and "worth staying for" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:29:28,184][main.py][line:125][INFO] 66. and the upstairs is a great place to hang out . 
+[2022-12-12 15:29:28,184][main.py][line:126][INFO] 66. Aspect: upstairs; aspect category: LOCATION#GENERAL; opinion: great place to hang out; polarity: positive.
+
+This sentence mentions the specific aspect of "upstairs" and expresses a positive opinion about it. The aspect category could be LOCATION#GENERAL, since it is related to the location of the restaurant. The sentiment polarity is positive because the speaker uses the phrase "great place to hang out" to indicate their satisfaction with the upstairs area of the restaurant.
+[2022-12-12 15:29:44,507][main.py][line:125][INFO] 67. not alot of smoking places left in new york , but i have found my favorite smoking balconey in the city . 
+[2022-12-12 15:29:44,508][main.py][line:126][INFO] 67. Aspect: smoking balcony; aspect category: RESTAURANT#MISCELLANEOUS; opinion: favorite in the city; polarity: positive.
+
+This sentence mentions the specific aspect of "smoking balcony" and expresses a positive opinion about it. The aspect category could be RESTAURANT#MISCELLANEOUS, since it is a miscellaneous aspect of the restaurant that does not fit into other categories. The sentiment polarity is positive because the speaker uses the phrase "favorite in the city" to indicate their strong satisfaction with the smoking balcony at this restaurant.
+[2022-12-12 15:29:57,934][main.py][line:125][INFO] 68. the sushi here is delicious ! 
+[2022-12-12 15:29:57,934][main.py][line:126][INFO] 68. Aspect: sushi; aspect category: FOOD#QUALITY; opinion: delicious; polarity: positive.
+
+This sentence mentions the specific aspect of "sushi" and expresses a positive opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is positive because the speaker uses the word "delicious" to indicate their satisfaction with the sushi at this restaurant.
+[2022-12-12 15:30:22,905][main.py][line:125][INFO] 69. they have a wide variety of fish and they even list which oceans they come from ; atlantic or pacific . 
+[2022-12-12 15:30:22,905][main.py][line:126][INFO] 69. Aspect: variety of fish; aspect category: FOOD#STYLE_OPTIONS; opinion: wide; polarity: positive.
+Aspect: listing of oceans; aspect category: RESTAURANT#MISCELLANEOUS; opinion: included; polarity: positive.
+
+This sentence mentions two specific aspects, "variety of fish" and "listing of oceans", and expresses positive opinions about both. The aspect category for "variety of fish" could be FOOD#STYLE_OPTIONS, since it is related to the different types of fish offered by the restaurant. The aspect category for "listing of oceans" could be RESTAURANT#MISCELLANEOUS, since it is a miscellaneous aspect of the restaurant that does not fit into other categories. The sentiment polarities for these two aspects are positive, positive, respectively, because the speaker uses words and phrases like "wide" and "included" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:30:54,580][main.py][line:125][INFO] 70. i ' ve had the jellyfish , horse mackerel , blue fin tuna and the sake ikura roll among others , and they were all good . 
+[2022-12-12 15:30:54,581][main.py][line:126][INFO] 70. Aspect: jellyfish, horse mackerel, blue fin tuna, sake ikura roll; aspect category: FOOD#STYLE_OPTIONS; opinion: good; polarity: positive.
+
+This sentence mentions four specific aspects of the food offered at this restaurant and expresses a positive opinion about all of them. The aspect category for these aspects could be FOOD#STYLE_OPTIONS, since they are all specific types of food offered by the restaurant. The sentiment polarity is positive because the speaker uses the word "good" to indicate their satisfaction with these aspects of the restaurant.
+[2022-12-12 15:31:23,898][main.py][line:125][INFO] 71. my only negative comment is that i wish the pieces were a little bigger . 
+[2022-12-12 15:31:23,898][main.py][line:126][INFO] 71. Aspect: size of food pieces; aspect category: FOOD#QUALITY; opinion: wish they were bigger; polarity: negative.
+
+This sentence mentions the specific aspect of the "size of food pieces" and expresses a negative opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is negative because the speaker uses the phrase "wish they were bigger" to indicate their dissatisfaction with the size of the food pieces at this restaurant.
+[2022-12-12 15:31:52,791][main.py][line:125][INFO] 72. the decor is rustic , traditional japanese . 
+[2022-12-12 15:31:52,791][main.py][line:126][INFO] 72. Aspect: decor; aspect category: AMBIENCE#GENERAL; opinion: rustic, traditional japanese; polarity: positive.
+
+This sentence mentions the specific aspect of "decor" and expresses a positive opinion about it. The aspect category could be AMBIENCE#GENERAL, since it is related to the overall ambiance of the restaurant. The sentiment polarity is positive because the speaker uses words like "rustic" and "traditional japanese" to indicate their satisfaction with the decor at this restaurant.
+[2022-12-12 15:32:22,718][main.py][line:125][INFO] 73. the crowd is mixed yuppies , young and old . 
+[2022-12-12 15:32:22,718][main.py][line:126][INFO] 73. Aspect: crowd; aspect category: LOCATION#GENERAL; opinion: mixed yuppies, young and old; polarity: neutral.
+
+This sentence mentions the specific aspect of "crowd" and provides a neutral description of it. The aspect category could be LOCATION#GENERAL, since it is related to the location of the restaurant. The sentiment polarity is neutral because the speaker uses words like "mixed yuppies, young and old" to describe the crowd without expressing any clear positive or negative opinion about it.
+[2022-12-12 15:32:52,210][main.py][line:125][INFO] 74. the service was courteous and attentive . 
+[2022-12-12 15:32:52,210][main.py][line:126][INFO] 74. Aspect: service; aspect category: SERVICE#GENERAL; opinion: courteous and attentive; polarity: positive.
+
+This sentence mentions the specific aspect of "service" and expresses a positive opinion about it. The aspect category could be SERVICE#GENERAL, since it is related to the overall quality of the service at the restaurant. The sentiment polarity is positive because the speaker uses words like "courteous" and "attentive" to indicate their satisfaction with the service at this restaurant.
+[2022-12-12 15:33:19,688][main.py][line:125][INFO] 75. mediocre food 
+[2022-12-12 15:33:19,688][main.py][line:126][INFO] 75. Aspect: food; aspect category: FOOD#QUALITY; opinion: mediocre; polarity: negative.
+
+This sentence mentions the specific aspect of "food" and expresses a negative opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is negative because the speaker uses the word "mediocre" to indicate their dissatisfaction with the food at this restaurant.
+[2022-12-12 15:33:49,596][main.py][line:125][INFO] 76. the outside patio area has an abbreviated menu . 
+[2022-12-12 15:33:49,596][main.py][line:126][INFO] 76. Aspect: menu; aspect category: FOOD#STYLE_OPTIONS; opinion: abbreviated; polarity: negative.
+
+This sentence mentions the specific aspect of "menu" and expresses a negative opinion about it. The aspect category could be FOOD#STYLE_OPTIONS, since it is related to the different types of food offered by the restaurant. The sentiment polarity is negative because the speaker uses the word "abbreviated" to indicate their dissatisfaction with the limited options on the menu for the outside patio area of the restaurant.
+[2022-12-12 15:34:19,018][main.py][line:125][INFO] 77. my g / f and i both agreed the food was very mediocre especially considering the price . 
+[2022-12-12 15:34:19,019][main.py][line:126][INFO] 77. Aspect: food; aspect category: FOOD#QUALITY; opinion: mediocre; polarity: negative.
+
+This sentence mentions the specific aspect of "food" and expresses a negative opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is negative because the speaker uses the word "mediocre" to indicate their dissatisfaction with the food at this restaurant. The speaker also mentions the high price of the food, which may be contributing to their negative opinion.
+[2022-12-12 15:34:49,825][main.py][line:125][INFO] 78. we are locals , and get the feeling the only way this place survives with such average food is because most customers are probably one - time customer tourists . 
+[2022-12-12 15:34:49,826][main.py][line:126][INFO] 78. Aspect: food; aspect category: FOOD#QUALITY; opinion: average; polarity: negative.
+
+This sentence mentions the specific aspect of "food" and expresses a negative opinion about it. The aspect category could be FOOD#QUALITY, since it is related to the quality of the food. The sentiment polarity is negative because the speaker uses the word "average" to indicate their dissatisfaction with the food at this restaurant. The speaker also suggests that the restaurant only survives because most customers are tourists who are unlikely to return, indicating their low opinion of the food and service at this restaurant.
+[2022-12-12 15:35:20,509][main.py][line:125][INFO] 79. service was decent . 
+[2022-12-12 15:35:20,509][main.py][line:126][INFO] 79. Aspect: service; aspect category: SERVICE#GENERAL; opinion: decent; polarity: positive.
+
+This sentence mentions the specific aspect of "service" and expresses a positive opinion about it. The aspect category could be SERVICE#GENERAL, since it is related to the overall quality of the service at the restaurant. The sentiment polarity is positive because the speaker uses the word "decent" to indicate their satisfaction with the service at this restaurant. Although "decent" is not a particularly enthusiastic endorsement, it still indicates a positive opinion about the service.
+[2022-12-12 15:35:50,432][main.py][line:125][INFO] 80. drinks were good . 
+[2022-12-12 15:35:50,432][main.py][line:126][INFO] 80. Aspect: drinks; aspect category: DRINKS#QUALITY; opinion: good; polarity: positive.
+
+This sentence mentions the specific aspect of "drinks" and expresses a positive opinion about them. The aspect category could be DRINKS#QUALITY, since it is related to the quality of the drinks. The sentiment polarity is positive because the speaker uses the word "good" to indicate their satisfaction with the drinks at this restaurant.
+[2022-12-12 15:36:29,126][main.py][line:125][INFO] 81. excellent food , nice ambience , fairly expensive 
+[2022-12-12 15:36:29,126][main.py][line:126][INFO] 81. Aspect: food; aspect category: FOOD#QUALITY; opinion: excellent; polarity: positive.
+Aspect: ambience; aspect category: AMBIENCE#GENERAL; opinion: nice; polarity: positive.
+Aspect: prices; aspect category: RESTAURANT#PRICES; opinion: fairly expensive; polarity: negative.
+
+This sentence mentions three specific aspects of the restaurant: food, ambience, and prices. It expresses positive opinions about the food and ambience, but a negative opinion about the prices. The aspect categories could be FOOD#QUALITY and AMBIENCE#GENERAL, since they are related to the quality of the food and ambience, respectively. The aspect category for prices could be RESTAURANT#PRICES, since it is related to the cost of dining at the restaurant. The sentiment polarities are positive for the food and ambience, but negative for the prices.
+[2022-12-12 15:37:06,170][main.py][line:125][INFO] 82. 每 i loved the pumpkin ravioli and the goat cheese gnocchi ( 5 big ones to a plate instead of 20 or so little gnocchis ) and my sister loved her filet mignon on top of spinach and mashed potatoes . 
+[2022-12-12 15:37:06,170][main.py][line:126][INFO] 82. Aspect: pumpkin ravioli; aspect category: FOOD#STYLE_OPTIONS; opinion: loved; polarity: positive.
+Aspect: goat cheese gnocchi; aspect category: FOOD#STYLE_OPTIONS; opinion: loved; polarity: positive.
+Aspect: filet mignon; aspect category: FOOD#STYLE_OPTIONS; opinion: loved; polarity: positive.
+
+This sentence mentions three specific dishes that were served at the restaurant and expresses positive opinions about all of them. The aspect category for each dish could be FOOD#STYLE_OPTIONS, since they are all examples of different types of food that were available at the restaurant. The sentiment polarities are all positive because the speaker uses the word "loved" to indicate their enjoyment of each of the dishes.
+[2022-12-12 15:37:38,611][main.py][line:125][INFO] 83. the ambiance was a peaceful and relaxing break amongst all the kids running around in downtown disney . 
+[2022-12-12 15:37:38,612][main.py][line:126][INFO] 83. Aspect: ambiance; aspect category: AMBIENCE#GENERAL; opinion: peaceful and relaxing; polarity: positive.
+
+This sentence mentions the specific aspect of "ambiance" and expresses a positive opinion about it. The aspect category could be AMBIENCE#GENERAL, since it is related to the overall atmosphere or mood of the restaurant. The sentiment polarity is positive because the speaker uses words like "peaceful" and "relaxing" to indicate that they enjoyed the ambiance at this restaurant. These words suggest that the speaker found the restaurant to be a pleasant and enjoyable place to be.
+[2022-12-12 15:38:09,793][main.py][line:125][INFO] 84. best indian food in l . a . 
+[2022-12-12 15:38:09,803][main.py][line:126][INFO] 84. Aspect: Indian food; aspect category: FOOD#STYLE_OPTIONS; opinion: best; polarity: positive.
+
+This sentence mentions the specific aspect of "Indian food" and expresses a positive opinion about it. The aspect category could be FOOD#STYLE_OPTIONS, since it is related to the types of food that are available at the restaurant. The sentiment polarity is positive because the speaker uses the word "best" to indicate their high opinion of the Indian food at this restaurant. This suggests that the speaker believes this restaurant serves the best Indian food in Los Angeles.
+[2022-12-12 15:38:45,750][main.py][line:125][INFO] 85. the chicken curry and chicken tikka masala are my favorite meat dishes . 
+[2022-12-12 15:38:45,750][main.py][line:126][INFO] 85. Aspect: chicken curry; aspect category: FOOD#STYLE_OPTIONS; opinion: favorite; polarity: positive.
+Aspect: chicken tikka masala; aspect category: FOOD#STYLE_OPTIONS; opinion: favorite; polarity: positive.
+
+This sentence mentions two specific dishes that are served at the restaurant and expresses positive opinions about both of them. The aspect category for each dish could be FOOD#STYLE_OPTIONS, since they are both examples of different types of food that are available at the restaurant. The sentiment polarities are both positive because the speaker uses the word "favorite" to indicate their enjoyment of each of the dishes. This suggests that the speaker has a high opinion of both the chicken curry and chicken tikka masala at this restaurant.
+[2022-12-12 15:39:17,947][main.py][line:125][INFO] 86. the chana masala ( garbanzo beans ) are also excellent . 
+[2022-12-12 15:39:17,947][main.py][line:126][INFO] 86. Aspect: chana masala (garbanzo beans); aspect category: FOOD#STYLE_OPTIONS; opinion: excellent; polarity: positive.
+
+This sentence mentions a specific dish that is served at the restaurant and expresses a positive opinion about it. The aspect category for this dish could be FOOD#STYLE_OPTIONS, since it is an example of a type of food that is available at the restaurant. The sentiment polarity is positive because the speaker uses the word "excellent" to indicate their enjoyment of the dish. This suggests that the speaker has a high opinion of the chana masala at this restaurant.
+[2022-12-12 15:40:00,382][main.py][line:125][INFO] 87. it ' s located in a strip mall near the beverly center , not the greatest location , but the food keeps me coming back for more . 
+[2022-12-12 15:40:00,382][main.py][line:126][INFO] 87. Aspect: location; aspect category: LOCATION#GENERAL; opinion: not the greatest; polarity: negative.
+Aspect: food; aspect category: FOOD#GENERAL; opinion: keeps me coming back for more; polarity: positive.
+
+This sentence mentions two aspects of the restaurant - its location and its food - and expresses both positive and negative opinions about each of them. The aspect category for the location could be LOCATION#GENERAL, since it is related to the physical location of the restaurant. The sentiment polarity for the location is negative because the speaker uses the phrase "not the greatest" to indicate their dissatisfaction with the location. The aspect category for the food could be FOOD#GENERAL, since it is related to the overall quality of the food that is served at the restaurant. The sentiment polarity for the food is positive because the speaker uses the phrase "keeps me coming back for more" to indicate their enjoyment of the food. This suggests that the speaker has mixed feelings about the restaurant, with a negative opinion of the location but a positive opinion of the food.
+[2022-12-12 15:40:42,607][main.py][line:125][INFO] 88. never too crowded and always great service . 
+[2022-12-12 15:40:42,607][main.py][line:126][INFO] 88. Aspect: crowd; aspect category: RESTAURANT#MISCELLANEOUS; opinion: never too crowded; polarity: positive.
+Aspect: service; aspect category: SERVICE#GENERAL; opinion: always great; polarity: positive.
+
+This sentence mentions two aspects of the restaurant - its crowd and its service - and expresses positive opinions about both of them. The aspect category for the crowd could be RESTAURANT#MISCELLANEOUS, since it is a general characteristic of the restaurant that is not directly related to the food or service. The sentiment polarity for the crowd is positive because the speaker uses the phrase "never too crowded" to indicate their satisfaction with the level of crowding at the restaurant. The aspect category for the service could be SERVICE#GENERAL, since it is related to the overall quality of the service provided at the restaurant. The sentiment polarity for the service is positive because the speaker uses the phrase "always great" to indicate their enjoyment of the service. This suggests that the speaker has a consistently positive experience at this restaurant, with both the crowd level and the service being satisfactory.

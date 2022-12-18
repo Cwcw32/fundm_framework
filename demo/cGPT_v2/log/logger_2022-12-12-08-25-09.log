@@ -1,0 +1,269 @@
+[2022-12-12 08:25:09,874][main.py][line:95][INFO] start testing......
+[2022-12-12 08:25:09,874][main.py][line:97][INFO] loading checkpoint......
+[2022-12-12 08:25:18,628][main.py][line:125][INFO] 1. yum ! 
+[2022-12-12 08:25:18,628][main.py][line:126][INFO] 1. Aspect: FOOD#GENERAL; opinion: yum; polarity: positive
+
+Note: In this sentence, the aspect and opinion are not explicitly stated, so they are inferred based on the context. The aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards food, and the opinion is "yum" because that is the expression used to show that the food is liked. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:25:26,912][main.py][line:125][INFO] 2. serves really good sushi . 
+[2022-12-12 08:25:26,912][main.py][line:126][INFO] 2. Aspect: FOOD#GENERAL; opinion: really good; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards food, specifically sushi. The opinion is "really good" because that is the expression used to show that the sushi is liked. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:25:34,625][main.py][line:125][INFO] 3. not the biggest portions but adequate . 
+[2022-12-12 08:25:34,625][main.py][line:126][INFO] 3. Aspect: FOOD#QUANTITY; opinion: adequate; polarity: neutral
+
+Note: In this sentence, the aspect is FOOD#QUANTITY because the sentence is expressing a sentiment about the size of the portions of food. The opinion is "adequate" because that is the expression used to show that the portions are neither too small nor too large. The polarity is neutral because the sentiment is neither positive nor negative.
+[2022-12-12 08:25:42,388][main.py][line:125][INFO] 4. green tea creme brulee is a must ! 
+[2022-12-12 08:25:42,388][main.py][line:126][INFO] 4. Aspect: FOOD#GENERAL; opinion: must; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards a specific dish, the green tea creme brulee. The opinion is "must" because that is the expression used to show that the dish is a must-try. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:25:56,526][main.py][line:125][INFO] 5. it has great sushi and even better service . 
+[2022-12-12 08:25:56,526][main.py][line:126][INFO] 5. Aspect 1: FOOD#GENERAL; opinion: great; polarity: positive
+Aspect 2: SERVICE#GENERAL; opinion: better; polarity: positive
+
+Note: In this sentence, the first aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards the sushi. The opinion is "great" because that is the expression used to show that the sushi is liked. The polarity is positive because the sentiment is positive.
+
+The second aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the service. The opinion is "better" because that is the expression used to show that the service is liked more than the food. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:26:04,364][main.py][line:125][INFO] 6. the entire staff was extremely accomodating and tended to my every need . 
+[2022-12-12 08:26:04,364][main.py][line:126][INFO] 6. Aspect: SERVICE#GENERAL; opinion: extremely accomodating; polarity: positive
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the staff and their service. The opinion is "extremely accomodating" because that is the expression used to show that the staff was very helpful and attentive. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:26:14,218][main.py][line:125][INFO] 7. i ' ve been to this restaurant over a dozen times with no complaints to date . 
+[2022-12-12 08:26:14,218][main.py][line:126][INFO] 7. Aspect: RESTAURANT#MISCELLANEOUS; opinion: no complaints; polarity: positive
+
+Note: In this sentence, the aspect is RESTAURANT#MISCELLANEOUS because the sentence is expressing a positive sentiment towards the restaurant as a whole without specifying a specific aspect. The opinion is "no complaints" because that is the expression used to show that the speaker has not had any negative experiences at the restaurant. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:26:25,764][main.py][line:125][INFO] 8. the owner is belligerent to guests that have a complaint . 
+[2022-12-12 08:26:25,764][main.py][line:126][INFO] 8. Aspect: RESTAURANT#MISCELLANEOUS; opinion: belligerent; polarity: negative
+
+Note: In this sentence, the aspect is RESTAURANT#MISCELLANEOUS because the sentence is expressing a negative sentiment towards the owner of the restaurant without specifying a specific aspect. The opinion is "belligerent" because that is the expression used to show that the owner is hostile and uncooperative when dealing with complaints. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:26:33,662][main.py][line:125][INFO] 9. good food ! 
+[2022-12-12 08:26:33,662][main.py][line:126][INFO] 9. Aspect: FOOD#GENERAL; opinion: good; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards food. The opinion is "good" because that is the expression used to show that the food is liked. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:26:49,452][main.py][line:125][INFO] 10. this is a great place to get a delicious meal . 
+[2022-12-12 08:26:49,453][main.py][line:126][INFO] 10. Aspect: RESTAURANT#GENERAL; opinion: great; polarity: positive
+Aspect: FOOD#QUALITY; opinion: delicious; polarity: positive
+
+Note: In this sentence, the first aspect is RESTAURANT#GENERAL because the sentence is expressing a positive sentiment towards the restaurant as a whole without specifying a specific aspect. The opinion is "great" because that is the expression used to show that the restaurant is liked. The polarity is positive because the sentiment is positive.
+
+The second aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the food. The opinion is "delicious" because that is the expression used to show that the food is tasty and enjoyable. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:26:58,154][main.py][line:125][INFO] 11. the staff is pretty friendly . 
+[2022-12-12 08:26:58,155][main.py][line:126][INFO] 11. Aspect: SERVICE#GENERAL; opinion: pretty friendly; polarity: positive
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the staff and their service. The opinion is "pretty friendly" because that is the expression used to show that the staff is generally friendly and helpful. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:27:06,213][main.py][line:125][INFO] 12. the onion rings are great ! 
+[2022-12-12 08:27:06,213][main.py][line:126][INFO] 12. Aspect: FOOD#GENERAL; opinion: great; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards a specific dish, the onion rings. The opinion is "great" because that is the expression used to show that the dish is liked. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:27:28,459][main.py][line:125][INFO] 13. the lemon chicken tasted like sticky sweet donuts and the honey walnut prawns , the few they actually give you . . . . . were not good . 
+[2022-12-12 08:27:28,459][main.py][line:126][INFO] 13. Aspect 1: FOOD#QUALITY; opinion: sticky sweet donuts; polarity: negative
+Aspect 2: FOOD#QUANTITY; opinion: few; polarity: negative
+Aspect 3: FOOD#QUALITY; opinion: not good; polarity: negative
+
+Note: In this sentence, the first aspect is FOOD#QUALITY because the sentence is expressing a negative sentiment towards the taste of the lemon chicken. The opinion is "sticky sweet donuts" because that is the expression used to show that the lemon chicken tasted like donuts and was too sweet. The polarity is negative because the sentiment is negative.
+
+The second aspect is FOOD#QUANTITY because the sentence is expressing a negative sentiment towards the amount of honey walnut prawns served. The opinion is "few" because that is the expression used to show that the amount of prawns was small. The polarity is negative because the sentiment is negative.
+
+The third aspect is FOOD#QUALITY because the sentence is expressing a negative sentiment towards the honey walnut prawns. The opinion is "not good" because that is the expression used to show that the prawns were not enjoyed. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:27:44,902][main.py][line:125][INFO] 14. nice ambience , but highly overrated place . 
+[2022-12-12 08:27:44,903][main.py][line:126][INFO] 14. Aspect 1: AMBIENCE#GENERAL; opinion: nice; polarity: positive
+Aspect 2: RESTAURANT#GENERAL; opinion: highly overrated; polarity: negative
+
+Note: In this sentence, the first aspect is AMBIENCE#GENERAL because the sentence is expressing a positive sentiment towards the atmosphere of the restaurant. The opinion is "nice" because that is the expression used to show that the ambience is pleasant and enjoyable. The polarity is positive because the sentiment is positive.
+
+The second aspect is RESTAURANT#GENERAL because the sentence is expressing a negative sentiment towards the restaurant as a whole without specifying a specific aspect. The opinion is "highly overrated" because that is the expression used to show that the restaurant is not as good as its reputation suggests. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:27:52,362][main.py][line:125][INFO] 15. worst service i ever had 
+[2022-12-12 08:27:52,362][main.py][line:126][INFO] 15. Aspect: SERVICE#GENERAL; opinion: worst; polarity: negative
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service. The opinion is "worst" because that is the expression used to show that the service was the worst the speaker has ever experienced. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:27:59,848][main.py][line:125][INFO] 16. everyone that sat in the back outside agreed that it was the worst service we had ever received . 
+[2022-12-12 08:27:59,849][main.py][line:126][INFO] 16. Aspect: SERVICE#GENERAL; opinion: worst; polarity: negative
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service. The opinion is "worst" because that is the expression used to show that the service was the worst the speaker and the others at their table had ever experienced. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:28:15,771][main.py][line:125][INFO] 17. our waiter was non - existent and after our food finally arrived over an hour after we ordered , we were not given any water or utensils . 
+[2022-12-12 08:28:15,771][main.py][line:126][INFO] 17. Aspect 1: SERVICE#GENERAL; opinion: non-existent; polarity: negative
+Aspect 2: SERVICE#GENERAL; opinion: not given any water or utensils; polarity: negative
+
+Note: In this sentence, the first aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service provided by the waiter. The opinion is "non-existent" because that is the expression used to show that the waiter was not present or helpful. The polarity is negative because the sentiment is negative.
+
+The second aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service provided by the restaurant. The opinion is "not given any water or utensils" because that is the expression used to show that the necessary items were not provided to the customers. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:28:25,155][main.py][line:125][INFO] 18. i complained to the manager , but he was not even apologetic . 
+[2022-12-12 08:28:25,155][main.py][line:126][INFO] 18. Aspect: SERVICE#GENERAL; opinion: not even apologetic; polarity: negative
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service provided by the manager. The opinion is "not even apologetic" because that is the expression used to show that the manager did not apologize or show any remorse for the poor service. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:28:50,367][main.py][line:125][INFO] 19. fabulous italian food ! 
+[2022-12-12 08:28:50,367][main.py][line:126][INFO] 19. Aspect: FOOD#GENERAL; opinion: fabulous; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards food, specifically Italian food. The opinion is "fabulous" because that is the expression used to show that the food is excellent. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:29:15,484][main.py][line:125][INFO] 20. 每 i highly recommend mioposto . 
+[2022-12-12 08:29:15,494][main.py][line:126][INFO] 20. Aspect: RESTAURANT#GENERAL; opinion: highly recommend; polarity: positive
+
+Note: In this sentence, the aspect is RESTAURANT#GENERAL because the sentence is expressing a positive sentiment towards the restaurant as a whole without specifying a specific aspect. The opinion is "highly recommend" because that is the expression used to show that the speaker thinks the restaurant is worth trying. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:29:39,039][main.py][line:125][INFO] 21. i am so happy to have a wonderful italian restaurant in my neighborhood . 
+[2022-12-12 08:29:39,039][main.py][line:126][INFO] 21. Aspect: RESTAURANT#GENERAL; opinion: wonderful; polarity: positive
+
+Note: In this sentence, the aspect is RESTAURANT#GENERAL because the sentence is expressing a positive sentiment towards the restaurant as a whole without specifying a specific aspect. The opinion is "wonderful" because that is the expression used to show that the restaurant is liked. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:30:12,491][main.py][line:125][INFO] 22. the wine list is wonderful and the food reminds me of my recent trip to italy . 
+[2022-12-12 08:30:12,491][main.py][line:126][INFO] 22. Aspect 1: DRINKS#STYLE_OPTIONS; opinion: wonderful; polarity: positive
+Aspect 2: FOOD#GENERAL; opinion: reminds me of my recent trip to Italy; polarity: positive
+
+Note: In this sentence, the first aspect is DRINKS#STYLE_OPTIONS because the sentence is expressing a positive sentiment towards the variety of wines available. The opinion is "wonderful" because that is the expression used to show that the wine list is impressive. The polarity is positive because the sentiment is positive.
+
+The second aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards the food. The opinion is "reminds me of my recent trip to Italy" because that is the expression used to show that the food is similar to the food experienced in Italy. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:30:37,742][main.py][line:125][INFO] 23. i love this restaurant 
+[2022-12-12 08:30:37,742][main.py][line:126][INFO] 23. Aspect: RESTAURANT#GENERAL; opinion: love; polarity: positive
+
+Note: In this sentence, the aspect is RESTAURANT#GENERAL because the sentence is expressing a positive sentiment towards the restaurant as a whole without specifying a specific aspect. The opinion is "love" because that is the expression used to show that the restaurant is liked. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:31:12,090][main.py][line:125][INFO] 24. 每 i will never forget the amazing meal , service , and ambiance i experience at this restaurant . 
+[2022-12-12 08:31:12,090][main.py][line:126][INFO] 24. Aspect 1: FOOD#QUALITY; opinion: amazing; polarity: positive
+Aspect 2: SERVICE#GENERAL; opinion: amazing; polarity: positive
+Aspect 3: AMBIENCE#GENERAL; opinion: amazing; polarity: positive
+
+Note: In this sentence, the first aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the food. The opinion is "amazing" because that is the expression used to show that the food was exceptional. The polarity is positive because the sentiment is positive.
+
+The second aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the service. The opinion is "amazing" because that is the expression used to show that the service was exceptional. The polarity is positive because the sentiment is positive.
+
+The third aspect is AMBIENCE#GENERAL because the sentence is expressing a positive sentiment towards the atmosphere of the restaurant. The opinion is "amazing" because that is the expression used to show that the ambience was exceptional. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:32:05,899][main.py][line:125][INFO] 25. the wine list is incredible and extensive and diverse , the food is all incredible and the staff was all very nice , good at their jobs and cultured . 
+[2022-12-12 08:32:05,900][main.py][line:126][INFO] 25. Aspect 1: DRINKS#STYLE_OPTIONS; opinion: incredible and extensive and diverse; polarity: positive
+Aspect 2: FOOD#GENERAL; opinion: incredible; polarity: positive
+Aspect 3: SERVICE#GENERAL; opinion: very nice, good at their jobs and cultured; polarity: positive
+
+Note: In this sentence, the first aspect is DRINKS#STYLE_OPTIONS because the sentence is expressing a positive sentiment towards the variety of wines available. The opinion is "incredible and extensive and diverse" because that is the expression used to show that the wine list is impressive in its quality, quantity, and variety. The polarity is positive because the sentiment is positive.
+
+The second aspect is FOOD#GENERAL because the sentence is expressing a positive sentiment towards the food. The opinion is "incredible" because that is the expression used to show that the food is excellent. The polarity is positive because the sentiment is positive.
+
+The third aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the service. The opinion is "very nice, good at their jobs and cultured" because that is the expression used to show that the staff are friendly, skilled, and knowledgeable. The polarity is positive because
+[2022-12-12 08:32:32,608][main.py][line:125][INFO] 26. i have not a bad thing to say about this place . 
+[2022-12-12 08:32:32,608][main.py][line:126][INFO] 26. Aspect: RESTAURANT#GENERAL; opinion: not a bad thing to say; polarity: positive
+
+Note: In this sentence, the aspect is RESTAURANT#GENERAL because the sentence is expressing a positive sentiment towards the restaurant as a whole without specifying a specific aspect. The opinion is "not a bad thing to say" because that is the expression used to show that the speaker does not have any negative experiences or thoughts to share about the restaurant. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:33:00,560][main.py][line:125][INFO] 27. the food was great ! 
+[2022-12-12 08:33:00,560][main.py][line:126][INFO] 27. Aspect: FOOD#QUALITY; opinion: great; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the food. The opinion is "great" because that is the expression used to show that the food is liked. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:33:30,299][main.py][line:125][INFO] 28. it ' s * very * reasonably priced , esp for the quality of the food . 
+[2022-12-12 08:33:30,299][main.py][line:126][INFO] 28. Aspect: RESTAURANT#PRICES; opinion: very reasonably priced; polarity: positive
+Aspect: FOOD#QUALITY; opinion: quality of the food; polarity: positive
+
+Note: In this sentence, the first aspect is RESTAURANT#PRICES because the sentence is expressing a positive sentiment towards the prices of the restaurant. The opinion is "very reasonably priced" because that is the expression used to show that the prices are good, especially considering the quality of the food. The polarity is positive because the sentiment is positive.
+
+The second aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the food. The opinion is "quality of the food" because that is the expression used to show that the food is high-quality. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:33:55,854][main.py][line:125][INFO] 29. i had the kafta plate and it was perfect . 
+[2022-12-12 08:33:55,854][main.py][line:126][INFO] 29. Aspect: FOOD#QUALITY; opinion: perfect; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards a specific dish, the kafta plate. The opinion is "perfect" because that is the expression used to show that the dish was liked and considered to be without any flaws. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:34:47,001][main.py][line:125][INFO] 30. 每 in a age of incremental cost cutting in restaurants , its nice to see a place that bucks that trend , and just plain delivers high quality food and good service , period . 
+[2022-12-12 08:34:47,001][main.py][line:126][INFO] 30. Aspect 1: RESTAURANT#MISCELLANEOUS; opinion: bucks that trend; polarity: positive
+Aspect 2: FOOD#QUALITY; opinion: high quality food; polarity: positive
+Aspect 3: SERVICE#GENERAL; opinion: good service; polarity: positive
+
+Note: In this sentence, the first aspect is RESTAURANT#MISCELLANEOUS because the sentence is expressing a positive sentiment towards the restaurant for not cutting costs and maintaining high quality. The opinion is "bucks that trend" because that is the expression used to show that the restaurant is different from others that are cutting costs. The polarity is positive because the sentiment is positive.
+
+The second aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the food. The opinion is "high quality food" because that is the expression used to show that the food is of a high standard. The polarity is positive because the sentiment is positive.
+
+The third aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the service. The opinion is "good service" because that is the expression used to show that the service is good. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:35:13,166][main.py][line:125][INFO] 31. this is the place to relax and enjoy the finest quality food the industry can offer . 
+[2022-12-12 08:35:13,166][main.py][line:126][INFO] 31. Aspect: RESTAURANT#GENERAL; opinion: place to relax and enjoy the finest quality food; polarity: positive
+
+Note: In this sentence, the aspect is RESTAURANT#GENERAL because the sentence is expressing a positive sentiment towards the restaurant as a whole without specifying a specific aspect. The opinion is "place to relax and enjoy the finest quality food" because that is the expression used to show that the restaurant is a good place to relax and enjoy high-quality food. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:35:38,694][main.py][line:125][INFO] 32. caution - its real food for people who love the best . 
+[2022-12-12 08:35:38,694][main.py][line:126][INFO] 32. Aspect: FOOD#QUALITY; opinion: best; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the food. The opinion is "best" because that is the expression used to show that the food is the best possible quality. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:36:09,537][main.py][line:125][INFO] 33. i liked the atmosphere very much but the food was not worth the price . 
+[2022-12-12 08:36:09,537][main.py][line:126][INFO] 33. Aspect 1: AMBIENCE#GENERAL; opinion: liked the atmosphere very much; polarity: positive
+Aspect 2: FOOD#PRICES; opinion: not worth the price; polarity: negative
+
+Note: In this sentence, the first aspect is AMBIENCE#GENERAL because the sentence is expressing a positive sentiment towards the atmosphere of the restaurant. The opinion is "liked the atmosphere very much" because that is the expression used to show that the ambience was liked. The polarity is positive because the sentiment is positive.
+
+The second aspect is FOOD#PRICES because the sentence is expressing a negative sentiment towards the prices of the food. The opinion is "not worth the price" because that is the expression used to show that the food is not worth the amount it costs. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:36:34,311][main.py][line:125][INFO] 34. i may not be a sushi guru but i can tell you that the food here is just okay and that there is not much else to it . 
+[2022-12-12 08:36:34,311][main.py][line:126][INFO] 34. Aspect: FOOD#QUALITY; opinion: just okay; polarity: neutral
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a neutral sentiment towards the quality of the food. The opinion is "just okay" because that is the expression used to show that the food is not particularly good or bad. The polarity is neutral because the sentiment is neutral.
+[2022-12-12 08:37:05,588][main.py][line:125][INFO] 35. rice is too dry , tuna was n ' t so fresh either . 
+[2022-12-12 08:37:05,588][main.py][line:126][INFO] 35. Aspect 1: FOOD#QUALITY; opinion: rice is too dry; polarity: negative
+Aspect 2: FOOD#QUALITY; opinion: tuna was not so fresh; polarity: negative
+
+Note: In this sentence, the first aspect is FOOD#QUALITY because the sentence is expressing a negative sentiment towards the quality of the rice. The opinion is "too dry" because that is the expression used to show that the rice is not moist or flavorful. The polarity is negative because the sentiment is negative.
+
+The second aspect is FOOD#QUALITY because the sentence is expressing a negative sentiment towards the quality of the tuna. The opinion is "not so fresh" because that is the expression used to show that the tuna is not fresh and might not be good. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:37:29,513][main.py][line:125][INFO] 36. i have eaten here three times and have found the quality and variety of the fish to be excellent . 
+[2022-12-12 08:37:29,513][main.py][line:126][INFO] 36. Aspect: FOOD#QUALITY; opinion: excellent; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the fish. The opinion is "excellent" because that is the expression used to show that the fish is high-quality. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:38:02,440][main.py][line:125][INFO] 37. however , the value and service are both severely lacking . 
+[2022-12-12 08:38:02,441][main.py][line:126][INFO] 37. Aspect 1: RESTAURANT#PRICES; opinion: severely lacking; polarity: negative
+Aspect 2: SERVICE#GENERAL; opinion: severely lacking; polarity: negative
+
+Note: In this sentence, the first aspect is RESTAURANT#PRICES because the sentence is expressing a negative sentiment towards the value of the restaurant, which is determined by the prices. The opinion is "severely lacking" because that is the expression used to show that the prices are not good and do not provide good value for the money. The polarity is negative because the sentiment is negative.
+
+The second aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service. The opinion is "severely lacking" because that is the expression used to show that the service is not good and does not meet the expectations of the speaker. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:38:33,354][main.py][line:125][INFO] 38. furthermore , while the fish is unquestionably fresh , rolls tend to be inexplicably bland . 
+[2022-12-12 08:38:33,355][main.py][line:126][INFO] 38. Aspect 1: FOOD#QUALITY; opinion: fresh; polarity: positive
+Aspect 2: FOOD#QUALITY; opinion: inexplicably bland; polarity: negative
+
+Note: In this sentence, the first aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the freshness of the fish. The opinion is "fresh" because that is the expression used to show that the fish is fresh and not stale or spoiled. The polarity is positive because the sentiment is positive.
+
+The second aspect is FOOD#QUALITY because the sentence is expressing a negative sentiment towards the quality of the rolls. The opinion is "inexplicably bland" because that is the expression used to show that the rolls are not flavorful and the lack of flavor is unexpected and hard to explain. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:38:58,715][main.py][line:125][INFO] 39. the service ranges from mediocre to offensive . 
+[2022-12-12 08:38:58,717][main.py][line:126][INFO] 39. Aspect: SERVICE#GENERAL; opinion: ranges from mediocre to offensive; polarity: negative
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service. The opinion is "ranges from mediocre to offensive" because that is the expression used to show that the service can be either mediocre or offensive, depending on the situation or the staff member. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:39:22,834][main.py][line:125][INFO] 40. on a recent trip , our waiter was extremely dismissive , while no less than three staff members waited hand - and - foot on a pair of japanese girls seated nearby . 
+[2022-12-12 08:39:22,834][main.py][line:126][INFO] 40. Aspect: SERVICE#GENERAL; opinion: extremely dismissive; polarity: negative
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service. The opinion is "extremely dismissive" because that is the expression used to show that the waiter was rude and did not care about the speaker or their needs. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:39:47,678][main.py][line:125][INFO] 41. freshest sushi 每 i love this restaurant . 
+[2022-12-12 08:39:47,680][main.py][line:126][INFO] 41. Aspect: FOOD#QUALITY; opinion: freshest sushi; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the sushi. The opinion is "freshest sushi" because that is the expression used to show that the sushi is fresh and not stale or spoiled. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:40:12,800][main.py][line:125][INFO] 42. they pay such detail to everything from miso soup to complex rolls . 
+[2022-12-12 08:40:12,801][main.py][line:126][INFO] 42. Aspect: FOOD#QUALITY; opinion: pay such detail to everything; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the food. The opinion is "pay such detail to everything" because that is the expression used to show that the restaurant pays attention to every aspect of the food and makes sure that it is done well. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:40:40,639][main.py][line:125][INFO] 43. the sashimi was the freshest and most tender i have ever tasted . 
+[2022-12-12 08:40:40,640][main.py][line:126][INFO] 43. Aspect: FOOD#QUALITY; opinion: freshest and most tender; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the sashimi. The opinion is "freshest and most tender" because that is the expression used to show that the sashimi is fresh and tender, which are both good qualities. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:41:05,514][main.py][line:125][INFO] 44. their apps are all delicious . 
+[2022-12-12 08:41:05,514][main.py][line:126][INFO] 44. Aspect: FOOD#QUALITY; opinion: delicious; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the appetizers. The opinion is "delicious" because that is the expression used to show that the appetizers are good and enjoyable to eat. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:41:41,146][main.py][line:125][INFO] 45. the only drawback is that this place is really expensive and the portions are on the small side . 
+[2022-12-12 08:41:41,147][main.py][line:126][INFO] 45. Aspect 1: RESTAURANT#PRICES; opinion: really expensive; polarity: negative
+Aspect 2: FOOD#QUANTITY; opinion: small; polarity: negative
+
+Note: In this sentence, the first aspect is RESTAURANT#PRICES because the sentence is expressing a negative sentiment towards the prices of the restaurant. The opinion is "really expensive" because that is the expression used to show that the prices are high and might not be worth it. The polarity is negative because the sentiment is negative.
+
+The second aspect is FOOD#QUANTITY because the sentence is expressing a negative sentiment towards the size of the portions of food. The opinion is "small" because that is the expression used to show that the portions are not large and might not be satisfying. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:42:13,448][main.py][line:125][INFO] 46. but the space is small and lovely , and the service is helpful . 
+[2022-12-12 08:42:13,448][main.py][line:126][INFO] 46. Aspect 1: AMBIENCE#GENERAL; opinion: small and lovely; polarity: positive
+Aspect 2: SERVICE#GENERAL; opinion: helpful; polarity: positive
+
+Note: In this sentence, the first aspect is AMBIENCE#GENERAL because the sentence is expressing a positive sentiment towards the atmosphere of the restaurant. The opinion is "small and lovely" because that is the expression used to show that the restaurant is small and has a nice atmosphere. The polarity is positive because the sentiment is positive.
+
+The second aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the service. The opinion is "helpful" because that is the expression used to show that the staff members are helpful and willing to assist the customers. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:42:44,879][main.py][line:125][INFO] 47. 每 the food was not great & the waiters were rude . 
+[2022-12-12 08:42:44,879][main.py][line:126][INFO] 47. Aspect 1: FOOD#QUALITY; opinion: not great; polarity: negative
+Aspect 2: SERVICE#GENERAL; opinion: rude; polarity: negative
+
+Note: In this sentence, the first aspect is FOOD#QUALITY because the sentence is expressing a negative sentiment towards the quality of the food. The opinion is "not great" because that is the expression used to show that the food is not good and might not be worth eating. The polarity is negative because the sentiment is negative.
+
+The second aspect is SERVICE#GENERAL because the sentence is expressing a negative sentiment towards the service. The opinion is "rude" because that is the expression used to show that the staff members are rude and do not treat the customers with respect or kindness. The polarity is negative because the sentiment is negative.
+[2022-12-12 08:43:07,352][main.py][line:125][INFO] 48. great service 
+[2022-12-12 08:43:07,355][main.py][line:126][INFO] 48. Aspect: SERVICE#GENERAL; opinion: great; polarity: positive
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the service. The opinion is "great" because that is the expression used to show that the service is good and meets the expectations of the speaker. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:43:32,188][main.py][line:125][INFO] 49. my service was stellar ! 
+[2022-12-12 08:43:32,188][main.py][line:126][INFO] 49. Aspect: SERVICE#GENERAL; opinion: stellar; polarity: positive
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the service. The opinion is "stellar" because that is the expression used to show that the service is exceptional and goes above and beyond the expectations of the speaker. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:44:00,744][main.py][line:125][INFO] 50. the bus boy even spotted that my table was shaking a stabilized it for me . 
+[2022-12-12 08:44:00,744][main.py][line:126][INFO] 50. Aspect: SERVICE#GENERAL; opinion: stabilized my table; polarity: positive
+
+Note: In this sentence, the aspect is SERVICE#GENERAL because the sentence is expressing a positive sentiment towards the service provided by the bus boy. The opinion is "stabilized my table" because that is the expression used to show that the bus boy noticed that the table was shaking and took action to fix it and make the experience better for the speaker. The polarity is positive because the sentiment is positive.
+[2022-12-12 08:44:27,674][main.py][line:125][INFO] 51. food was fine , with a some little - tastier - than - normal salsa . 
+[2022-12-12 08:44:27,675][main.py][line:126][INFO] 51. Aspect: FOOD#QUALITY; opinion: some little tastier than normal salsa; polarity: positive
+
+Note: In this sentence, the aspect is FOOD#QUALITY because the sentence is expressing a positive sentiment towards the quality of the food. The opinion is "some little tastier than normal salsa" because that is the expression used to show that the salsa was better than usual and had a good flavor. The polarity is positive because the sentiment is positive.

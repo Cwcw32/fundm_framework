@@ -1,0 +1,6 @@
+[2022-12-12 06:55:43,689][main.py][line:25][INFO] start testing......
+[2022-12-12 06:55:43,689][main.py][line:27][INFO] loading checkpoint......
+[2022-12-12 06:56:01,052][main.py][line:71][INFO] 0.Boot time is super fast , around anywhere from 35 seconds to 1 minute . 
+[2022-12-12 06:56:01,052][main.py][line:72][INFO] Aspect: boot time; Opinion: super fast; Polarity: positive
+[2022-12-12 06:56:20,618][main.py][line:71][INFO] 1.tech support would not fix the problem unless I bought your plan for $ 150 plus . 
+[2022-12-12 06:56:20,618][main.py][line:72][INFO] Aspect: tech support; Opinion: not fix the problem unless I bought your plan; Polarity: negative

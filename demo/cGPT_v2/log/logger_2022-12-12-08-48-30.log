@@ -1,0 +1,1291 @@
+[2022-12-12 08:48:30,996][main.py][line:95][INFO] start testing......
+[2022-12-12 08:48:30,997][main.py][line:97][INFO] loading checkpoint......
+[2022-12-12 08:48:52,457][main.py][line:125][INFO] 1. yum ! 
+[2022-12-12 08:48:52,457][main.py][line:126][INFO] Aspect: null; Aspect category: null; Opinion: yum; Polarity: positive.
+
+ Note: Since there is no explicit aspect or aspect category mentioned in this sentence, they are both denoted as "null". The sentiment expressed in the sentence is positive, as indicated by the exclamation mark after "yum".
+[2022-12-12 08:49:19,240][main.py][line:125][INFO] 2. serves really good sushi . 
+[2022-12-12 08:49:19,240][main.py][line:126][INFO] Aspect: sushi; Aspect category: FOOD#QUALITY; Opinion: really good; Polarity: positive.
+
+ Note: The aspect in this sentence is "sushi", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the sushi served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the adverb "really" before "good".
+[2022-12-12 08:49:45,541][main.py][line:125][INFO] 3. not the biggest portions but adequate . 
+[2022-12-12 08:49:45,543][main.py][line:126][INFO] Aspect: portions; Aspect category: FOOD#QUANTITY; Opinion: not the biggest; Polarity: negative.
+
+ Note: The aspect in this sentence is "portions", and the aspect category is "FOOD#QUANTITY", since the sentence mentions the quantity of the food served at the restaurant. The sentiment expressed in the sentence is negative, as indicated by the use of the negation "not" before "the biggest". However, the sentiment becomes more neutral towards the end of the sentence, with the use of the adjective "adequate" to describe the portions.
+[2022-12-12 08:50:08,510][main.py][line:125][INFO] 4. green tea creme brulee is a must ! 
+[2022-12-12 08:50:08,510][main.py][line:126][INFO] Aspect: green tea creme brulee; Aspect category: FOOD#QUALITY; Opinion: must; Polarity: positive.
+
+ Note: The aspect in this sentence is "green tea creme brulee", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the exclamation mark after "must".
+[2022-12-12 08:50:38,284][main.py][line:125][INFO] 5. it has great sushi and even better service . 
+[2022-12-12 08:50:38,284][main.py][line:126][INFO] Aspect: sushi; Aspect category: FOOD#QUALITY; Opinion: great; Polarity: positive.
+Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: better; Polarity: positive.
+
+ Note: The first aspect in this sentence is "sushi", and the corresponding aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the sushi served at the restaurant. The second aspect is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. Both aspects have a positive sentiment, as indicated by the use of the adjectives "great" and "better" to describe them.
+[2022-12-12 08:51:03,301][main.py][line:125][INFO] 6. the entire staff was extremely accomodating and tended to my every need . 
+[2022-12-12 08:51:03,301][main.py][line:126][INFO] Aspect: staff; Aspect category: SERVICE#QUALITY; Opinion: extremely accomodating; Polarity: positive.
+
+ Note: The aspect in this sentence is "staff", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided by the staff at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the adverb "extremely" before "accomodating" to describe the staff.
+[2022-12-12 08:51:27,668][main.py][line:125][INFO] 7. i ' ve been to this restaurant over a dozen times with no complaints to date . 
+[2022-12-12 08:51:27,668][main.py][line:126][INFO] Aspect: restaurant; Aspect category: RESTAURANT#QUALITY; Opinion: no complaints; Polarity: positive.
+
+ Note: The aspect in this sentence is "restaurant", and the aspect category is "RESTAURANT#QUALITY", since the sentence mentions the quality of the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the phrase "no complaints" to describe the speaker's experience at the restaurant.
+[2022-12-12 08:51:54,218][main.py][line:125][INFO] 8. the owner is belligerent to guests that have a complaint . 
+[2022-12-12 08:51:54,218][main.py][line:126][INFO] Aspect: owner; Aspect category: RESTAURANT#MISCELLANEOUS; Opinion: belligerent; Polarity: negative.
+
+ Note: The aspect in this sentence is "owner", and the aspect category is "RESTAURANT#MISCELLANEOUS", since the sentence mentions a miscellaneous aspect of the restaurant (namely, the behavior of the owner). The sentiment expressed in the sentence is negative, as indicated by the use of the adjective "belligerent" to describe the owner's behavior towards guests with complaints.
+[2022-12-12 08:52:17,377][main.py][line:125][INFO] 9. good food ! 
+[2022-12-12 08:52:17,377][main.py][line:126][INFO] Aspect: food; Aspect category: FOOD#QUALITY; Opinion: good; Polarity: positive.
+
+ Note: The aspect in this sentence is "food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the exclamation mark after "good".
+[2022-12-12 08:52:48,791][main.py][line:125][INFO] 10. this is a great place to get a delicious meal . 
+[2022-12-12 08:52:48,791][main.py][line:126][INFO] Aspect: place; Aspect category: RESTAURANT#QUALITY; Opinion: great; Polarity: positive.
+Aspect: meal; Aspect category: FOOD#QUALITY; Opinion: delicious; Polarity: positive.
+
+ Note: The first aspect in this sentence is "place", and the aspect category is "RESTAURANT#QUALITY", since the sentence mentions the quality of the restaurant as a whole. The second aspect is "meal", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. Both aspects have a positive sentiment, as indicated by the use of the adjectives "great" and "delicious" to describe them.
+[2022-12-12 08:53:12,167][main.py][line:125][INFO] 11. the staff is pretty friendly . 
+[2022-12-12 08:53:12,167][main.py][line:126][INFO] Aspect: staff; Aspect category: SERVICE#QUALITY; Opinion: friendly; Polarity: positive.
+
+ Note: The aspect in this sentence is "staff", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided by the staff at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the adjective "friendly" to describe the staff.
+[2022-12-12 08:53:36,728][main.py][line:125][INFO] 12. the onion rings are great ! 
+[2022-12-12 08:53:36,728][main.py][line:126][INFO] Aspect: onion rings; Aspect category: FOOD#QUALITY; Opinion: great; Polarity: positive.
+
+ Note: The aspect in this sentence is "onion rings", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the onion rings) served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the exclamation mark after "great".
+[2022-12-12 08:54:11,573][main.py][line:125][INFO] 13. the lemon chicken tasted like sticky sweet donuts and the honey walnut prawns , the few they actually give you . . . . . were not good . 
+[2022-12-12 08:54:11,573][main.py][line:126][INFO] Aspect: lemon chicken; Aspect category: FOOD#QUALITY; Opinion: tasted like sticky sweet donuts; Polarity: negative.
+Aspect: honey walnut prawns; Aspect category: FOOD#QUALITY; Opinion: not good; Polarity: negative.
+
+ Note: The first aspect in this sentence is "lemon chicken", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the lemon chicken) served at the restaurant. The second aspect is "honey walnut prawns", and the aspect category is also "FOOD#QUALITY", since the sentence mentions the quality of another specific dish (the honey walnut prawns) served at the restaurant. Both aspects have a negative sentiment, as indicated by the use of phrases like "tasted like sticky sweet donuts" and "not good" to describe them.
+[2022-12-12 08:54:44,621][main.py][line:125][INFO] 14. nice ambience , but highly overrated place . 
+[2022-12-12 08:54:44,621][main.py][line:126][INFO] Aspect: ambience; Aspect category: AMBIENCE#QUALITY; Opinion: nice; Polarity: positive.
+Aspect: place; Aspect category: RESTAURANT#QUALITY; Opinion: highly overrated; Polarity: negative.
+
+ Note: The first aspect in this sentence is "ambience", and the aspect category is "AMBIENCE#QUALITY", since the sentence mentions the quality of the ambience at the restaurant. The second aspect is "place", and the aspect category is "RESTAURANT#QUALITY", since the sentence mentions the quality of the restaurant as a whole. The first aspect has a positive sentiment, as indicated by the use of the adjective "nice" to describe it. The second aspect has a negative sentiment, as indicated by the use of the phrase "highly overrated" to describe it.
+[2022-12-12 08:55:08,936][main.py][line:125][INFO] 15. worst service i ever had 
+[2022-12-12 08:55:08,936][main.py][line:126][INFO] Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: worst; Polarity: negative.
+
+ Note: The aspect in this sentence is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. The sentiment expressed in the sentence is negative, as indicated by the use of the superlative adjective "worst" to describe the service.
+[2022-12-12 08:55:34,317][main.py][line:125][INFO] 16. everyone that sat in the back outside agreed that it was the worst service we had ever received . 
+[2022-12-12 08:55:34,317][main.py][line:126][INFO] Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: worst; Polarity: negative.
+
+ Note: The aspect in this sentence is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. The sentiment expressed in the sentence is negative, as indicated by the use of the phrase "worst service we had ever received" to describe the service.
+[2022-12-12 08:56:18,405][main.py][line:125][INFO] 17. our waiter was non - existent and after our food finally arrived over an hour after we ordered , we were not given any water or utensils . 
+[2022-12-12 08:56:18,405][main.py][line:126][INFO] Aspect: waiter; Aspect category: SERVICE#QUALITY; Opinion: non-existent; Polarity: negative.
+Aspect: food; Aspect category: FOOD#TIMELINESS; Opinion: over an hour after we ordered; Polarity: negative.
+Aspect: water; Aspect category: DRINKS#AVAILABILITY; Opinion: not given; Polarity: negative.
+Aspect: utensils; Aspect category: SERVICE#QUALITY; Opinion: not given; Polarity: negative.
+
+ Note: The first aspect in this sentence is "waiter", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided by the waiter. The second aspect is "food", and the aspect category is "FOOD#TIMELINESS", since the sentence mentions the timeliness of the food being served at the restaurant. The third aspect is "water", and the aspect category is "DRINKS#AVAILABILITY", since the sentence mentions the availability of water at the restaurant. The fourth aspect is "utensils", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the availability of utensils at the restaurant. All aspects have a negative sentiment, as indicated by the use of phrases like "non-existent", "over an hour after we ordered", "not given" to describe them.
+[2022-12-12 08:56:43,995][main.py][line:125][INFO] 18. i complained to the manager , but he was not even apologetic . 
+[2022-12-12 08:56:43,995][main.py][line:126][INFO] Aspect: manager; Aspect category: SERVICE#QUALITY; Opinion: not even apologetic; Polarity: negative.
+
+ Note: The aspect in this sentence is "manager", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided by the manager. The sentiment expressed in the sentence is negative, as indicated by the use of the phrase "not even apologetic" to describe the manager's behavior towards the speaker's complaint.
+[2022-12-12 08:57:10,048][main.py][line:125][INFO] 19. fabulous italian food ! 
+[2022-12-12 08:57:10,048][main.py][line:126][INFO] Aspect: italian food; Aspect category: FOOD#QUALITY; Opinion: fabulous; Polarity: positive.
+
+ Note: The aspect in this sentence is "italian food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant (specifically, the Italian food). The sentiment expressed in the sentence is positive, as indicated by the exclamation mark after "fabulous".
+[2022-12-12 08:57:33,963][main.py][line:125][INFO] 20. 每 i highly recommend mioposto . 
+[2022-12-12 08:57:33,963][main.py][line:126][INFO] Aspect: mioposto; Aspect category: RESTAURANT#QUALITY; Opinion: highly recommend; Polarity: positive.
+
+ Note: The aspect in this sentence is "mioposto", and the aspect category is "RESTAURANT#QUALITY", since the sentence mentions the quality of the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the phrase "highly recommend" to describe the speaker's opinion of the restaurant.
+[2022-12-12 08:57:58,918][main.py][line:125][INFO] 21. i am so happy to have a wonderful italian restaurant in my neighborhood . 
+[2022-12-12 08:57:58,918][main.py][line:126][INFO] Aspect: italian restaurant; Aspect category: RESTAURANT#QUALITY; Opinion: wonderful; Polarity: positive.
+
+ Note: The aspect in this sentence is "italian restaurant", and the aspect category is "RESTAURANT#QUALITY", since the sentence mentions the quality of the restaurant (specifically, the Italian restaurant). The sentiment expressed in the sentence is positive, as indicated by the use of the adjective "wonderful" to describe the restaurant.
+[2022-12-12 08:58:27,825][main.py][line:125][INFO] 22. the wine list is wonderful and the food reminds me of my recent trip to italy . 
+[2022-12-12 08:58:27,825][main.py][line:126][INFO] Aspect: wine list; Aspect category: DRINKS#QUALITY; Opinion: wonderful; Polarity: positive.
+Aspect: food; Aspect category: FOOD#QUALITY; Opinion: reminds me of my recent trip to Italy; Polarity: positive.
+
+ Note: The first aspect in this sentence is "wine list", and the aspect category is "DRINKS#QUALITY", since the sentence mentions the quality of the wine list at the restaurant. The second aspect is "food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. Both aspects have a positive sentiment, as indicated by the use of the adjectives "wonderful" and "reminds me of my recent trip to Italy" to describe them.
+[2022-12-12 08:58:51,676][main.py][line:125][INFO] 23. i love this restaurant 
+[2022-12-12 08:58:51,676][main.py][line:126][INFO] Aspect: restaurant; Aspect category: RESTAURANT#QUALITY; Opinion: love; Polarity: positive.
+
+ Note: The aspect in this sentence is "restaurant", and the aspect category is "RESTAURANT#QUALITY", since the sentence mentions the quality of the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the verb "love" to describe the speaker's opinion of the restaurant.
+[2022-12-12 08:59:26,454][main.py][line:125][INFO] 24. 每 i will never forget the amazing meal , service , and ambiance i experience at this restaurant . 
+[2022-12-12 08:59:26,454][main.py][line:126][INFO] Aspect: meal; Aspect category: FOOD#QUALITY; Opinion: amazing; Polarity: positive.
+Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: amazing; Polarity: positive.
+Aspect: ambiance; Aspect category: AMBIENCE#QUALITY; Opinion: amazing; Polarity: positive.
+
+ Note: The first aspect in this sentence is "meal", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The second aspect is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. The third aspect is "ambiance", and the aspect category is "AMBIENCE#QUALITY", since the sentence mentions the quality of the ambiance at the restaurant. All aspects have a positive sentiment, as indicated by the use of the adjective "amazing" to describe them.
+[2022-12-12 09:00:00,070][main.py][line:125][INFO] 25. the wine list is incredible and extensive and diverse , the food is all incredible and the staff was all very nice , good at their jobs and cultured . 
+[2022-12-12 09:00:00,070][main.py][line:126][INFO] Aspect: wine list; Aspect category: DRINKS#QUALITY; Opinion: incredible and extensive and diverse; Polarity: positive.
+Aspect: food; Aspect category: FOOD#QUALITY; Opinion: incredible; Polarity: positive.
+Aspect: staff; Aspect category: SERVICE#QUALITY; Opinion: very nice, good at their jobs and cultured; Polarity: positive.
+
+ Note: The first aspect in this sentence is "wine list", and the aspect category is "DRINKS#QUALITY", since the sentence mentions the quality of the wine list at the restaurant. The second aspect is "food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The third aspect is "staff", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided by the staff at the restaurant. All aspects have a positive sentiment, as indicated by the use of phrases like "incredible and extensive and diverse", "incredible", and "very nice, good at their jobs and cultured" to describe them.
+[2022-12-12 09:00:25,547][main.py][line:125][INFO] 26. i have not a bad thing to say about this place . 
+[2022-12-12 09:00:25,547][main.py][line:126][INFO] Aspect: place; Aspect category: RESTAURANT#QUALITY; Opinion: not a bad thing to say; Polarity: positive.
+
+ Note: The aspect in this sentence is "place", and the aspect category is "RESTAURANT#QUALITY", since the sentence mentions the quality of the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the phrase "not a bad thing to say" to describe the speaker's opinion of the restaurant.
+[2022-12-12 09:00:48,488][main.py][line:125][INFO] 27. the food was great ! 
+[2022-12-12 09:00:48,488][main.py][line:126][INFO] Aspect: food; Aspect category: FOOD#QUALITY; Opinion: great; Polarity: positive.
+
+ Note: The aspect in this sentence is "food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the exclamation mark after "great".
+[2022-12-12 09:01:21,996][main.py][line:125][INFO] 28. it ' s * very * reasonably priced , esp for the quality of the food . 
+[2022-12-12 09:01:21,996][main.py][line:126][INFO] Aspect: prices; Aspect category: RESTAURANT#PRICES; Opinion: very reasonably priced; Polarity: positive.
+Aspect: quality of the food; Aspect category: FOOD#QUALITY; Opinion: high; Polarity: positive.
+
+ Note: The first aspect in this sentence is "prices", and the aspect category is "RESTAURANT#PRICES", since the sentence mentions the prices charged at the restaurant. The second aspect is "quality of the food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The first aspect has a positive sentiment, as indicated by the use of the phrase "very reasonably priced" to describe the prices. The second aspect has a positive sentiment, as indicated by the mention of the high quality of the food.
+[2022-12-12 09:01:48,323][main.py][line:125][INFO] 29. i had the kafta plate and it was perfect . 
+[2022-12-12 09:01:48,326][main.py][line:126][INFO] Aspect: kafta plate; Aspect category: FOOD#QUALITY; Opinion: perfect; Polarity: positive.
+
+ Note: The aspect in this sentence is "kafta plate", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the kafta plate) served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the adjective "perfect" to describe the dish.
+[2022-12-12 09:02:24,474][main.py][line:125][INFO] 30. 每 in a age of incremental cost cutting in restaurants , its nice to see a place that bucks that trend , and just plain delivers high quality food and good service , period . 
+[2022-12-12 09:02:24,474][main.py][line:126][INFO] Aspect: cost cutting in restaurants; Aspect category: RESTAURANT#PRICES; Opinion: bucks that trend; Polarity: positive.
+Aspect: high quality food; Aspect category: FOOD#QUALITY; Opinion: delivers; Polarity: positive.
+Aspect: good service; Aspect category: SERVICE#QUALITY; Opinion: delivers; Polarity: positive.
+
+ Note: The first aspect in this sentence is "cost cutting in restaurants", and the aspect category is "RESTAURANT#PRICES", since the sentence mentions the cost-cutting trend in the restaurant industry. The second aspect is "high quality food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The third aspect is "good service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. All aspects have a positive sentiment, as indicated by the use of phrases like "bucks that trend" and "delivers" to describe them.
+[2022-12-12 09:02:55,326][main.py][line:125][INFO] 31. this is the place to relax and enjoy the finest quality food the industry can offer . 
+[2022-12-12 09:02:55,326][main.py][line:126][INFO] Aspect: place to relax; Aspect category: AMBIENCE#QUALITY; Opinion: the finest quality; Polarity: positive.
+Aspect: food; Aspect category: FOOD#QUALITY; Opinion: the finest quality; Polarity: positive.
+
+ Note: The first aspect in this sentence is "place to relax", and the aspect category is "AMBIENCE#QUALITY", since the sentence mentions the quality of the ambiance at the restaurant (specifically, the relaxing atmosphere). The second aspect is "food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. Both aspects have a positive sentiment, as indicated by the use of the phrase "the finest quality" to describe them.
+[2022-12-12 09:03:19,195][main.py][line:125][INFO] 32. caution - its real food for people who love the best . 
+[2022-12-12 09:03:19,195][main.py][line:126][INFO] Aspect: food; Aspect category: FOOD#QUALITY; Opinion: the best; Polarity: positive.
+
+ Note: The aspect in this sentence is "food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the phrase "the best" to describe the food.
+[2022-12-12 09:03:54,236][main.py][line:125][INFO] 33. i liked the atmosphere very much but the food was not worth the price . 
+[2022-12-12 09:03:54,239][main.py][line:126][INFO] Aspect: atmosphere; Aspect category: AMBIENCE#QUALITY; Opinion: liked very much; Polarity: positive.
+Aspect: food; Aspect category: FOOD#QUALITY; Opinion: not worth the price; Polarity: negative.
+
+ Note: The first aspect in this sentence is "atmosphere", and the aspect category is "AMBIENCE#QUALITY", since the sentence mentions the quality of the ambiance at the restaurant. The second aspect is "food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The first aspect has a positive sentiment, as indicated by the use of the phrase "liked very much" to describe it. The second aspect has a negative sentiment, as indicated by the use of the phrase "not worth the price" to describe it.
+[2022-12-12 09:04:19,481][main.py][line:125][INFO] 34. i may not be a sushi guru but i can tell you that the food here is just okay and that there is not much else to it . 
+[2022-12-12 09:04:19,481][main.py][line:126][INFO] Aspect: sushi; Aspect category: FOOD#QUALITY; Opinion: just okay; Polarity: neutral.
+
+ Note: The aspect in this sentence is "sushi", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the sushi served at the restaurant. The sentiment expressed in the sentence is neutral, as indicated by the use of the phrase "just okay" to describe the sushi.
+[2022-12-12 09:04:49,569][main.py][line:125][INFO] 35. rice is too dry , tuna was n ' t so fresh either . 
+[2022-12-12 09:04:49,569][main.py][line:126][INFO] Aspect: rice; Aspect category: FOOD#QUALITY; Opinion: too dry; Polarity: negative.
+Aspect: tuna; Aspect category: FOOD#QUALITY; Opinion: not so fresh; Polarity: negative.
+
+ Note: The first aspect in this sentence is "rice", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the rice) served at the restaurant. The second aspect is "tuna", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the tuna) served at the restaurant. Both aspects have a negative sentiment, as indicated by the use of phrases like "too dry" and "not so fresh" to describe them.
+[2022-12-12 09:05:15,055][main.py][line:125][INFO] 36. i have eaten here three times and have found the quality and variety of the fish to be excellent . 
+[2022-12-12 09:05:15,055][main.py][line:126][INFO] Aspect: quality and variety of the fish; Aspect category: FOOD#QUALITY; Opinion: excellent; Polarity: positive.
+
+ Note: The aspect in this sentence is "quality and variety of the fish", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality and variety of the fish served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the adjective "excellent" to describe the fish.
+[2022-12-12 09:05:48,113][main.py][line:125][INFO] 37. however , the value and service are both severely lacking . 
+[2022-12-12 09:05:48,113][main.py][line:126][INFO] Aspect: value; Aspect category: RESTAURANT#PRICES; Opinion: severely lacking; Polarity: negative.
+Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: severely lacking; Polarity: negative.
+
+ Note: The first aspect in this sentence is "value", and the aspect category is "RESTAURANT#PRICES", since the sentence mentions the value (i.e., the relationship between the prices charged and the quality of the food and service provided) at the restaurant. The second aspect is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. Both aspects have a negative sentiment, as indicated by the use of the phrase "severely lacking" to describe them.
+[2022-12-12 09:06:21,788][main.py][line:125][INFO] 38. furthermore , while the fish is unquestionably fresh , rolls tend to be inexplicably bland . 
+[2022-12-12 09:06:21,788][main.py][line:126][INFO] Aspect: fish; Aspect category: FOOD#QUALITY; Opinion: unquestionably fresh; Polarity: positive.
+Aspect: rolls; Aspect category: FOOD#QUALITY; Opinion: inexplicably bland; Polarity: negative.
+
+ Note: The first aspect in this sentence is "fish", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the fish) served at the restaurant. The second aspect is "rolls", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the rolls) served at the restaurant. The first aspect has a positive sentiment, as indicated by the use of the phrase "unquestionably fresh" to describe it. The second aspect has a negative sentiment, as indicated by the use of the phrase "inexplicably bland" to describe it.
+[2022-12-12 09:06:49,325][main.py][line:125][INFO] 39. the service ranges from mediocre to offensive . 
+[2022-12-12 09:06:49,325][main.py][line:126][INFO] Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: ranges from mediocre to offensive; Polarity: negative.
+
+ Note: The aspect in this sentence is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. The sentiment expressed in the sentence is negative, as indicated by the use of the phrase "ranges from mediocre to offensive" to describe the service.
+[2022-12-12 09:07:16,171][main.py][line:125][INFO] 40. on a recent trip , our waiter was extremely dismissive , while no less than three staff members waited hand - and - foot on a pair of japanese girls seated nearby . 
+[2022-12-12 09:07:16,172][main.py][line:126][INFO] Aspect: waiter; Aspect category: SERVICE#QUALITY; Opinion: extremely dismissive; Polarity: negative.
+
+ Note: The aspect in this sentence is "waiter", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided by a specific individual (the waiter) at the restaurant. The sentiment expressed in the sentence is negative, as indicated by the use of the phrase "extremely dismissive" to describe the waiter's behavior.
+[2022-12-12 09:07:42,102][main.py][line:125][INFO] 41. freshest sushi 每 i love this restaurant . 
+[2022-12-12 09:07:42,103][main.py][line:126][INFO] Aspect: sushi; Aspect category: FOOD#QUALITY; Opinion: freshest; Polarity: positive.
+
+ Note: The aspect in this sentence is "sushi", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the sushi) served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the adjective "freshest" to describe the sushi.
+[2022-12-12 09:08:06,831][main.py][line:125][INFO] 42. they pay such detail to everything from miso soup to complex rolls . 
+[2022-12-12 09:08:06,832][main.py][line:126][INFO] Aspect: detail; Aspect category: SERVICE#QUALITY; Opinion: pay; Polarity: positive.
+
+ Note: The aspect in this sentence is "detail", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the attention to detail provided by the staff at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the verb "pay" to describe the staff's attention to detail.
+[2022-12-12 09:08:33,784][main.py][line:125][INFO] 43. the sashimi was the freshest and most tender i have ever tasted . 
+[2022-12-12 09:08:33,784][main.py][line:126][INFO] Aspect: sashimi; Aspect category: FOOD#QUALITY; Opinion: freshest and most tender; Polarity: positive.
+
+ Note: The aspect in this sentence is "sashimi", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the sashimi) served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the phrase "freshest and most tender" to describe the sashimi.
+[2022-12-12 09:08:58,078][main.py][line:125][INFO] 44. their apps are all delicious . 
+[2022-12-12 09:08:58,078][main.py][line:126][INFO] Aspect: apps; Aspect category: FOOD#QUALITY; Opinion: all delicious; Polarity: positive.
+
+ Note: The aspect in this sentence is "apps", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of a specific dish (the apps) served at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the phrase "all delicious" to describe the apps.
+[2022-12-12 09:09:29,558][main.py][line:125][INFO] 45. the only drawback is that this place is really expensive and the portions are on the small side . 
+[2022-12-12 09:09:29,558][main.py][line:126][INFO] Aspect: price; Aspect category: RESTAURANT#PRICES; Opinion: really expensive; Polarity: negative.
+Aspect: portions; Aspect category: FOOD#QUANTITY; Opinion: small; Polarity: negative.
+
+ Note: The first aspect in this sentence is "price", and the aspect category is "RESTAURANT#PRICES", since the sentence mentions the prices charged at the restaurant. The second aspect is "portions", and the aspect category is "FOOD#QUANTITY", since the sentence mentions the size of the portions served at the restaurant. Both aspects have a negative sentiment, as indicated by the use of phrases like "really expensive" and "small" to describe them.
+[2022-12-12 09:09:58,383][main.py][line:125][INFO] 46. but the space is small and lovely , and the service is helpful . 
+[2022-12-12 09:09:58,384][main.py][line:126][INFO] Aspect: space; Aspect category: RESTAURANT#AMBIENCE; Opinion: small and lovely; Polarity: positive.
+Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: helpful; Polarity: positive.
+
+ Note: The first aspect in this sentence is "space", and the aspect category is "RESTAURANT#AMBIENCE", since the sentence mentions the ambiance of the restaurant. The second aspect is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. Both aspects have a positive sentiment, as indicated by the use of phrases like "small and lovely" and "helpful" to describe them.
+[2022-12-12 09:10:29,142][main.py][line:125][INFO] 47. 每 the food was not great & the waiters were rude . 
+[2022-12-12 09:10:29,142][main.py][line:126][INFO] Aspect: food; Aspect category: FOOD#QUALITY; Opinion: not great; Polarity: negative.
+Aspect: waiters; Aspect category: SERVICE#QUALITY; Opinion: rude; Polarity: negative.
+
+ Note: The first aspect in this sentence is "food", and the aspect category is "FOOD#QUALITY", since the sentence mentions the quality of the food served at the restaurant. The second aspect is "waiters", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided by the waiters at the restaurant. Both aspects have a negative sentiment, as indicated by the use of phrases like "not great" and "rude" to describe them.
+[2022-12-12 09:10:55,254][main.py][line:125][INFO] 48. great service 
+[2022-12-12 09:10:55,254][main.py][line:126][INFO] Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: great; Polarity: positive.
+
+ Note: The aspect in this sentence is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the adjective "great" to describe the service.
+[2022-12-12 09:11:19,778][main.py][line:125][INFO] 49. my service was stellar ! 
+[2022-12-12 09:11:19,778][main.py][line:126][INFO] Aspect: service; Aspect category: SERVICE#QUALITY; Opinion: stellar; Polarity: positive.
+
+ Note: The aspect in this sentence is "service", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the quality of the service provided at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the adjective "stellar" to describe the service.
+[2022-12-12 09:11:44,789][main.py][line:125][INFO] 50. the bus boy even spotted that my table was shaking a stabilized it for me . 
+[2022-12-12 09:11:44,789][main.py][line:126][INFO] Aspect: bus boy; Aspect category: SERVICE#QUALITY; Opinion: spotted and stabilized; Polarity: positive.
+
+ Note: The aspect in this sentence is "bus boy", and the aspect category is "SERVICE#QUALITY", since the sentence mentions the actions of a specific individual (the bus boy) who provided service at the restaurant. The sentiment expressed in the sentence is positive, as indicated by the use of the verbs "spotted" and "stabilized" to describe the bus boy's actions.
+[2022-12-12 09:11:45,734][main.py][line:125][INFO] 51. food was fine , with a some little - tastier - than - normal salsa . 
+[2022-12-12 09:11:45,734][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:46,685][main.py][line:125][INFO] 52. the food was great , the margaritas too but the waitress was too busy being nice to her other larger party than to take better care of my friend and me . 
+[2022-12-12 09:11:46,685][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:47,642][main.py][line:125][INFO] 53. mama mia 每 i live in the neighborhood and feel lucky to live by such a great pizza place . 
+[2022-12-12 09:11:47,642][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:48,585][main.py][line:125][INFO] 54. the only problem is you really have to warm up the pizza before it ' s edible , even when you order ahead . 
+[2022-12-12 09:11:48,585][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:49,533][main.py][line:125][INFO] 55. but once done , it ' s not too much dough , not too much cheese , not too much sauce . 
+[2022-12-12 09:11:49,533][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:50,497][main.py][line:125][INFO] 56. best sushi in town . 
+[2022-12-12 09:11:50,497][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:51,449][main.py][line:125][INFO] 57. the best calamari in seattle ! 
+[2022-12-12 09:11:51,449][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:52,406][main.py][line:125][INFO] 58. 每 . . . and the best summertime deck experience - - they will even bring you a blanket if you get cold in the seattle evening weather . 
+[2022-12-12 09:11:52,406][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:53,358][main.py][line:125][INFO] 59. a perfect place to take out of town guests any time of the year . 
+[2022-12-12 09:11:53,361][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:54,305][main.py][line:125][INFO] 60. endless fun , awesome music , great staff ! ! ! 
+[2022-12-12 09:11:54,306][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:55,250][main.py][line:125][INFO] 61. 每 by far the best bar in the east village . . . 
+[2022-12-12 09:11:55,250][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:56,206][main.py][line:125][INFO] 62. great draft and bottle selection and the pizza rocks . 
+[2022-12-12 09:11:56,206][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:57,170][main.py][line:125][INFO] 63. definitely has one of the best jukebox ' s i ' ve seen in a long long time . 
+[2022-12-12 09:11:57,170][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:58,118][main.py][line:125][INFO] 64. the food is great , the bartenders go that extra mile . 
+[2022-12-12 09:11:58,118][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:59,061][main.py][line:125][INFO] 65. the owners are great fun and the beer selection is worth staying for . 
+[2022-12-12 09:11:59,061][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:11:59,994][main.py][line:125][INFO] 66. and the upstairs is a great place to hang out . 
+[2022-12-12 09:11:59,994][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:00,945][main.py][line:125][INFO] 67. not alot of smoking places left in new york , but i have found my favorite smoking balconey in the city . 
+[2022-12-12 09:12:00,945][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:01,910][main.py][line:125][INFO] 68. the sushi here is delicious ! 
+[2022-12-12 09:12:01,910][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:02,867][main.py][line:125][INFO] 69. they have a wide variety of fish and they even list which oceans they come from ; atlantic or pacific . 
+[2022-12-12 09:12:02,867][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:03,810][main.py][line:125][INFO] 70. i ' ve had the jellyfish , horse mackerel , blue fin tuna and the sake ikura roll among others , and they were all good . 
+[2022-12-12 09:12:03,810][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:04,768][main.py][line:125][INFO] 71. my only negative comment is that i wish the pieces were a little bigger . 
+[2022-12-12 09:12:04,768][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:05,720][main.py][line:125][INFO] 72. the decor is rustic , traditional japanese . 
+[2022-12-12 09:12:05,720][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:06,676][main.py][line:125][INFO] 73. the crowd is mixed yuppies , young and old . 
+[2022-12-12 09:12:06,676][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:07,633][main.py][line:125][INFO] 74. the service was courteous and attentive . 
+[2022-12-12 09:12:07,636][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:08,582][main.py][line:125][INFO] 75. mediocre food 
+[2022-12-12 09:12:08,582][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:09,545][main.py][line:125][INFO] 76. the outside patio area has an abbreviated menu . 
+[2022-12-12 09:12:09,545][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:10,509][main.py][line:125][INFO] 77. my g / f and i both agreed the food was very mediocre especially considering the price . 
+[2022-12-12 09:12:10,509][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:11,461][main.py][line:125][INFO] 78. we are locals , and get the feeling the only way this place survives with such average food is because most customers are probably one - time customer tourists . 
+[2022-12-12 09:12:11,461][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:12,416][main.py][line:125][INFO] 79. service was decent . 
+[2022-12-12 09:12:12,416][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:13,364][main.py][line:125][INFO] 80. drinks were good . 
+[2022-12-12 09:12:13,365][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:14,305][main.py][line:125][INFO] 81. excellent food , nice ambience , fairly expensive 
+[2022-12-12 09:12:14,308][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:15,252][main.py][line:125][INFO] 82. 每 i loved the pumpkin ravioli and the goat cheese gnocchi ( 5 big ones to a plate instead of 20 or so little gnocchis ) and my sister loved her filet mignon on top of spinach and mashed potatoes . 
+[2022-12-12 09:12:15,252][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:16,200][main.py][line:125][INFO] 83. the ambiance was a peaceful and relaxing break amongst all the kids running around in downtown disney . 
+[2022-12-12 09:12:16,200][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:17,163][main.py][line:125][INFO] 84. best indian food in l . a . 
+[2022-12-12 09:12:17,164][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:18,116][main.py][line:125][INFO] 85. the chicken curry and chicken tikka masala are my favorite meat dishes . 
+[2022-12-12 09:12:18,116][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:19,049][main.py][line:125][INFO] 86. the chana masala ( garbanzo beans ) are also excellent . 
+[2022-12-12 09:12:19,049][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:20,006][main.py][line:125][INFO] 87. it ' s located in a strip mall near the beverly center , not the greatest location , but the food keeps me coming back for more . 
+[2022-12-12 09:12:20,006][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:20,968][main.py][line:125][INFO] 88. never too crowded and always great service . 
+[2022-12-12 09:12:20,968][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:21,929][main.py][line:125][INFO] 89. i think i have probably tried each item on their menu at least once it is all excellent . 
+[2022-12-12 09:12:21,929][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:22,895][main.py][line:125][INFO] 90. i can highly recommend their various saag and paneer and korma . 
+[2022-12-12 09:12:22,895][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:23,862][main.py][line:125][INFO] 91. i appreciate their delivery too . 
+[2022-12-12 09:12:23,862][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:24,825][main.py][line:125][INFO] 92. nice food but no spice ! 
+[2022-12-12 09:12:24,825][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:25,777][main.py][line:125][INFO] 93. 每 i really enjoyed my meal here . 
+[2022-12-12 09:12:25,777][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:26,745][main.py][line:125][INFO] 94. i had yummy lamb korma , saag paneer , samosas , naan , etc . 
+[2022-12-12 09:12:26,745][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:27,716][main.py][line:125][INFO] 95. the food was all good but it was way too mild . 
+[2022-12-12 09:12:27,716][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:28,651][main.py][line:125][INFO] 96. the naan was some of the best i ' ve had and i really enjoyed the bhartha , not too tomatoey . 
+[2022-12-12 09:12:28,651][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:29,596][main.py][line:125][INFO] 97. even the chickpeas , which i normally find too dry , were good . 
+[2022-12-12 09:12:29,596][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:30,549][main.py][line:125][INFO] 98. 每 i do n ' t understand how i was a stranger to this place for so long . . . the fajita salad , the colorado , the fajitas - everything is delicious . 
+[2022-12-12 09:12:30,549][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:31,520][main.py][line:125][INFO] 99. i love the warm & cosy environment . 
+[2022-12-12 09:12:31,520][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:32,475][main.py][line:125][INFO] 100. i just found out that you can have the place to yourself on nights and weekends for a private party - ca n ' t wait to celebrate my next birthday there . 
+[2022-12-12 09:12:32,475][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:33,421][main.py][line:125][INFO] 101. best restaurant in the world , great decor , great customer service , friendly manager 
+[2022-12-12 09:12:33,421][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:34,393][main.py][line:125][INFO] 102. i am never disappointed with there food . 
+[2022-12-12 09:12:34,393][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:35,351][main.py][line:125][INFO] 103. the atmosphere is great . 
+[2022-12-12 09:12:35,351][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:36,301][main.py][line:125][INFO] 104. great lunch spot 
+[2022-12-12 09:12:36,301][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:37,267][main.py][line:125][INFO] 105. 每 great financial district mexican spot . 
+[2022-12-12 09:12:37,267][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:38,219][main.py][line:125][INFO] 106. always busy , but they are good at seating you promptly and have quick service . 
+[2022-12-12 09:12:38,219][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:39,175][main.py][line:125][INFO] 107. everything i ' ve had here is good , taco salads , burritos , enchiladas i love this place . 
+[2022-12-12 09:12:39,175][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:40,135][main.py][line:125][INFO] 108. also have great margaritas ! 
+[2022-12-12 09:12:40,135][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:41,078][main.py][line:125][INFO] 109. the food is simply unforgettable ! 
+[2022-12-12 09:12:41,078][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:42,046][main.py][line:125][INFO] 110. the presentation of the food was an added bonus , it looked just as great as it tasted ! 
+[2022-12-12 09:12:42,046][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:43,002][main.py][line:125][INFO] 111. my best friend had the chicken shawarma and she still raves about it being the best anywhere ! 
+[2022-12-12 09:12:43,002][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:43,957][main.py][line:125][INFO] 112. the staff are friendly and the decor was ethic and colorful . 
+[2022-12-12 09:12:43,957][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:44,908][main.py][line:125][INFO] 113. go to open sesame ! ! ! 
+[2022-12-12 09:12:44,908][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:45,855][main.py][line:125][INFO] 114. holy hummus ! 
+[2022-12-12 09:12:45,855][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:46,808][main.py][line:125][INFO] 115. 每 the food is here is incredible , though the quality is inconsistent during lunch . 
+[2022-12-12 09:12:46,808][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:47,770][main.py][line:125][INFO] 116. dinners have always been excellent , in terms of food quality . 
+[2022-12-12 09:12:47,771][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:48,712][main.py][line:125][INFO] 117. the open sesame combo plate is a bargain for the heap of food given . 
+[2022-12-12 09:12:48,712][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:49,654][main.py][line:125][INFO] 118. the side of potatoes is to die for , as is the labne ( yogurt dip ) . 
+[2022-12-12 09:12:49,655][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:50,597][main.py][line:125][INFO] 119. also , they serve the best hummus in america , with a drizzle of fragrant olive oil ( which , i believe is the traditional way ) ! 
+[2022-12-12 09:12:50,597][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:51,548][main.py][line:125][INFO] 120. the only drawback is the crowded seating and the slow service . 
+[2022-12-12 09:12:51,548][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:52,509][main.py][line:125][INFO] 121. however , this place is a gem , and i wo n ' t stop going back . 
+[2022-12-12 09:12:52,509][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:53,477][main.py][line:125][INFO] 122. great beer 
+[2022-12-12 09:12:53,477][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:54,436][main.py][line:125][INFO] 123. 每 my first time to dine at this restaurant was with my son and it was absolutely horrible ! 
+[2022-12-12 09:12:54,436][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:55,398][main.py][line:125][INFO] 124. i swore never to return for a warm beer and mediocre meal . 
+[2022-12-12 09:12:55,398][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:56,352][main.py][line:125][INFO] 125. the band was very good and the service was attentive . 
+[2022-12-12 09:12:56,352][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:57,313][main.py][line:125][INFO] 126. we ordered a selection of the small plates , and the shoe string onions , goat cheese pizza , grilled asparagus and fried brie with fruit were all very good . 
+[2022-12-12 09:12:57,313][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:58,255][main.py][line:125][INFO] 127. seattle ' s best winelist 
+[2022-12-12 09:12:58,255][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:12:59,208][main.py][line:125][INFO] 128. 每 ray ' s ( suprisingly ) has the city ' s best & most diverse wine list . 
+[2022-12-12 09:12:59,208][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:00,150][main.py][line:125][INFO] 129. the sommelier is fantastic , down - to - earth , & extremely knowlegable . 
+[2022-12-12 09:13:00,150][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:01,115][main.py][line:125][INFO] 130. i would go back for the wine experience alone . 
+[2022-12-12 09:13:01,115][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:02,067][main.py][line:125][INFO] 131. not the place it once was 
+[2022-12-12 09:13:02,067][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:03,022][main.py][line:125][INFO] 132. perhaps now , scooner or later falls into the ` ` dive ' ' category . 
+[2022-12-12 09:13:03,022][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:03,983][main.py][line:125][INFO] 133. 每 it is sad to see a place that was once ` ` the ' ' place to meet and eat for bfast or lunch , now be the place that is a big ` ` dont bother . ' ' 
+[2022-12-12 09:13:03,983][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:04,931][main.py][line:125][INFO] 134. the food is not what it once was ( potions have seriously seen downsizing ) prices have gone up , and the service is the worst i have experienced anywhere ( including mainland europe ) . 
+[2022-12-12 09:13:04,931][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:05,889][main.py][line:125][INFO] 135. what may be interesting to most is the worst sevice / attitude comes from the owners of this establishment . 
+[2022-12-12 09:13:05,889][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:06,828][main.py][line:125][INFO] 136. this establishment really made a marked decline after ( and this is recurring story ) the airing of food televisions ` ` diners , drive - ins , and dives ' ' hosted by guy fieri , in which schooner or later was subject of . 
+[2022-12-12 09:13:06,828][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:07,775][main.py][line:125][INFO] 137. open & cool place with the best pizza and coffee 
+[2022-12-12 09:13:07,775][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:08,727][main.py][line:125][INFO] 138. 每 mioposto has a very creative & delicious pizza menu . 
+[2022-12-12 09:13:08,727][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:09,666][main.py][line:125][INFO] 139. the coffe is very good , too . 
+[2022-12-12 09:13:09,666][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:10,610][main.py][line:125][INFO] 140. great open and friendly ambience . 
+[2022-12-12 09:13:10,610][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:11,560][main.py][line:125][INFO] 141. this place is charming and relaxing . 
+[2022-12-12 09:13:11,560][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:12,504][main.py][line:125][INFO] 142. the servers behind the counter are always friendly and helpful . 
+[2022-12-12 09:13:12,504][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:13,446][main.py][line:125][INFO] 143. it ' s a great place to enjoy food and meet friends . 
+[2022-12-12 09:13:13,446][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:14,400][main.py][line:125][INFO] 144. great food , spectacular location , and friendly service keep us coming back year after year . 
+[2022-12-12 09:13:14,400][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:15,366][main.py][line:125][INFO] 145. enjoyed the food 
+[2022-12-12 09:13:15,366][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:16,322][main.py][line:125][INFO] 146. food was good and cheap . 
+[2022-12-12 09:13:16,324][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:17,275][main.py][line:125][INFO] 147. i had the kafta plate and i enjoyed it . 
+[2022-12-12 09:13:17,275][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:18,235][main.py][line:125][INFO] 148. atmosphere was nice . 
+[2022-12-12 09:13:18,235][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:19,190][main.py][line:125][INFO] 149. service was kind of slow , our waitress took forever to give us our check even though it was n ' t that busy . 
+[2022-12-12 09:13:19,190][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:20,142][main.py][line:125][INFO] 150. still i would recommend this place . 
+[2022-12-12 09:13:20,142][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:21,104][main.py][line:125][INFO] 151. what else can you say nice people amazing food wow 
+[2022-12-12 09:13:21,104][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:22,074][main.py][line:125][INFO] 152. great food with an awesome atmosphere ! 
+[2022-12-12 09:13:22,074][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:23,028][main.py][line:125][INFO] 153. 每 eggs , pancakes , potatoes , fresh fruit and yogurt - - everything they serve is delicious . 
+[2022-12-12 09:13:23,029][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:23,968][main.py][line:125][INFO] 154. the best place for a leisure sunday breakfast amidst yachts , then take a stroll through the nearby farmer ' s market . 
+[2022-12-12 09:13:23,968][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:24,913][main.py][line:125][INFO] 155. great meal 每 the fish on the omikase platter was absolutely decadent - - there was none of the stringiness that sometimes accompanies fair sushi - - this fish was perfect ! ! ! ! 
+[2022-12-12 09:13:24,914][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:25,858][main.py][line:125][INFO] 156. plus , i am allergic to rice , and the waitstaff was unbelievably accomodating - - did n ' t even bat an eye ! 
+[2022-12-12 09:13:25,858][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:26,815][main.py][line:125][INFO] 157. and the waiter suggested a perfect sake ! ! 
+[2022-12-12 09:13:26,815][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:27,764][main.py][line:125][INFO] 158. unbeatable sushi ! 
+[2022-12-12 09:13:27,767][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:28,706][main.py][line:125][INFO] 159. melt in your mouth nigiri and sashmi , and very tasty rolls too . 
+[2022-12-12 09:13:28,706][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:29,658][main.py][line:125][INFO] 160. be sure to try the oyster roll . 
+[2022-12-12 09:13:29,659][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:30,617][main.py][line:125][INFO] 161. 每 how to describe the best sushi in nyc : hmmmm , delicious , amazing , fantastic , suculent , perfect , nah , all of the above . 
+[2022-12-12 09:13:30,617][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:31,563][main.py][line:125][INFO] 162. i ca n ' t saybenough good things about this restaurant , and i ca n ' t wait for my next several visits . 
+[2022-12-12 09:13:31,563][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:32,515][main.py][line:125][INFO] 163. the best chuwam mushi i have ever had . 
+[2022-12-12 09:13:32,515][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:33,465][main.py][line:125][INFO] 164. good sushi , high price 
+[2022-12-12 09:13:33,465][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:34,415][main.py][line:125][INFO] 165. one of the best sushi place in town . 
+[2022-12-12 09:13:34,415][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:35,385][main.py][line:125][INFO] 166. the house special roll is really good . 
+[2022-12-12 09:13:35,385][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:36,337][main.py][line:125][INFO] 167. brunch at murphy ' s is to die for , my specialty . . . egg white omelet , the food is always freshly prepared . 
+[2022-12-12 09:13:36,337][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:37,296][main.py][line:125][INFO] 168. it ' s the perfect spot for a romantic date for 2 or a secret rendezvous ! 
+[2022-12-12 09:13:37,296][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:38,254][main.py][line:125][INFO] 169. save room for scrumptious desserts . 
+[2022-12-12 09:13:38,254][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:39,214][main.py][line:125][INFO] 170. the restaurant offers an extensive wine list and an ambiance you wo n ' t forget ! 
+[2022-12-12 09:13:39,214][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:40,169][main.py][line:125][INFO] 171. 每 best mexican place for lunch in the financial district . 
+[2022-12-12 09:13:40,169][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:41,106][main.py][line:125][INFO] 172. love the enchiladas and chicken soup - and be sure to check out their specials . 
+[2022-12-12 09:13:41,106][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:42,062][main.py][line:125][INFO] 173. the cooks have been at the restaurant for years and cook family recipes . 
+[2022-12-12 09:13:42,062][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:43,016][main.py][line:125][INFO] 174. can get busy on fridays for a table but once seated , the service is so efficient you can be in and out of there quickly . 
+[2022-12-12 09:13:43,016][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:43,978][main.py][line:125][INFO] 175. the sushi was excellent and the wait staff was quick . 
+[2022-12-12 09:13:43,978][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:44,923][main.py][line:125][INFO] 176. the atmosphere was just okay . 
+[2022-12-12 09:13:44,923][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:45,877][main.py][line:125][INFO] 177. space was limited , but the food made up for it . 
+[2022-12-12 09:13:45,877][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:46,859][main.py][line:125][INFO] 178. we stood there for 10 minutes while employees walked back and forth ignoring us . 
+[2022-12-12 09:13:46,859][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:47,800][main.py][line:125][INFO] 179. finally , my wife stood face to face in front of one of the staff and she asked , ` ` are you waiting for a table ? ' ' 
+[2022-12-12 09:13:47,800][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:48,758][main.py][line:125][INFO] 180. the caesar salad i ordered had so much lemon i could n ' t eat it . 
+[2022-12-12 09:13:48,758][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:49,695][main.py][line:125][INFO] 181. great food , better margaritas ! 
+[2022-12-12 09:13:49,695][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:50,876][main.py][line:125][INFO] 182. 每 this is one of my top lunch spots , huge portions , fast service and amazing margaritas ! ! 
+[2022-12-12 09:13:50,876][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:51,842][main.py][line:125][INFO] 183. it gets really busy , so get there on the early side so you can grab a seat , if you do have to wait , its not bad because the service is quick ! 
+[2022-12-12 09:13:51,842][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:52,806][main.py][line:125][INFO] 184. check out the art on the walls , very colorful ! 
+[2022-12-12 09:13:52,806][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:53,756][main.py][line:125][INFO] 185. i love this place ! 
+[2022-12-12 09:13:53,756][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:54,729][main.py][line:125][INFO] 186. 每 i have been eating at this place for over 8 years now and i have never had one bad meal . 
+[2022-12-12 09:13:54,729][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:55,674][main.py][line:125][INFO] 187. i highly recommend this place to all that want to try indain food for the first time . 
+[2022-12-12 09:13:55,674][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:56,634][main.py][line:125][INFO] 188. the lunch menu is an awesome deal ! 
+[2022-12-12 09:13:56,634][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:57,599][main.py][line:125][INFO] 189. plenty of food , trust me . 
+[2022-12-12 09:13:57,599][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:58,559][main.py][line:125][INFO] 190. fresh ingrediants and super tasty . 
+[2022-12-12 09:13:58,559][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:13:59,505][main.py][line:125][INFO] 191. best food , phenominal service 
+[2022-12-12 09:13:59,505][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:00,455][main.py][line:125][INFO] 192. for the finicky sushi eater and those who have sampled the best nyc has to offer , the fish is the freshest and the service is superb . 
+[2022-12-12 09:14:00,455][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:01,413][main.py][line:125][INFO] 193. not only can the selection be innovative , but there ' s a nice balance of traditional sushi as well . 
+[2022-12-12 09:14:01,413][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:02,375][main.py][line:125][INFO] 194. the nicest waiters in town . 
+[2022-12-12 09:14:02,375][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:03,329][main.py][line:125][INFO] 195. 每 this place is unbelievably over - rated . 
+[2022-12-12 09:14:03,329][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:04,282][main.py][line:125][INFO] 196. if i want to stand in line on sunday for an hour to get average brunch food , then i would put murphy ' s at the top of the list . 
+[2022-12-12 09:14:04,282][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:05,237][main.py][line:125][INFO] 197. the regular menu here is slightly above average that is not worth the snotty attitude that you receive . 
+[2022-12-12 09:14:05,237][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:06,203][main.py][line:125][INFO] 198. your a sushi fan , you love expertly cut fish , great sake , a killer soho location , and of course : salmon , tuna , fluke , yellow tail , cod , mackeral , jellyfish , sea urchin , shrimp , lobster , sea bream , trout , milk fish , blue fin tuna , eel , crab , sardine , monk fish , roe , scallop , oysters , and a varity of toro . 
+[2022-12-12 09:14:06,203][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:07,169][main.py][line:125][INFO] 199. there is only one place on the east coast that has it all , plus a lot more . 
+[2022-12-12 09:14:07,169][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:08,109][main.py][line:125][INFO] 200. bring your cell phone cause you may have to wait to get into the best sushi restaurant in the world : blue ribbon sushi . 
+[2022-12-12 09:14:08,109][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:09,065][main.py][line:125][INFO] 201. hands down , the best tuna i have ever had . 
+[2022-12-12 09:14:09,065][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:10,009][main.py][line:125][INFO] 202. blue ribbon lives up to it ' s fantastic reputation . 
+[2022-12-12 09:14:10,009][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:10,959][main.py][line:125][INFO] 203. great value sushi with high quality & nice setting . 
+[2022-12-12 09:14:10,959][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:11,913][main.py][line:125][INFO] 204. try the chef ' s choice for sushi as the smoked yellowtail was incredible and the rolls were also tasty . 
+[2022-12-12 09:14:11,913][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:12,857][main.py][line:125][INFO] 205. poor customer service / poor pizza . 
+[2022-12-12 09:14:12,857][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:13,819][main.py][line:125][INFO] 206. 每 as with most restaurants in seattle , mioposto ' s service was bad and the food was overpriced . 
+[2022-12-12 09:14:13,819][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:14,763][main.py][line:125][INFO] 207. i know many people have their favorite types of pizza and pizza places , but mioposto ' s pizza lacks quality and good taste . 
+[2022-12-12 09:14:14,763][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:15,728][main.py][line:125][INFO] 208. to be honest , i ' ve had better frozen pizza . 
+[2022-12-12 09:14:15,728][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:16,678][main.py][line:125][INFO] 209. the only positive thing about mioposto is the nice location . 
+[2022-12-12 09:14:16,678][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:17,625][main.py][line:125][INFO] 210. i was frankly shocked when i read the bad reviews - this place is fantastic ; it has not let us down in any way , and we ' ve eaten here more than 10 times . 
+[2022-12-12 09:14:17,628][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:18,600][main.py][line:125][INFO] 211. the food is fantastic , and the waiting staff has been perfect every single time we ' ve been there . 
+[2022-12-12 09:14:18,603][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:19,555][main.py][line:125][INFO] 212. the only problem would be the wait , but we usually just have a drink in the front while waiting . 
+[2022-12-12 09:14:19,555][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:20,507][main.py][line:125][INFO] 213. seabass on lobster risotto was the best . 
+[2022-12-12 09:14:20,507][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:21,467][main.py][line:125][INFO] 214. caesar salad was superb . 
+[2022-12-12 09:14:21,468][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:22,424][main.py][line:125][INFO] 215. great bottle of wine . 
+[2022-12-12 09:14:22,425][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:23,382][main.py][line:125][INFO] 216. leave room for dessert . 
+[2022-12-12 09:14:23,382][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:24,312][main.py][line:125][INFO] 217. i waited for 10 - 15 minutes for service ordered a beer & was never served again . 
+[2022-12-12 09:14:24,312][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:25,262][main.py][line:125][INFO] 218. the food was ok , but the service was so poor that the food was cold buy the time everyone in my party was served . 
+[2022-12-12 09:14:25,262][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:26,220][main.py][line:125][INFO] 219. avoid the place 
+[2022-12-12 09:14:26,220][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:27,188][main.py][line:125][INFO] 220. when i got there i sat up stairs where the atmosphere was cozy & the service was horrible ! 
+[2022-12-12 09:14:27,188][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:28,127][main.py][line:125][INFO] 221. we left without ever getting service . 
+[2022-12-12 09:14:28,127][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:29,091][main.py][line:125][INFO] 222. best crab cakes in town 
+[2022-12-12 09:14:29,091][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:30,053][main.py][line:125][INFO] 223. 每 thats a big statement considering i ' ve been pulling crab traps and making the cakes myself since i was about seven - but something about these little devils gets better every time . 
+[2022-12-12 09:14:30,053][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:31,009][main.py][line:125][INFO] 224. if you can , come to this place by boat and make it a whole evening . 
+[2022-12-12 09:14:31,009][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:31,975][main.py][line:125][INFO] 225. great seasonal fish and seafood , with a classy waterfront setting . 
+[2022-12-12 09:14:31,975][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:32,924][main.py][line:125][INFO] 226. great pizza , poor service 
+[2022-12-12 09:14:32,924][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:33,881][main.py][line:125][INFO] 227. 每 love their pizza , especially the mushroom pizza . 
+[2022-12-12 09:14:33,881][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:34,822][main.py][line:125][INFO] 228. also love their caeser salad . 
+[2022-12-12 09:14:34,822][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:35,765][main.py][line:125][INFO] 229. prefer to order it and pick it up though because i do n ' t like the servers , one young woman in particular . 
+[2022-12-12 09:14:35,768][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:36,730][main.py][line:125][INFO] 230. 每 this place is famous for their breakfast . 
+[2022-12-12 09:14:36,731][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:37,672][main.py][line:125][INFO] 231. many people talk about the great pizza and poor service , so it ca n ' t just be the rantings of a few dissatisfied customers . 
+[2022-12-12 09:14:37,675][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:38,620][main.py][line:125][INFO] 232. it ' s a great little place with tons of potential to be a neighborhood joint if the service were n ' t so impersonal and corporate - like . 
+[2022-12-12 09:14:38,620][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:39,576][main.py][line:125][INFO] 233. great breakfast 
+[2022-12-12 09:14:39,576][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:40,524][main.py][line:125][INFO] 234. the food is great and they make a mean bloody mary . 
+[2022-12-12 09:14:40,525][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:41,501][main.py][line:125][INFO] 235. i love breakfast here . 
+[2022-12-12 09:14:41,501][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:42,457][main.py][line:125][INFO] 236. their crab eggs benedict is addicting . 
+[2022-12-12 09:14:42,457][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:43,416][main.py][line:125][INFO] 237. all their menu items are a hit , and they serve mimosas . 
+[2022-12-12 09:14:43,416][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:44,384][main.py][line:125][INFO] 238. best chinese food i have tasted in a long time 
+[2022-12-12 09:14:44,384][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:45,346][main.py][line:125][INFO] 239. the ambiance of the restaurant was nice and good for fine dinning . 
+[2022-12-12 09:14:45,346][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:46,311][main.py][line:125][INFO] 240. the staff was very nice and courteous and obviously chinese . 
+[2022-12-12 09:14:46,311][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:47,272][main.py][line:125][INFO] 241. so about the prawns , they were fresh and had a slight crispiness about the batter . . . soooo good . . . the walnuts were cut in smaller pieces and very crunchy and tasty . 
+[2022-12-12 09:14:47,272][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:48,210][main.py][line:125][INFO] 242. best honey walnyt prawns that we have every tasted . 
+[2022-12-12 09:14:48,210][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:49,156][main.py][line:125][INFO] 243. the brocollis were so fresh and tasty . 
+[2022-12-12 09:14:49,156][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:50,084][main.py][line:125][INFO] 244. i would normally not finish the brocolli when i order these kinds of food but for the first time , every piece was as eventful as the first one . . . the scallops and prawns was so fresh and nicely cooked . 
+[2022-12-12 09:14:50,084][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:51,035][main.py][line:125][INFO] 245. chintzy portions 
+[2022-12-12 09:14:51,035][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:51,997][main.py][line:125][INFO] 246. 每 the sushi here is perfectly good , but for $ 5 a piece , either the slices of fish should be larger , or there should be no pretense that this is a moderately priced restaurant ( even for nyc ) . 
+[2022-12-12 09:14:51,997][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:52,938][main.py][line:125][INFO] 247. terrible service , food ok , pricey 
+[2022-12-12 09:14:52,938][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:53,886][main.py][line:125][INFO] 248. food wise , its ok but a bit pricey for what you get considering the restaurant is n ' t a fancy place . 
+[2022-12-12 09:14:53,886][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:54,851][main.py][line:125][INFO] 249. if i needed to name some they would include the location to the beach or golden gate park . 
+[2022-12-12 09:14:54,851][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:55,799][main.py][line:125][INFO] 250. another plus is the open feel of the restaurant with glass walls on all sides . 
+[2022-12-12 09:14:55,799][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:56,762][main.py][line:125][INFO] 251. amazing spanish mackeral special appetizer and perfect box sushi ( that eel with avodcao - - um um um ) . 
+[2022-12-12 09:14:56,762][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:57,729][main.py][line:125][INFO] 252. as usual the omikase did n ' t disappoint in freshness , although it scored low on creativity and selection . 
+[2022-12-12 09:14:57,729][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:58,679][main.py][line:125][INFO] 253. their specialty rolls are impressive , though i ca n ' t remember what we had . 
+[2022-12-12 09:14:58,679][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:14:59,640][main.py][line:125][INFO] 254. green tea creme brulee gets better each time i have it . 
+[2022-12-12 09:14:59,640][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:00,612][main.py][line:125][INFO] 255. great selection of sakes . 
+[2022-12-12 09:15:00,612][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:01,574][main.py][line:125][INFO] 256. it is n ' t the cheapest sushi but has been worth it every time . 
+[2022-12-12 09:15:01,574][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:02,535][main.py][line:125][INFO] 257. very poor customer service . 
+[2022-12-12 09:15:02,535][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:03,498][main.py][line:125][INFO] 258. 每 schooner or later ' s charming location along the marina in long beach and average food does not , unfortunately , compensate for its very poor customer service . 
+[2022-12-12 09:15:03,498][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:04,445][main.py][line:125][INFO] 259. while this diner had reasonably good food , the restaurant staff seemed completely indifferent to our presence , and this attitude was reflected in the lack of service . 
+[2022-12-12 09:15:04,445][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:05,405][main.py][line:125][INFO] 260. the fish was fresh , though it was cut very thin . 
+[2022-12-12 09:15:05,405][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:06,362][main.py][line:125][INFO] 261. great service . 
+[2022-12-12 09:15:06,362][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:07,319][main.py][line:125][INFO] 262. good sake selection . 
+[2022-12-12 09:15:07,319][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:08,305][main.py][line:125][INFO] 263. dungeness crabs here ! 
+[2022-12-12 09:15:08,305][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:09,248][main.py][line:125][INFO] 264. 每 ray ' s is the place to go for high quality seafood dinners . 
+[2022-12-12 09:15:09,248][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:10,211][main.py][line:125][INFO] 265. i love dungeness crabs and at ray ' s you can get them served in about 6 different ways ! 
+[2022-12-12 09:15:10,211][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:11,168][main.py][line:125][INFO] 266. we shared the family platter and i especially enjoyed the black cod in sake kasu . 
+[2022-12-12 09:15:11,168][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:12,117][main.py][line:125][INFO] 267. i ended the meal with the unusual dessert of a port and chocolate tasting . . . . yummy ! 
+[2022-12-12 09:15:12,118][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:13,077][main.py][line:125][INFO] 268. and the service was simply spendid - quite a delight . 
+[2022-12-12 09:15:13,077][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:14,023][main.py][line:125][INFO] 269. 每 great drinks , corn beef hash , coffee , b fast burritos , gluten free menu . 
+[2022-12-12 09:15:14,023][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:14,975][main.py][line:125][INFO] 270. the service is fantastic at this fun place . 
+[2022-12-12 09:15:14,975][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:15,936][main.py][line:125][INFO] 271. if there is a line very day of the week for the entire time a place is open , you know it is great . 
+[2022-12-12 09:15:15,936][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:16,895][main.py][line:125][INFO] 272. best neighborhood standby . 
+[2022-12-12 09:15:16,895][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:17,847][main.py][line:125][INFO] 273. in grammercy / union square / east village this is my neighbors and my favorite spot . 
+[2022-12-12 09:15:17,848][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:18,792][main.py][line:125][INFO] 274. the music is great , no night better or worse , the bar tenders are generous with the pouring , and the lighthearted atmosphere will lifts you spirits . 
+[2022-12-12 09:15:18,792][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:19,745][main.py][line:125][INFO] 275. oh , and the cheese fries are awesome ! 
+[2022-12-12 09:15:19,745][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:20,704][main.py][line:125][INFO] 276. good food , great service , average prices ( for the strip ) 
+[2022-12-12 09:15:20,704][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:21,668][main.py][line:125][INFO] 277. when i walked in , i was taken aback by their incredible wood decor . 
+[2022-12-12 09:15:21,669][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:22,610][main.py][line:125][INFO] 278. the music playing was very hip , 20 - 30 something pop music , but the subwoofer to the sound system was located under my seat , which became annoying midway through dinner . 
+[2022-12-12 09:15:22,610][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:23,574][main.py][line:125][INFO] 279. i got the shellfish and shrimp appetizer and it was alright . 
+[2022-12-12 09:15:23,574][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:24,519][main.py][line:125][INFO] 280. it was n ' t the freshest seafood ever , but the taste and presentation was ok . 
+[2022-12-12 09:15:24,519][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:25,454][main.py][line:125][INFO] 281. i picked the asparagus , which turned out to be incredible and perfectly prepared . 
+[2022-12-12 09:15:25,454][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:26,427][main.py][line:125][INFO] 282. the 9 oz steak came next and it tasted great , at least initially . 
+[2022-12-12 09:15:26,428][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:27,382][main.py][line:125][INFO] 283. the steak was done to my exact liking ( medium rare ) and was nice and juicy . 
+[2022-12-12 09:15:27,382][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:28,330][main.py][line:125][INFO] 284. it ? s served with either a peppercorn sauce or red wine reduction , though both were indistinguishable in taste . 
+[2022-12-12 09:15:28,330][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:29,292][main.py][line:125][INFO] 285. though , one thing i realized later on was that the restaurant either used msg or a meat tenderizer on the steak . 
+[2022-12-12 09:15:29,292][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:30,244][main.py][line:125][INFO] 286. the desert was the perfect ending to an almost perfect dinner . 
+[2022-12-12 09:15:30,244][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:31,426][main.py][line:125][INFO] 287. overall , i would go back and eat at the restaurant again . 
+[2022-12-12 09:15:31,426][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:32,394][main.py][line:125][INFO] 288. but the servers were extremely attentive and very friendly . 
+[2022-12-12 09:15:32,394][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:33,341][main.py][line:125][INFO] 289. good sake , good food 每 i honestly do n ' t know much about japanese food at all . 
+[2022-12-12 09:15:33,341][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:34,295][main.py][line:125][INFO] 290. server made several sake suggestions which were very good . 
+[2022-12-12 09:15:34,295][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:35,245][main.py][line:125][INFO] 291. had many dishes but the best was the lobster 3 ways . 
+[2022-12-12 09:15:35,245][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:36,195][main.py][line:125][INFO] 292. the waiter was a bit unfriendly and the feel of the restaurant was crowded . 
+[2022-12-12 09:15:36,195][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:37,147][main.py][line:125][INFO] 293. also , there was only one bathroom stall - probably need more for such big crowds . 
+[2022-12-12 09:15:37,147][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:38,119][main.py][line:125][INFO] 294. most importantly , we were so excited about the food after seeing the very creative menu . 
+[2022-12-12 09:15:38,119][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:39,080][main.py][line:125][INFO] 295. at best , the food was good and definately overpriced . 
+[2022-12-12 09:15:39,080][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:40,012][main.py][line:125][INFO] 296. for the amount of food we got the prices should have been lower . 
+[2022-12-12 09:15:40,012][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:40,965][main.py][line:125][INFO] 297. my favortie pizza joint in seattle 
+[2022-12-12 09:15:40,965][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:41,927][main.py][line:125][INFO] 298. 每 this is my ` ` must bring out of town guests to ' ' restaurant and they always enjoy and rave about it . 
+[2022-12-12 09:15:41,927][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:42,896][main.py][line:125][INFO] 299. the pizza is delicious and the salads are fantastic . 
+[2022-12-12 09:15:42,896][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:43,855][main.py][line:125][INFO] 300. i ' ve always found the wait staff and , if you sit at the bar , the cooks very friendly . 
+[2022-12-12 09:15:43,855][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:44,802][main.py][line:125][INFO] 301. i also really enjoy the simplicity of the decor and intimate feeling of a small restaurant . 
+[2022-12-12 09:15:44,803][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:45,773][main.py][line:125][INFO] 302. 每 my husband and i love eating at mioposto cafe . 
+[2022-12-12 09:15:45,773][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:46,722][main.py][line:125][INFO] 303. we ' re ca n ' t say enough about their delicious gourmet pizza ＊ s ! 
+[2022-12-12 09:15:46,723][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:47,677][main.py][line:125][INFO] 304. you won ＊ t be disappointed by their menu . 
+[2022-12-12 09:15:47,677][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:48,628][main.py][line:125][INFO] 305. the pizza ' s are thin crust and the menu offers very creative combinations and toppings . 
+[2022-12-12 09:15:48,628][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:49,581][main.py][line:125][INFO] 306. try the pizza ensalata ! 
+[2022-12-12 09:15:49,581][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:50,546][main.py][line:125][INFO] 307. the pizza ' s are not huge and the crust is thin ＃ keep that in mind when you ＊ re ordering . 
+[2022-12-12 09:15:50,546][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:51,506][main.py][line:125][INFO] 308. the food is sinful . 
+[2022-12-12 09:15:51,506][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:52,465][main.py][line:125][INFO] 309. the staff was really friendly . 
+[2022-12-12 09:15:52,465][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:53,403][main.py][line:125][INFO] 310. the atmosphere was great . 
+[2022-12-12 09:15:53,403][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:54,374][main.py][line:125][INFO] 311. the specialty here is decadent pancakes , but i ' ve been back now four times , and i ' ve been wowed every time . 
+[2022-12-12 09:15:54,374][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:55,327][main.py][line:125][INFO] 312. nothing on the menu is less than amazing . 
+[2022-12-12 09:15:55,327][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:56,280][main.py][line:125][INFO] 313. good eats . 
+[2022-12-12 09:15:56,280][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:57,234][main.py][line:125][INFO] 314. i have been to this place , folks and it is bad . 
+[2022-12-12 09:15:57,234][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:58,182][main.py][line:125][INFO] 315. maybe it is good for that one night once in a blue moon when the chefs decide to use fish that ' s half - way decent . 
+[2022-12-12 09:15:58,182][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:15:59,123][main.py][line:125][INFO] 316. i have been here , spent tons of money on a chef special dinner and it was a major dissappointment . 
+[2022-12-12 09:15:59,123][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:00,067][main.py][line:125][INFO] 317. 每 the atmosphere is great for any special occasion you might want to celebrate . 
+[2022-12-12 09:16:00,067][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:01,005][main.py][line:125][INFO] 318. the best dish are the honwy walnut prawns - just outstanding . 
+[2022-12-12 09:16:01,005][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:01,970][main.py][line:125][INFO] 319. fancy pieces of exotic fish on a $ 100 dollar plate and not one was eatable . 
+[2022-12-12 09:16:01,970][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:02,928][main.py][line:125][INFO] 320. the service is really attentive and charming . 
+[2022-12-12 09:16:02,928][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:03,868][main.py][line:125][INFO] 321. the service was excellent , the coffee was good even by starbucks standards and the food was outstanding . 
+[2022-12-12 09:16:03,868][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:04,814][main.py][line:125][INFO] 322. 每 i recently had the pleasure of dining as this delightful restaurant on 2nd street and wow what a great evening we had . 
+[2022-12-12 09:16:04,814][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:05,757][main.py][line:125][INFO] 323. the food is fantastic , authentic , delicious and very , very affordable . 
+[2022-12-12 09:16:05,758][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:06,722][main.py][line:125][INFO] 324. the decor was beautiful and unique . 
+[2022-12-12 09:16:06,722][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:07,674][main.py][line:125][INFO] 325. there was a really nice vibe about the place . . . good music , atmosphere and happy looking people . 
+[2022-12-12 09:16:07,674][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:08,633][main.py][line:125][INFO] 326. our server was very professional and friendly . 
+[2022-12-12 09:16:08,633][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:09,581][main.py][line:125][INFO] 327. to the owners of open sesame . . . bravo . . . i ca n ' t wait to come back to dine at your restaurant ! 
+[2022-12-12 09:16:09,581][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:10,538][main.py][line:125][INFO] 328. it ' s a tiny place so if you get there before 8pm on a weekend ( thurs ? sun ) you will find it easier to get a table or a seat at the sushi bar . 
+[2022-12-12 09:16:10,538][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:11,492][main.py][line:125][INFO] 329. everything , and i mean everything on the menu is delectable . 
+[2022-12-12 09:16:11,492][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:12,449][main.py][line:125][INFO] 330. the waiters are very experienced and helpful with pairing your drink choice to your food tastes or vice versa . 
+[2022-12-12 09:16:12,449][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:13,399][main.py][line:125][INFO] 331. the sushi is as fresh as it comes ? you ' d think ocean was in their backyard , no joke ! 
+[2022-12-12 09:16:13,399][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:14,348][main.py][line:125][INFO] 332. if you ' re interested in good tasting ( without the fish taste or smell ) , large portions and creative sushi dishes this is your place . . . 
+[2022-12-12 09:16:14,348][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:15,299][main.py][line:125][INFO] 333. big thick pepperoni 
+[2022-12-12 09:16:15,299][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:16,243][main.py][line:125][INFO] 334. 每 the pepperoni ' s cut real thick - - yum . 
+[2022-12-12 09:16:16,243][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:17,208][main.py][line:125][INFO] 335. the pizza itself is not exactly the best i ' ve had ever , but still pretty good . 
+[2022-12-12 09:16:17,208][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:18,178][main.py][line:125][INFO] 336. food was good and appetizing . 
+[2022-12-12 09:16:18,178][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:19,136][main.py][line:125][INFO] 337. portions was just enough for me , but may not be for a big eater . 
+[2022-12-12 09:16:19,136][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:20,100][main.py][line:125][INFO] 338. fair menu selection . 
+[2022-12-12 09:16:20,100][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:21,055][main.py][line:125][INFO] 339. the appetizer was interesting , but the creme brulee was very savory and delicious . 
+[2022-12-12 09:16:21,055][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:22,034][main.py][line:125][INFO] 340. indoor ambience was modern . 
+[2022-12-12 09:16:22,034][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:23,013][main.py][line:125][INFO] 341. if it ' s nice outside , request for a table in the balcony . 
+[2022-12-12 09:16:23,015][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:23,977][main.py][line:125][INFO] 342. it ' s a great place to people watch . 
+[2022-12-12 09:16:23,977][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:24,942][main.py][line:125][INFO] 343. late night dinning with exeptional food . 
+[2022-12-12 09:16:24,942][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:25,900][main.py][line:125][INFO] 344. we were seated right away , the table was private and nice . 
+[2022-12-12 09:16:25,900][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:26,857][main.py][line:125][INFO] 345. the service was exceptional - sometime there was a feeling that we were served by the army of friendly waiters . 
+[2022-12-12 09:16:26,857][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:27,823][main.py][line:125][INFO] 346. the food was very good , filet mignon was probably the best i ' ve ever try . 
+[2022-12-12 09:16:27,823][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:28,788][main.py][line:125][INFO] 347. the portions are big though , so do not order too much . 
+[2022-12-12 09:16:28,788][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:29,733][main.py][line:125][INFO] 348. groovy music made the dinner casual . 
+[2022-12-12 09:16:29,735][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:30,692][main.py][line:125][INFO] 349. i have a but here - there was a bathroom attendant in the restroom which was odd . 
+[2022-12-12 09:16:30,692][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:31,669][main.py][line:125][INFO] 350. the bathroom itself is very small with two toilets and only one sink , the girl was staying totally on the way hanging out paper towels from the dispenser . 
+[2022-12-12 09:16:31,669][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:32,625][main.py][line:125][INFO] 351. 每 mercedes restaurant is so tasty , the service is undeniably awesome ! 
+[2022-12-12 09:16:32,625][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:33,588][main.py][line:125][INFO] 352. the catering is out of this world , and raouls chicken vegetable soup rocks my world ! ! ! 
+[2022-12-12 09:16:33,588][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:34,547][main.py][line:125][INFO] 353. drinks are suberb , and i feel like i am in a third world country when i walk in the door . 
+[2022-12-12 09:16:34,547][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:35,494][main.py][line:125][INFO] 354. the presentation of snooze is excellent and it is one of those places that you feel more sophisticated just for being there ; but peel back the layers and you have an overpriced ihop with a high brow menu . 
+[2022-12-12 09:16:35,494][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:36,445][main.py][line:125][INFO] 355. to start off , approximately 8 - 10 oz of orange juice will cost you $ 3 . 
+[2022-12-12 09:16:36,445][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:37,409][main.py][line:125][INFO] 356. they serve it in a tall , skinny hour - glass shaped glass to disguise the fact that you a getting a small juice at the price of a half gallon in a supermarket . 
+[2022-12-12 09:16:37,409][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:38,367][main.py][line:125][INFO] 357. i should have just asked for the check when i saw that ; but their menu was so unique that i continued . 
+[2022-12-12 09:16:38,367][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:39,320][main.py][line:125][INFO] 358. the pancakes were certainly inventive but $ 8 . 50 for 3 - 6 ' ' pancakes ( one of them was more like 5 ' ' ) in the pancake flight ( sample of 3 different pancakes ) is well over - priced . 
+[2022-12-12 09:16:39,320][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:40,271][main.py][line:125][INFO] 359. the pancakes should be larger ( at least 8 ' ' ) to justify the expense even with the unique offerings . 
+[2022-12-12 09:16:40,271][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:41,217][main.py][line:125][INFO] 360. on my meal i had to send back my eggs for a simple request of breaking the yokes before cooking , and would have had to send them back again if i had n ' t rejected the meal all together . 
+[2022-12-12 09:16:41,217][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:42,182][main.py][line:125][INFO] 361. i rejected it because in the process of attempting to fix the eggs they broke something else in the dish and i was too frustrated to continue . 
+[2022-12-12 09:16:42,182][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:43,130][main.py][line:125][INFO] 362. in the end our check came to $ 27 for 4 small pancakes , a breakfast burrito , an orange juice and an iced tea ( i had water ) . 
+[2022-12-12 09:16:43,130][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:44,073][main.py][line:125][INFO] 363. much more than just a great view ! 
+[2022-12-12 09:16:44,073][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:45,013][main.py][line:125][INFO] 364. 每 i am exceedingly pleased to report that my dinner at ray ' s boathouse last friday completely exceeded my expectations . 
+[2022-12-12 09:16:45,013][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:45,954][main.py][line:125][INFO] 365. ray ' s is something of a seattle institution , but given its gorgeous sound views , i had suspected that the accolades were more due to the scenery than to the food and service . 
+[2022-12-12 09:16:45,954][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:46,917][main.py][line:125][INFO] 366. imagine my happy surprise upon finding that the views are only the third - best thing about ray ' s ! 
+[2022-12-12 09:16:46,917][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:47,863][main.py][line:125][INFO] 367. to start things off , our lovely server brooke was quickly on hand to take my drink order . 
+[2022-12-12 09:16:47,863][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:48,806][main.py][line:125][INFO] 368. my party of two was feeling particularly ambitious , and we splurged on the shilshole sampler . . . a beautiful assortment of enormous white gulf prawns , smoked albacore tuna , ray ' s fantastic manila clams seasoned with dill , scallops in a tasty soy dressing , and a tiny pile of dungeness crab atop a sublime butter sauce . 
+[2022-12-12 09:16:48,806][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:49,765][main.py][line:125][INFO] 369. for my entr & eacute ; e , i completely enjoyed the seared alaskan sea scallops complemented by chard , artichoke hearts , fennel , and pecorino toscano . 
+[2022-12-12 09:16:49,766][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:50,712][main.py][line:125][INFO] 370. the scallops are apparently cooked in a black olive butter which really makes them unique ( not to mention tasty ) . 
+[2022-12-12 09:16:50,712][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:51,661][main.py][line:125][INFO] 371. my friend enjoyed the grilled alaskan king salmon with delectable creamed washington russet potatoes and crisp green beans . 
+[2022-12-12 09:16:51,662][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:52,618][main.py][line:125][INFO] 372. i had a taste of all three items on her plate , and they were superb . 
+[2022-12-12 09:16:52,618][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:53,564][main.py][line:125][INFO] 373. our server continued to be attentive throughout the night , but i did remain puzzled by one issue : who thinks that ray ' s is an appropriate place to take young children for dinner ? 
+[2022-12-12 09:16:53,565][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:54,520][main.py][line:125][INFO] 374. while i could have done without the youth who shared the evening with us , our wonderful server and food made the experience a very positive one . 
+[2022-12-12 09:16:54,520][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:55,487][main.py][line:125][INFO] 375. oh yeah . . . the view was good , too . 
+[2022-12-12 09:16:55,487][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:56,443][main.py][line:125][INFO] 376. yum ! 
+[2022-12-12 09:16:56,443][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:57,395][main.py][line:125][INFO] 377. do n ' t leave the restaurant without it . 
+[2022-12-12 09:16:57,395][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:58,340][main.py][line:125][INFO] 378. no comparison 
+[2022-12-12 09:16:58,340][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:16:59,307][main.py][line:125][INFO] 379. 每 i ca n ' t say enough about this place . 
+[2022-12-12 09:16:59,310][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:00,253][main.py][line:125][INFO] 380. snotty attitude 
+[2022-12-12 09:17:00,253][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:01,211][main.py][line:125][INFO] 381. 每 we were treated very rudely here one time for breakfast . 
+[2022-12-12 09:17:01,212][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:02,173][main.py][line:125][INFO] 382. we never had to wait more than 5 minutes . 
+[2022-12-12 09:17:02,173][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:03,126][main.py][line:125][INFO] 383. they are not greasy or anything . 
+[2022-12-12 09:17:03,126][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:04,066][main.py][line:125][INFO] 384. overrated 
+[2022-12-12 09:17:04,066][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:05,029][main.py][line:125][INFO] 385. 每 i was highly disappointed in the food at pagoda . 
+[2022-12-12 09:17:05,029][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:05,973][main.py][line:125][INFO] 386. i will not go back . 
+[2022-12-12 09:17:05,973][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:06,929][main.py][line:125][INFO] 387. i will never return again . 
+[2022-12-12 09:17:06,929][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:07,897][main.py][line:125][INFO] 388. it was absolutely amazing . 
+[2022-12-12 09:17:07,898][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:08,856][main.py][line:125][INFO] 389. amazing . 
+[2022-12-12 09:17:08,856][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:09,826][main.py][line:125][INFO] 390. i can not wait to go back again this coming weekend ! 
+[2022-12-12 09:17:09,826][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:10,782][main.py][line:125][INFO] 391. mmm . . . good ! 
+[2022-12-12 09:17:10,782][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:11,735][main.py][line:125][INFO] 392. we ' re going back . : d 
+[2022-12-12 09:17:11,735][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:12,499][main.py][line:125][INFO] 393. finally a meal that you will remember for a long time ! 
+[2022-12-12 09:17:12,499][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:13,460][main.py][line:125][INFO] 394. very disappointing 
+[2022-12-12 09:17:13,460][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:14,408][main.py][line:125][INFO] 395. 每 i took my parents here for their anniversary - very very disappointed ! ! ! 
+[2022-12-12 09:17:14,408][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:15,360][main.py][line:125][INFO] 396. nothing really came across as outstanding . 
+[2022-12-12 09:17:15,360][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:16,316][main.py][line:125][INFO] 397. very disappointed . 
+[2022-12-12 09:17:16,316][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:17,257][main.py][line:125][INFO] 398. we were then charged for their most expensive sake ( $ 20 + per serving ) when we in fact drank a sake of less than half that price . 
+[2022-12-12 09:17:17,257][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:18,215][main.py][line:125][INFO] 399. you are bound to have a very charming time . 
+[2022-12-12 09:17:18,215][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:19,171][main.py][line:125][INFO] 400. not recommanded ! ! ! 
+[2022-12-12 09:17:19,171][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:20,118][main.py][line:125][INFO] 401. it is not worth going at all and spend your money there ! ! ! 
+[2022-12-12 09:17:20,118][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:21,068][main.py][line:125][INFO] 402. 每 pretty cheap for sit down mexican and downtown . 
+[2022-12-12 09:17:21,068][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:22,035][main.py][line:125][INFO] 403. if you ' re in the area you should n ' t be disappointed . 
+[2022-12-12 09:17:22,035][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:22,973][main.py][line:125][INFO] 404. ok . . . . 每 maybe i went in on someone ' s bad day . . . . 
+[2022-12-12 09:17:22,975][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:23,923][main.py][line:125][INFO] 405. took forever to get our order taken , water refills were too much to ask for and the only time she was fast was when we asked for our bill when we could get her attention . 
+[2022-12-12 09:17:23,923][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:24,865][main.py][line:125][INFO] 406. i do n ' t know if i ' ll be back . . . . 
+[2022-12-12 09:17:24,865][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:25,832][main.py][line:125][INFO] 407. everything you want and more , very fresh . 
+[2022-12-12 09:17:25,832][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:26,795][main.py][line:125][INFO] 408. its worth the wait , especially since they ' ll give you a call when the table is ready . 
+[2022-12-12 09:17:26,795][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:27,746][main.py][line:125][INFO] 409. i went there with some friends one night to play bingo and watch the sox game and it was a blast ! 
+[2022-12-12 09:17:27,746][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:28,704][main.py][line:125][INFO] 410. every time ` ` 0 - sixtynine ' ' is called the bartender buys everyone drinks ! 
+[2022-12-12 09:17:28,705][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:29,659][main.py][line:125][INFO] 411. been there lots since and its always a good time . 
+[2022-12-12 09:17:29,659][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:30,625][main.py][line:125][INFO] 412. i found a new home on second avenue ! ! ! ! ! ! ! ! ! ! ! ! 
+[2022-12-12 09:17:30,625][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:31,579][main.py][line:125][INFO] 413. just go there and see for yourself . 
+[2022-12-12 09:17:31,580][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:32,541][main.py][line:125][INFO] 414. you need to watch your game , they will have it on for you . 
+[2022-12-12 09:17:32,541][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:33,496][main.py][line:125][INFO] 415. kudos to these guys . 
+[2022-12-12 09:17:33,496][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:34,452][main.py][line:125][INFO] 416. i found a new home and just moved with a long lease . 
+[2022-12-12 09:17:34,452][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:35,420][main.py][line:125][INFO] 417. unless you are just stopping in for a few drinks i would n ' t recommend going here . 
+[2022-12-12 09:17:35,420][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:36,380][main.py][line:125][INFO] 418. you are likely to be disappointed . 
+[2022-12-12 09:17:36,380][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:37,337][main.py][line:125][INFO] 419. it was romantic - and even nice even with my sister , reminded me of italy , and had artwork and music that kept up the feeling of being in a mediterrean villa . 
+[2022-12-12 09:17:37,337][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:38,303][main.py][line:125][INFO] 420. i recommend it for a night when you want to splurge ! ( it was a bit expensive ) 
+[2022-12-12 09:17:38,303][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:39,257][main.py][line:125][INFO] 421. the best thing is , the prices are also quite reasonable . 
+[2022-12-12 09:17:39,257][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:40,190][main.py][line:125][INFO] 422. hidden little jem 
+[2022-12-12 09:17:40,193][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:41,139][main.py][line:125][INFO] 423. 每 tucked away over by the beverly center . 
+[2022-12-12 09:17:41,139][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:42,103][main.py][line:125][INFO] 424. you routinely see indian families and friends dining there , which is always a good sign . 
+[2022-12-12 09:17:42,103][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:43,058][main.py][line:125][INFO] 425. normally , places ask how hot you want it , but they did n ' t . 
+[2022-12-12 09:17:43,058][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:44,007][main.py][line:125][INFO] 426. i should have thought to bring it up but never expected the food to be that mild . 
+[2022-12-12 09:17:44,007][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:44,950][main.py][line:125][INFO] 427. and they packaged everything nicely so it did n ' t spill . 
+[2022-12-12 09:17:44,950][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:45,907][main.py][line:125][INFO] 428. awesome find 
+[2022-12-12 09:17:45,907][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:46,861][main.py][line:125][INFO] 429. you can order to go if you have to get back to the office too ! 
+[2022-12-12 09:17:46,861][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:47,816][main.py][line:125][INFO] 430. lebanese food ! yum ! 
+[2022-12-12 09:17:47,819][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:48,768][main.py][line:125][INFO] 431. 每 i ' ve been to open sesame only once , but i ' m still reeling from the experience ! ! 
+[2022-12-12 09:17:48,768][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:49,715][main.py][line:125][INFO] 432. what a tastly , flaky treat ! 
+[2022-12-12 09:17:49,718][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:50,656][main.py][line:125][INFO] 433. there have been several occasions when we ' ve just not gotten some side dishes we ' ve ordered . 
+[2022-12-12 09:17:50,656][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:51,613][main.py][line:125][INFO] 434. we waited over 30 minutes for our drinks and over 1 1 / 2 hours for our food . 
+[2022-12-12 09:17:51,613][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:52,559][main.py][line:125][INFO] 435. however , one sunday afternoon my husband and i did go ( although with my loud protests ) and were pleasantly surprised . 
+[2022-12-12 09:17:52,559][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:53,499][main.py][line:125][INFO] 436. it was like dining at a completely different restaurant . 
+[2022-12-12 09:17:53,499][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:54,444][main.py][line:125][INFO] 437. we have since returned and also had a great experience , sampling more small plates and a variety of the beer ( cold and good ) . 
+[2022-12-12 09:17:54,444][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:55,386][main.py][line:125][INFO] 438. we did have the same waiter the second time , so maybe the service is spotty and our luck is good . 
+[2022-12-12 09:17:55,386][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:56,340][main.py][line:125][INFO] 439. sunday afternoons there is a band playing and it is lots of fun . 
+[2022-12-12 09:17:56,340][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:57,285][main.py][line:125][INFO] 440. nice job ! 
+[2022-12-12 09:17:57,285][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:58,255][main.py][line:125][INFO] 441. this is sad for what once was one of the best places you could ever eat . 
+[2022-12-12 09:17:58,255][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:17:59,231][main.py][line:125][INFO] 442. i hope one day scooner or later returns to what it once was . 
+[2022-12-12 09:17:59,231][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:00,188][main.py][line:125][INFO] 443. untill this happens , my advice is to stay away . 
+[2022-12-12 09:18:00,189][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:01,138][main.py][line:125][INFO] 444. old reliable 
+[2022-12-12 09:18:01,138][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:02,100][main.py][line:125][INFO] 445. 每 after 12 years in seattle ray ' s rates as the place we always go back to . 
+[2022-12-12 09:18:02,100][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:03,068][main.py][line:125][INFO] 446. i liked it . 
+[2022-12-12 09:18:03,068][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:04,005][main.py][line:125][INFO] 447. it was so much though that i could barely finish but i did , since it was delicious . 
+[2022-12-12 09:18:04,006][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:04,972][main.py][line:125][INFO] 448. wow ! ! ! ! ! ! ! ! 
+[2022-12-12 09:18:04,972][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:05,926][main.py][line:125][INFO] 449. 每 it cant get any better ! ! ! ! ! 
+[2022-12-12 09:18:05,926][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:06,889][main.py][line:125][INFO] 450. absolutely fabulous ! ! ! 
+[2022-12-12 09:18:06,889][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:07,852][main.py][line:125][INFO] 451. two thumbs up ! 
+[2022-12-12 09:18:07,852][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:08,797][main.py][line:125][INFO] 452. this is right up there with places in tokyo as far as the freshness is concerned . 
+[2022-12-12 09:18:08,797][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:09,749][main.py][line:125][INFO] 453. splendid 
+[2022-12-12 09:18:09,749][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:10,701][main.py][line:125][INFO] 454. perfect on a cold day . 
+[2022-12-12 09:18:10,701][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:11,667][main.py][line:125][INFO] 455. $ 6 with tip . 
+[2022-12-12 09:18:11,667][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:12,622][main.py][line:125][INFO] 456. perfection . 
+[2022-12-12 09:18:12,622][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:13,569][main.py][line:125][INFO] 457. on weekends , you might have to wait for couple hours . 
+[2022-12-12 09:18:13,569][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:14,515][main.py][line:125][INFO] 458. however , they do take your cellphone numbers so that you can go hang out somewhere else till they call you up on your cellphone . 
+[2022-12-12 09:18:14,515][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:15,465][main.py][line:125][INFO] 459. that ' s a huge compliment , especially in the fickled restaurant business , . . . enough already ! 
+[2022-12-12 09:18:15,465][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:16,430][main.py][line:125][INFO] 460. i guarantee you wo n ' t be disappointed , there ' s also valet parking . 
+[2022-12-12 09:18:16,430][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:17,385][main.py][line:125][INFO] 461. a cozy spot for 2 
+[2022-12-12 09:18:17,385][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:18,340][main.py][line:125][INFO] 462. 每 i ca n ' t believe murphy ' s has been around for over 25 years , amazing . 
+[2022-12-12 09:18:18,340][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:19,285][main.py][line:125][INFO] 463. addicting ! 
+[2022-12-12 09:18:19,285][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:20,242][main.py][line:125][INFO] 464. i went there with a friend from out of town . . . and we were both very impressed ! 
+[2022-12-12 09:18:20,242][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:21,191][main.py][line:125][INFO] 465. the price was right too . 
+[2022-12-12 09:18:21,191][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:22,149][main.py][line:125][INFO] 466. i ' d go back there in a heartbeat . 
+[2022-12-12 09:18:22,149][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:23,088][main.py][line:125][INFO] 467. well i guess it ' s hard to be seated when one is invisible to the staff . 
+[2022-12-12 09:18:23,088][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:24,045][main.py][line:125][INFO] 468. once seated it took about 30 minutes to finally get the meal . 
+[2022-12-12 09:18:24,045][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:24,998][main.py][line:125][INFO] 469. the prior reviews said kid friendly . . . give me a break with two young children that is light years . 
+[2022-12-12 09:18:24,998][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:25,952][main.py][line:125][INFO] 470. it was decent but nothing exceptional . 
+[2022-12-12 09:18:25,952][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:26,923][main.py][line:125][INFO] 471. the place is the next best thing to my moms cooking . 
+[2022-12-12 09:18:26,923][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:27,890][main.py][line:125][INFO] 472. way over - rated ! ! ! ! 
+[2022-12-12 09:18:27,890][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:28,851][main.py][line:125][INFO] 473. 10 ! 
+[2022-12-12 09:18:28,851][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:29,794][main.py][line:125][INFO] 474. cut to the chase - this is amazing ! 
+[2022-12-12 09:18:29,794][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:30,738][main.py][line:125][INFO] 475. it ' s unpretentious and underground . 
+[2022-12-12 09:18:30,738][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:31,692][main.py][line:125][INFO] 476. it ' s fresh , welcoming , delicious , and relaxing . 
+[2022-12-12 09:18:31,692][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:32,648][main.py][line:125][INFO] 477. i went here on a recommendation and will surely return time and time again . 
+[2022-12-12 09:18:32,648][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:33,593][main.py][line:125][INFO] 478. what a find ! 
+[2022-12-12 09:18:33,593][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:34,552][main.py][line:125][INFO] 479. well worth it 
+[2022-12-12 09:18:34,552][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:35,525][main.py][line:125][INFO] 480. good for late night dining ( last minute planning ) without reservations . 
+[2022-12-12 09:18:35,525][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:36,481][main.py][line:125][INFO] 481. love it every time 
+[2022-12-12 09:18:36,481][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:37,441][main.py][line:125][INFO] 482. never had one single problem there . 
+[2022-12-12 09:18:37,441][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:38,389][main.py][line:125][INFO] 483. seafood plus 
+[2022-12-12 09:18:38,389][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:39,342][main.py][line:125][INFO] 484. 每 this was great dining experience . 
+[2022-12-12 09:18:39,342][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:40,294][main.py][line:125][INFO] 485. if you ' re going to see danny gans or just staying at the mirage , do n ' t miss this one . 
+[2022-12-12 09:18:40,294][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:41,249][main.py][line:125][INFO] 486. completely over rated ! 
+[2022-12-12 09:18:41,249][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:42,216][main.py][line:125][INFO] 487. even then , the order was not correct and we were still waiting for a couple items . 
+[2022-12-12 09:18:42,216][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:43,175][main.py][line:125][INFO] 488. we had a very hard time getting the waitress ' attention and finally had to get up and go inside to speak to a manager . 
+[2022-12-12 09:18:43,175][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:44,138][main.py][line:125][INFO] 489. as it turns out the owner was seated right next to us and when he came over to check on our problems was very dismissive and offered a token 20 % discount on our bill . 
+[2022-12-12 09:18:44,138][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:45,080][main.py][line:125][INFO] 490. when the bill came , he only took the discount off the food and not the drinks . 
+[2022-12-12 09:18:45,080][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:46,025][main.py][line:125][INFO] 491. it was clear he didn ＊ t really care . 
+[2022-12-12 09:18:46,025][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:46,991][main.py][line:125][INFO] 492. 每 save yourself the waste of time & do not visit . 
+[2022-12-12 09:18:46,991][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:47,945][main.py][line:125][INFO] 493. after sitting there with my empty glass for over 20 minutes i left . 
+[2022-12-12 09:18:47,945][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:48,899][main.py][line:125][INFO] 494. i went home & looked them up online again where i discovered there is a link for a give away that does n ' t work so emailed the restaurant about the non existent service & deceptive link . 
+[2022-12-12 09:18:48,899][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:49,857][main.py][line:125][INFO] 495. i never heard back from anyone more than a month ago . 
+[2022-12-12 09:18:49,857][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:50,818][main.py][line:125][INFO] 496. after sitting at the bar for over 20 minutes the bar keep had made only 2 drinks & kept telling us she ' d be right with us . 
+[2022-12-12 09:18:50,818][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:51,798][main.py][line:125][INFO] 497. as of writing this i just tried their give away a link again & it still does n ' t work . 
+[2022-12-12 09:18:51,798][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:52,766][main.py][line:125][INFO] 498. always a winner . 
+[2022-12-12 09:18:52,766][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:53,708][main.py][line:125][INFO] 499. she does n ' t make you feel welcome and treats you like an annoyance . 
+[2022-12-12 09:18:53,708][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:54,673][main.py][line:125][INFO] 500. but she is very friendly with certain people , making it even more annoying . 
+[2022-12-12 09:18:54,673][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:55,618][main.py][line:125][INFO] 501. management should really take notice and train their waitstaff and teach them some proper manners . 
+[2022-12-12 09:18:55,618][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:56,574][main.py][line:125][INFO] 502. they have been featured on the food network and they deserve it . 
+[2022-12-12 09:18:56,574][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:57,514][main.py][line:125][INFO] 503. does n ' t get any better than that . 
+[2022-12-12 09:18:57,514][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:58,454][main.py][line:125][INFO] 504. you can easily hear him though so it was a pleasant sound and not overbearing . 
+[2022-12-12 09:18:58,454][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:18:59,405][main.py][line:125][INFO] 505. not too fine thought that you feel uncomfortable and have to dress up . 
+[2022-12-12 09:18:59,405][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:00,351][main.py][line:125][INFO] 506. first off , the food came fast and all together : ) i like that . . . i hate the pretentiousness of things coming in one after the other . 
+[2022-12-12 09:19:00,354][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:01,293][main.py][line:125][INFO] 507. yummy . 
+[2022-12-12 09:19:01,293][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:02,277][main.py][line:125][INFO] 508. not chewy at all . 
+[2022-12-12 09:19:02,277][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:03,215][main.py][line:125][INFO] 509. for desert we had the mango ginger creme brulee . . . oh la la yummy ! ! ! 
+[2022-12-12 09:19:03,215][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:04,161][main.py][line:125][INFO] 510. melt in your mouth . 
+[2022-12-12 09:19:04,161][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:05,120][main.py][line:125][INFO] 511. we are for sure coming back to this restaurant . 
+[2022-12-12 09:19:05,120][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:06,073][main.py][line:125][INFO] 512. it is sad there is not many people who frequent eating at places like these that look pricey because they are at the hotel . . . but they are definitely one you dont want to miss , esp if your in downtown san jose . 
+[2022-12-12 09:19:06,073][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:07,029][main.py][line:125][INFO] 513. we easily spent more than $ 40 per person ( not including alcohol ) and were still hungry . 
+[2022-12-12 09:19:07,029][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:07,983][main.py][line:125][INFO] 514. i ' m astonished that this restaurant is categorized as $ $ $ rather than $ $ $ $ . 
+[2022-12-12 09:19:07,983][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:08,930][main.py][line:125][INFO] 515. we put out name down and although there were open tables we were told that it ' d be a 30 minute wait . 
+[2022-12-12 09:19:08,930][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:09,887][main.py][line:125][INFO] 516. we went back to the restaurant and low and behold , we were seated at one of the tables that was available 30 minutes ago ! ! 
+[2022-12-12 09:19:09,887][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:10,853][main.py][line:125][INFO] 517. none that i can think of . 
+[2022-12-12 09:19:10,853][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:11,806][main.py][line:125][INFO] 518. we put in our order and although we ordered 4 appetizers , the food did n ' t arrive until 45 minutes later . . . with our main course . 
+[2022-12-12 09:19:11,806][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:12,755][main.py][line:125][INFO] 519. um so now what are appetizers for ? ? ? 
+[2022-12-12 09:19:12,755][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:13,698][main.py][line:125][INFO] 520. oh i forgot to mention that they do n ' t have bread service . 
+[2022-12-12 09:19:13,699][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:14,641][main.py][line:125][INFO] 521. my wife also ordered a teapot of hot water ( she had a sore throat ) and i guess that since it was only water , it was n ' t a priority for them to actually bring it . 
+[2022-12-12 09:19:14,641][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:15,593][main.py][line:125][INFO] 522. in other words , if they are n ' t making $ $ off of you then you do n ' t rate high on their ' service scale ' . 
+[2022-12-12 09:19:15,593][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:16,560][main.py][line:125][INFO] 523. its great if you spent the day there and did n ' t want to drive to eat . 
+[2022-12-12 09:19:16,560][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:17,514][main.py][line:125][INFO] 524. parking is reasonably good , they have their own lot and you can park in the park nearby . 
+[2022-12-12 09:19:17,514][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:18,490][main.py][line:125][INFO] 525. always good . 
+[2022-12-12 09:19:18,490][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:19,439][main.py][line:125][INFO] 526. 6pm on a sat before a broadway play and we were quickly seated and served . 
+[2022-12-12 09:19:19,439][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:20,389][main.py][line:125][INFO] 527. as part of a small party of four , our food was dropped off without comment ; 
+[2022-12-12 09:19:20,389][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:21,327][main.py][line:125][INFO] 528. any further needs we may have had could not have been met since no one stopped by the table . 
+[2022-12-12 09:19:21,328][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:22,270][main.py][line:125][INFO] 529. when we finally were able to flag someone down , it was someone entirely different from the person who had dropped off the food , who was also not the same person who had taken our order . 
+[2022-12-12 09:19:22,270][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:23,228][main.py][line:125][INFO] 530. a brief conversation with the manager at the end of the meal was the greatest disappointment - - to say we had been ` ` blown off ' ' would be an understatement . 
+[2022-12-12 09:19:23,228][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:24,173][main.py][line:125][INFO] 531. the manager continually interrupted with ` ` is there anything else i can do for you ? ` ` , a strange comment because she had hardly listened , let alone responded to our expression of disappointment at our experience . 
+[2022-12-12 09:19:24,173][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:25,137][main.py][line:125][INFO] 532. she promised to speak to the waitress who had flown off in a rage , but we could hardly take her promise seriously , seeing as she had n ' t bothered to get the waitresses name . 
+[2022-12-12 09:19:25,137][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:26,088][main.py][line:125][INFO] 533. in short , schooner or later could n ' t have cared less about our being at their establishment . 
+[2022-12-12 09:19:26,088][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:27,051][main.py][line:125][INFO] 534. you are with a hot date and he / she has an urge for sushi . . . then this might be the place . 
+[2022-12-12 09:19:27,052][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:28,007][main.py][line:125][INFO] 535. and they give good quantity for the price . 
+[2022-12-12 09:19:28,007][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:28,961][main.py][line:125][INFO] 536. we were only in seattle for one night and i ' m so glad we picked rays for dinner ! 
+[2022-12-12 09:19:28,961][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:29,924][main.py][line:125][INFO] 537. this is the case at this gem . 
+[2022-12-12 09:19:29,925][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:30,884][main.py][line:125][INFO] 538. you ca n ' t go wrong here . 
+[2022-12-12 09:19:30,884][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:31,840][main.py][line:125][INFO] 539. seriously , you ca n ' t go wrong , if it is unpretentious local fun you seek . 
+[2022-12-12 09:19:31,840][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:32,791][main.py][line:125][INFO] 540. my mouth felt very dry afterwards and i had that signature ? msg ? taste lingering in my throat after i left the restaurant . 
+[2022-12-12 09:19:32,791][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:33,732][main.py][line:125][INFO] 541. they came in their own nifty take out box and with some homemade frosting ; very light and not - too - sweet . 
+[2022-12-12 09:19:33,732][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:34,682][main.py][line:125][INFO] 542. the dinner only took us about an hour and the prices were alright for the strip , almost $ 50 / pp after tax and tip ( about average ) . 
+[2022-12-12 09:19:34,682][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:35,641][main.py][line:125][INFO] 543. just remember to dress a little urban - chic so you don ? t look too far out of place . 
+[2022-12-12 09:19:35,641][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:36,597][main.py][line:125][INFO] 544. very good ! 
+[2022-12-12 09:19:36,597][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:37,556][main.py][line:125][INFO] 545. overpriced 
+[2022-12-12 09:19:37,556][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:38,508][main.py][line:125][INFO] 546. waited 35 minutes for a table for 8 which was ok for such a big crowd . 
+[2022-12-12 09:19:38,508][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:39,462][main.py][line:125][INFO] 547. not sure if i would go back . 
+[2022-12-12 09:19:39,462][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:40,423][main.py][line:125][INFO] 548. in fact , many want to return a second time during their visit . 
+[2022-12-12 09:19:40,423][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:41,387][main.py][line:125][INFO] 549. they are n ' t the most talkative , but everytime i ' ve been there they have been very busy , which probably accounts for the lack of conversation . 
+[2022-12-12 09:19:41,387][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:42,325][main.py][line:125][INFO] 550. it ' s just the right size for the menu . 
+[2022-12-12 09:19:42,325][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:43,274][main.py][line:125][INFO] 551. excellent 
+[2022-12-12 09:19:43,274][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:44,223][main.py][line:125][INFO] 552. you never feel icky and stuffed after you eat there . 
+[2022-12-12 09:19:44,224][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:45,183][main.py][line:125][INFO] 553. the pizza ' s are light and scrumptious . 
+[2022-12-12 09:19:45,183][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:46,141][main.py][line:125][INFO] 554. worth the wait 
+[2022-12-12 09:19:46,141][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:47,099][main.py][line:125][INFO] 555. 每 had to wait thirty minutes to get in the door on a tuesday morning , but it was so worth it . 
+[2022-12-12 09:19:47,099][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:48,050][main.py][line:125][INFO] 556. go with some friends , wait the half hour or so with a cup of joe , and enjoy more than your average breakfast . 
+[2022-12-12 09:19:48,050][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:49,020][main.py][line:125][INFO] 557. i do n ' t know why anyone would want to write a great review about this place . 
+[2022-12-12 09:19:49,020][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:49,960][main.py][line:125][INFO] 558. donot go ! 
+[2022-12-12 09:19:49,960][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:50,924][main.py][line:125][INFO] 559. delicious 
+[2022-12-12 09:19:50,924][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:51,879][main.py][line:125][INFO] 560. we waited for an hour to be seated . 
+[2022-12-12 09:19:51,879][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:52,837][main.py][line:125][INFO] 561. it was worth the wait . 
+[2022-12-12 09:19:52,841][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:53,784][main.py][line:125][INFO] 562. plan on waiting 30 - 70 minutes . 
+[2022-12-12 09:19:53,784][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:54,741][main.py][line:125][INFO] 563. will definitely be back . 
+[2022-12-12 09:19:54,741][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:55,689][main.py][line:125][INFO] 564. delicious . . . ! 
+[2022-12-12 09:19:55,689][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:56,654][main.py][line:125][INFO] 565. delectable 
+[2022-12-12 09:19:56,654][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:57,633][main.py][line:125][INFO] 566. once you ' re inside , the real experience begins . 
+[2022-12-12 09:19:57,633][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:58,573][main.py][line:125][INFO] 567. i probably would n ' t go back though ' cuz i do n ' t know if it ' s worth it . 
+[2022-12-12 09:19:58,576][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:19:59,530][main.py][line:125][INFO] 568. maybe i ' ll go back once more many years from now when i ' ve forgotten i went there already . 
+[2022-12-12 09:19:59,530][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:00,712][main.py][line:125][INFO] 569. sit in the balcony 
+[2022-12-12 09:20:00,712][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:02,148][main.py][line:125][INFO] 570. 每 not bad . 
+[2022-12-12 09:20:02,148][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:03,095][main.py][line:125][INFO] 571. although the service could be improved considering the money you put in . 
+[2022-12-12 09:20:03,095][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:04,032][main.py][line:125][INFO] 572. our drinks kept coming but our server came by a couple times . 
+[2022-12-12 09:20:04,032][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:04,992][main.py][line:125][INFO] 573. should check - up on us more frequently , do n ' t you think ? 
+[2022-12-12 09:20:04,992][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:05,959][main.py][line:125][INFO] 574. the most pleasant surprise was the check that did not exceed my expectations as it always happens in most of the places . 
+[2022-12-12 09:20:05,959][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:06,911][main.py][line:125][INFO] 575. i felt ackward and next time went to the casino bathroom . 
+[2022-12-12 09:20:06,911][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:07,867][main.py][line:125][INFO] 576. this place rocks ! ! 
+[2022-12-12 09:20:07,867][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:08,817][main.py][line:125][INFO] 577. the chips and salsa are so yummy , and the prices are fabulous . 
+[2022-12-12 09:20:08,817][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:09,760][main.py][line:125][INFO] 578. the atmosphere is aspiring , and the decor is festive and amazing . . 
+[2022-12-12 09:20:09,760][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:10,717][main.py][line:125][INFO] 579. insultingly overpriced 
+[2022-12-12 09:20:10,717][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:11,679][main.py][line:125][INFO] 580. - mediocre service / quality 
+[2022-12-12 09:20:11,680][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:12,641][main.py][line:125][INFO] 581. to their credit they removed the dish from the check ; but no manager stopped by to ask what the problem was . 
+[2022-12-12 09:20:12,641][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:13,591][main.py][line:125][INFO] 582. two rascally kids were seated near us for the first part of our dinner . . . they were replaced by a delightful preteen who pretended to gag every time seafood was mentioned at her table . 
+[2022-12-12 09:20:13,591][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.
+[2022-12-12 09:20:14,537][main.py][line:125][INFO] 583. all considered , i have to say that ray ' s boathouse is deserving of its title as a seattle institution . 
+[2022-12-12 09:20:14,537][main.py][line:126][INFO] Unusable response produced by ChatGPT, maybe its unavailable.

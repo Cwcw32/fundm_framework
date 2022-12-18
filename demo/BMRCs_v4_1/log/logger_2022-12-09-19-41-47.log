@@ -1,0 +1,6 @@
+[2022-12-09 19:41:49,144][bmrc_v4.py][line:1199][INFO] Namespace(add_note='', batch_size=2, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gat=False, gpu=True, hidden_size=768, infer_rt=False, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='BMRC', nizhuan=True, save_model_path='./checkpoint/2022-12-09-19-41-47-', task_type='ASTE', train_rt=True, tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1, zhongzi=[5, 77, 89, 32, 66])
+[2022-12-09 19:41:49,145][bmrc_v4.py][line:1200][INFO] ####################################
+[2022-12-09 19:41:49,145][bmrc_v4.py][line:1201][INFO] ####################################
+[2022-12-09 19:41:49,146][bmrc_v4.py][line:1202][INFO] loading data......
+[2022-12-09 19:41:52,849][bmrc_v4.py][line:1220][INFO] initial optimizer......
+[2022-12-09 19:41:52,872][bmrc_v4.py][line:1230][INFO] New model and optimizer from epoch 1

@@ -1,0 +1,13 @@
+[2022-12-10 15:11:16,646][bmrc_v4.py][line:1199][INFO] Namespace(add_note='', batch_size=2, bert_model_type='../../bert/bert-base-uncased', beta=1, checkpoint_path='./model/final_2.pth', data_path='./data', dataset_type='ASTE', epoch_num=40, gat=False, gpu=True, hidden_size=768, infer_rt=False, inference_beta=0.8, learning_rate=0.001, log_path='./log', mode='train', model_name='BMRC', nizhuan=True, save_model_path='./checkpoint/2022-12-10-15-11-15-', task_type='ASTE', train_rt=True, tuning_bert_rate=1e-05, warm_up=0.1, work_nums=1, zhongzi=[5, 77, 89, 32, 66])
+[2022-12-10 15:11:16,646][bmrc_v4.py][line:1200][INFO] ####################################
+[2022-12-10 15:11:16,646][bmrc_v4.py][line:1201][INFO] ####################################
+[2022-12-10 15:11:16,646][bmrc_v4.py][line:1202][INFO] loading data......
+[2022-12-10 15:11:19,149][bmrc_v4.py][line:1220][INFO] initial optimizer......
+[2022-12-10 15:11:19,165][bmrc_v4.py][line:1230][INFO] New model and optimizer from epoch 1
+[2022-12-10 15:11:22,901][bmrc_v4.py][line:1246][INFO] begin training......
+[2022-12-10 15:11:22,906][bmrc_v4.py][line:1280][INFO] train
+[2022-12-10 15:11:29,831][bmrc_v4.py][line:1395][INFO] Epoch:[1/40]	 Batch:[10/460]	 Loss Sum:147.4031	 S_A Loss:25.4695;S_O Loss:24.5164	 A_O Loss:22.8593;O_A Loss:24.9056	 AO_P Loss:1.949	;	 PA_O Loss:23.0778	;	 PO_A Loss:24.6255	;
+[2022-12-10 15:11:34,806][bmrc_v4.py][line:1395][INFO] Epoch:[1/40]	 Batch:[20/460]	 Loss Sum:203.7467	 S_A Loss:34.6762;S_O Loss:32.7598	 A_O Loss:32.9;O_A Loss:33.3065	 AO_P Loss:2.0235	;	 PA_O Loss:32.818	;	 PO_A Loss:35.2628	;
+[2022-12-10 15:11:39,776][bmrc_v4.py][line:1395][INFO] Epoch:[1/40]	 Batch:[30/460]	 Loss Sum:101.0747	 S_A Loss:13.1073;S_O Loss:15.4304	 A_O Loss:15.7586;O_A Loss:20.1524	 AO_P Loss:1.3446	;	 PA_O Loss:14.7094	;	 PO_A Loss:20.572	;
+[2022-12-10 15:11:44,760][bmrc_v4.py][line:1395][INFO] Epoch:[1/40]	 Batch:[40/460]	 Loss Sum:186.73	 S_A Loss:30.404;S_O Loss:32.1589	 A_O Loss:29.9592;O_A Loss:30.9618	 AO_P Loss:2.4446	;	 PA_O Loss:30.137	;	 PO_A Loss:30.6646	;
+[2022-12-10 15:11:49,691][bmrc_v4.py][line:1395][INFO] Epoch:[1/40]	 Batch:[50/460]	 Loss Sum:181.7667	 S_A Loss:25.3566;S_O Loss:26.7435	 A_O Loss:26.3912;O_A Loss:38.0213	 AO_P Loss:1.8157	;	 PA_O Loss:26.3091	;	 PO_A Loss:37.1292	;
