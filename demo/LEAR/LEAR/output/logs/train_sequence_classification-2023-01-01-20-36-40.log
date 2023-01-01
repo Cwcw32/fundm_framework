@@ -1,0 +1,143 @@
+Training/evaluation parameters Namespace(task_type='sequence_classification', span_decode_strategy='v3', task_save_name='FLAT_NER', data_dir='./data/ner', data_name='ace2004', result_dir='./output', model_name='bert_ner', model_name_or_path='./bert-base-cased/bert-base-cased', output_dir='./output', checkpoint=None, train_set='./data/ner/ace2004/processed/train.json', dev_set='./data/ner/ace2004/processed/dev.json', vocab_file=None, test_set='./data/ner/ace2004/processed/test.json', first_label_file='./data/ner/ace2004/processed/label_map.json', second_label_file=None, label_str_file=None, glove_label_emb_file=None, label_ann_vocab_file=None, label_ann_word_id_list_file=None, data_tag='', use_auxiliary_task=False, exist_nested=False, use_attn=False, gradient_checkpointing=False, use_random_label_emb=False, use_label_encoding=False, label_list='', dump_result=False, sliding_len=-1, weight_start_loss=1.0, weight_end_loss=1.0, weight_span_loss=1.0, loss_type='ce', max_seq_length=256, do_train=True, eval_test=False, do_eval=True, visualizate_bert=False, drop_last=True, padding_to_max=False, is_chinese=False, do_ema=False, data_type='default', match_pattern='default', test_speed=False, use_focal_loss=False, alpha=0.25, gamma=2, label_ann_vocab_size=-1, do_add=False, average_pooling=False, use_label_embedding=False, do_predict=True, evaluate_during_training=True, do_lower_case=False, per_gpu_train_batch_size=8, val_step=100, val_skip_step=1, val_skip_epoch=0, label_emb_size=300, first_label_num=7, second_label_num=1, eval_per_epoch=1, per_gpu_eval_batch_size=8, gradient_accumulation_steps=1, learning_rate=1e-05, task_layer_lr=20, weight_decay=0.01, adam_epsilon=1e-08, dropout_rate=0.1, classifier_dropout_rate=0.1, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_proportion=0.1, logging_steps=50, save_steps=50, use_cuda=True, overwrite_output_dir=True, overwrite_cache=False, seed=42, local_rank=-1, server_ip='', server_port='', device=device(type='cuda'), n_gpu=1)
+-----------  Configuration Arguments -----------
+adam_epsilon: 1e-08
+alpha: 0.25
+average_pooling: False
+checkpoint: None
+classifier_dropout_rate: 0.1
+data_dir: ./data/ner
+data_name: ace2004
+data_tag: 
+data_type: default
+dev_set: ./data/ner/ace2004/processed/dev.json
+device: cuda
+do_add: False
+do_ema: False
+do_eval: True
+do_lower_case: False
+do_predict: True
+do_train: True
+drop_last: True
+dropout_rate: 0.1
+dump_result: False
+eval_per_epoch: 1
+eval_test: False
+evaluate_during_training: True
+exist_nested: False
+first_label_file: ./data/ner/ace2004/processed/label_map.json
+first_label_num: 7
+gamma: 2
+glove_label_emb_file: None
+gradient_accumulation_steps: 1
+gradient_checkpointing: False
+is_chinese: False
+label_ann_vocab_file: None
+label_ann_vocab_size: -1
+label_ann_word_id_list_file: None
+label_emb_size: 300
+label_list: 
+label_str_file: None
+learning_rate: 1e-05
+local_rank: -1
+logging_steps: 50
+loss_type: ce
+match_pattern: default
+max_grad_norm: 1.0
+max_seq_length: 256
+max_steps: -1
+model_name: bert_ner
+model_name_or_path: ./bert-base-cased/bert-base-cased
+n_gpu: 1
+num_train_epochs: 3.0
+output_dir: ./output
+overwrite_cache: False
+overwrite_output_dir: True
+padding_to_max: False
+per_gpu_eval_batch_size: 8
+per_gpu_train_batch_size: 8
+result_dir: ./output
+save_steps: 50
+second_label_file: None
+second_label_num: 1
+seed: 42
+server_ip: 
+server_port: 
+sliding_len: -1
+span_decode_strategy: v3
+task_layer_lr: 20
+task_save_name: FLAT_NER
+task_type: sequence_classification
+test_set: ./data/ner/ace2004/processed/test.json
+test_speed: False
+train_set: ./data/ner/ace2004/processed/train.json
+use_attn: False
+use_auxiliary_task: False
+use_cuda: True
+use_focal_loss: False
+use_label_embedding: False
+use_label_encoding: False
+use_random_label_emb: False
+val_skip_epoch: 0
+val_skip_step: 1
+val_step: 100
+visualizate_bert: False
+vocab_file: None
+warmup_proportion: 0.1
+weight_decay: 0.01
+weight_end_loss: 1.0
+weight_span_loss: 1.0
+weight_start_loss: 1.0
+------------------------------------------------
+Creating features from dataset file at ./data/ner
+*** Example ***
+guid: train-0
+tokens: [CLS] Xi ##nh ##ua News Agency , Canberra , August 31st [SEP]
+input_ids: tensor(101) tensor(20802) tensor(15624) tensor(6718) tensor(3128) tensor(5571) tensor(117) tensor(13400) tensor(117) tensor(1360) tensor(18223) tensor(102)
+input_mask: tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.)
+segment_ids: tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0)
+start_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 1., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+end_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 1., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+*** Example ***
+guid: train-1
+tokens: [CLS] The Chinese government and the Australian government signed an agreement today , wherein the Australian party would provide China with a prefer ##ential financial loan of 150 million Australian dollars . [SEP]
+input_ids: tensor(101) tensor(1109) tensor(1922) tensor(1433) tensor(1105) tensor(1103) tensor(1925) tensor(1433) tensor(1878) tensor(1126) tensor(3311) tensor(2052) tensor(117) tensor(18115) tensor(1103) tensor(1925) tensor(1710) tensor(1156) tensor(2194) tensor(1975) tensor(1114) tensor(170) tensor(9353) tensor(15544) tensor(2798) tensor(4891) tensor(1104) tensor(4214) tensor(1550) tensor(1925) tensor(5860) tensor(119) tensor(102)
+input_mask: tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.)
+segment_ids: tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0)
+start_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+end_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+*** Example ***
+guid: train-2
+tokens: [CLS] According to the agreement , this loan will be mainly used in infrastructure projects such as telecommunications , municipal water supplies and sewage treatments , etc . [SEP]
+input_ids: tensor(101) tensor(1792) tensor(1106) tensor(1103) tensor(3311) tensor(117) tensor(1142) tensor(4891) tensor(1209) tensor(1129) tensor(2871) tensor(1215) tensor(1107) tensor(6557) tensor(3203) tensor(1216) tensor(1112) tensor(17955) tensor(117) tensor(5186) tensor(1447) tensor(5508) tensor(1105) tensor(23198) tensor(14115) tensor(117) tensor(3576) tensor(119) tensor(102)
+input_mask: tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.)
+segment_ids: tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0)
+start_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+end_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+*** Example ***
+guid: train-3
+tokens: [CLS] Last ##ing for two days , the ' 94 Development Assistance Cooperation Annual Meeting between the Chinese government and the Australian government concluded today in Melbourne . [SEP]
+input_ids: tensor(101) tensor(4254) tensor(1158) tensor(1111) tensor(1160) tensor(1552) tensor(117) tensor(1103) tensor(112) tensor(5706) tensor(3273) tensor(20778) tensor(17612) tensor(8451) tensor(12505) tensor(1206) tensor(1103) tensor(1922) tensor(1433) tensor(1105) tensor(1103) tensor(1925) tensor(1433) tensor(4803) tensor(2052) tensor(1107) tensor(4141) tensor(119) tensor(102)
+input_mask: tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.)
+segment_ids: tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0)
+start_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+end_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+*** Example ***
+guid: train-4
+tokens: [CLS] The Chinese delegation with Yong ##tu Long , assistant minister of the Ministry of Foreign Economy and Trade , as the delegation leader , and the Australian delegation with F ##lad , director general of Australian International Development Bureau Assistance Department as the delegation leader , chaired the meeting . [SEP]
+input_ids: tensor(101) tensor(1109) tensor(1922) tensor(11703) tensor(1114) tensor(23816) tensor(7926) tensor(3261) tensor(117) tensor(3109) tensor(3907) tensor(1104) tensor(1103) tensor(3424) tensor(1104) tensor(4201) tensor(14592) tensor(1105) tensor(5820) tensor(117) tensor(1112) tensor(1103) tensor(11703) tensor(2301) tensor(117) tensor(1105) tensor(1103) tensor(1925) tensor(11703) tensor(1114) tensor(143) tensor(23850) tensor(117) tensor(1900) tensor(1704) tensor(1104) tensor(1925) tensor(1570) tensor(3273) tensor(4447) tensor(20778) tensor(1951) tensor(1112) tensor(1103) tensor(11703) tensor(2301) tensor(117) tensor(12624) tensor(1103) tensor(2309) tensor(119) tensor(102)
+input_mask: tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.) tensor(1.)
+segment_ids: tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0) tensor(0)
+start_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 1., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 1., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+end_ids: tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 1., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 1., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 1., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 1., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.]) tensor([0., 0., 0., 0., 0., 0., 0.])
+Saving features into cached file ./data/ner\cached_bert-base-cased_ace2004_train_sequence_classification_cased_256, total_records: 6200, {'entity_cnt': 22201, 'max_token_len': 135}
+
+
+***** Running training *****
+  Num examples = 6200
+  Num Epochs = 3
+  Total train batch size (w. parallel, distributed & accumulation) = 8
+  Gradient Accumulation steps = 1
+  Total optimization steps = 2325
+  lr of encoder = 1e-05, lr of task_layer = 0.0002
+
+

@@ -1,0 +1,103 @@
+Training/evaluation parameters Namespace(task_type='sequence_classification', span_decode_strategy='v3', task_save_name='FLAT_NER', data_dir='./data/ner', data_name='ace2004', result_dir='./output', model_name='bert_ner', model_name_or_path='./bert-base-cased/bert-base-cased', output_dir='./output', checkpoint=None, train_set='./data/ner/ace2004/processed/train.json', dev_set='./data/ner/ace2004/processed/dev.json', vocab_file=None, test_set='./data/ner/ace2004/processed/test.json', first_label_file='./data/ner/ace2004/processed/label_map.json', second_label_file=None, label_str_file=None, glove_label_emb_file=None, label_ann_vocab_file=None, label_ann_word_id_list_file=None, data_tag='', use_auxiliary_task=False, exist_nested=False, use_attn=False, gradient_checkpointing=False, use_random_label_emb=False, use_label_encoding=False, label_list='', dump_result=False, sliding_len=-1, weight_start_loss=1.0, weight_end_loss=1.0, weight_span_loss=1.0, loss_type='ce', max_seq_length=256, do_train=True, eval_test=False, do_eval=True, visualizate_bert=False, drop_last=True, padding_to_max=False, is_chinese=False, do_ema=False, data_type='default', match_pattern='default', test_speed=False, use_focal_loss=False, alpha=0.25, gamma=2, label_ann_vocab_size=-1, do_add=False, average_pooling=False, use_label_embedding=False, do_predict=True, evaluate_during_training=True, do_lower_case=False, per_gpu_train_batch_size=1, val_step=100, val_skip_step=1, val_skip_epoch=0, label_emb_size=300, first_label_num=7, second_label_num=1, eval_per_epoch=1, per_gpu_eval_batch_size=1, gradient_accumulation_steps=1, learning_rate=1e-05, task_layer_lr=20, weight_decay=0.01, adam_epsilon=1e-08, dropout_rate=0.1, classifier_dropout_rate=0.1, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_proportion=0.1, logging_steps=50, save_steps=50, use_cuda=True, overwrite_output_dir=True, overwrite_cache=False, seed=42, local_rank=-1, server_ip='', server_port='', device=device(type='cuda'), n_gpu=1)
+-----------  Configuration Arguments -----------
+adam_epsilon: 1e-08
+alpha: 0.25
+average_pooling: False
+checkpoint: None
+classifier_dropout_rate: 0.1
+data_dir: ./data/ner
+data_name: ace2004
+data_tag: 
+data_type: default
+dev_set: ./data/ner/ace2004/processed/dev.json
+device: cuda
+do_add: False
+do_ema: False
+do_eval: True
+do_lower_case: False
+do_predict: True
+do_train: True
+drop_last: True
+dropout_rate: 0.1
+dump_result: False
+eval_per_epoch: 1
+eval_test: False
+evaluate_during_training: True
+exist_nested: False
+first_label_file: ./data/ner/ace2004/processed/label_map.json
+first_label_num: 7
+gamma: 2
+glove_label_emb_file: None
+gradient_accumulation_steps: 1
+gradient_checkpointing: False
+is_chinese: False
+label_ann_vocab_file: None
+label_ann_vocab_size: -1
+label_ann_word_id_list_file: None
+label_emb_size: 300
+label_list: 
+label_str_file: None
+learning_rate: 1e-05
+local_rank: -1
+logging_steps: 50
+loss_type: ce
+match_pattern: default
+max_grad_norm: 1.0
+max_seq_length: 256
+max_steps: -1
+model_name: bert_ner
+model_name_or_path: ./bert-base-cased/bert-base-cased
+n_gpu: 1
+num_train_epochs: 3.0
+output_dir: ./output
+overwrite_cache: False
+overwrite_output_dir: True
+padding_to_max: False
+per_gpu_eval_batch_size: 1
+per_gpu_train_batch_size: 1
+result_dir: ./output
+save_steps: 50
+second_label_file: None
+second_label_num: 1
+seed: 42
+server_ip: 
+server_port: 
+sliding_len: -1
+span_decode_strategy: v3
+task_layer_lr: 20
+task_save_name: FLAT_NER
+task_type: sequence_classification
+test_set: ./data/ner/ace2004/processed/test.json
+test_speed: False
+train_set: ./data/ner/ace2004/processed/train.json
+use_attn: False
+use_auxiliary_task: False
+use_cuda: True
+use_focal_loss: False
+use_label_embedding: False
+use_label_encoding: False
+use_random_label_emb: False
+val_skip_epoch: 0
+val_skip_step: 1
+val_step: 100
+visualizate_bert: False
+vocab_file: None
+warmup_proportion: 0.1
+weight_decay: 0.01
+weight_end_loss: 1.0
+weight_span_loss: 1.0
+weight_start_loss: 1.0
+------------------------------------------------
+Loading features from cached file ./data/ner\cached_bert-base-cased_ace2004_train_sequence_classification_cased_256
+total records: 6200, {'entity_cnt': 22201, 'max_token_len': 135}
+
+
+***** Running training *****
+  Num examples = 6200
+  Num Epochs = 3
+  Total train batch size (w. parallel, distributed & accumulation) = 1
+  Gradient Accumulation steps = 1
+  Total optimization steps = 18600
+  lr of encoder = 1e-05, lr of task_layer = 0.0002
+
+

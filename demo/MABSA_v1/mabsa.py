@@ -110,6 +110,11 @@ if __name__ == '__main__':
     opt.data_type='MVSA_single'
     opt.region=True
     opt.image_output_type = 'cls'
+    import json
+    with open(opt.abl_path + '../data/mm/TV/' + opt.data_type + '/number.json', 'r') as fr:  # 同上
+        json_file = json.loads(fr.read())
+    opt.max_num=json_file[max(json_file,key=json_file.get)]
+
 
     ########################debug setting END
 

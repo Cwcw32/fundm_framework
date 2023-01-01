@@ -148,8 +148,8 @@ class SentenceDataset(Dataset):
                 images_aug.append(image_augment)
 
 
-            return self.text_to_id[index], images_ori[0:5], self.label_list[index], self.text_translation_to_id[
-                    self.data_id_list[index]], images_aug[0:5],index
+            return self.text_to_id[index], images_ori[0:10], self.label_list[index], self.text_translation_to_id[
+                    self.data_id_list[index]], images_aug[0:10],index
 
 
 class Collate():
@@ -167,7 +167,7 @@ class Collate():
         if opt.image_output_type == 'cls':
             self.image_mask_num = 1
             if opt.region is True:
-                self.image_mask_num=5
+                self.image_mask_num=10
         elif opt.image_output_type == 'all':
             self.image_mask_num = 50
             if opt.region is True:
